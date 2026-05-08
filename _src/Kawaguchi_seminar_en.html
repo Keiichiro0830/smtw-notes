@@ -40,6 +40,39 @@
         .callout { background: #fff8e1; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.92rem; }
         .lang-switch { display: inline-block; padding: 0.35rem 0.8rem; background: #2c5282; color: #fff; border-radius: 4px; font-size: 0.85rem; text-decoration: none; margin-bottom: 1rem; }
         .lang-switch:hover { background: #1f3a5f; text-decoration: none; }
+        .lang-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.9rem;
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            color: #2c5282;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: all 0.15s;
+        }
+        .lang-toggle:hover {
+            background: #2c5282;
+            color: #fff;
+            border-color: #2c5282;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .lang-toggle {
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.4rem 0.7rem;
+                font-size: 0.78rem;
+            }
+        }
         .melmaga-list { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.4rem; }
         .melmaga-list li { margin-bottom: 0.6rem; }
         .melmaga-list .mm-date { display: inline-block; background: #2c5282; color: #fff; font-size: 0.78rem; padding: 0.12rem 0.55rem; border-radius: 3px; margin-right: 0.55rem; font-family: "Helvetica Neue", Arial, sans-serif; }
@@ -50,9 +83,8 @@
     </style>
 </head>
 <body>
+<a class="lang-toggle" href="Kawaguchi_seminar.html">🇯🇵 JP</a>
 <div class="container">
-
-    <a class="lang-switch" href="Kawaguchi_seminar.html">🇯🇵 日本語版へ</a>
 
     <h1>AI x Intellectual Forging Academy — Portal</h1>
     <p class="subtitle">2nd Meeting Pre-read · 1st Meeting Notes · Newsletter excerpts</p>
