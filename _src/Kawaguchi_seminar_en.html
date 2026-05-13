@@ -94,7 +94,7 @@
 <div class="container">
 
     <h1>AI x Intellectual Forging Academy — Portal</h1>
-    <p class="subtitle">2nd meeting held (2026-05-09) · 3rd meeting: Saturday, June 20, 2026 · 1st &amp; 2nd meeting notes · Newsletter excerpts</p>
+    <p class="subtitle">2nd meeting held (2026-05-09) · 3rd meeting: Saturday, June 20, 2026 — pre-read circulated · 1st &amp; 2nd meeting notes · Newsletter excerpts</p>
 
     <h2>1. Logistics</h2>
 
@@ -110,7 +110,8 @@
     <table class="info-table">
         <tr><th>Date</th><td><strong>Saturday, June 20, 2026</strong> · 10:30 JST start (planned)</td></tr>
         <tr><th>Venue</th><td>Waseda University, Building 26, 13F (same as 2nd)</td></tr>
-        <tr><th>Theme</th><td>Continuing from the 2nd meeting: practical use of "AI Expert Scientist" approach, further applications of uncertainty visualization. Matsumae to circulate the topic in advance.</td></tr>
+        <tr><th>Theme</th><td>Main: <strong><em>Foundations of LLMs and the essence of prompt engineering</em></strong> (Chollet 2023 lineage; circulated by Prof. Kawaguchi 2026-05-12 — see <a href="#sec3-3">§3.1</a>).<br>Related topics from the 2nd meeting: practical use of "AI Expert Scientist" approach, further applications of uncertainty visualization.</td></tr>
+        <tr><th>Pre-read</th><td>Prof. Kawaguchi, <em>"Foundations of LLMs and the essence of prompt engineering"</em> (circulated 2026-05-12, JP). Details in <a href="#sec3-3">§3.1</a>.</td></tr>
         <tr><th>Communication</th><td>Facebook Messenger group "Prof. Kawaguchi AI x Intellectual Forging"</td></tr>
     </table>
 
@@ -140,6 +141,39 @@
 
     <h2>3. Pre-read papers</h2>
     <p>Please review before the meeting. Each card has the original PDF, Japanese summary/translation, and a NotebookLM helper.</p>
+
+    <h3 id="sec3-3" style="margin-top:1.2rem;">3.1 For the 3rd meeting (2026-06-20)</h3>
+    <p style="color:#64748b;font-size:0.9rem;">Circulated by Prof. Kawaguchi via email on 2026-05-12. Following the earlier two manual-style guides ("AI for business professionals" and "AI for data analysts"), this piece is positioned as a "more expert-flavoured" companion. It traces the LLM research lineage — Hinton 1986 → Bengio 2003 → Mikolov 2013 → Sutskever/Cho 2014 → Bahdanau 2015 → Vaswani 2017 → Chollet 2023 — and then walks paragraph-by-paragraph through François Chollet's "How I think about LLM prompt engineering." The core thesis (LLM = huge vector space, prompt = navigation within it) sits in p.4 onward. The Bengio (2003) section connects to Prof. Kawaguchi's earlier "Introduction to Spatial Statistics" exercises. The original DOCX is Japanese; an English summary is provided below.</p>
+
+    <div class="paper-card">
+        <div class="meta">Prof. Kawaguchi · circulated 2026-05-12</div>
+        <div class="title">Yuichiro Kawaguchi — <em>Foundations of LLMs and the essence of prompt engineering</em> (JP)</div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">Prof. Kawaguchi searched Google, snowballed through the cited papers, and ran a multi-turn Claude dialogue to assemble a timeline of LLM research from Hinton (1986) to Chollet (2023). The second half is a guided reading of Chollet's "How I think about LLM prompt engineering," paragraph by paragraph. Intent: share "what I am doing inside my head when I use an LLM."</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/Kawaguchi_20260512_LLM_Prompt_Engineering.docx" target="_blank">Original DOCX (JP)</a>
+        </div>
+    </div>
+
+    <details style="margin:1rem 0;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:0.8rem 1.2rem;">
+        <summary style="cursor:pointer;font-weight:600;color:#1f3a5f;">English summary (working translation by K. Matsumae)</summary>
+        <div style="margin-top:0.8rem;font-size:0.92rem;line-height:1.65;color:#334155;">
+            <p><strong>Framing.</strong> This document is the successor to the two manual-style guides Prof. Kawaguchi circulated earlier ("AI for business professionals" and "AI for data analysts"). Those were written by Claude as practical manuals. This one is a step deeper — an attempt to share what an LLM-literate expert is actually doing in their head when they prompt a model.</p>
+            <p><strong>Method.</strong> The professor started with a Google search seeded by "Chollet 2023," then snowballed through citations and ran a multi-turn Claude dialogue to assemble a five-era history of LLM research:</p>
+            <ul style="margin-left:1.2rem;">
+                <li>Era 1 — <em>Roots of distributed representation</em>: Hinton (1986) → Bengio (2003) neural language model → Mikolov (2013) Word2Vec → Sutskever/Cho (2014) Seq2Seq → Bahdanau (2015) Attention → Vaswani (2017) Transformer.</li>
+                <li>Era 2 — <em>Pretraining revolution</em>: BERT (2018), GPT-2 (2019).</li>
+                <li>Era 3 — <em>Scaling</em>: Kaplan et al. (2020) scaling laws, GPT-3 (2020).</li>
+                <li>Era 4 — <em>Alignment</em>: Chain-of-Thought (2022), InstructGPT / RLHF (2022).</li>
+                <li>Era 5 — <em>Theoretical integration</em>: Chollet (2023), "LLM = a huge vector space; prompt = a path-specification inside that space."</li>
+            </ul>
+            <p><strong>Chollet, paragraph by paragraph.</strong> The latter half of the document reads François Chollet's <em>"How I think about LLM prompt engineering"</em> passage by passage, after a primer on Word2Vec (co-occurrence → distance conversion). Chollet's claim, which Kawaguchi endorses: an LLM is essentially Word2Vec scaled up, sharing four properties — (i) it is an embedding device; (ii) it relies on the distributional hypothesis; (iii) it uses cosine-style distance; (iv) it lives in a 10³–10⁴ dimensional space — plus Self-Attention as the addition that makes it dynamic.</p>
+            <p><strong>Author's message.</strong> "From p.4 onward you can see the picture I have inside my own PC when I use an LLM." Bengio (2003) — words as feature vectors — is presented as a continuation of Prof. Kawaguchi's earlier teaching series <em>"Introduction to Spatial Statistics"</em>: same mathematical move (objects → vectors → distance), different domain.</p>
+            <p style="color:#64748b;font-size:0.85rem;">Source: <a href="papers/2026-06-20/Kawaguchi_20260512_LLM_Prompt_Engineering.docx">Kawaguchi_20260512_LLM_Prompt_Engineering.docx</a>. Summary prepared 2026-05-13 — please refer to the DOCX for the original Japanese text and Claude-dialogue transcripts.</p>
+        </div>
+    </details>
+
+    <h3 style="margin-top:1.6rem;">3.2 For the 2nd meeting (2026-05-09) — archive</h3>
+    <p style="color:#64748b;font-size:0.9rem;">The 4 papers + 1 companion that anchored the 2nd-meeting discussion. The discussion itself is captured in <a href="#sec7">§7. 2nd meeting summary</a>.</p>
 
     <div class="paper-card">
         <div class="meta">Paper 1 · NBER Working Paper, 2026</div>
@@ -401,7 +435,7 @@
     </ul>
 
     <h2 id="sec7">7. 2nd meeting summary (May 9, 2026)</h2>
-    <p style="color:#64748b;font-size:0.9rem;">Saturday, May 9, 2026 · 10:30–12:30 JST · Waseda Building 26, 13F. Pre-reads: <a href="#sec3">§3 (4 papers + ChatGPT's logprobes companion)</a>. The full Japanese minutes live in the <a href="Kawaguchi_seminar.html">JP portal</a>; an English condensed version follows.</p>
+    <p style="color:#64748b;font-size:0.9rem;">Saturday, May 9, 2026 · 10:30–12:30 JST · Waseda Building 26, 13F. Pre-reads: <a href="#sec3">§3.2 (4 papers + ChatGPT's logprobes companion)</a>. The full Japanese minutes live in the <a href="Kawaguchi_seminar.html">JP portal</a>; an English condensed version follows.</p>
 
     <div class="participants-box">
         <h3 style="margin-top:0;color:#2c5282;">Attendees (10)</h3>
