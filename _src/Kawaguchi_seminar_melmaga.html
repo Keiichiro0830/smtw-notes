@@ -447,8 +447,8 @@
     <p class="subtitle">第2回 開催済 (2026-05-09) ／ 次回 第3回: 2026年6月20日（土）— 事前読了資料 配布開始 ／ 第1回・第2回議事メモ ／ 関連メルマガ</p>
 
     <nav class="page-nav">
-        <a href="Kawaguchi_seminar.html">トップ</a>
-        <a href="Kawaguchi_seminar_papers.html">事前資料</a>
+        <a href="Kawaguchi_seminar.html">第3回</a>
+        <a href="Kawaguchi_seminar_papers.html">過去資料</a>
         <a href="Kawaguchi_seminar_melmaga.html" class="active">メルマガ</a>
         <a href="Kawaguchi_seminar_minutes.html">議事メモ</a>
     </nav>
@@ -949,6 +949,8 @@
       </div>
     </details>
 
+    
+
     <h2 style="margin-top:2.4rem;">第3回（6/20）事前コメント・回答フォーム</h2>
     <p style="color:#64748b;font-size:0.9rem;">事前読了資料・メルマガへのコメントや質問、運営へのご意見をこちらからどうぞ。いただいた内容は第3回の議論の材料にさせていただきます。</p>
     <div id="smtw-cmt-form" class="smtw-cmt smtw-cmt-main" data-aid="general" data-atitle="全体・運営"></div>
@@ -975,7 +977,10 @@ const SMTW_CMT_TEXT = {
     errMsg: "送信に失敗しました。時間をおいて再度お試しください。",
     notReady: "コメント機能は準備中です",
     jump: "✉️ この資料についてコメントする",
-    logTitle: "あなたのコメント（この端末のみに表示）"
+    logTitle: "あなたのコメント（この端末のみに表示）",
+    otherLabel: "その他",
+    otherPh: "対象を自由にご記入ください",
+    otherReq: "対象（その他）をご記入ください。"
 };
 
 (function () {
@@ -1042,7 +1047,8 @@ const SMTW_CMT_TEXT = {
         }
         html += group(SMTW_CMT_TEXT.grpPaper, papers);
         html += group(SMTW_CMT_TEXT.grpMelmaga, melmagas);
-        return { html: html, count: papers.length + melmagas.length + 1 };
+        html += '<option value="other">' + esc(SMTW_CMT_TEXT.otherLabel) + "</option>";
+        return { html: html, count: papers.length + melmagas.length + 2 };
     }
 
     function buildMainForm(box) {
@@ -1052,6 +1058,8 @@ const SMTW_CMT_TEXT = {
         box.innerHTML =
             '<div class="smtw-cmt-row"><label>' + esc(SMTW_CMT_TEXT.target) +
                 '</label><select class="smtw-cmt-target">' + opts.html + "</select></div>" +
+            '<div class="smtw-cmt-row smtw-cmt-other-row" style="display:none;"><label>' + esc(SMTW_CMT_TEXT.otherLabel) +
+                '</label><input type="text" class="smtw-cmt-other-input" placeholder="' + esc(SMTW_CMT_TEXT.otherPh) + '"></div>' +
             '<div class="smtw-cmt-row"><label>' + esc(SMTW_CMT_TEXT.name) +
                 '</label><input type="text" class="smtw-cmt-name" placeholder="' + esc(SMTW_CMT_TEXT.namePh) +
                 '" value="' + esc(prof.name || "") + '" required></div>' +
@@ -1073,6 +1081,12 @@ const SMTW_CMT_TEXT = {
         const btn = box.querySelector(".smtw-cmt-send");
         const msg = box.querySelector(".smtw-cmt-msg");
         const logWrap = box.querySelector(".smtw-cmt-log");
+        const otherRow = box.querySelector(".smtw-cmt-other-row");
+        const otherInput = box.querySelector(".smtw-cmt-other-input");
+        targetEl.addEventListener("change", function () {
+            otherRow.style.display = (targetEl.value === "other") ? "" : "none";
+            if (targetEl.value === "other" && otherInput) { otherInput.focus(); }
+        });
 
         renderLog(logWrap);
 
@@ -1081,6 +1095,7 @@ const SMTW_CMT_TEXT = {
             const aid = targetEl.value;
             let atitle = opt ? (opt.getAttribute("data-atitle") || "") : "";
             if (aid === "general") { atitle = box.getAttribute("data-atitle") || "全体・運営"; }
+            if (aid === "other") { atitle = (otherInput && otherInput.value.trim()) || SMTW_CMT_TEXT.otherLabel; }
             return { aid: aid, atitle: atitle };
         }
 
@@ -1095,6 +1110,7 @@ const SMTW_CMT_TEXT = {
             if (!name) { msg.className = "smtw-cmt-msg err"; msg.textContent = "お名前を入力してください。"; nameEl.focus(); return; }
             if (!comment) { msg.className = "smtw-cmt-msg err"; msg.textContent = "コメントを入力してください。"; commentEl.focus(); return; }
 
+            if (tgt.aid === "other" && (!otherInput || !otherInput.value.trim())) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_CMT_TEXT.otherReq; if (otherInput) { otherInput.focus(); } return; }
             saveProfile(name, email);
 
             if (!SMTW_CMT_ENDPOINT || SMTW_CMT_ENDPOINT === "PASTE_GAS_WEBAPP_URL_HERE") {
