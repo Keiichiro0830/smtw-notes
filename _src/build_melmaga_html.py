@@ -96,10 +96,11 @@ def build():
         p = VAULT / fname
         text = p.read_text(encoding="utf-8")
         body_html = md_to_html(text)
-        block = f"""    <details class="melmaga">
+        block = f"""    <details class="melmaga" id="mm-{date_str}">
       <summary><span class="mm-date">{date_str}</span> {html.escape(title)}</summary>
       <div class="mm-body">
 {body_html}
+<div class="smtw-cmt" data-aid="mm-{date_str}" data-atitle="{html.escape('メルマガ ' + date_str + ' ' + title)}"></div>
       </div>
     </details>"""
         parts.append(block)

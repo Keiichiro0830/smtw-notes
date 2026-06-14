@@ -1,0 +1,7 @@
+.claude/settings.local.json
+
+# GAS backend contains the real Spreadsheet ID — keep out of the public repo
+_src/gas_comment_backend.gs
+
+# staticrypt source backups
+_src/*.bak

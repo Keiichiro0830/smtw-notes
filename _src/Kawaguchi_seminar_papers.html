@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AIx知的鍛錬塾 ポータル</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+            background: #f8fafc;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 2.5rem 1rem;
+        }
+        .container { max-width: 760px; margin: 0 auto; }
+        h1 {
+            font-size: 1.6rem;
+            color: #2c5282;
+            margin-bottom: 0.4rem;
+        }
+        .subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1.6rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 2px solid #2c5282;
+        }
+        h2 {
+            font-size: 1.15rem;
+            color: #2c5282;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            padding-left: 0.6rem;
+            border-left: 4px solid #2c5282;
+        }
+        h3 {
+            font-size: 1rem;
+            color: #1f3a5f;
+            margin-top: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        p { margin-bottom: 0.8rem; }
+        ul { margin-left: 1.4rem; margin-bottom: 0.8rem; }
+        li { margin-bottom: 0.3rem; }
+        a { color: #2c5282; }
+        a:hover { text-decoration: underline; }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0.8rem;
+        }
+        .info-table th, .info-table td {
+            text-align: left;
+            padding: 0.55rem 0.7rem;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+            font-size: 0.95rem;
+        }
+        .info-table th {
+            background: #eef2f7;
+            color: #1f3a5f;
+            font-weight: 600;
+            white-space: nowrap;
+            width: 7rem;
+        }
+        .paper-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.9rem;
+        }
+        .paper-card .meta {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        .paper-card .title {
+            font-weight: 600;
+            color: #1f3a5f;
+            margin-bottom: 0.6rem;
+        }
+        .file-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .file-links a {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: #eef2f7;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+        .file-links a:hover {
+            background: #dbe4f0;
+            text-decoration: none;
+        }
+        .file-links a.primary {
+            background: #2c5282;
+            color: #fff;
+            border-color: #2c5282;
+        }
+        .file-links a.primary:hover {
+            background: #1f3a5f;
+        }
+        .file-links a.notebook {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+        .file-links a.notebook:hover {
+            background: #fde68a;
+        }
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #f59e0b;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            font-size: 0.92rem;
+        }
+        .nav-link {
+            display: inline-block;
+            margin-top: 0.4rem;
+            padding: 0.7rem 1rem;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #2c5282;
+        }
+        .nav-link:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-decoration: none;
+        }
+        details.melmaga {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 0.7rem;
+            overflow: hidden;
+        }
+        details.melmaga > summary {
+            cursor: pointer;
+            padding: 0.85rem 1.1rem;
+            font-weight: 600;
+            color: #1f3a5f;
+            list-style: none;
+            background: #f1f5f9;
+            border-bottom: 1px solid transparent;
+        }
+        details.melmaga > summary::-webkit-details-marker { display: none; }
+        details.melmaga > summary::before {
+            content: "▶";
+            font-size: 0.7rem;
+            margin-right: 0.6rem;
+            color: #64748b;
+            transition: transform 0.15s;
+            display: inline-block;
+        }
+        details.melmaga[open] > summary::before { transform: rotate(90deg); }
+        details.melmaga[open] > summary { border-bottom-color: #e2e8f0; }
+        details.melmaga .mm-date {
+            display: inline-block;
+            background: #2c5282;
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.12rem 0.55rem;
+            border-radius: 3px;
+            margin-right: 0.55rem;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+        }
+        details.melmaga .mm-body {
+            padding: 1rem 1.4rem 0.4rem;
+            font-size: 0.93rem;
+        }
+        details.melmaga .mm-body p {
+            margin-bottom: 0.7rem;
+        }
+        details.melmaga .mm-body h4 {
+            font-size: 0.97rem;
+            color: #1f3a5f;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #94a3b8;
+        }
+        details.melmaga .mm-body ul {
+            margin-bottom: 0.8rem;
+        }
+        .participants-box {
+            background: #ebf4ff;
+            border-radius: 8px;
+            padding: 1rem 1.4rem;
+            margin: 1rem 0;
+        }
+        .participants-box ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+        .speaker-block {
+            background: #fff;
+            border-left: 3px solid #2c5282;
+            padding: 0.8rem 1.1rem;
+            margin: 0.7rem 0;
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .speaker-block h4.sb-name {
+            margin: 0 0 0.4rem;
+            color: #2c5282;
+            font-size: 0.97rem;
+            border: none;
+            padding: 0;
+        }
+        .speaker-block ul {
+            margin-bottom: 0;
+            margin-left: 1.2rem;
+        }
+        .speaker-block p { margin-bottom: 0; }
+        .decision-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 1rem 1.4rem;
+            margin: 1.2rem 0;
+        }
+        .action-box {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 1rem 1.4rem;
+            margin: 1.2rem 0;
+        }
+        .note-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem 1.4rem;
+            margin: 1.2rem 0;
+            font-size: 0.92rem;
+            color: #64748b;
+        }
+        .decision-box h3, .action-box h3, .note-box h3 {
+            margin-top: 0;
+            color: #1f3a5f;
+        }
+        .lang-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.9rem;
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            color: #2c5282;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: all 0.15s;
+        }
+        .lang-toggle:hover {
+            background: #2c5282;
+            color: #fff;
+            border-color: #2c5282;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .lang-toggle {
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.4rem 0.7rem;
+                font-size: 0.78rem;
+            }
+        }
+        footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+        /* ===== 記事別コメント欄 (smtw-cmt) ===== */
+        .smtw-cmt {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #1f3a5f;
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            margin-top: 0.9rem;
+        }
+        .smtw-cmt .smtw-cmt-head {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1f3a5f;
+            margin-bottom: 0.4rem;
+        }
+        .smtw-cmt .smtw-cmt-note {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-bottom: 0.7rem;
+            line-height: 1.5;
+        }
+        .smtw-cmt .smtw-cmt-row {
+            margin-bottom: 0.55rem;
+        }
+        .smtw-cmt label {
+            display: block;
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-bottom: 0.2rem;
+        }
+        .smtw-cmt input[type="text"],
+        .smtw-cmt input[type="email"],
+        .smtw-cmt textarea {
+            width: 100%;
+            font: inherit;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            padding: 0.45rem 0.6rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            background: #fff;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        .smtw-cmt input:focus,
+        .smtw-cmt textarea:focus {
+            outline: none;
+            border-color: #1f3a5f;
+            box-shadow: 0 0 0 2px rgba(31,58,95,0.12);
+        }
+        .smtw-cmt .smtw-cmt-hp {
+            display: none;
+        }
+        .smtw-cmt button.smtw-cmt-send {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: #1f3a5f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .smtw-cmt button.smtw-cmt-send:hover {
+            background: #2c5282;
+        }
+        .smtw-cmt button.smtw-cmt-send:disabled {
+            background: #94a3b8;
+            cursor: default;
+        }
+        .smtw-cmt .smtw-cmt-msg {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            min-height: 1em;
+        }
+        .smtw-cmt .smtw-cmt-msg.ok { color: #15803d; font-weight: 600; }
+        .smtw-cmt .smtw-cmt-msg.err { color: #b91c1c; }
+        .smtw-cmt .smtw-cmt-log {
+            margin-top: 0.8rem;
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 0.6rem;
+        }
+        .smtw-cmt .smtw-cmt-log-title {
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-bottom: 0.4rem;
+        }
+        .smtw-cmt .smtw-cmt-log-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 0.45rem 0.65rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+            color: #334155;
+        }
+        .smtw-cmt .smtw-cmt-log-item .smtw-cmt-log-date {
+            display: block;
+            font-size: 0.72rem;
+            color: #94a3b8;
+            margin-bottom: 0.15rem;
+        }
+        .smtw-cmt-general {
+            margin-top: 1rem;
+        }
+        .smtw-cmt-main {
+            margin-top: 1rem;
+        }
+        /* select は input と同調 */
+        .smtw-cmt select.smtw-cmt-target {
+            width: 100%;
+            font: inherit;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            padding: 0.45rem 0.6rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            background: #fff;
+            box-sizing: border-box;
+        }
+        .smtw-cmt select.smtw-cmt-target:focus {
+            outline: none;
+            border-color: #1f3a5f;
+            box-shadow: 0 0 0 2px rgba(31,58,95,0.12);
+        }
+        /* 各資料の小さなジャンプリンク */
+        .smtw-cmt-jump {
+            text-align: right;
+            margin-top: 0.6rem;
+        }
+        .smtw-cmt-jump a {
+            font-size: 0.8rem;
+            color: #64748b;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .smtw-cmt-jump a:hover {
+            color: #1f3a5f;
+            text-decoration: underline;
+        }
+    
+        .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
+        .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
+        .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
+        .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+    </style>
+</head>
+<body>
+<a class="lang-toggle" href="Kawaguchi_seminar_papers_en.html">🇬🇧 EN</a>
+<div class="container">
+    <h1>AIx知的鍛錬塾 ポータル</h1>
+    <p class="subtitle">第2回 開催済 (2026-05-09) ／ 次回 第3回: 2026年6月20日（土）— 事前読了資料 配布開始 ／ 第1回・第2回議事メモ ／ 関連メルマガ</p>
+
+    <nav class="page-nav">
+        <a href="Kawaguchi_seminar.html">トップ</a>
+        <a href="Kawaguchi_seminar_papers.html" class="active">事前資料</a>
+        <a href="Kawaguchi_seminar_melmaga.html">メルマガ</a>
+        <a href="Kawaguchi_seminar_minutes.html">議事メモ</a>
+    </nav>
+
+<h2 id="sec3">3. 事前読了資料</h2>
+    <p>当日までに目を通してください。原文 PDF と、川口先生・Gemini による日本語要約／和訳を併せて配布します。</p>
+
+    <h3 id="sec3-3" style="color:#1f3a5f;margin-top:1.2rem;">3.1 第3回（2026-06-20）向け</h3>
+    <p style="color:#64748b;font-size:0.9rem;">2026-05-12 メール配布。先日配布のマニュアル系2本（「ビジネスパーソンのためのAI活用実践ガイド」「データアナリストのためのAI活用実践ガイド」）に続く「専門家らしい情報」。Hinton 1986 → Bengio 2003 → Mikolov 2013 → Sutskever/Cho 2014 → Bahdanau 2015 → Vaswani 2017 → Chollet 2023 の系譜整理から、Chollet "How I think about LLM prompt engineering" 全訳・解説まで。p.4 以降にプロンプトエンジニアリングの「本質」（LLM=巨大なベクトル空間、プロンプト=その空間内の経路指定）。Bengio ら(2003) の統計的言語学／単語=特徴ベクトル表現は、川口先生「空間統計学入門」演習の続編に相当。</p>
+
+    <div class="paper-card" id="paper-20260512">
+        <div class="meta">川口先生オリジナル ／ 2026-05-12 配布</div>
+        <div class="title">川口 有一郎 — <em>LLMの基礎とプロンプトエンジニアリングの本質</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">川口先生が Google 検索 → 「つるったぐり」で関連論文を収集し、Claude との対話形式で LLM 開発の系譜（Hinton 1986 〜 Chollet 2023）を整理。Chollet "How I think about LLM prompt engineering" の核心パッセージを段落ごとに読み解く構成。「LLMを使うときに自分のPC内で処理しているイメージ」を共有する意図。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/Kawaguchi_20260512_LLM_Prompt_Engineering.docx" target="_blank">原文 DOCX</a>
+            <a href="papers/2026-06-20/Kawaguchi_20260512_LLM_Research_History.xlsx" target="_blank">研究史一覧 Excel（Hinton 1986〜Chollet 2023）</a>
+            <a class="notebook" href="https://notebooklm.google.com/notebook/c11e54be-5b01-46fb-91ea-210bcede319c" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260512" data-atitle="川口先生『LLMの基礎とプロンプトエンジニアリングの本質』"></div>
+    </div>
+
+    <div class="paper-card" id="paper-20260529">
+        <div class="meta">参考書（川口先生 推薦）／ 2026-05-29 共有</div>
+        <div class="title">Stephen Wolfram — <em>What Is ChatGPT Doing … and Why Does It Work?</em>（邦訳『ChatGPTの頭の中』ハヤカワ新書, 2023）</div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">川口先生が第3回の基礎固めとして推薦。ニューラルネットの仕組みを平易に解説しており、次回議論のベースとしてざっと目を通しておくと良い（自分にとって分かりやすい他の入門書でも可）。<strong>論点</strong>: 本書の後段は Chollet 2023 と重なるが判断が異なり、プロンプトエンジニアリングを間接的に「無効」と位置づける。上の Chollet 系譜（プロンプト＝巨大ベクトル空間内の経路指定）と正面から対立する見立てで、第3回の格好の討論軸になる。</p>
+        <div class="file-links">
+            <a class="primary" href="https://faculty.sites.iastate.edu/tesfatsi/archive/tesfatsi/ChatGPT.WhatIsItWhyDoesItWork.SWolfram.2024.pdf" target="_blank" rel="noopener">英語版 PDF (Wolfram 2024)</a>
+            <a class="notebook" href="https://notebooklm.google.com/notebook/70280aeb-ec87-4047-853d-104168dd981c" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260529" data-atitle="Wolfram『ChatGPTの頭の中』(参考書)"></div>
+    </div>
+
+    <h3 style="color:#1f3a5f;margin-top:1.6rem;">LLM の仕組み（川口先生メルマガ別冊シリーズ）</h3>
+    <p style="color:#64748b;font-size:0.9rem;">2026-05-30〜06-04 配布。先生が「LLM を自分の PC 内で処理しているイメージ」を共有するために書き下ろした技術解説の連載（別冊）。埋め込み →（自己回帰による）次トークン予測 → アテンション機構へと積み上がり、最後は「アテンション＝カーネル平滑化」という統計学的な見立て（Tsai et al. 2019）に到達する。空間統計学・カーネル法の延長線上に Transformer を位置づける構成で、第3回の理論的な背骨になる。</p>
+
+    <div class="paper-card" id="paper-llm-mechanism">
+        <div class="meta">川口先生オリジナル ／ 2026-05-30〜06-04 配布（全3回・別冊）</div>
+        <div class="title">川口 有一郎 — <em>大規模言語モデル（LLM）の仕組み（1）〜（3）</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">（1）単語のベクトル化（埋め込み）— テキストを数値ベクトルに写す「埋め込み」とは何か。（2）ニューラルネット確率言語モデル — Bengio ら(2003) を軸に、次トークン予測を自己回帰的な条件付き確率の積として定式化。（3）アテンション機構とトランスフォーマー — 固定窓 FFN の限界を、カーネル平滑化（重み付き平均としての条件付き期待値）として再構成し、アテンションへ接続する。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_1_Embedding.docx" target="_blank">(1) 埋め込み DOCX</a>
+            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_2_NeuralLM.docx" target="_blank">(2) ニューラル確率言語モデル DOCX</a>
+            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_3_Attention.docx" target="_blank">(3) アテンション機構 DOCX</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-llm-mechanism" data-atitle="川口先生『LLMの仕組み (1)〜(3)』"></div>
+    </div>
+
+    <div class="paper-card" id="paper-tsai-2019">
+        <div class="meta">学術原典 ／ EMNLP 2019</div>
+        <div class="title">Tsai, Bai, Yamada, Morency &amp; Salakhutdinov — <em>Transformer Dissection: A Unified Understanding of Transformer's Attention via the Lens of Kernel</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">上記メルマガ（3）の「アテンション＝カーネル平滑化」という見立ての学術的な裏付け。Transformer の自己注意を、カーネル関数による重み付き平均（カーネル平滑化）として統一的に理解できることを示した論文。川口先生のカーネル法・空間統計学の議論と LLM を直接つなぐ原典。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/Tsai_2019_Transformer_Dissection_Kernel.pdf" target="_blank">英文 原文 PDF</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-tsai-2019" data-atitle="Tsai et al. 2019 — Transformer Dissection (attention=kernel)"></div>
+    </div>
+
+    <h3 style="color:#1f3a5f;margin-top:1.6rem;">メンタルモデル（知的鍛錬の土台）</h3>
+    <p style="color:#64748b;font-size:0.9rem;">「経験を積んだ専門家ほど、無意識のメンタルモデル（思考の型）に固着し、それが直観として現れる」——知的鍛錬塾が問い直そうとしている当のものを、教育学の枠組みから扱う資料群。Plotnick ら(2026) の構成主義フレームワーク FRAME を原典に、和訳・解説・学習ルーティンを併載。</p>
+
+    <div class="paper-card" id="paper-mentalmodel">
+        <div class="meta">論文 ／ 2026</div>
+        <div class="title">Plotnick et al. — <em>Between Knowing and Becoming: A Constructivist Framework to Bridge Theory and Practice in Leadership</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">無意識の意思決定プロセス（メンタルモデル）を意識化・言語化し、「再生的思考」から変革的学習へ移行させる教授フレームワーク FRAME を提唱。認知的不均衡を意図的に生み出すことで、固着した思考の型を更新する道筋を示す。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/Plotnick_2026_Between_Knowing_and_Becoming.pdf" target="_blank">英文 原文 PDF</a>
+            <a href="papers/2026-06-20/Plotnick_2026_Between_Knowing_and_Becoming_JP.docx" target="_blank">和訳 DOCX</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-mentalmodel" data-atitle="Plotnick et al. 2026 — Between Knowing and Becoming (メンタルモデル)"></div>
+    </div>
+
+    <div class="paper-card" id="paper-mentalmodel-notes">
+        <div class="meta">解説・補助資料</div>
+        <div class="title">メンタルモデル — 解説と学習ルーティン</div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">上記論文を土台にした日本語の読み解き。「メンタルモデルとは」は Senge / Piaget / Giddens らを引きながら、形成・固着・直観との関係・共有メンタルモデルを概観。「学習ルーティン」は、ファインマン手法・間隔反復・精緻化・メタ認知など、メンタルモデルを構築し洗練させるための実践的な習慣をまとめたもの。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/MentalModel_Overview_JP.docx" target="_blank">メンタルモデルとは（解説 DOCX）</a>
+            <a href="papers/2026-06-20/MentalModel_Learning_Routines_JP.docx" target="_blank">学習ルーティン DOCX</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-mentalmodel-notes" data-atitle="メンタルモデル — 解説と学習ルーティン"></div>
+    </div>
+
+    <h3 style="color:#1f3a5f;margin-top:1.6rem;">3.2 第2回（2026-05-09）向け — アーカイブ</h3>
+    <p style="color:#64748b;font-size:0.9rem;">第2回の議論の出発点となった4論文＋補助1本。議論の経過は <a href="Kawaguchi_seminar_minutes.html#sec7">§7. 第2回議事メモ</a> を参照。</p>
+
+    <div class="paper-card" id="paper-20260509-agrawal">
+        <div class="meta">論文 1 ／ NBER Working Paper, 2026</div>
+        <div class="title">Agrawal, McHale &amp; Oettl — <em>AI in Science</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">本日のメインテーマ「科学におけるAI」の中核論文。AI が科学的発見プロセスをどう変えるかを、研究者の役割再定義の観点から論じる。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-05-09/Agrawal_2026_AI_in_Science_NBER.pdf" target="_blank">英文 原文 PDF</a>
+            <a href="papers/2026-05-09/Agrawal_2026_AI_in_Science_JP_summary.pdf" target="_blank">日本語要約 (Gemini &amp; 川口)</a>
+            <a class="notebook" href="https://notebooklm.google.com/notebook/4a1eb261-b6fd-431e-96dd-a8ab8a6a869f" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260509-agrawal" data-atitle="Agrawal et al. — AI in Science"></div>
+    </div>
+
+    <div class="paper-card" id="paper-20260509-chen">
+        <div class="meta">論文 2 ／ NBER Working Paper, 2026</div>
+        <div class="title">Chen, Didisheim &amp; Somoza — <em>Out of the Black Box: Quantifying Uncertainty in LLMs via Conditional Probabilities</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">「ブラックボックスから抜け出す」の中核論文。LLM 出力の不確実性を条件付き確率で定量化する手法。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-05-09/Chen_2026_Out_of_the_Black_Box_NBER.pdf" target="_blank">英文 原文 PDF</a>
+            <a href="papers/2026-05-09/Chen_2026_Out_of_the_Black_Box_JP_summary.pdf" target="_blank">日本語要約 (Gemini &amp; 川口)</a>
+            <a class="notebook" href="https://notebooklm.google.com/notebook/5d54222e-ed85-41c9-aca0-5945db973187" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260509-chen" data-atitle="Chen et al. — Out of the Black Box"></div>
+    </div>
+
+    <div class="paper-card" id="paper-20260509-vandis">
+        <div class="meta">論文 3 ／ Nature, 2023</div>
+        <div class="title">Van Dis, Bollen, Zuidema, van Rooij &amp; Bockting — <em>ChatGPT: five priorities for research</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">上記2本の元論文に位置づけられる、生成AIと研究倫理／実践に関する5つの提言。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-05-09/VanDis_2023_ChatGPT_Five_Priorities_Nature.pdf" target="_blank">英文 原文 PDF</a>
+            <a href="papers/2026-05-09/VanDis_2023_ChatGPT_JP.docx" target="_blank">和訳 DOCX</a>
+            <a class="notebook" href="https://notebooklm.google.com/notebook/50130414-3c5e-447e-b39c-c364bd6f4140" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260509-vandis" data-atitle="Van Dis et al. — ChatGPT: five priorities for research"></div>
+    </div>
+
+    <div class="paper-card" id="paper-20260509-kusumegi">
+        <div class="meta">論文 4 ／ Science, 2025</div>
+        <div class="title">Kusumegi et al. — <em>Scientific production in the era of Large Language Models</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">5/5 川口先生から追加（「英語圏では常識」）。LLM 時代の科学研究生産性に関する実証研究。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-05-09/Kusumegi_2025_Scientific_Production_LLMs.pdf" target="_blank">英文 原文 PDF</a>
+            <a href="papers/2026-05-09/Kusumegi_2025_Scientific_Production_LLMs_JP.docx" target="_blank">和訳 DOCX</a>
+            <a class="notebook" href="https://notebooklm.google.com/notebook/28f90bf5-f000-40ed-b833-ab6ac096d3fe" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260509-kusumegi" data-atitle="Kusumegi et al. — Scientific production in the era of LLMs"></div>
+    </div>
+
+    <div class="paper-card" id="paper-20260509-logprobes">
+        <div class="meta">補助資料 ／ NotebookLM</div>
+        <div class="title">ChatGPT's logprobes</div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">論文2 (Chen et al.) の議論の補助資料。ChatGPT の logprobes（対数確率）から LLM 出力の不確実性を読み取る考え方をまとめた NotebookLM。</p>
+        <div class="file-links">
+            <a class="notebook" href="https://notebooklm.google.com/notebook/c22b3e33-58f1-42e7-8c44-a575de70754a" target="_blank" rel="noopener">📓 NotebookLM (ChatGPT's logprobes)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260509-logprobes" data-atitle="ChatGPT's logprobes (補助資料)"></div>
+    </div>
+
+    
+
+    <h2 style="margin-top:2.4rem;">第3回（6/20）事前コメント・回答フォーム</h2>
+    <p style="color:#64748b;font-size:0.9rem;">事前読了資料・メルマガへのコメントや質問、運営へのご意見をこちらからどうぞ。いただいた内容は第3回の議論の材料にさせていただきます。</p>
+    <div id="smtw-cmt-form" class="smtw-cmt smtw-cmt-main" data-aid="general" data-atitle="全体・運営"></div>
+
+    <footer>参加者限定 ／ 転載禁止 ／ 著作権は各論文の権利者に帰属</footer>
+</div>
+
+<script>
+/* ===== SMTW 統合コメントフォーム ===== */
+const SMTW_CMT_ENDPOINT = "https://script.google.com/macros/s/AKfycbwACdJ6Syy-lT0GpJWJ5InSa2t_QwTaIb7llj6pvh8LoiHtTMIo9FBzr8vqyB02_GMq/exec";
+const SMTW_CMT_TEXT = {
+    target: "対象",
+    generalLabel: "全体・運営について",
+    grpPaper: "事前読了資料",
+    grpMelmaga: "メルマガ",
+    name: "お名前",
+    namePh: "お名前",
+    email: "メールアドレス",
+    emailPh: "メールアドレス（任意：控えをお送りします）",
+    comment: "コメント",
+    send: "川口先生に送る",
+    sending: "送信中…",
+    okMsg: "✓ 川口先生にお届けしました。ありがとうございます。",
+    errMsg: "送信に失敗しました。時間をおいて再度お試しください。",
+    notReady: "コメント機能は準備中です",
+    jump: "✉️ この資料についてコメントする",
+    logTitle: "あなたのコメント（この端末のみに表示）"
+};
+
+(function () {
+    const LOG_KEY = "smtw_cmt_log_all";
+    function readProfile() {
+        try { return JSON.parse(localStorage.getItem("smtw_cmt_profile")) || {}; }
+        catch (e) { return {}; }
+    }
+    function saveProfile(name, email) {
+        try { localStorage.setItem("smtw_cmt_profile", JSON.stringify({ name: name, email: email })); }
+        catch (e) {}
+    }
+    function readLog() {
+        try { return JSON.parse(localStorage.getItem(LOG_KEY)) || []; }
+        catch (e) { return []; }
+    }
+    function appendLog(entry) {
+        const log = readLog();
+        log.push(entry);
+        try { localStorage.setItem(LOG_KEY, JSON.stringify(log)); } catch (e) {}
+        return log;
+    }
+    function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+    }
+
+    function renderLog(logWrap) {
+        const log = readLog();
+        if (!log.length) { logWrap.innerHTML = ""; return; }
+        let html = '<div class="smtw-cmt-log-title">' + esc(SMTW_CMT_TEXT.logTitle) + "</div>";
+        for (let i = 0; i < log.length; i++) {
+            html += '<div class="smtw-cmt-log-item"><span class="smtw-cmt-log-date">' +
+                esc(log[i].date) + " ｜ " + esc(log[i].atitle || "") + "</span>" +
+                esc(log[i].comment) + "</div>";
+        }
+        logWrap.innerHTML = html;
+    }
+
+    // ページ内の .smtw-cmt（main 以外）から対象を収集して <select> を組む
+    function buildTargetOptions() {
+        let html = '<option value="general">' + esc(SMTW_CMT_TEXT.generalLabel) + "</option>";
+        const papers = [], melmagas = [];
+        const nodes = document.querySelectorAll(".smtw-cmt:not(.smtw-cmt-main)");
+        for (let i = 0; i < nodes.length; i++) {
+            const node = nodes[i];
+            const aid = node.getAttribute("data-aid") || "";
+            const atitle = node.getAttribute("data-atitle") || "";
+            if (!aid) continue;
+            const item = { aid: aid, atitle: atitle };
+            if (node.closest(".melmaga")) { melmagas.push(item); }
+            else if (node.closest(".paper-card")) { papers.push(item); }
+            else { papers.push(item); }
+        }
+        function group(label, arr) {
+            if (!arr.length) return "";
+            let g = '<optgroup label="' + esc(label) + '">';
+            for (let j = 0; j < arr.length; j++) {
+                g += '<option value="' + esc(arr[j].aid) + '" data-atitle="' +
+                    esc(arr[j].atitle) + '">' + esc(arr[j].atitle) + "</option>";
+            }
+            return g + "</optgroup>";
+        }
+        html += group(SMTW_CMT_TEXT.grpPaper, papers);
+        html += group(SMTW_CMT_TEXT.grpMelmaga, melmagas);
+        return { html: html, count: papers.length + melmagas.length + 1 };
+    }
+
+    function buildMainForm(box) {
+        const prof = readProfile();
+        const opts = buildTargetOptions();
+
+        box.innerHTML =
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_CMT_TEXT.target) +
+                '</label><select class="smtw-cmt-target">' + opts.html + "</select></div>" +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_CMT_TEXT.name) +
+                '</label><input type="text" class="smtw-cmt-name" placeholder="' + esc(SMTW_CMT_TEXT.namePh) +
+                '" value="' + esc(prof.name || "") + '" required></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_CMT_TEXT.email) +
+                '</label><input type="email" class="smtw-cmt-email" placeholder="' + esc(SMTW_CMT_TEXT.emailPh) +
+                '" value="' + esc(prof.email || "") + '"></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_CMT_TEXT.comment) +
+                '</label><textarea class="smtw-cmt-comment" rows="4" required></textarea></div>' +
+            '<input type="text" class="smtw-cmt-hp" name="website" tabindex="-1" autocomplete="off">' +
+            '<button type="button" class="smtw-cmt-send">' + esc(SMTW_CMT_TEXT.send) + "</button>" +
+            '<div class="smtw-cmt-msg"></div>' +
+            '<div class="smtw-cmt-log"></div>';
+
+        const targetEl = box.querySelector(".smtw-cmt-target");
+        const nameEl = box.querySelector(".smtw-cmt-name");
+        const emailEl = box.querySelector(".smtw-cmt-email");
+        const commentEl = box.querySelector(".smtw-cmt-comment");
+        const hpEl = box.querySelector(".smtw-cmt-hp");
+        const btn = box.querySelector(".smtw-cmt-send");
+        const msg = box.querySelector(".smtw-cmt-msg");
+        const logWrap = box.querySelector(".smtw-cmt-log");
+
+        renderLog(logWrap);
+
+        function selectedTarget() {
+            const opt = targetEl.options[targetEl.selectedIndex];
+            const aid = targetEl.value;
+            let atitle = opt ? (opt.getAttribute("data-atitle") || "") : "";
+            if (aid === "general") { atitle = box.getAttribute("data-atitle") || "全体・運営"; }
+            return { aid: aid, atitle: atitle };
+        }
+
+        btn.addEventListener("click", function () {
+            const tgt = selectedTarget();
+            const name = nameEl.value.trim();
+            const email = emailEl.value.trim();
+            const comment = commentEl.value.trim();
+            const website = hpEl.value;
+
+            msg.className = "smtw-cmt-msg";
+            if (!name) { msg.className = "smtw-cmt-msg err"; msg.textContent = "お名前を入力してください。"; nameEl.focus(); return; }
+            if (!comment) { msg.className = "smtw-cmt-msg err"; msg.textContent = "コメントを入力してください。"; commentEl.focus(); return; }
+
+            saveProfile(name, email);
+
+            if (!SMTW_CMT_ENDPOINT || SMTW_CMT_ENDPOINT === "PASTE_GAS_WEBAPP_URL_HERE") {
+                alert(SMTW_CMT_TEXT.notReady);
+                return;
+            }
+
+            btn.disabled = true;
+            const original = btn.textContent;
+            btn.textContent = SMTW_CMT_TEXT.sending;
+            msg.textContent = "";
+
+            // Content-Type を明示せず text/plain の simple request にして CORS preflight を回避
+            fetch(SMTW_CMT_ENDPOINT, {
+                method: "POST",
+                body: JSON.stringify({
+                    aid: tgt.aid,
+                    atitle: tgt.atitle,
+                    name: name,
+                    email: email,
+                    comment: comment,
+                    page: location.pathname,
+                    website: website
+                })
+            }).then(function (resp) {
+                if (!resp.ok) { throw new Error("HTTP " + resp.status); }
+                msg.className = "smtw-cmt-msg ok";
+                msg.textContent = SMTW_CMT_TEXT.okMsg;
+                appendLog({ date: new Date().toLocaleString(), atitle: tgt.atitle, comment: comment });
+                renderLog(logWrap);
+                commentEl.value = "";
+                btn.disabled = false;
+                btn.textContent = original;
+            }).catch(function () {
+                msg.className = "smtw-cmt-msg err";
+                msg.textContent = SMTW_CMT_TEXT.errMsg;
+                btn.disabled = false;
+                btn.textContent = original;
+            });
+        });
+
+        return targetEl;
+    }
+
+    // 各資料の .smtw-cmt → 統合フォームへのジャンプリンクに変換
+    function buildJumpLink(box, mainForm) {
+        const aid = box.getAttribute("data-aid") || "";
+        box.className = "smtw-cmt-jump";
+        box.removeAttribute("style");
+        box.innerHTML = '<a>' + esc(SMTW_CMT_TEXT.jump) + "</a>";
+        const link = box.querySelector("a");
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetEl = mainForm.querySelector(".smtw-cmt-target");
+            if (targetEl) { targetEl.value = aid; }
+            const form = document.getElementById("smtw-cmt-form");
+            if (form) { form.scrollIntoView({ behavior: "smooth", block: "start" }); }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const mainForm = document.querySelector(".smtw-cmt-main");
+        let targetEl = null;
+        if (mainForm) { targetEl = buildMainForm(mainForm); }
+        const others = document.querySelectorAll(".smtw-cmt:not(.smtw-cmt-main)");
+        for (let i = 0; i < others.length; i++) { buildJumpLink(others[i], mainForm); }
+    });
+})();
+</script>
+</body>
+</html>

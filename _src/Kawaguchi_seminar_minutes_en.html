@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI x Intellectual Forging Academy — Portal (EN)</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background: #f8fafc;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 2.5rem 1rem;
+        }
+        .container { max-width: 760px; margin: 0 auto; }
+        h1 { font-size: 1.6rem; color: #2c5282; margin-bottom: 0.4rem; }
+        .subtitle { color: #64748b; font-size: 0.9rem; margin-bottom: 1.6rem; padding-bottom: 0.9rem; border-bottom: 2px solid #2c5282; }
+        h2 { font-size: 1.15rem; color: #2c5282; margin-top: 2rem; margin-bottom: 0.8rem; padding-left: 0.6rem; border-left: 4px solid #2c5282; }
+        h3 { font-size: 1rem; color: #1f3a5f; margin-top: 1.2rem; margin-bottom: 0.4rem; }
+        h4 { font-size: 0.97rem; color: #2c5282; margin-top: 1rem; margin-bottom: 0.4rem; }
+        p { margin-bottom: 0.8rem; }
+        ul { margin-left: 1.4rem; margin-bottom: 0.8rem; }
+        li { margin-bottom: 0.3rem; }
+        a { color: #2c5282; }
+        a:hover { text-decoration: underline; }
+        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 0.8rem; }
+        .info-table th, .info-table td { text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; font-size: 0.95rem; }
+        .info-table th { background: #eef2f7; color: #1f3a5f; font-weight: 600; white-space: nowrap; width: 7rem; }
+        .paper-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 0.9rem; }
+        .paper-card .meta { color: #64748b; font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .paper-card .title { font-weight: 600; color: #1f3a5f; margin-bottom: 0.6rem; }
+        .file-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+        .file-links a { display: inline-block; padding: 0.35rem 0.75rem; background: #eef2f7; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.85rem; text-decoration: none; }
+        .file-links a:hover { background: #dbe4f0; text-decoration: none; }
+        .file-links a.primary { background: #2c5282; color: #fff; border-color: #2c5282; }
+        .file-links a.primary:hover { background: #1f3a5f; }
+        .file-links a.notebook { background: #fef3c7; border-color: #f59e0b; color: #92400e; }
+        .file-links a.notebook:hover { background: #fde68a; }
+        .callout { background: #fff8e1; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.92rem; }
+        .lang-switch { display: inline-block; padding: 0.35rem 0.8rem; background: #2c5282; color: #fff; border-radius: 4px; font-size: 0.85rem; text-decoration: none; margin-bottom: 1rem; }
+        .lang-switch:hover { background: #1f3a5f; text-decoration: none; }
+        .lang-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.9rem;
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            color: #2c5282;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: all 0.15s;
+        }
+        .lang-toggle:hover {
+            background: #2c5282;
+            color: #fff;
+            border-color: #2c5282;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .lang-toggle {
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.4rem 0.7rem;
+                font-size: 0.78rem;
+            }
+        }
+        .melmaga-list { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.4rem; }
+        .melmaga-list li { margin-bottom: 0.6rem; }
+        .melmaga-list .mm-date { display: inline-block; background: #2c5282; color: #fff; font-size: 0.78rem; padding: 0.12rem 0.55rem; border-radius: 3px; margin-right: 0.55rem; font-family: "Helvetica Neue", Arial, sans-serif; }
+        .speaker-block { background: #fff; border-left: 3px solid #2c5282; padding: 0.7rem 1.1rem; margin: 0.6rem 0; border-radius: 0 6px 6px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .speaker-block h4 { margin: 0 0 0.3rem; color: #2c5282; font-size: 0.95rem; }
+        .speaker-block h4.sb-name { border: none; padding: 0; }
+        .speaker-block p, .speaker-block ul { margin-bottom: 0; font-size: 0.92rem; }
+        .speaker-block ul { margin-left: 1.2rem; }
+        .participants-box { background: #ebf4ff; border-radius: 8px; padding: 1rem 1.4rem; margin: 1rem 0; }
+        .participants-box ul { margin-left: 1.2rem; margin-bottom: 0; }
+        .decision-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.4rem; margin: 1.2rem 0; }
+        .action-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 1rem 1.4rem; margin: 1.2rem 0; }
+        .decision-box h3, .action-box h3 { margin-top: 0; color: #1f3a5f; }
+        footer { margin-top: 3rem; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+        /* ===== Per-article comments (smtw-cmt) ===== */
+        .smtw-cmt {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #1f3a5f;
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            margin-top: 0.9rem;
+        }
+        .smtw-cmt .smtw-cmt-head { font-size: 0.9rem; font-weight: 600; color: #1f3a5f; margin-bottom: 0.4rem; }
+        .smtw-cmt .smtw-cmt-note { font-size: 0.78rem; color: #94a3b8; margin-bottom: 0.7rem; line-height: 1.5; }
+        .smtw-cmt .smtw-cmt-row { margin-bottom: 0.55rem; }
+        .smtw-cmt label { display: block; font-size: 0.78rem; color: #64748b; margin-bottom: 0.2rem; }
+        .smtw-cmt input[type="text"],
+        .smtw-cmt input[type="email"],
+        .smtw-cmt textarea {
+            width: 100%;
+            font: inherit;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            padding: 0.45rem 0.6rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            background: #fff;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        .smtw-cmt input:focus,
+        .smtw-cmt textarea:focus {
+            outline: none;
+            border-color: #1f3a5f;
+            box-shadow: 0 0 0 2px rgba(31,58,95,0.12);
+        }
+        .smtw-cmt .smtw-cmt-hp { display: none; }
+        .smtw-cmt button.smtw-cmt-send {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: #1f3a5f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .smtw-cmt button.smtw-cmt-send:hover { background: #2c5282; }
+        .smtw-cmt button.smtw-cmt-send:disabled { background: #94a3b8; cursor: default; }
+        .smtw-cmt .smtw-cmt-msg { font-size: 0.85rem; margin-top: 0.5rem; min-height: 1em; }
+        .smtw-cmt .smtw-cmt-msg.ok { color: #15803d; font-weight: 600; }
+        .smtw-cmt .smtw-cmt-msg.err { color: #b91c1c; }
+        .smtw-cmt .smtw-cmt-log { margin-top: 0.8rem; border-top: 1px dashed #cbd5e1; padding-top: 0.6rem; }
+        .smtw-cmt .smtw-cmt-log-title { font-size: 0.78rem; color: #64748b; margin-bottom: 0.4rem; }
+        .smtw-cmt .smtw-cmt-log-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 0.45rem 0.65rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+            color: #334155;
+        }
+        .smtw-cmt .smtw-cmt-log-item .smtw-cmt-log-date { display: block; font-size: 0.72rem; color: #94a3b8; margin-bottom: 0.15rem; }
+        .smtw-cmt-general { margin-top: 1rem; }
+        .smtw-cmt-main { margin-top: 1rem; }
+        .smtw-cmt select.smtw-cmt-target {
+            width: 100%;
+            font: inherit;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            padding: 0.45rem 0.6rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            background: #fff;
+            box-sizing: border-box;
+        }
+        .smtw-cmt select.smtw-cmt-target:focus {
+            outline: none;
+            border-color: #1f3a5f;
+            box-shadow: 0 0 0 2px rgba(31,58,95,0.12);
+        }
+        .smtw-cmt-jump { text-align: right; margin-top: 0.6rem; }
+        .smtw-cmt-jump a { font-size: 0.8rem; color: #64748b; text-decoration: none; cursor: pointer; }
+        .smtw-cmt-jump a:hover { color: #1f3a5f; text-decoration: underline; }
+    
+        .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
+        .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
+        .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
+        .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+    </style>
+</head>
+<body>
+<a class="lang-toggle" href="Kawaguchi_seminar_minutes.html">🇯🇵 JP</a>
+<div class="container">
+    <h1>AI x Intellectual Forging Academy — Portal</h1>
+    <p class="subtitle">2nd meeting held (2026-05-09) · 3rd meeting: Saturday, June 20, 2026 — pre-read circulated · 1st &amp; 2nd meeting notes · Newsletter excerpts</p>
+
+    <nav class="page-nav">
+        <a href="Kawaguchi_seminar_en.html">Top</a>
+        <a href="Kawaguchi_seminar_papers_en.html">Pre-read</a>
+        <a href="Kawaguchi_seminar_melmaga_en.html">Newsletters</a>
+        <a href="Kawaguchi_seminar_minutes_en.html" class="active">Minutes</a>
+    </nav>
+
+<h2>2. 2nd meeting agenda (record)</h2>
+    <p style="color:#64748b;font-size:0.9rem;">Agenda for the May 9 meeting. Actual discussion is captured in <a href="Kawaguchi_seminar_minutes_en.html#sec7">§7. 2nd meeting summary</a>.</p>
+
+    <h3>2.1 Discussion</h3>
+    <p>Per Prof. Kawaguchi's note (May 4), we centered the discussion on two themes:</p>
+    <ol style="margin-left:1.4rem;margin-bottom:0.8rem;">
+        <li><strong>"AI in Science"</strong> — Agrawal, McHale, Oettl (2026, NBER WP) <em>AI in Science</em></li>
+        <li><strong>"Out of the Black Box"</strong> — Chen, Didisheim, Somoza (2026, NBER WP) <em>Out of the Black Box: UQ for LLMs via Conditional Probabilities</em></li>
+    </ol>
+    <p>Supporting papers: Van Dis et al. (2023, <em>Nature</em>); Kusumegi et al. (2025, <em>Science</em>).</p>
+
+    <div class="callout">
+        Prof. Kawaguchi: "The Intellectual Forging Academy is a place to become an <strong>'AI-expert scientist'</strong> as defined in these papers — not an AI engineer or AI programmer."
+    </div>
+
+    <h3>2.2 Logistics agenda</h3>
+    <p>Operational items to align on during the meeting:</p>
+    <ul>
+        <li><strong>Next date</strong> — set the 3rd meeting date (collect candidate dates via Messenger beforehand)</li>
+        <li><strong>Next place</strong> — continue at Waseda Building 26, or find an alternative</li>
+        <li><strong>Lunch place</strong> — fix Quatre Fontaines as the standing venue if it's cozy (saves repeated search effort)</li>
+        <li><strong>HP (this page)</strong> — operate as the integrated portal: pre-reads, meeting notes, and newsletters in one place</li>
+    </ul>
+
+<h2>5. Attendees on the day (alphabetical order after Yuichiro Kawaguchi)</h2>
+    <ul>
+        <li>Yuichiro Kawaguchi (sensei) — Prof. Emeritus, Waseda University; Real Estate Financial Engineering</li>
+        <li>Junya Suzuki</li>
+        <li>Kohei Iinuma (sensei) — SBI Shinsei Bank; Market Risk; lecturer for "Finance &amp; Asset Financial Engineering"</li>
+        <li>Kota Suzuki — lunch absent</li>
+        <li>Sho Kuroda (sensei) — university faculty; empirical microeconomics</li>
+        <li>Shunsuke Miyatake — lunch absent; ex-PE, value-up consultant</li>
+        <li>Sora Asakawa</li>
+        <li>William Chow (sensei) — Macau</li>
+        <li style="list-style:none;border-top:1px solid #cbd5e1;margin:0.6rem 0 0.4rem;padding:0;height:0;"></li>
+        <li>Kazui Sasaki — admin; CPA</li>
+        <li>Keiichiro Matsumae — admin; chair</li>
+    </ul>
+
+<h2>6. 1st meeting summary (April 11, 2026)</h2>
+    <p style="color:#64748b;font-size:0.9rem;">Saturday, April 11, 2026 · 10:30–12:15 JST · Waseda University. Pre-read: <a href="https://www.boj.or.jp/about/press/koen_2025/data/ko251020a1.pdf" target="_blank" rel="noopener">Bank of Japan Policy Board Member Takata's lecture (PDF, JP)</a>. The full Japanese minutes are in the <a href="Kawaguchi_seminar_minutes.html">JP portal</a>; an English condensed version follows.</p>
+
+    <h3>6.1 Opening &amp; intent (Keiichiro Matsumae)</h3>
+    <ul>
+        <li>Maintain intellectual exchange with Prof. Kawaguchi after his retirement. A small discussion group was formed in parallel with the Facebook group and the DMM Online Salon (¥550/month).</li>
+        <li>Aim: 12 monthly discussions over a year, eventually published as a book.</li>
+        <li>Recording &amp; videotaping permitted, but participants' faces and statements will not be made public.</li>
+        <li>Prof. Kawaguchi: "Facebook is like a stand-up noodle bar — quick info exchange. Real dialogue requires another forum."</li>
+    </ul>
+
+    <h3>6.2 Self-introductions &amp; discussion on AI</h3>
+
+    <div class="speaker-block">
+        <h4>Iinuma (SBI Shinsei Bank)</h4>
+        <ul>
+            <li>Teams + Copilot for minutes is now standard at firms. Concern: junior staff skip the "apprenticeship" of writing minutes themselves.</li>
+            <li>AI accuracy ~80%; final human check still needed.</li>
+            <li>Resonates with Dōgen's <em>shikantaza</em> — understanding through doing with one's own hands.</li>
+        </ul>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Kuroda (faculty)</h4>
+        <ul>
+            <li>AI cannot yet produce professional-grade output (papers fall short).</li>
+            <li>But within a few years, all but the top few percent may be displaced.</li>
+            <li>AI literacy gap is widening among students. AI is an amplifier of existing ability.</li>
+        </ul>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Sasaki (CPA)</h4>
+        <ul>
+            <li>Joined because Prof. Kawaguchi's view — "Japanese business may be a cooperative game, not a non-cooperative one" — resonated.</li>
+        </ul>
+    </div>
+
+    <div class="speaker-block">
+        <h4>K. Suzuki (Sumitomo Mitsui Trust Research Institute)</h4>
+        <ul>
+            <li>AI is a leverage on ability. If the base is small, the output stays small.</li>
+            <li>From farming → IT → AI, individual variance grows. Polarization is the baseline trajectory.</li>
+            <li>An era of intellectual forging is exactly what's needed.</li>
+        </ul>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Asakawa (German printing-press maker, finance)</h4>
+        <ul>
+            <li>Copilot use is spreading at his workplace; clear gap between graduate-experienced staff and older employees.</li>
+            <li>Capitalist trajectory: society splits into top tier, AI-using tier, and non-using tier — three layers.</li>
+        </ul>
+    </div>
+
+    <div class="speaker-block">
+        <h4>J. Suzuki (Real estate)</h4>
+        <ul>
+            <li>AI is highly useful as research entry point — pinpoints relevant pages within hundreds of pages of SEC documents.</li>
+        </ul>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Miyatake (Waseda Business School M2)</h4>
+        <ul>
+            <li>Independent value-up consultant ex-PE; building a new business.</li>
+            <li>Started replicating finance papers (J. of Finance, etc.) on Japanese-market data using Claude Code agents — 100 papers/month feasible. Felt the power.</li>
+        </ul>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Prof. Kawaguchi's view of AI</h4>
+        <ul>
+            <li>Herbert Simon framed intelligence as "symbol systems"; the 1980s expert systems failed in practice.</li>
+            <li>Today's generative AI is <strong>not a symbol system but a numerical system</strong> — chains the most-likely next word via probability.</li>
+            <li><strong>No thought, no intelligence behind it.</strong> Humans project cognition and feel as if there is. ChatGPT's brilliance is in <em>exploiting that illusion</em>.</li>
+            <li>AI = "search + monologue." Search and summary are useful.</li>
+            <li>AI bubble: a ¥2,000 Claude writes a report sold for ¥1M–¥10M. The bubble bursts the moment the information asymmetry collapses.</li>
+        </ul>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Matsumae's reflection</h4>
+        <ul>
+            <li>As white-collar expertise gets taken by AI, political instability may follow.</li>
+            <li>The skill of asking <em>good questions</em> matters more.</li>
+            <li>If AI absorbs poor ethics, humans may not be able to push back. The capacity to ask "what is true / good / beautiful" is essential.</li>
+        </ul>
+    </div>
+
+    <h3>6.3 Japanese economy &amp; bubble debate</h3>
+    <p>Prof. Kawaguchi presented BoJ Policy Board Member Takata's lecture. Takata argues "structural change, not bubble": corporate profits surged from ~2004; labor share has not risen; real interest rates are negative and stand out among G7.</p>
+
+    <div class="speaker-block">
+        <h4>Matsumae</h4>
+        <p>Cannot rule out structural change and bubble running in parallel. Real estate also feels too high.</p>
+    </div>
+
+    <div class="speaker-block">
+        <h4>K. Suzuki</h4>
+        <p>Some bubble symptoms, but long-term, equities and real estate likely keep rising — analogous to UK→US hegemonic transition. Short-term: Hiroo Garden Hills listed at ¥800M, sold at ¥600M.</p>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Miyatake</h4>
+        <p>In nominal terms, not a Heisei-style bubble (PER/PBR not at extreme). But real-vs-nominal divergence widens. Low labor share is the structural issue. Some call it a "high-stock recession."</p>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Iinuma</h4>
+        <p>Labor share won't rise easily — managers' mindset is shaped by the 1990 bubble experience. Will take time. Structural change continues alongside this stasis.</p>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Asakawa</h4>
+        <p>Companies that should be culled survive on subsidies. Bad management persists; low labor share is reinforced.</p>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Miyatake (regional PE reality)</h4>
+        <p>Regions are in a vicious cycle. Population shrink → consumption stalls → no investment recovery → market shrinks 1%/yr → no room to raise share. Subsidies just pad the owner's pocket. Painful reform doesn't happen.</p>
+    </div>
+
+    <div class="speaker-block">
+        <h4>Kuroda</h4>
+        <p>Mechanisms differ wildly by sector and group. Need decomposition rather than aggregate indices. Affordability research is underdone in Japan.</p>
+    </div>
+
+    <h4>Monetary policy &amp; excess liquidity</h4>
+    <ul>
+        <li>2020 COVID → global easing → 2022 inflation → US sharp rate hike → late-2024 Trump tariff effects re-trigger easing.</li>
+        <li>Prof. Kawaguchi's hypothesis: <strong>excess liquidity is the main driver</strong> of equity &amp; real-estate price rises. "This money is not going to retreat."</li>
+    </ul>
+
+    <h4>Real-estate market</h4>
+    <ul>
+        <li>Tokyo apartments massively up. Power couples need ¥150M–¥200M. Inside the Yamanote line, ¥200M won't suffice.</li>
+        <li>Rents up ~20%/yr (instantaneous). Studio ¥70K → ¥150K.</li>
+        <li>Foreign capital (notably Chinese) buying up buildings at high prices. Mitsubishi Estate's CEO: "I don't see the logic."</li>
+        <li>Three-tier divergence: Tokyo up, Osaka flat, Nagoya down.</li>
+    </ul>
+
+    <h4>Conditions for a bubble crash (Prof. Kawaguchi)</h4>
+    <ul>
+        <li>Rule of thumb: real estate doesn't fall while equities rise (no historical exception).</li>
+        <li><strong>The crash comes when dry powder runs out</strong>. With negative real rates, it doesn't.</li>
+        <li>Triggers: BoJ or FSA forcing banks to tighten. FSA already tightened against regional banks for real-estate lending; megabanks not yet.</li>
+        <li>The wealthy exit early (proved in US tax data around Lehman / dot-com crashes).</li>
+    </ul>
+
+    <h4>Population decline</h4>
+    <ul>
+        <li>Japan loses population at WWII death-rate levels each year.</li>
+        <li>In 10–20 years, the 47 prefectures may be consolidated to 5–7.</li>
+        <li>Tokyo holds until ~2045; declines thereafter.</li>
+    </ul>
+
+    <h4>Real-estate Security Tokens (ST)</h4>
+    <ul>
+        <li>Marketed as filling the gap between physical real estate and J-REIT; in reality, a short-duration retail product.</li>
+        <li>Legally a gray zone. J-REIT industry wants ST excluded; FSA prefers ST over private REITs.</li>
+        <li>Appraisal industry is the base; REIT, ST, and physical real estate sectors are at odds.</li>
+    </ul>
+
+    <h3>6.4 Proposal for next time (Matsumae)</h3>
+    <ul>
+        <li>Real-estate price modeling — interest-rate as the key driver, segmented by money's nature and area.</li>
+        <li>If data permits, build an AI-assisted pricing model.</li>
+    </ul>
+
+    <h3>6.5 Decisions &amp; action items</h3>
+    <ul>
+        <li><strong>Next meeting</strong>: May 9 (Sat), 10:30 — at Waseda.</li>
+        <li><strong>Cadence</strong>: monthly for one year → eventual book.</li>
+        <li><strong>Recording</strong>: with consent, no public release.</li>
+        <li><strong>Comms</strong>: Facebook group.</li>
+        <li><strong>Web meeting tool</strong>: Google Meet.</li>
+    </ul>
+
+<h2 id="sec7">7. 2nd meeting summary (May 9, 2026)</h2>
+    <p style="color:#64748b;font-size:0.9rem;">Saturday, May 9, 2026 · 10:30–12:30 JST · Waseda Building 26, 13F. Pre-reads: <a href="Kawaguchi_seminar_papers_en.html#sec3">§3.2 (4 papers + ChatGPT's logprobes companion)</a>. The full Japanese minutes live in the <a href="Kawaguchi_seminar_minutes.html">JP portal</a>; an English condensed version follows.</p>
+
+    <div class="participants-box">
+        <h3 style="margin-top:0;color:#2c5282;">Attendees (9)</h3>
+        <ul>
+            <li><strong>Yuichiro Kawaguchi</strong> — Prof. Emeritus, Waseda · chair</li>
+            <li><strong>Kohei Iinuma</strong> — SBI Shinsei Bank, market risk</li>
+            <li><strong>Sho Kuroda</strong> — university faculty, empirical microeconomics</li>
+            <li><strong>Kota Suzuki</strong> — Sumitomo Mitsui Trust Research Institute</li>
+            <li><strong>Junya Suzuki</strong> — tax accountant</li>
+            <li><strong>William Chow</strong> — sensei, Macau</li>
+            <li><strong>Sora Asakawa</strong> — finance &amp; accounting at a German printing-press maker</li>
+            <li><strong>Kazui Sasaki</strong> — admin, CPA</li>
+            <li><strong>Keiichiro Matsumae</strong> — admin, chair</li>
+        </ul>
+    </div>
+
+    <h3>7.1 Prof. Kawaguchi: "Generative AI is the new RStudio" — a one-month shift in perception</h3>
+    <ul>
+        <li>Over the past month Prof. Kawaguchi has used Claude (USD 20/mo) and Google One Pro (with NotebookLM &amp; Gemini) seriously. He once wandered into Claude Code's "Coreworks" mode, which started to auto-modify PC settings — he refused at the prompt.</li>
+        <li><strong>Core shift</strong>: "Generative AI is not 'generative AI' — it is a <em>programming tool</em>, just like RStudio." Don't consume the output; manipulate the computational process with it.</li>
+        <li>Verbal walkthrough of how LLMs work: multi-layer perceptron × Attention = Transformer. Neural nets that the team had abandoned in the 1980s as "useless" turned out to "just work" once layers and parameter counts were scaled up — nobody, not even the inventors, fully explains why. Then someone applied the result to natural language.</li>
+        <li>Attention = a mechanism to bring the relationship between distant words into the weights, which is what unlocked long-document translation.</li>
+        <li>Working pattern: Claude and Gemini run side-by-side, reviewing each other. AI is used as an assistant for slide-ifying / charting one's own writing — not for outsourcing thought.</li>
+    </ul>
+
+    <h3>7.2 Chen et al. (2026) "Out of the Black Box" — uncertainty via logprobes (reported by Matsumae)</h3>
+    <ul>
+        <li>Pay extra on the ChatGPT API and you can pull <strong>logprobes</strong> (token log-probabilities). For each output token (e.g. "Yes" / "No") you get a <strong>confidence value</strong> between 0 and 1.</li>
+        <li>Chen et al. ran hundreds of thousands of news articles through ChatGPT to label each as positive/negative for individual stocks (Yes/No), bucketed the results into 5 confidence tiers, longed the highest-confidence Yes names and shorted the highest-confidence No names. <strong>Sharpe ratio &gt; 5–6</strong>.</li>
+        <li>Caveat: the paper completely ignores transaction costs and liquidity constraints. The strongest signal sits in small-cap / low-coverage names, so any real-money implementation moves the price against itself. Sharpe will be lower in practice — but the signal direction looks right.</li>
+        <li>Reality check: Claude does not expose logprobes ("we don't ship that," Claude told us itself). Mistral exposes them but quality looks weak. OpenAI is effectively the sole supplier.</li>
+        <li>Asking ChatGPT directly "how confident are you?" (Declared Confidence) makes it lie — Chen verified this. You have to pull the raw data via API.</li>
+        <li><strong>Conclusion</strong>: the frontier is moving from "consume the output" to "open the parameters and run empirical research on the network's internals." This is the "AI Expert Scientist" direction.</li>
+    </ul>
+
+    <h3>7.3 The "AI Expert Scientist" concept</h3>
+    <ul>
+        <li>Kawaguchi's framing: a scientist who wields AI as a programming tool, accesses internals, and runs empirical research with it.</li>
+        <li>Saito-sensei et al. at Waseda built an AI-driven paper-writing tutorial in essentially the same spirit — using AI as a programming tool.</li>
+        <li>This shifts the conversation from philosophy (does AI "understand"?) to <strong>empirical practice</strong>.</li>
+    </ul>
+
+    <h3>7.4 Independent Thinker vs. Stochastic Parrot</h3>
+    <ul>
+        <li>Matsumae shared advice from a former PE boss a decade ago: "Become an Independent Thinker. 90% of the world is a stochastic parrot." Chen et al.'s research stance is exactly that: question the surface, dig into the internals.</li>
+        <li>Why / What / How: Why matters most. How (execution) is being driven to zero cost by AI agents.</li>
+        <li>Kawaguchi: Independent Thinkers were never more than ~10% of the population. Their share may shrink further in the AI era — but the value of those who remain skyrockets.</li>
+        <li>Kota Suzuki's challenge: Independent Thinkers don't always win. Riding the top of the stochastic-parrot wave is often more rewarding financially.</li>
+        <li>Kawaguchi quoted Schopenhauer's <em>On Reading</em>: there are two kinds of writers — those who transmit thought, and those who sell text. Today the latter (the stochastic parrot) makes the money.</li>
+        <li>Color: Mori Trust Yaesu Tower aggressively dumped office rents in the Yaesu area (foreign-capital style); Mitsui Fudosan defends "market order" (Japanese style). At Davos 2008 in Dubai, US participants had already pivoted to the next bubble (digital + sustainability) within months of Lehman.</li>
+    </ul>
+
+    <h3>7.5 Reactions from each member</h3>
+
+    <div class="speaker-block">
+        <h4 class="sb-name">Kohei Iinuma</h4>
+        <p>"AI is a tool only as long as you can verify it. The moment verification becomes impossible, it stops being a tool and starts behaving as if it had intent." Information security (CrowdStrike-class vulnerability discovery) is already entering that unverifiable zone.</p>
+    </div>
+
+    <div class="speaker-block">
+        <h4 class="sb-name">Sho Kuroda</h4>
+        <ul>
+            <li>The statistical idea of "model averaging" suggests we'll soon run Claude / Gemini / Copilot / ChatGPT in parallel and average their answers at the user's end as a standard practice.</li>
+            <li>A deeper question: "Maybe humans, too, only operate on the surface text."</li>
+            <li>When R replaced hand-coded OLS, data analysis didn't get worse — the relevant skill set just shifted. Today's AI looks like that same shape, one level up.</li>
+            <li>Now that non-native English speakers can write fluent papers, paper volume has exploded; reviewers can no longer judge content, so they fall back on author pedigree. <strong>Net negative for intellectual reproduction.</strong></li>
+        </ul>
+    </div>
+
+    <div class="speaker-block">
+        <h4 class="sb-name">Keiichiro Matsumae</h4>
+        <p>In M&amp;A work I run a "poison-bug" loop: Claude Opus writes code, Gemini reviews it, 2–3 turns. Quality goes up. The setup mirrors having two opposing legal counsels argue while the client makes the final call.</p>
+    </div>
+
+    <div class="speaker-block">
+        <h4 class="sb-name">Sora Asakawa</h4>
+        <p>Pareto-style: where 20% of knowledge gets you to 100, AI is excellent. At the frontier, AI's output is unreliable. Operate on the assumption that AI only outputs from the past corpus.</p>
+    </div>
+
+    <div class="speaker-block">
+        <h4 class="sb-name">Junya Suzuki (tax accountant)</h4>
+        <ul>
+            <li>Clients are increasingly arriving with ChatGPT-generated "justifications" for things like buying Pokemon cards on the company's account — they cherry-pick prompts to manufacture supportive logic and bring it to the tax accountant.</li>
+            <li>Many laypeople treat AI output as objective truth. Risk of becoming "Wikipedia, but a fictional encyclopedia."</li>
+            <li>Suzuki's own practice: always trace the source links AI cites.</li>
+        </ul>
+    </div>
+
+    <div class="speaker-block">
+        <h4 class="sb-name">Kota Suzuki</h4>
+        <p>"There's a ceiling on desktop work." Past a certain depth, you only get the "aha" by talking to people. Logprobes have been known in Japan's IT scene since ~2020 — diversifying the people you talk to is a deliberate antidote to "discovering things a year late."</p>
+    </div>
+
+    <h3>7.6 Programming language vs. natural language — alignment of surface and meaning</h3>
+    <ul>
+        <li>Kawaguchi: in code, surface = meaning. That's why AI gained traction first in coding (Claude Code). In natural language, surface and meaning diverge (sarcasm being the clearest example), which is exactly the unverifiable zone.</li>
+        <li>Matsumae: cognitive-science distinction <strong>constative vs. performative</strong>. Constative = surface truth value. Performative = the effect of the utterance on the listener. "Interesting" is a performative property — hard for AI to capture.</li>
+    </ul>
+
+    <h3>7.7 Implication for academia — Kusumegi paper</h3>
+    <p>Kawaguchi cited Kusumegi (Tsukuba): non-native-English researchers got more productive thanks to AI, but <strong>aggregate intellectual reproduction at the field level has not improved</strong>. Reinforces the stochastic-parrot dynamic where trend-riding papers proliferate.</p>
+
+    <h3>7.8 The knowledge-search problem</h3>
+    <ul>
+        <li>Kawaguchi: how do you find the knowledge you actually want? AI is convenient at the entrance but easy to drown in. English Wikipedia covers what you need on NLP / Transformer.</li>
+        <li>Matsumae: real assimilation requires creating an <em>output venue</em> with external pressure. The cognitive mode while talking to AI vs. while producing your own deliverable is fundamentally different.</li>
+    </ul>
+
+    <h3>7.9 Kawaguchi's open question — what is your own value?</h3>
+    <p>"I have a long career and the press still interviews me — but on what basis am I being paid? If I'm just being a stochastic parrot, AI replaces me." This was the closing problem of meeting 2 — homework feeding into meeting 3.</p>
+
+    <h3>7.10 Can AI make something <em>interesting</em>?</h3>
+    <ul>
+        <li>Open question raised: can AI pose an interesting research question?</li>
+        <li>Matsumae: it can mimic Murakami's prose, but "interesting" / "a question worth asking" is a different beast. May be a prompt-engineering problem; not yet known.</li>
+        <li>Kuroda: writing language with a target performative effect on the listener seems to remain a human-only skill — at least for now.</li>
+    </ul>
+
+    <div class="decision-box">
+        <h3>Decisions</h3>
+        <ol>
+            <li><strong>3rd meeting: Saturday, June 20, 2026</strong> — June 13 was dropped because of conflicts; June 20 confirmed.</li>
+            <li>Matsumae circulates the next theme early so members have prep time.</li>
+            <li>Lunch was switched on the day from the original booking to a nearby pasta place (5 min).</li>
+        </ol>
+    </div>
+
+    <div class="action-box">
+        <h3>Action items</h3>
+        <ul>
+            <li>☐ <strong>Matsumae</strong>: announce 3rd meeting (6/20) pre-reads &amp; theme early</li>
+            <li>☐ <strong>Matsumae</strong>: integrate 2nd meeting notes &amp; recording into this portal §7 (done)</li>
+            <li>☐ <strong>Prof. Kawaguchi</strong>: develop a newsletter from the 2nd meeting threads (similarity test between Nature-paper Japanese summary and self-summary, in the Hitoshi Takeuchi tradition)</li>
+            <li>☐ <strong>All</strong>: hold 6/20 (Sat) on the calendar</li>
+        </ul>
+    </div>
+
+    <p style="margin-top:1.4rem;">
+        <a class="lang-switch" href="Kawaguchi_seminar_minutes.html">🇯🇵 Full Japanese portal →</a>
+    </p>
+
+    <footer>Members only · Do not redistribute · Copyright belongs to the respective paper authors</footer>
+</div>
+</body>
+</html>
