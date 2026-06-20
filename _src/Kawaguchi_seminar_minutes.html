@@ -438,6 +438,11 @@
         .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
         .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
         .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+    
+        .meeting-nav { display:flex; flex-wrap:wrap; gap:0.4rem; margin:-0.6rem 0 1.6rem; }
+        .meeting-nav a { flex:1 1 0; text-align:center; padding:0.45rem 0.6rem; background:#eef2f7; border:1px solid #cbd5e1; border-radius:6px; color:#475569; text-decoration:none; font-size:0.82rem; white-space:nowrap; }
+        .meeting-nav a:hover { background:#dbe4f0; text-decoration:none; }
+        .meeting-nav a.active { background:#1f3a5f; color:#fff; border-color:#1f3a5f; font-weight:600; }
     </style>
 </head>
 <body>
@@ -446,454 +451,139 @@
     <h1>AIx知的鍛錬塾 ポータル</h1>
     <p class="subtitle">第2回 開催済 (2026-05-09) ／ 次回 第3回: 2026年6月20日（土）— 事前読了資料 配布開始 ／ 第1回・第2回議事メモ ／ 関連メルマガ</p>
 
-    <nav class="page-nav">
+<nav class="page-nav">
         <a href="Kawaguchi_seminar.html">第3回</a>
         <a href="Kawaguchi_seminar_papers.html">過去資料</a>
         <a href="Kawaguchi_seminar_melmaga.html">メルマガ</a>
         <a href="Kawaguchi_seminar_minutes.html" class="active">議事メモ</a>
     </nav>
+    <nav class="meeting-nav">
+        <a href="Kawaguchi_seminar_minutes.html" class="active">第3回（最新・06-20）</a>
+        <a href="Kawaguchi_seminar_minutes2.html">第2回（05-09）</a>
+        <a href="Kawaguchi_seminar_minutes1.html">第1回（04-11）</a>
+    </nav>
 
-<h2 id="sec1b">第2回（2026-05-09）開催情報</h2>
-<table class="info-table">
-        <tr><th>日時</th><td>2026年5月9日(土) 10:30〜12:30 ／ <strong>開催済</strong></td></tr>
-        <tr><th>会場</th><td>早稲田大学 <strong>26号館 13階</strong></td></tr>
-        <tr><th>ランチ</th><td>当日合意で近所のパスタ店へ変更（5分程度）／ 飯沼先生は1:15スタート都合で不参加</td></tr>
-        <tr><th>議事メモ</th><td><a href="Kawaguchi_seminar_minutes.html#sec7">§7. 第2回議事メモ</a> を参照</td></tr>
-    </table>
-
-<h2 id="sec2">2. 第2回アジェンダ（記録）</h2>
-    <p style="color:#64748b;font-size:0.9rem;">第2回（5/9）当日のアジェンダ。実際の議論は <a href="Kawaguchi_seminar_minutes.html#sec7">§7. 第2回議事メモ</a> を参照。</p>
-
-    <h3 style="color:#1f3a5f;margin-top:1rem;">2.1 Discussion</h3>
-    <p>川口先生からの伝言（5/4）に基づき、以下の2点を中心に議論しました。</p>
-    <ol style="margin-left:1.4rem;margin-bottom:0.8rem;">
-        <li><strong>科学におけるAI</strong> — Agrawal, McHale, Oettl (2026, NBER) <em>AI in Science</em></li>
-        <li><strong>ブラックボックスから抜け出す</strong> — Chen, Didisheim, Somoza (2026, NBER) <em>Out of the Black Box</em></li>
-    </ol>
-    <p>追加配布: Van Dis et al. (2023, <em>Nature</em>) ／ Kusumegi et al. (2025, <em>Science</em>)。</p>
-
-    <div class="callout">
-        川口先生コメント:「知的鍛錬塾とは添付論文で言うところの <strong>『AI 専門家 (AI-expert scientists)』</strong>（AI 技術者・AI プログラマーではない）となるための『塾』」
-    </div>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">2.2 Logistics agenda</h3>
-    <p>当日合意したい運営事項。</p>
-    <ul>
-        <li><strong>Next date</strong> — 第3回開催日を決定（候補日を Messenger で事前収集）</li>
-        <li><strong>Next place</strong> — 早稲田 26号館継続か別会場か</li>
-        <li><strong>Lunch place</strong> — Quatre Fontaines が cozy であれば固定化（毎回の会場探索コストを削減）</li>
-        <li><strong>HP (このページ) を統合ポータルとして運用</strong> — 事前資料・議事メモ・メルマガを一元化、毎回の更新をルーティン化</li>
-    </ul>
-
-<h2 id="sec5">5. 当日参加予定 (alphabetical order after Yuichiro Kawaguchi)</h2>
-    <ul>
-        <li>Yuichiro Kawaguchi (sensei)</li>
-        <li>Junya Suzuki</li>
-        <li>Kohei Iinuma (sensei)</li>
-        <li>Kota Suzuki — lunch欠席</li>
-        <li>Sho Kuroda (sensei)</li>
-        <li>Shunsuke Miyatake — lunch欠席</li>
-        <li>Sora Asakawa</li>
-        <li>William Chow (sensei)</li>
-        <li style="list-style:none;border-top:1px solid #cbd5e1;margin:0.6rem 0 0.4rem;padding:0;height:0;"></li>
-        <li>Kazui Sasaki — admin</li>
-        <li>Keiichiro Matsumae — admin</li>
-    </ul>
-
-<h2 id="sec6">6. 第1回ミーティング 議事メモ（2026-04-11）</h2>
-    <p style="color:#64748b;font-size:0.9rem;">2026年4月11日（土）10:30〜12:15 JST ／ 早稲田大学 ／ 事前読了資料: <a href="https://www.boj.or.jp/about/press/koen_2025/data/ko251020a1.pdf" target="_blank" rel="noopener">高田日銀政策委員 講演録 (PDF)</a></p>
+<h2 id="sec8" style="margin-top:2.6rem;">8. 第3回ミーティング 議事メモ（2026-06-20）</h2>
+    <p style="color:#64748b;font-size:0.9rem;">2026年6月20日（土）／ テーマ: <strong>LLM勉強会 — 仕組み・活用・メンタルモデルと金融応用</strong> ／ 事前読了資料: <a href="Kawaguchi_seminar.html#sec3-3">第3回向け資料</a></p>
 
     <div class="participants-box">
         <h3 style="margin-top:0;color:#2c5282;">参加者</h3>
         <ul>
-            <li><strong>川口先生</strong> — 早稲田大学 元教授・不動産金融工学</li>
-            <li><strong>松前 景一郎</strong> — アドミン・司会進行</li>
-            <li><strong>飯沼先生</strong> — SBI新生銀行・市場リスク担当、川口先生の授業「金融と資産金融工学」を引き継ぎ講義担当</li>
-            <li><strong>黒田先生</strong> — 大学教員、ミクロ経済学の実証が専門</li>
-            <li><strong>佐々木 Kazui</strong> — 公認会計士、川口先生のゼミ生（2年前）</li>
-            <li><strong>鈴木 康太</strong> — 三井住友トラスト基礎研究所、不動産の調査分析・私募REIT/私募ファンドの投資助言業</li>
-            <li><strong>淺川</strong> — ドイツ印刷機メーカー・財務経理、ゼミの演習で川口先生に師事</li>
-            <li><strong>鈴木</strong> — 不動産業界勤務、外部マネージャーのデューデリジェンス等</li>
-            <li><strong>宮武</strong> — WBS新M2、自営業・元PEファンド独立、バリューアップコンサル</li>
+            <li><strong>川口 有一郎</strong></li>
+            <li><strong>飯沼</strong></li>
+            <li><strong>鈴木 康太</strong></li>
+            <li><strong>淺川 颯</strong></li>
+            <li>ほか知的鍛錬塾メンバー数名</li>
+            <li style="list-style:none;border-top:1px solid #cbd5e1;margin:0.5rem 0 0.3rem;padding:0;height:0;"></li>
+            <li><strong>松前 景一郎</strong> — 運営</li>
+            <li><strong>佐々木 Kazui</strong> — 運営</li>
         </ul>
     </div>
+    <p style="color:#94a3b8;font-size:0.82rem;">※ 月1回・2時間枠の勉強会。前半が「LLMの仕組み・メンタルモデル論」、後半が「金融・マーケット議論」。終了後に懇親ディナーを実施。自動文字起こしのため一部の固有名詞に揺れあり。</p>
 
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">6.1 開会・趣旨説明（松前 景一郎）</h3>
-    <p>川口先生の定年退職後も知的交流を続けるため、少人数のディスカッショングループを組成した経緯を共有。</p>
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">8.1 開催概要・これまでの経緯</h3>
     <ul>
-        <li>並行して Facebook グループと DMM オンラインサロン（月額550円）も運営中。DMM は講義ビデオ・資料のアップロード先として、炎上リスクのないクローズドな有料プラットフォームとして選定。</li>
-        <li>目標は <strong>1年間の月次ディスカッション</strong>を通じて、最終的に<strong>出版物</strong>としてまとめること。</li>
-        <li>録画・録音の許可を参加者に依頼。参加者の顔や発言がそのままインターネットに公開されることはない。</li>
-        <li>将来的には、川口先生の映像・音声データから AI で再現コンテンツを作成する可能性も検討中。</li>
-        <li>メンバーの人数はディスカッションの熱量を維持するために限定的にコントロールする方針。</li>
+        <li>本勉強会は5月9日に第1回を開催。5月12日に「LLMプロンプトエンジニアリング」（約40〜43ページ）を先生が配布（大量の知識を入力した結果「ブレインフライ（脳の疲弊）になった」と述懐）。基本ペースは<strong>月1回・2時間枠</strong>。</li>
+        <li>先生の<strong>LLM三部作</strong>（LLMを統計モデルの視点で解釈）を月500円のメルマガで配布。「これだけで100万円してもいい」内容。別途、参加者作成の「AI活用実践ガイド」も配布済。</li>
+        <li>先生評:「日経新聞は中学生向け。今の会社でのAIの使い方は中学生レベル。求められているのは<strong>仕組みの理解</strong>」。</li>
     </ul>
 
-    <div class="speaker-block">
-        <h4 class="sb-name">川口先生からの補足</h4>
-        <ul>
-            <li>退職後はバーチャルな場で知的交流を維持したい。早稲田に研究室がなくなったので、まずはバーチャルで。</li>
-            <li>Facebook は「立ち食いそば」的な情報共有の場で、対話は別途必要。</li>
-            <li>DMM サロンは現在参加者11名。メルマガで日経記事の AI コメントを実験的に開始。</li>
-            <li>不動産 ST の業界裏話など、公開 SNS では議論しにくい内容がある。</li>
-        </ul>
-    </div>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">6.2 参加者自己紹介と AI に関する議論</h3>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">飯沼先生（SBI新生銀行）</h4>
-        <ul>
-            <li>企業では Teams と Copilot による議事録作成が一般化。若手が「デッチ奉公」的トレーニングを経ずに育つ懸念。</li>
-            <li>AI の精度は8割程度で、最終チェックは人間が必要。</li>
-            <li>人間の目を育てる観点が抜け落ちている。</li>
-            <li>道元の「只管打坐 (しかんたざ)」（手を使うことで理解する）の考え方に共感。</li>
-        </ul>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">黒田先生（大学教員）</h4>
-        <ul>
-            <li>現時点では AI でプロレベルのアウトプットは出ない（論文は正直話にならない）。</li>
-            <li>ただし数年で、トップ数パーセント以外はほとんど代替される可能性。</li>
-            <li>学生間の AI リテラシー格差が拡大中。AI は能力の増幅装置。</li>
-            <li>早稲田はまだ良いが、他の大学ではマクロ的に格差が開く懸念。</li>
-        </ul>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">佐々木 Kazui（公認会計士）</h4>
-        <ul>
-            <li>川口先生の考え方（日本のビジネスは非協力ゲームではなく協力ゲームではないかという視点）に魅力を感じ参加。</li>
-        </ul>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">鈴木 康太（三井住友トラスト基礎研究所）</h4>
-        <ul>
-            <li>AI は能力のレバレッジ。元の能力が小さければアウトプットは限定的。</li>
-            <li>農作業 → IT → AI と進むにつれ個人差は拡大。二極化は基本的に進む。</li>
-            <li>AI 時代に知的鍛錬法はまさに求められるもの。</li>
-        </ul>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">淺川</h4>
-        <ul>
-            <li>職場でも Copilot 利用が広がるが、大学院経験者と年配者でレベル差がある。</li>
-            <li>資本主義的に、トップ層・AI 活用層・非活用層の3層に分かれるのではないか。</li>
-        </ul>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">鈴木（不動産業界）</h4>
-        <ul>
-            <li>リサーチの入口として AI が有用。SEC の公開情報から PDF の該当ページまでピンポイントでピックアップしてくれる。</li>
-            <li>英語で数十〜数百ページある資料を端的にピックアップする能力は純粋に役立っている。</li>
-        </ul>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">宮武（WBS M2）</h4>
-        <ul>
-            <li>PE ファンドから独立してバリューアップのコンサルをしているが、新しいビジネスを作りたい。</li>
-            <li>Claude Code で論文の再現分析を自動で回す取り組みを開始。Journal of Finance 等の論文を日本市場データで再現。</li>
-            <li>月100件の総当たりも可能。パワーを実感。</li>
-        </ul>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">川口先生の AI 観</h4>
-        <ul>
-            <li>ハーバート・サイモンは「知能とは記号システムの働き」と言ったが、1980 年代のエキスパートシステムは実用にならなかった。</li>
-            <li>今の生成 AI は記号システムではなく <strong>数値システム</strong>。確率計算で最もらしい単語をつなげる。</li>
-            <li><strong>背後に思考はなく知性もない</strong>。人間が認知を投影して思考があると錯覚する。この「錯覚を利用した」のが ChatGPT のすごさ。</li>
-            <li>AI は「<strong>検索機能 ＋ 独り言</strong>」。検索と要約は有用。</li>
-            <li>AI バブル: 2000 円の Claude でレポートを書いて 100 万〜1000 万円で売れる。情報の非対称性がなくなった途端にバブル崩壊。</li>
-        </ul>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">松前 景一郎の所感</h4>
-        <ul>
-            <li>ホワイトカラーのエキスパタイズが AI に取られる中で、政治的不安定が生まれる可能性。</li>
-            <li>「グッドクエスチョン」を見つける力が重要。</li>
-            <li>AI に悪い倫理観が組み込まれた場合、人間は抗えなくなるかもしれない。真善美を問う力が重要。</li>
-        </ul>
-    </div>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">6.3 日本経済とバブル論争</h3>
-    <p>川口先生が、日銀政策委員・高田氏の<a href="https://www.boj.or.jp/about/press/koen_2025/data/ko251020a1.pdf" target="_blank" rel="noopener">講演録</a>を題材として提示。事前に Claude で要約・反論を整理して共有済み。</p>
-
-    <h4 style="color:#2c5282;margin-top:1rem;">高田レポートの要旨</h4>
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">8.2 AIの現状認識と実務への影響</h3>
     <ul>
-        <li>高田氏は「バブルではなく構造変化」と主張。</li>
-        <li>企業収益は 2004 年頃から急拡大。労働分配率は上がっておらず、賃金は抑制。</li>
-        <li>実質金利がマイナスで、G7 の中でも日本は突出。</li>
+        <li>現段階はマシンパワー・学習データの制約から、<strong>プロンプトでベクトル空間を制御する</strong>のが最適な使い方。</li>
+        <li>ブルームバーグ記事: 元ソフトバンクAI部門中枢の人物が金融機関向けにAI活用研修を実施。1回100〜200万円・1日3回・2ヶ月先まで予約満員。競争軸が「本質理解」より「使い方」へ移行している象徴。</li>
+        <li><strong>AI成果物の検証困難性</strong>（佐々木 Kazui）: 他者がAIで作った成果物は思考背景が見えず<strong>間違いの検知が困難</strong>でかえって手間が増える。自分で使う場合は「全く知らないことを任せる」のではなく<strong>能力の拡張（手足）</strong>として使うのが有効。</li>
+        <li>LLMの出力は約8割は信頼できる（飯沼）が、難易度の高い問題では限界。コピペ提出で理解が深まらない人材の問題も。</li>
+        <li><strong>迎合性（Yes-man化）のリスク</strong>: 強化学習でユーザーが喜ぶ回答に最適化され、使い込むほど間違いを指摘されにくくなる →「ブレインフライ」と関連。ハーバードの調査でも、AI使用中は人間が頭を使っていない（思考停止）ことが示唆。</li>
+        <li><strong>ChatGPT→児童相談所事案</strong>: 家庭内トラブルの相談が「今すぐ児童相談所」へ誘導され、誰も望まない結果に至った例。特に若年層とLLMの付き合い方を課題提起。</li>
     </ul>
 
-    <h4 style="color:#2c5282;margin-top:1rem;">テーマ: バブルか構造変化か？</h4>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">松前 景一郎</h4>
-        <p>構造変化とバブルが同時並行で起きている可能性を否定しきれない。体感的にはバブルだが、不動産価格も高すぎるのではないか。</p>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">鈴木 康太</h4>
-        <p>個人的にはバブルの気配はあるが、長期で見ると株と不動産価格はまだ上がると考えている。イギリスからアメリカへの覇権移動と同じ構造。ただし短期的にはバブルの兆候もあり（広尾ガーデンヒルズが 8 億で売り出して 6 億）。</p>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">宮武</h4>
-        <p>名目値ベースではバブルではない。PER や TBR 等の指標は平成バブルのような異常値にはなっていない。ただし実質ベースとの乖離が拡大。労働分配率の低さが構造的問題。「株高不況」の指摘もある。</p>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">飯沼先生</h4>
-        <p>労働分配率が上がらないのは、バブルを経験した経営者のマインド。分配率上昇には相当時間がかかる。構造変化しながらこの状況が続くのではないか。</p>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">淺川</h4>
-        <p>本来淘汰されるべき企業が補助金で生き残っている。経営能力がない会社が生き残り、低い労働分配率の悪循環。</p>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">宮武（地方 PE ファンドの実態）</h4>
-        <p>地方は悪循環の中にいる。人口減 → 消費停滞 → 投資回収不能 → マーケット毎年 1% 縮小 → 分配率上げる余裕なし。補助金は経営者のポケットが少し増えるだけ。痛みを伴う変革は起きにくい。</p>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">黒田先生</h4>
-        <p>セクター・グループによってメカニズムが全然違う。集計インデックスではなく分解して考える必要がある。アフォーダビリティの議論が日本では足りていない。</p>
-    </div>
-
-    <h4 style="color:#2c5282;margin-top:1rem;">金融政策と過剰流動性</h4>
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">8.3 擬人化問題とエライザ効果</h3>
     <ul>
-        <li>2020 年コロナ以降の世界的金融緩和 → 2022 年からインフレ → アメリカは金利急上昇 → 2024 年後半からトランプ関税で再び金融緩和の動き。</li>
-        <li>川口先生の仮説: <strong>過剰流動性が株価・不動産価格上昇の主因</strong>。「このお金は引かないぞ」と感じた。</li>
+        <li>「チャッピー」と呼ぶ、日本語プロンプトが丁寧語になる等、<strong>擬人化の罠</strong>を乗り越えるのは難しいと複数が共感（鈴木 康太）。</li>
+        <li><strong>エライザ効果</strong>（話す相手に人格を感じる現象）は IBM の記事でも確認。専門家にはこれを構造的に整理・対処する能力が必要。</li>
+        <li><strong>機械言語（バイナリ）でのプロンプト制御</strong>の仮説: 指示は明確になる一方、<strong>自然言語ならではの創発的な良回答が減る</strong>デメリットがあるとコーネル大学の論文が示唆。</li>
+        <li>LLMは自分で推定した回帰モデルと同質。欠点を理解した上でツールとして扱う意識が必要（直感を過信する人とAIを過信する人への説得の難しさは同根）。</li>
     </ul>
 
-    <h4 style="color:#2c5282;margin-top:1rem;">不動産市場の動向</h4>
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">8.4 LLMの仕組み（技術解説／川口先生）</h3>
     <ul>
-        <li>東京のマンション価格は大幅に上昇。パワーカップルでも 1.5 億〜2 億円必要。山手線内は 2 億円では買えない。</li>
-        <li>家賃は瞬間風速で年率 20% 程度上昇。ワンルーム 7 万円 → 15 万円。</li>
-        <li>外資（特に中国マネー）がビルを高値で買収。三菱地所社長が「ロジックが分からない」。</li>
-        <li>名古屋は下落、大阪はフラット、東京だけ上昇（三極化）。</li>
+        <li>本質は<strong>自己回帰（AR）モデル</strong>＝「次の単語を確率的に予測するだけの機械」。回帰分析の延長線上。</li>
+        <li>ブレークスルーは言語の<strong>ベクトル化（埋め込み）</strong>: 単語に整数を割り当てるだけでは関連性が出ない → 約768次元のベクトルで表現し、<strong>内積</strong>で単語間の類似性を数値化（ポジネガ・性別・感情等）。</li>
+        <li>ベクトル化は人間設計でなく、乱数を初期値にバックプロパゲーションで機械が自動学習 → 人間には解釈できないブラックボックス。</li>
+        <li><strong>トランスフォーマー = AR ＋ カーネル平滑化</strong>。マルコフ的独立性に文脈＝依存性を入れるためカーネル回帰／平滑化を組合せたもの。先生はカーネル平滑化から独自に到達し、後に同等内容の論文を確認。</li>
+        <li>理論的根拠は<strong>万能関数近似器</strong>（ホワイトの定理。ニューラルネットは任意の非線形関数を近似可能）。</li>
+        <li>歴史: 1986年ヒントンを起点 → 90年代に一度「死んだ」→ <strong>2003年ベンギオらのニューラル言語モデル</strong>が最大の転機。スタンフォードの自然言語処理テキスト（約1000ページ・ネット公開）に全て記載。「LLMで翻訳できる今、英語だからは言い訳にならない」。</li>
+        <li>「ベクトル化（特徴抽出）」と「ニューラルネットの自己回帰計算」は別物（混同を先生が訂正）。</li>
     </ul>
 
-    <h4 style="color:#2c5282;margin-top:1rem;">バブル崩壊の条件（川口先生の見解）</h4>
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">8.5 機械解釈学と創発 — ウルフラム vs ショレット</h3>
     <ul>
-        <li>株価が上がっている間は不動産価格は下がらない（経験則・過去に例外なし）。</li>
-        <li><strong>ドライパウダー（未使用投資資金）が尽きた時がバブル崩壊</strong>。実質金利マイナスなら尽きない。</li>
-        <li>崩壊には日銀や金融庁による政治的決断が必要。金融庁は地銀に対して不動産融資を絞り始めたが、メガバンクにはまだ。</li>
-        <li>富裕層は先に情報を得て資金を引き揚げる（リーマン・IT バブル崩壊時の米国税データで実証済み）。</li>
+        <li><strong>機械解釈学</strong>（Mechanistic Interpretability）: ニューラルネット内のパラメータ活性化パターンを調べ、どこで何が起きているか解明する新分野。</li>
+        <li><strong>創発（Emergence）</strong>: ベクトル空間の関連性から思考的現象が偶発的に生じる可能性。研究者が実証研究中。</li>
+        <li><strong>ウルフラム</strong>は「計算過程がブラックボックスである以上プロンプトエンジニアリングには限界」（「全ては計算」）、一方<strong>ショレット</strong>はベクトル空間操作で制御可能とする立場 → 両者の対比が論点。</li>
+        <li>ニューラルネット本体より、<strong>ベクトル化（特徴抽出）の側に知能的要素が潜む</strong>可能性。<strong>スケーリング則</strong>: ニューロン数を人間の脳と同程度に増やしたら予期せぬ性能が出た（理由不明）。</li>
     </ul>
 
-    <h4 style="color:#2c5282;margin-top:1rem;">人口減少と長期的課題</h4>
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">8.6 メンタルモデルとスカラー・プラクティショナー</h3>
     <ul>
-        <li>日本の人口減少率は毎年第二次世界大戦の死亡率と同じレベル。</li>
-        <li>10〜20 年後には 47 都道府県が 5〜7 つに統合される可能性。</li>
-        <li>東京は 2045 年まで大丈夫だが、それ以降は衰退する。</li>
+        <li><strong>メンタルモデル＝「世界の解釈の仕方」</strong>。チャールズ・マンガーが提唱、複数モデルを<strong>格子状（latticework）</strong>に組み合わせて思考する枠組み。先生が20年追い続けたテーマ（『投資の科学』翻訳が起点）。</li>
+        <li><strong>スカラー・プラクティショナー</strong>（学者的実務家）: 実務知識を<strong>アカデミックな言語で言い換えられる</strong>能力。ビジネススクールの目的は受講者のメンタルモデルを変えること。</li>
+        <li><strong>AIにはメンタルモデルがない</strong>（世界の理解の仕方がない）→ 人間に残る役割の根拠。</li>
+        <li><strong>学習の3段階</strong>: ①暗記 → ②図解的能力 → ③創造性（暗記なしに次へ進めない）。LLMの事前学習は<strong>情報の圧縮</strong>（ウルフラム「学習＝圧縮」）。先生の恩師の教え:「教科書を読む前に自分の頭で考える」。</li>
     </ul>
 
-    <h4 style="color:#2c5282;margin-top:1rem;">不動産セキュリティトークン (ST) の議論</h4>
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">8.7 金融市場とAI活用</h3>
     <ul>
-        <li>実物不動産と J-REIT の間を埋める商品として宣伝されているが、実態は個人投資家向けの短期販売商品。</li>
-        <li>法的にはグレーゾーン。J-REIT 業界は ST を排除したい。金融庁は私募 REIT より ST を推す。</li>
-        <li>不動産鑑定業界をベースに、REIT・ST・実物不動産業界がいがみ合う構図。</li>
+        <li>人間に残る役割は<strong>①方向性を示すこと ②責任を取ること</strong>（鈴木 康太）。</li>
+        <li><strong>Temperature</strong> の使い分け: 法律・契約・規制はランダム性を低く、アイデア創出・不確実な将来予測には高く設定。</li>
+        <li><strong>LLMによる株価予測は単純ARモデルに劣る</strong>（言語と金融データは特徴量が異なる）。デューデリ文書の分析には有効だがアウトパフォームは困難（市場が半分効率的で依存関係が消える）。</li>
+        <li>情報優位＝まだパブリックになりきっていない一次情報（モニタリング）の価値。先生の実体験として森ビルの私募ファンド投資委員会参画のエピソード、ゴールドマン前CEO ブランクフェインの「引退後は友人に電話するだけ」も紹介。</li>
+        <li>前回話題の ChatGPT コンフィデンスレベル: <strong>低カバレッジ株が最もシャープレシオが高かった</strong> → 小型株のアクティブ戦略なら低カバレッジ。</li>
     </ul>
 
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">6.4 次回に向けた提案（松前 景一郎）</h3>
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">8.8 マクロ・市況の具体論（金融応用パート）</h3>
     <ul>
-        <li>不動産価格のモデリングが面白いテーマ。金利の動向をドライバーとして、マネーのネイチャー別・エリア別で分析。</li>
-        <li>データが取れるなら AI を使ったプライシングモデルの構築。</li>
+        <li><strong>メモリー株の高PER</strong>: 構造的に低PERのはずが50〜60倍へ。「2〜3年で稼ぎ切る」賭けが背景でマネージャーにより見方が割れる。</li>
+        <li>東京エレクトロン／清水建設CFOの記事: 半導体装置は高難度で「投資しないと負ける」＝<strong>リアルオプションの逆</strong>（待つより突っ込む、ゴールドラッシュ）。</li>
+        <li><strong>日銀</strong>: 6月3日の上田総裁講演。利上げ＋JGB買取の縮小／停止で需給を調整。米財務長官ベッセントの5月末来日が利上げを促した印象との見方。</li>
+        <li><strong>TSMC熊本</strong>: 地政学リスクより「日本のゼネコンで最速に工場が建つ＝2〜3年で全額回収できる最速の場所」が主因との解釈。</li>
+        <li>大きなストーリー（先生）: 政府・経団連・日銀が連携し、<strong>インフレで政府債務の相対価値を圧縮</strong>（高圧経済）。家計金融資産約1000兆円のキャピタルフライトが起きれば崩れる賭け。<strong>Jリート</strong>は業績良好でも需給で見捨てられる（需給がファンダメンタルズを支配）。</li>
     </ul>
 
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">6.5 ロジスティクス確認</h3>
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">8.9 リグレストPCA vs ベクトル化（研究アイデア）</h3>
     <ul>
-        <li>次回は <strong>5月9日（土）10:30 開始</strong>。場所は早稲田大学。</li>
-        <li>テーマ候補: 市場分析における AI の役割、ファイナンシャリゼーション（金融化）、飯沼先生の「市場分析は AI に変わってしまうか」。</li>
-        <li>コミュニケーションは基本的に Facebook。</li>
-        <li>終了後、神楽坂駅近くのイタリアンで食事会。</li>
+        <li><strong>PCA／リグレストPCAは圧縮（次元削減）</strong>、対して<strong>言語モデルは逆＝単語1個に768次元を作る（次元拡張）</strong>。去年の時空統計学で扱ったリグレストPCAに接続。</li>
+        <li>先生:「次元を増やしてニューラルを入れたらうまくいった、は研究として面白い」。ただし解釈不可能でアセットマネージャーには使いづらい（小型・ヘッジファンド向き）。</li>
+    </ul>
+
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">8.10 今後のセッションの方向性</h3>
+    <ul>
+        <li><strong>時空統計学の基礎レビュー回</strong>: 2時間では空中戦になるため長時間枠・場所変更も検討。村上さん作成の空間統計学チュートリアル（Rソースコード付き、松前がチェック済）を使用。</li>
+        <li><strong>日銀ウォッチャー回</strong>: BOJレポート＋アナリストレポートの読み合わせ（鈴木 康太との「NewsPicksの先生版」アイデアが発端）。</li>
+        <li>先生HPに資料DLリンク＋LLM要約を機械的に掲載。<strong>アンケートフォーム</strong>で参加者の関心・課題意識を収集（松前運営）。</li>
     </ul>
 
     <div class="decision-box">
         <h3>決定事項</h3>
         <ol>
-            <li><strong>次回日程</strong>: 5 月 9 日（土）10:30 開始</li>
-            <li><strong>場所</strong>: 早稲田大学（教室または図書館）</li>
-            <li><strong>運営方針</strong>: 1 年間の月次ディスカッション → 出版物にまとめる</li>
-            <li><strong>録画・録音</strong>: 参加者の了承を得て実施（外部公開はしない）</li>
-            <li><strong>コミュニケーション</strong>: Facebook グループ</li>
-            <li><strong>Web 会議ツール</strong>: Google Meet</li>
+            <li>次回以降、<strong>時空統計学・LLM三部作の基礎を集中レビューする回</strong>を設ける方向（長時間枠・場所変更を検討）。</li>
+            <li><strong>日銀ウォッチャー回</strong>（BOJ／関連レポートの読み合わせ）を実施検討。</li>
+            <li>先生HPに <strong>LLM関連資料リンク＋AI要約</strong>を継続掲載。<strong>アンケートフォーム</strong>で関心を収集し次回テーマ選定に活用。</li>
         </ol>
     </div>
 
     <div class="action-box">
         <h3>アクションアイテム</h3>
         <ul>
-            <li>☐ <strong>松前 景一郎</strong>: 早稲田大学の教室/図書館を 5 月 9 日で予約</li>
-            <li>☐ <strong>川口先生</strong>: 次回のテーマ・参考ペーパーをメールで共有</li>
-            <li>☐ <strong>全員</strong>: 次回テーマの候補があれば Facebook またはメールで共有</li>
+            <li>☐ <strong>松前 ＆ 佐々木</strong>: アンケートフォームで参加者の興味・課題意識を収集し、次回テーマ選定に活用</li>
         </ul>
     </div>
 
     <div class="note-box">
-        <h3>備考</h3>
-        <ul>
-            <li>読売新聞社は記者会見の文字起こしに AI を使用しているが、要約等は認めていない（知的鍛錬法の一環）。</li>
-            <li>株式投資で資産を 7 倍にした人が複数いる（Facebook に投稿された話）。</li>
-        </ul>
+        <h3>次回予定</h3>
+        <p>7月（懇親ディナーで日程調整）。復習回（時空統計学の基礎）または新規テーマをアンケートで決定。日銀ウォッチャー回も候補。</p>
     </div>
-
-<h2 id="sec7">7. 第2回ミーティング 議事メモ（2026-05-09）</h2>
-    <p style="color:#64748b;font-size:0.9rem;">2026年5月9日（土）10:30〜12:30 ／ 早稲田大学 26号館 13階 ／ 事前読了資料: <a href="Kawaguchi_seminar_papers.html#sec3">§3.2 (4論文 + ChatGPT's logprobes 補助)</a></p>
-
-    <div class="participants-box">
-        <h3 style="margin-top:0;color:#2c5282;">参加者（9名）</h3>
-        <ul>
-            <li><strong>川口 有一郎</strong> — 早稲田大学 名誉教授 ／ 座長</li>
-            <li><strong>飯沼 浩平</strong> — SBI新生銀行・市場リスク</li>
-            <li><strong>黒田 翔</strong> — 大学教員、ミクロ経済学の実証</li>
-            <li><strong>鈴木 耕太</strong> — 三井住友トラスト基礎研究所</li>
-            <li><strong>鈴木 純也（Junya）</strong> — 税理士</li>
-            <li><strong>William Chow</strong> — sensei</li>
-            <li><strong>浅川 颯</strong> — ドイツ印刷機メーカー・財務経理</li>
-            <li><strong>佐々木 一意（Kazui）</strong> — 公認会計士・運営</li>
-            <li><strong>松前 景一郎</strong> — 運営・司会進行</li>
-        </ul>
-    </div>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">7.1 川口先生「この1ヶ月でのAI認識の変化」— 生成AIは新しい RStudio である</h3>
-    <ul>
-        <li>川口先生はこの1ヶ月、Claude（月20ドル）と Google One Pro（NotebookLM／Gemini同梱）を本格利用。Claude Codeの「Coreワークス」モードに気づかぬまま入り、PC環境設定の自動書き換えを直前で拒否したエピソードから始まった。</li>
-        <li><strong>核心の認識転換</strong>:「生成AIは "生成AI" ではなく、RStudioと同じ <em>プログラミングツール</em> だ」。出力をそのまま使う対象ではなく、計算プロセスを操る道具として扱う段階に入った。</li>
-        <li>LLMの仕組みを口頭整理: 多層パーセプトロン × Attention = Transformer。1980年代に研究して「使えない」と判断して撤退したニューラルネットが、層数とパラメータ数を増やしたら "うまくいく" ことが発見され（誰も理由を完全には説明できないまま）、自然言語処理に応用されたのが現在のLLM。</li>
-        <li>Attention 機構は「遠く離れた単語との関係を重みに反映させる仕組み」と位置付け、長文翻訳のブレークスルーとして紹介。</li>
-        <li>現状の使い方: Claude と Gemini を並行で走らせ、相互レビューさせる。自分の文章をスライド化／グラフ化させる "アシスタント" として運用、思考は外注しない。</li>
-    </ul>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">7.2 Chen et al. (2026) "Out of the Black Box" の核心 — logprobes による不確実性の定量化（松前報告）</h3>
-    <ul>
-        <li>ChatGPT API に追加課金すると <strong>logprobes（対数確率）</strong>が取得できる。出力トークン (Yes / No) に対する <strong>コンフィデンス値</strong> が 0〜1 で返る。</li>
-        <li>Chen らはニュース記事を数十万件、個別株への Yes/No（ポジ／ネガ）でChatGPTに分類させ、コンフィデンスを5段階に分割。最高コンフィデンスのYes銘柄をロング、最高コンフィデンスのNo銘柄をショートして組成 → <strong>シャープレシオ 5〜6超</strong>。</li>
-        <li>ただし論文は <strong>取引コストと流動性制約を完全に無視</strong>。最も効果が出るのが小型・低カバレッジ株なので、実マネーを投入したらプライスを動かしてシャープレシオは下がるはず。シグナリングとしては正しい、というのが松前評。</li>
-        <li>検証: Claude には logprobes は無い（クロード本人「やってません」）。Mistral は API で出るが質が悪そう。OpenAI のみが事実上の独占供給。</li>
-        <li>ChatGPT に直接「あなたの確信度は？」と聞く（Declared Confidence）と嘘をつく — Chen 論文で検証済み。API でローデータを取りに行かないと意味がない。</li>
-        <li><strong>結論</strong>: 単なる出力ではなく、ニューラルネットワーク内部のパラメータにアクセスして実証するアプローチが開きつつある。これが "AI Expert Scientist" の方向性。</li>
-    </ul>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">7.3 AI Expert Scientist という概念</h3>
-    <ul>
-        <li>川口先生が提示。AIをツールとして "プログラミング的に" 使いこなし、内部構造にアクセスして実証研究を回す科学者像。</li>
-        <li>早稲田・斉藤氏らの「論文執筆チュートリアル」AIインターフェース開発も同方向だが、現在の使い方は本質的にプログラミングツール利用。</li>
-        <li>これは哲学論争（AIは意味を持つか）から、<strong>実証の世界</strong>に議論をシフトさせる動き。</li>
-    </ul>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">7.4 インディペンデント・シンカー vs 確率的オウム（Stochastic Parrot）</h3>
-    <ul>
-        <li>松前から、PE時代の元上司の言葉「投資・経営で成功するには Independent Thinker になれ。世の中の9割は確率的オウムだ」を紹介。Chenの論文姿勢こそ Independent Thinking の体現。</li>
-        <li>Why / What / How フレームでは Why が最重要。How（作業）はAIエージェントでゼロコスト化される。</li>
-        <li>川口先生: Independent Thinker は元々人口の1割もいない。AI時代で更に減るかもしれないが、生き残った Independent Thinker の価値は跳ね上がる。</li>
-        <li>鈴木耕太の問い:「Independent Thinker が勝てるとは限らない。確率的オウムの頂上に乗った方が金銭的には豊かなことも多い」。</li>
-        <li>川口先生: ショーペンハウアー『読書について』を引用 — 著作には「思考を伝える人」と「文章を売る人」の二類型がある。今は後者（確率的オウム）が金になる。</li>
-        <li>森トラスト八重洲タワー（外資ダンピングで賃料破壊）／三井不動産「市場の秩序」の対比、ナラティブ経済学的に米国はモメンタムに乗るのが上手で 2008 年ドバイ WEF では既に次のバブル（デジタル＋サステナビリティ）に向かっていた、という観察も。</li>
-    </ul>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">7.5 各メンバーの所感</h3>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">飯沼 浩平</h4>
-        <p>「ベリファイできる範囲ではAIはツール。検証できなくなった瞬間、ツールではなく "意思を持つかのような存在" になる」。情報セキュリティ（CrowdStrike系の脆弱性発見）はベリファイ不能領域に入りつつある例。</p>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">黒田 翔</h4>
-        <ul>
-            <li>統計学のモデル平均化の発想で、Claude / Gemini / Copilot / ChatGPT 4つの結果をエンドユーザー側で平均する仕組みが標準化されるはず。</li>
-            <li>「人間自身も字面だけで動いているのではないか」という根本疑問。</li>
-            <li>学部で OLS や最尤法を自分で実装しなくなった結果、データ分析の質が下がったわけではなく視点がアップデートされた — Rが普及した時の相似形として今のAIを見ている。</li>
-            <li>非英語圏研究者がAIで流暢に書けるようになった結果、論文の量が爆発し、内容で評価できないので「著者の経歴」で判断する世界に。<strong>知的再生産にネガティブ</strong>。</li>
-        </ul>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">松前 景一郎</h4>
-        <p>M&A業務で Claude Opus にコードを書かせ、Gemini にレビューさせる "2,3 ターン回す毒蟲フロー" を運用中。クオリティが上がる感覚あり。M&A弁護士同士を戦わせる構造（双方カウンセル間のディベートにクライアントが最終判断）に近い比喩。</p>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">浅川 颯</h4>
-        <p>パレートの法則的に20を知れば100に近づける浅い分野ではAIは強力。最先端の情報はAIには載っていない。「AIは過去の蓄積からしか出力しない」という前提を持つべき。</p>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">鈴木 純也（税理士）</h4>
-        <ul>
-            <li>顧問先がポケモンカードを社用で買うなど、ChatGPTで自分の都合のいいプロンプトを与え「正当化のロジック」を作って税理士に主張してくる事例が増加。</li>
-            <li>AIアウトプットを客観・正解だと信じる素人が多い。Wikipediaの仕組みをそのまま「嘘の百科事典」にしたような状況になりかねない。</li>
-            <li>鈴木は出典リンクを必ず辿る方針で運用中。</li>
-        </ul>
-    </div>
-
-    <div class="speaker-block">
-        <h4 class="sb-name">鈴木 耕太</h4>
-        <p>デスクトップに限界がある。ある程度詰めたら人と話さないと「腹落ちする発見」に届かない。logprobesも2020年頃から日本のIT界では既知 — 周辺領域の人と話す偶発性をコントロールしないと "一周回って遅れる"。</p>
-    </div>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">7.6 プログラム言語 vs 自然言語 — 字面と意味の重なり</h3>
-    <ul>
-        <li>川口先生: プログラムコードは「字面 = 意味」が一致するので、AIが最も活躍する領域はコーディング。だからClaude Codeのようなものが先に発展した。</li>
-        <li>自然言語は字面と意味が重ならない（皮肉が代表例）ので、ベリファイが難しい領域に入る。</li>
-        <li>松前: 認知科学の <strong>コンスタティブ／パフォーマティブ</strong> の対比を導入。「コンスタティブ＝字面の真偽」、「パフォーマティブ＝発話が相手にどう作用したか」。"面白い" はパフォーマティブな価値であり、AIが捉えにくい領域。</li>
-    </ul>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">7.7 学術研究へのインパクト — Kusumegi 論文</h3>
-    <p>非英語圏の研究者がAIで生産性は上がったが、<strong>組織全体としての知的再生産は高まっていない</strong>という Kusumegi（筑波）論文。確率的オウム的に流行に乗る論文だけが増える構造を補強。</p>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">7.8 知識の探索論</h3>
-    <ul>
-        <li>川口先生: 自分の求める知識をどう探すか — AIは入口便利だが泥沼にも入る。英語版 Wikipedia は自然言語処理／Transformerの必要情報を網羅。</li>
-        <li>松前: 自分の知識を本物にするには「アウトプットの場」を作って外部圧をかけるしかない。AIと話している時とアウトプット作業時で頭の使い方が完全に違う。</li>
-    </ul>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">7.9 川口先生の問い — 自分のバリューは何か</h3>
-    <p>「自分はこれだけのキャリアと取材を受けているが、企業から対価をもらえる根拠は何か。確率的オウムをやっているだけならAIで代替されてしまう」 — 第2回終盤の問題提起。次回以降の議論につながる宿題。</p>
-
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">7.10 AIは "面白さ" を作れるか</h3>
-    <ul>
-        <li>提起された問い: AIは「面白い研究クエスチョン」を立てられるのか。</li>
-        <li>松前: 村上春樹風の文章は書けるが、「面白い」「意味あるクエスチョン」は別の何か。プロンプトの与え方次第かもしれず、まだ未解明。</li>
-        <li>黒田: パフォーマティブな側面（受け手にとっての面白さ）を狙って言語生成するのは、AIには困難な領域 — おそらく人間にしかできない。</li>
-    </ul>
-
-    <div class="decision-box">
-        <h3>決定事項</h3>
-        <ol>
-            <li><strong>次回（第3回）は 2026年6月20日（土）</strong> — 6/13は一部参加者の予定都合で見送り、20日に確定。</li>
-            <li>松前は次回テーマを早めに展開し、メンバー側の事前準備時間を確保する。</li>
-            <li>当日のランチは、当初予約していた店から近所のパスタ店へ変更（5分程度）。</li>
-        </ol>
-    </div>
-
-    <div class="action-box">
-        <h3>アクションアイテム</h3>
-        <ul>
-            <li>☐ <strong>松前</strong>: 第3回（6/20）の事前資料・テーマを早めにアナウンス</li>
-            <li>☐ <strong>松前</strong>: 第2回議事メモ・録音整理 → 本ポータル §7 に組み込み（完了）</li>
-            <li>☐ <strong>川口先生</strong>: 第2回の議論を踏まえてメルマガ展開（竹内均ベース、ネイチャー要約と自分要約の類似度実験を題材に）</li>
-            <li>☐ <strong>メンバー全員</strong>: 6/20（土）の予定確保</li>
-        </ul>
-    </div>
-
-    <p style="margin-top:1.4rem;">
-        <a class="nav-link" href="260411_meeting_notes.html">
-            第1回・旧版（単独ページ）→
-        </a>
-    </p>
-
-    
 
     <footer>参加者限定 ／ 転載禁止 ／ 著作権は各論文の権利者に帰属</footer>
 </div>

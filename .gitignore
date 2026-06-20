@@ -6,3 +6,4 @@ _src/gas_comment_backend.gs
 # staticrypt source backups
 _src/*.bak
 _src/*.v1bak
+_src/*.premerge
