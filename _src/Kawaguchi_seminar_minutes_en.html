@@ -189,10 +189,10 @@
 <a class="lang-toggle" href="Kawaguchi_seminar_minutes.html">🇯🇵 JP</a>
 <div class="container">
     <h1>AI x Intellectual Forging Academy — Portal</h1>
-    <p class="subtitle">2nd meeting held (2026-05-09) · 3rd meeting: Saturday, June 20, 2026 — pre-read circulated · 1st &amp; 2nd meeting notes · Newsletter excerpts</p>
+    <p class="subtitle">3rd meeting held (2026-06-20) · 4th meeting: Saturday, July 18, 2026, 10:30 JST — Waseda Bldg 26, 13F (materials to follow) · 1st–3rd meeting notes · Newsletter excerpts</p>
 
 <nav class="page-nav">
-        <a href="Kawaguchi_seminar_en.html">3rd Mtg</a>
+        <a href="Kawaguchi_seminar_en.html">4th Mtg</a>
         <a href="Kawaguchi_seminar_papers_en.html">Archive</a>
         <a href="Kawaguchi_seminar_melmaga_en.html">Newsletters</a>
         <a href="Kawaguchi_seminar_minutes_en.html" class="active">Minutes</a>
@@ -204,7 +204,7 @@
     </nav>
 
 <h2 id="sec8" style="margin-top:2.6rem;">8. 3rd meeting summary (June 20, 2026)</h2>
-    <p style="color:#64748b;font-size:0.9rem;">Saturday, June 20, 2026 · Theme: <strong>LLM study session — mechanism, use, mental models, and finance</strong> · Pre-reads: <a href="Kawaguchi_seminar_en.html#sec3-3">3rd-meeting materials</a>. The full Japanese minutes live in the <a href="Kawaguchi_seminar_minutes.html#sec8">JP portal</a>; an English condensed version follows.</p>
+    <p style="color:#64748b;font-size:0.9rem;">Saturday, June 20, 2026 · Theme: <strong>LLM study session — mechanism, use, mental models, and finance</strong> · Pre-reads: <a href="Kawaguchi_seminar_papers_en.html#sec3-3">3rd-meeting materials (archive)</a>. The full Japanese minutes live in the <a href="Kawaguchi_seminar_minutes.html#sec8">JP portal</a>; an English condensed version follows.</p>
 
     <div class="participants-box">
         <h3 style="margin-top:0;color:#2c5282;">Attendees</h3>
@@ -219,13 +219,14 @@
             <li><strong>Kazui Sasaki</strong> — admin</li>
         </ul>
     </div>
-    <p style="color:#94a3b8;font-size:0.82rem;">Monthly, 2-hour format. First half: LLM mechanism &amp; mental models; second half: finance / markets. A dinner followed. Some proper nouns vary due to auto-transcription.</p>
+    <p style="color:#94a3b8;font-size:0.82rem;">Monthly, 2-hour format. First half: LLM mechanism &amp; mental models; second half: finance / markets. A dinner followed (§8.11–8.13). Some proper nouns vary due to auto-transcription.</p>
 
     <h3>8.1 Context &amp; recap</h3>
     <ul>
         <li>1st session held May 9; a ~40-page "LLM prompt engineering" deck circulated May 12 (the professor described "brain fry" from over-loading knowledge). Cadence: monthly, 2-hour slots.</li>
         <li>The professor's <strong>LLM trilogy</strong> (interpreting LLMs through the lens of statistical models) is distributed via a ¥500/month newsletter. An "AI practical-use guide" by a member was also shared.</li>
-        <li>Professor: "The Nikkei writes for middle-schoolers; corporate AI use today is middle-school level. What's needed is understanding the <strong>mechanism</strong>."</li>
+        <li>Flow of the day: members first shared reactions to the pre-reads (Wolfram / Chollet / the LLM trilogy / mental models); the professor then unpacked "what an LLM is" in order — mechanism, history, finance.</li>
+        <li>Professor: "The Nikkei writes for middle-schoolers; corporate AI use today is middle-school level. What's needed is understanding the <strong>mechanism</strong>." Stanford's ~1000-page NLP text is free online — "now that LLMs translate, 'it's in English' is no excuse."</li>
     </ul>
 
     <h3>8.2 Current state of AI &amp; impact on practice</h3>
@@ -248,18 +249,20 @@
     <h3>8.4 How LLMs work (Prof. Kawaguchi)</h3>
     <ul>
         <li>At core an <strong>autoregressive (AR) model</strong> — "a machine that probabilistically predicts the next word," an extension of regression.</li>
+        <li><strong>"You can't use what you can't build"</strong>: tracing the history (Hinton 1986 → Bengio 2003), the professor sets the bar for an expert as "give me funding and engineers and I could build something better than today's AI."</li>
         <li>The breakthrough is <strong>embedding</strong>: integers alone carry no relatedness, so words become ~768-dim vectors and similarity is read off the <strong>inner product</strong> (sentiment, gender, emotion…).</li>
-        <li>Embeddings aren't human-designed — learned by backprop from random init, hence a black box.</li>
-        <li><strong>Transformer = AR + kernel smoothing</strong>: kernel regression injects context (dependency) into Markov-style independence. The professor reached this from kernel smoothing independently, later finding equivalent papers.</li>
-        <li>Theoretical basis: <strong>universal function approximation</strong> (White's theorem). History: Hinton 1986 → AI "died" in the 90s → <strong>Bengio et al. 2003</strong> neural LM was the turning point. Stanford's ~1000-page NLP text (free online) covers it all.</li>
+        <li>An entry analogy is the <strong>text-mining dictionary</strong> (tagging words by sentiment / gender). But in practice features aren't hand-set — learned by backprop from random init, hence a black box. <strong>Feature extraction (the pre-processing) is the crux of ML</strong>, and it is distinct from the AR computation inside the Transformer (a confusion the professor corrected).</li>
+        <li><strong>Transformer = AR + kernel smoothing</strong>: kernel regression injects context (dependency) into Markov-style independence. The professor reached this from kernel smoothing independently, later finding an equivalent paper (Tsai et al. 2019).</li>
+        <li>Theoretical basis: <strong>universal function approximation</strong> (White's theorem); learning = <strong>information compression</strong> (the human brain does the same). History: Hinton 1986 → AI "died" in the 90s → <strong>Bengio et al. 2003</strong> neural LM was the turning point.</li>
     </ul>
 
     <h3>8.5 Mechanistic interpretability &amp; emergence — Wolfram vs. Chollet</h3>
     <ul>
         <li><strong>Mechanistic interpretability</strong>: a new field probing parameter-activation patterns to see where things happen inside the net.</li>
-        <li><strong>Emergence</strong>: thought-like phenomena may arise incidentally from vector-space relations (active empirical research).</li>
+        <li><strong>Emergence</strong>: thought-like phenomena may arise incidentally from vector-space relations — "stochastic parrot or emergence?" is under active empirical research.</li>
         <li><strong>Wolfram</strong>: prompt engineering is limited because the computation is a black box ("everything is computation"); <strong>Chollet</strong>: controllable via vector-space operations — the key contrast.</li>
         <li>Intelligence may sit more in <strong>embedding (feature extraction)</strong> than the net itself. <strong>Scaling laws</strong>: pushing neuron counts toward brain scale produced unexpected performance (reason unknown).</li>
+        <li><strong>AI agents</strong> are "just a program with an LLM mixed in"; <strong>physical AI</strong> (robots, self-driving) won't run on a language model alone — reasoning beyond language needs a computer-science foundation (the professor frames himself as "computational science, not computational linguistics").</li>
     </ul>
 
     <h3>8.6 Mental models &amp; the scholar-practitioner</h3>
@@ -274,7 +277,7 @@
     <ul>
         <li>What stays human: <strong>①setting direction ②taking responsibility</strong> (Suzuki).</li>
         <li><strong>Temperature</strong>: low for law/contracts/regulation, high for ideation and uncertain forecasts.</li>
-        <li><strong>LLM stock prediction underperforms a simple AR model</strong> (language vs. financial features differ); useful for DD documents but hard to outperform (a semi-efficient market erases dependencies).</li>
+        <li><strong>LLM stock prediction underperforms a simple AR model</strong> (language vs. financial features differ); useful for DD documents but hard to outperform (a semi-efficient market erases dependencies). Conversely, rebuilding the financial feature extraction (embedding) could yield a predictive model.</li>
         <li>Edge = not-yet-public primary information (monitoring). Anecdotes: the professor on a Mori Building private-fund investment committee; ex-Goldman CEO Blankfein "just phones friends" post-retirement.</li>
         <li>On ChatGPT confidence levels: <strong>low-coverage names had the highest Sharpe</strong> — active small-cap strategies favor low coverage.</li>
     </ul>
@@ -291,35 +294,61 @@
     <h3>8.9 Regress-PCA vs. embedding (research idea)</h3>
     <ul>
         <li><strong>PCA / regress-PCA compress (reduce dimensions)</strong>; a language model does the <strong>opposite — 768 dimensions per word (expansion)</strong>. Connects to last year's spatio-temporal-statistics regress-PCA.</li>
-        <li>Professor: "'add dimensions, add a neural net, and it works' is interesting as research" — but uninterpretable, so better for small-cap / hedge funds than asset managers.</li>
+        <li>Professor: "'add dimensions, add a neural net, and it works' is interesting as research" — but uninterpretable, so better for small-cap / hedge funds than asset managers. Vectorizing economic variables plus the prevailing narrative could, in principle, beat AR.</li>
     </ul>
 
     <h3>8.10 Direction of future sessions</h3>
     <ul>
-        <li><strong>Spatio-temporal-statistics review session</strong>: 2 hours is too short — consider a longer slot / different venue. Use Murakami's spatial-statistics tutorial (with R source, checked by Matsumae).</li>
-        <li><strong>BOJ-watcher session</strong>: read BOJ + analyst reports together (a "professor's-edition NewsPicks" idea with Suzuki).</li>
-        <li>Post material DL links + LLM summaries on the professor's site; collect interests via a <strong>survey form</strong> (run by Matsumae).</li>
+        <li><strong>Spatio-temporal-statistics review session</strong>: 2 hours tends to drift, so a <strong>retreat format</strong> (longer slot, different venue) is envisaged. Material: Murakami's spatial-statistics tutorial (with R source, checked by Matsumae) — run it, read the output, "learn by doing." Venue candidates include Dorado and an Urayasu hotel near Disney.</li>
+        <li><strong>BOJ / BOJ-report reading</strong>: whether to make it a standalone session is undecided; being considered as <strong>ongoing quantitative monitoring</strong> alongside analyst reports (sparked by a "professor's-edition NewsPicks" idea with Suzuki).</li>
+        <li>Collect members' interests via a <strong>survey form</strong> to choose the next theme and plan the retreat (run by Matsumae). A request also surfaced for "assignments from the professor, not just listening."</li>
+    </ul>
+
+    <h3>8.11 Dinner ① — new real-estate assets &amp; investing under inflation</h3>
+    <ul>
+        <li><strong>Student-housing business (Ushare)</strong>: rolled out near Waseda; shared space on the ground floor plus mid-floor commons. The founder, inspired by a Harvard real-estate-investing book, left Kajima and funded a Harvard degree through his own property investments; gathers strong international students salon-style and supports their job hunting.</li>
+        <li><strong>A gap in J-REITs</strong>: no student-housing-focused J-REIT exists. Partnering with top universities could make it an asset class that works even under inflation; domestic core investors (fixed yields) can't beat inflation, leaving room for foreign value-add entry.</li>
+        <li><strong>Fandom economy</strong>: 10,000 high-intensity people beat 1,000,000 low-intensity ones — gather "those who get it" (an idea that also echoes this seminar).</li>
+        <li><strong>Investing under inflation</strong>: property analysts' rent forecasts have badly missed — the cause is <strong>confusing nominal and real values</strong> (a blind spot for generations who never lived through inflation).</li>
+        <li><strong>Cycle view</strong>: the post-COVID recovery (~72 months) may turn over around summer. Some see PE-fund-style asset inflation "about to end," while others see a "Reiwa bubble" as post-war surplus capital flows into property. The next bubble's energy: <strong>AI / compute / data centers</strong> (Amazon's and Google's out-of-core capex are the tell).</li>
+    </ul>
+
+    <h3>8.12 Dinner ② — the BOJ, the newsletter, and AI-assisted article analysis</h3>
+    <ul>
+        <li><strong>BOJ independence</strong>: now effectively the government's "house bank," functioning to <strong>support inflation-as-taxation</strong> — hence the value of a continuous "BOJ watcher."</li>
+        <li><strong>Using AI to find errors in Nikkei articles</strong>: feed an article and ask it to "find the mistakes." But the model can "flatter" the Nikkei and just praise it, so <strong>prompt design</strong> (supply correct facts first, then compare/evaluate) is key.</li>
+        <li><strong>Nominal vs. real error</strong>: an FT column compared equity and bond yields in nominal terms — the claim is right but the method wrong; such analyses make good newsletter material.</li>
+        <li><strong>Newsletter operations</strong>: a broad readership makes calibrating difficulty hard. Content candidates: "BOJ watcher," "errors in Nikkei articles," "real-estate investing under inflation." Also practiced: writing market analysis as replies to industry contacts and watching the reaction.</li>
+    </ul>
+
+    <h3>8.13 Dinner ③ — geopolitics, war, Taiwan, China</h3>
+    <ul>
+        <li><strong>War as "fireworks"</strong>: a way to "burn off" siphoned surplus capital. Short of nuclear use the victory condition is never met, so "firing the missile" becomes the end in itself — part of the same hunt for "exits for money" (green / DX → AI).</li>
+        <li><strong>Taiwan / TSMC</strong>: as long as TSMC is in Taiwan, a Chinese military move is too economically damaging to risk (the leading-edge nodes are concentrated there).</li>
+        <li><strong>China's internal dynamics</strong>: a power structure where the military periodically slips control; the navy is said to still carry a grudge from the First Sino-Japanese War; a Party official reportedly told a Japanese business leader "the military won't listen to us."</li>
+        <li>Japan's SDF accumulates realistic training through hundreds of annual scrambles, while actual shoot-downs are deterred by mutual face. After any war's end, China's surplus capital could flow into property and inflate a bubble.</li>
+        <li><strong>Aside (link to investing)</strong>: from tales of petty fraud and romance scams — "<strong>training to spot market distortions resembles a fraudster's thinking</strong>," and "the deceiver is more serious (they can't eat if they fail), so the contest is already decided." Closing consensus: in the AI era, face-to-face dialogue is precious.</li>
     </ul>
 
     <div class="decision-box">
         <h3>Decisions</h3>
         <ol>
-            <li>Plan a session to <strong>intensively review the basics</strong> of spatio-temporal statistics / the LLM trilogy (longer slot, different venue).</li>
-            <li>Consider a <strong>BOJ-watcher session</strong> (reading BOJ / related reports together).</li>
-            <li>Keep posting <strong>LLM material links + AI summaries</strong> on the site; use the <strong>survey form</strong> to pick the next theme.</li>
+            <li>Plan a session to <strong>intensively review the basics</strong> of spatio-temporal statistics / the LLM trilogy. A <strong>retreat format</strong> is envisaged, with a separate survey on the retreat to follow.</li>
+            <li>Reading BOJ / related reports together — whether to make it a standalone session is undecided; being considered as <strong>ongoing quantitative monitoring</strong> (form TBD; share views via the survey).</li>
+            <li>Use the <strong>survey form</strong> to collect members' interests and feed the next-theme selection and retreat planning.</li>
         </ol>
     </div>
 
     <div class="action-box">
         <h3>Action items</h3>
         <ul>
-            <li>☐ <strong>Matsumae &amp; Sasaki</strong>: collect members' interests via the survey form to choose the next theme</li>
+            <li>☐ <strong>Matsumae &amp; Sasaki</strong>: send a survey (next-theme and retreat preferences), collect members' interests, and use it to plan the next session</li>
         </ul>
     </div>
 
     <div class="decision-box" style="background:#f8fafc;border-color:#e2e8f0;">
-        <h3>Next meeting</h3>
-        <p style="margin-bottom:0;">July (date set at the dinner). A review session (spatio-temporal-statistics basics) or a new theme decided by survey; a BOJ-watcher session is also a candidate.</p>
+        <h3>Next meeting (4th)</h3>
+        <p style="margin-bottom:0;"><strong>Saturday, July 18, 2026, 10:30 start</strong> (same time as before) · Venue: <strong>Waseda University, Building 26, 13F meeting room</strong> (same venue). Theme to be decided by survey; materials to be posted on the <a href="Kawaguchi_seminar_en.html">top page</a> in due course.</p>
     </div>
 
     <footer>Members only · Do not redistribute · Copyright belongs to the respective paper authors</footer>

@@ -444,15 +444,95 @@
 <a class="lang-toggle" href="Kawaguchi_seminar_papers_en.html">🇬🇧 EN</a>
 <div class="container">
     <h1>AIx知的鍛錬塾 ポータル</h1>
-    <p class="subtitle">第2回 開催済 (2026-05-09) ／ 次回 第3回: 2026年6月20日（土）— 事前読了資料 配布開始 ／ 第1回・第2回議事メモ ／ 関連メルマガ</p>
+    <p class="subtitle">第3回 開催済 (2026-06-20) ／ 次回 第4回: 2026年7月18日（土）10:30〜 早稲田大学26号館13階（資料は追って配布）／ 第1〜3回議事メモ ／ 関連メルマガ</p>
 
     <nav class="page-nav">
-        <a href="Kawaguchi_seminar.html">第3回</a>
+        <a href="Kawaguchi_seminar.html">第4回</a>
         <a href="Kawaguchi_seminar_papers.html" class="active">過去資料</a>
         <a href="Kawaguchi_seminar_melmaga.html">メルマガ</a>
         <a href="Kawaguchi_seminar_minutes.html">議事メモ</a>
     </nav>
 
+<h2 id="sec3-3">第3回（2026-06-20）向け 事前読了資料（アーカイブ）</h2>
+    <p style="color:#64748b;font-size:0.9rem;">第3回「LLM勉強会」の出発点となった資料群（LLM三部作・Wolfram・Tsai 2019・メンタルモデル）。議論の経過は <a href="Kawaguchi_seminar_minutes.html#sec8">第3回議事メモ</a> を参照。</p>
+
+    <p style="color:#64748b;font-size:0.9rem;">2026-05-12 メール配布。先日配布のマニュアル系2本（「ビジネスパーソンのためのAI活用実践ガイド」「データアナリストのためのAI活用実践ガイド」）に続く「専門家らしい情報」。Hinton 1986 → Bengio 2003 → Mikolov 2013 → Sutskever/Cho 2014 → Bahdanau 2015 → Vaswani 2017 → Chollet 2023 の系譜整理から、Chollet "How I think about LLM prompt engineering" 全訳・解説まで。p.4 以降にプロンプトエンジニアリングの「本質」（LLM=巨大なベクトル空間、プロンプト=その空間内の経路指定）。Bengio ら(2003) の統計的言語学／単語=特徴ベクトル表現は、川口先生「空間統計学入門」演習の続編に相当。</p>
+
+    <div class="paper-card" id="paper-20260512">
+        <div class="meta">川口先生オリジナル ／ 2026-05-12 配布</div>
+        <div class="title">川口 有一郎 — <em>LLMの基礎とプロンプトエンジニアリングの本質</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">川口先生が Google 検索 → 「つるったぐり」で関連論文を収集し、Claude との対話形式で LLM 開発の系譜（Hinton 1986 〜 Chollet 2023）を整理。Chollet "How I think about LLM prompt engineering" の核心パッセージを段落ごとに読み解く構成。「LLMを使うときに自分のPC内で処理しているイメージ」を共有する意図。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/Kawaguchi_20260512_LLM_Prompt_Engineering.docx" target="_blank">原文 DOCX</a>
+            <a href="papers/2026-06-20/Kawaguchi_20260512_LLM_Research_History.xlsx" target="_blank">研究史一覧 Excel（Hinton 1986〜Chollet 2023）</a>
+            <a class="notebook" href="https://notebooklm.google.com/notebook/c11e54be-5b01-46fb-91ea-210bcede319c" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260512" data-atitle="川口先生『LLMの基礎とプロンプトエンジニアリングの本質』"></div>
+    </div>
+
+    <div class="paper-card" id="paper-20260529">
+        <div class="meta">参考書（川口先生 推薦）／ 2026-05-29 共有</div>
+        <div class="title">Stephen Wolfram — <em>What Is ChatGPT Doing … and Why Does It Work?</em>（邦訳『ChatGPTの頭の中』ハヤカワ新書, 2023）</div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">川口先生が第3回の基礎固めとして推薦。ニューラルネットの仕組みを平易に解説しており、次回議論のベースとしてざっと目を通しておくと良い（自分にとって分かりやすい他の入門書でも可）。<strong>論点</strong>: 本書の後段は Chollet 2023 と重なるが判断が異なり、プロンプトエンジニアリングを間接的に「無効」と位置づける。上の Chollet 系譜（プロンプト＝巨大ベクトル空間内の経路指定）と正面から対立する見立てで、第3回の格好の討論軸になる。</p>
+        <div class="file-links">
+            <a class="primary" href="https://faculty.sites.iastate.edu/tesfatsi/archive/tesfatsi/ChatGPT.WhatIsItWhyDoesItWork.SWolfram.2024.pdf" target="_blank" rel="noopener">英語版 PDF (Wolfram 2024)</a>
+            <a class="notebook" href="https://notebooklm.google.com/notebook/70280aeb-ec87-4047-853d-104168dd981c" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260529" data-atitle="Wolfram『ChatGPTの頭の中』(参考書)"></div>
+    </div>
+
+    <h3 style="color:#1f3a5f;margin-top:1.6rem;">LLM の仕組み（川口先生メルマガ別冊シリーズ）</h3>
+    <p style="color:#64748b;font-size:0.9rem;">2026-05-30〜06-04 配布。先生が「LLM を自分の PC 内で処理しているイメージ」を共有するために書き下ろした技術解説の連載（別冊）。埋め込み →（自己回帰による）次トークン予測 → アテンション機構へと積み上がり、最後は「アテンション＝カーネル平滑化」という統計学的な見立て（Tsai et al. 2019）に到達する。空間統計学・カーネル法の延長線上に Transformer を位置づける構成で、第3回の理論的な背骨になる。</p>
+
+    <div class="paper-card" id="paper-llm-mechanism">
+        <div class="meta">川口先生オリジナル ／ 2026-05-30〜06-04 配布（全3回・別冊）</div>
+        <div class="title">川口 有一郎 — <em>大規模言語モデル（LLM）の仕組み（1）〜（3）</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">（1）単語のベクトル化（埋め込み）— テキストを数値ベクトルに写す「埋め込み」とは何か。（2）ニューラルネット確率言語モデル — Bengio ら(2003) を軸に、次トークン予測を自己回帰的な条件付き確率の積として定式化。（3）アテンション機構とトランスフォーマー — 固定窓 FFN の限界を、カーネル平滑化（重み付き平均としての条件付き期待値）として再構成し、アテンションへ接続する。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_1_Embedding.docx" target="_blank">(1) 埋め込み DOCX</a>
+            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_2_NeuralLM.docx" target="_blank">(2) ニューラル確率言語モデル DOCX</a>
+            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_3_Attention.docx" target="_blank">(3) アテンション機構 DOCX</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-llm-mechanism" data-atitle="川口先生『LLMの仕組み (1)〜(3)』"></div>
+    </div>
+
+    <div class="paper-card" id="paper-tsai-2019">
+        <div class="meta">学術原典 ／ EMNLP 2019</div>
+        <div class="title">Tsai, Bai, Yamada, Morency &amp; Salakhutdinov — <em>Transformer Dissection: A Unified Understanding of Transformer's Attention via the Lens of Kernel</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">上記メルマガ（3）の「アテンション＝カーネル平滑化」という見立ての学術的な裏付け。Transformer の自己注意を、カーネル関数による重み付き平均（カーネル平滑化）として統一的に理解できることを示した論文。川口先生のカーネル法・空間統計学の議論と LLM を直接つなぐ原典。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/Tsai_2019_Transformer_Dissection_Kernel.pdf" target="_blank">英文 原文 PDF</a>
+            <a class="notebook" href="https://notebooklm.google.com/notebook/c0d68d8d-c89b-4189-a35f-ce48c65ed988" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-tsai-2019" data-atitle="Tsai et al. 2019 — Transformer Dissection (attention=kernel)"></div>
+    </div>
+
+    <h3 style="color:#1f3a5f;margin-top:1.6rem;">メンタルモデル（知的鍛錬の土台）</h3>
+    <p style="color:#64748b;font-size:0.9rem;">「経験を積んだ専門家ほど、無意識のメンタルモデル（思考の型）に固着し、それが直観として現れる」——知的鍛錬塾が問い直そうとしている当のものを、教育学の枠組みから扱う資料群。Plotnick ら(2026) の構成主義フレームワーク FRAME を原典に、和訳・解説・学習ルーティンを併載。</p>
+
+    <div class="paper-card" id="paper-mentalmodel">
+        <div class="meta">論文 ／ 2026</div>
+        <div class="title">Plotnick et al. — <em>Between Knowing and Becoming: A Constructivist Framework to Bridge Theory and Practice in Leadership</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">無意識の意思決定プロセス（メンタルモデル）を意識化・言語化し、「再生的思考」から変革的学習へ移行させる教授フレームワーク FRAME を提唱。認知的不均衡を意図的に生み出すことで、固着した思考の型を更新する道筋を示す。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/Plotnick_2026_Between_Knowing_and_Becoming.pdf" target="_blank">英文 原文 PDF</a>
+            <a href="papers/2026-06-20/Plotnick_2026_Between_Knowing_and_Becoming_JP.docx" target="_blank">和訳 DOCX</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-mentalmodel" data-atitle="Plotnick et al. 2026 — Between Knowing and Becoming (メンタルモデル)"></div>
+    </div>
+
+    <div class="paper-card" id="paper-mentalmodel-notes">
+        <div class="meta">解説・補助資料</div>
+        <div class="title">メンタルモデル — 解説と学習ルーティン</div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">上記論文を土台にした日本語の読み解き。「メンタルモデルとは」は Senge / Piaget / Giddens らを引きながら、形成・固着・直観との関係・共有メンタルモデルを概観。「学習ルーティン」は、ファインマン手法・間隔反復・精緻化・メタ認知など、メンタルモデルを構築し洗練させるための実践的な習慣をまとめたもの。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-06-20/MentalModel_Overview_JP.docx" target="_blank">メンタルモデルとは（解説 DOCX）</a>
+            <a href="papers/2026-06-20/MentalModel_Learning_Routines_JP.docx" target="_blank">学習ルーティン DOCX</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-mentalmodel-notes" data-atitle="メンタルモデル — 解説と学習ルーティン"></div>
+    </div>
+
+    
 <h2 id="sec3">第2回（2026-05-09）向け 事前読了資料（アーカイブ）</h2>
     <p style="color:#64748b;font-size:0.9rem;">第2回の議論の出発点となった4論文＋補助1本。議論の経過は <a href="Kawaguchi_seminar_minutes2.html#sec7">第2回議事メモ</a> を参照。</p>
 
@@ -514,8 +594,8 @@
         <div class="smtw-cmt" data-aid="paper-20260509-logprobes" data-atitle="ChatGPT's logprobes (補助資料)"></div>
     </div>
 
-    <h2 style="margin-top:2.4rem;">第3回（6/20）事前コメント・回答フォーム</h2>
-    <p style="color:#64748b;font-size:0.9rem;">事前読了資料・メルマガへのコメントや質問、運営へのご意見をこちらからどうぞ。いただいた内容は第3回の議論の材料にさせていただきます。</p>
+    <h2 style="margin-top:2.4rem;">資料へのコメント・質問フォーム</h2>
+    <p style="color:#64748b;font-size:0.9rem;">事前読了資料・メルマガへのコメントや質問、運営へのご意見をこちらからどうぞ。いただいた内容は今後の議論の材料にさせていただきます。</p>
     <div id="smtw-cmt-form" class="smtw-cmt smtw-cmt-main" data-aid="general" data-atitle="全体・運営"></div>
 
     <footer>参加者限定 ／ 転載禁止 ／ 著作権は各論文の権利者に帰属</footer>
