@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>リスクプレミア分析 — AIx知的鍛錬塾 特別セクション</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif; background:#f8fafc; color:#1a1a1a; line-height:1.7; padding:2.5rem 1rem; }
+        .container { max-width:820px; margin:0 auto; }
+        h1 { font-size:1.6rem; color:#2c5282; margin-bottom:0.4rem; }
+        .subtitle { color:#64748b; font-size:0.9rem; margin-bottom:1.2rem; padding-bottom:0.9rem; border-bottom:2px solid #2c5282; }
+        a { color:#2c5282; } a:hover { text-decoration:underline; }
+        .lang-toggle { position:fixed; top:1rem; right:1rem; z-index:100; display:inline-flex; align-items:center; gap:0.4rem; padding:0.5rem 0.9rem; background:#fff; border:1px solid #cbd5e1; border-radius:6px; color:#2c5282; font-size:0.85rem; font-weight:600; text-decoration:none; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
+        .lang-toggle:hover { background:#2c5282; color:#fff; text-decoration:none; }
+        .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
+        .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
+        .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
+        .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+        footer { margin-top:3rem; font-size:0.8rem; color:#94a3b8; text-align:center; border-top:1px solid #e2e8f0; padding-top:1.2rem; }
+        @media (max-width:600px){ .lang-toggle{ top:0.5rem; right:0.5rem; padding:0.4rem 0.7rem; font-size:0.78rem; } }
+
+        /* ===== レポート本体（ライト再スキン） ===== */
+        .tldr { background:#fff; border:1px solid #e2e8f0; border-left:4px solid #2c5282; border-radius:10px; padding:0.6rem 1.2rem 1rem; margin:1.2rem 0 0.6rem; }
+        .tldr h2 { margin:0.6rem 0 0.4rem; border:none; padding:0; font-size:1.1rem; color:#2c5282; }
+        .tldr.concl { border-left-color:#15803d; }
+        .tldr.concl h2 { color:#15803d; }
+        .tldr ol { margin:0.4rem 0 0; padding-left:1.3rem; }
+        .tldr li { margin:0.45rem 0; }
+        .keytbl { width:100%; border-collapse:collapse; margin:0.8rem 0 0.3rem; font-size:0.9rem; }
+        .keytbl th, .keytbl td { border:1px solid #e2e8f0; padding:0.4rem 0.7rem; text-align:left; }
+        .keytbl th { background:#eef2f7; color:#1f3a5f; font-weight:600; }
+        .keytbl td.num { text-align:right; font-variant-numeric:tabular-nums; }
+        .keytbl tr.rank1 { background:#ecfdf5; font-weight:700; }
+        .sec h2 { font-size:0.82rem; color:#b45309; letter-spacing:1.2px; border-left:none; border-bottom:1px solid #e2e8f0; padding:0 0 0.4rem; margin:2.2rem 0 0.2rem; }
+        .page { background:#fff; border:1px solid #e2e8f0; border-radius:10px; padding:1rem 1.2rem; margin:1rem 0; }
+        .page h3 { margin:0 0 0.6rem; font-size:1.05rem; color:#1f3a5f; }
+        .page h3 .pnum { display:inline-block; background:#2c5282; color:#fff; font-weight:800; border-radius:6px; padding:1px 9px; margin-right:0.6rem; font-size:0.85rem; vertical-align:middle; }
+        .page img { width:100%; border-radius:8px; background:#fff; border:1px solid #e2e8f0; }
+        .page .body { margin-top:0.7rem; }
+        .page .body p { margin:0.5rem 0; }
+        .tag { display:inline-block; font-size:0.68rem; padding:2px 9px; border-radius:20px; margin-left:0.5rem; vertical-align:middle; font-weight:700; }
+        .t-mkt { background:#e0f2fe; color:#075985; border:1px solid #7dd3fc; }
+        .t-diag { background:#f3e8ff; color:#6b21a8; border:1px solid #d8b4fe; }
+        .t-fac { background:#fef3c7; color:#92400e; border:1px solid #fcd34d; }
+        .lead { color:#2c5282; font-weight:600; }
+        .num-pos { color:#15803d; } .num-neg { color:#b91c1c; }
+        .callout { background:#fff8e1; border-left:4px solid #f59e0b; border-radius:6px; padding:0.7rem 1rem; margin:0.8rem 0; font-size:0.9rem; }
+        .callout b { color:#1a1a1a; }
+        .legend-tbl { width:100%; border-collapse:collapse; font-size:0.85rem; margin:0.6rem 0; }
+        .legend-tbl th, .legend-tbl td { border:1px solid #e2e8f0; padding:0.3rem 0.55rem; text-align:left; vertical-align:top; }
+        .legend-tbl th { background:#eef2f7; color:#1f3a5f; font-weight:600; }
+        .legend-tbl td.no { text-align:right; color:#64748b; font-variant-numeric:tabular-nums; }
+        .legend-note { font-size:0.8rem; color:#64748b; margin-top:0.3rem; }
+        code { background:#eef2f7; padding:1px 6px; border-radius:5px; border:1px solid #e2e8f0; font-size:0.85rem; }
+        /* 編集モード */
+        #rp-editbar { position:sticky; top:0; z-index:50; display:none; align-items:center; gap:0.6rem; flex-wrap:wrap; background:#1f3a5f; color:#fff; padding:0.5rem 0.9rem; border-radius:8px; margin-bottom:1rem; font-size:0.85rem; }
+        #rp-editbar button { font:inherit; font-size:0.82rem; font-weight:600; padding:0.35rem 0.9rem; border-radius:5px; border:none; cursor:pointer; background:#f59e0b; color:#1a1a1a; }
+        #rp-editbar button:hover { background:#fbbf24; }
+        #rp-edit-status { font-size:0.8rem; }
+        [data-cmt-key].rp-editing { outline:2px dashed #f59e0b; outline-offset:3px; background:#fffbeb; border-radius:6px; }
+
+        /* ===== 記事別コメント欄 (smtw-cmt) — 既存ポータルから移植 ===== */
+        .smtw-cmt { background:#f8fafc; border:1px solid #e2e8f0; border-left:4px solid #1f3a5f; border-radius:8px; padding:0.9rem 1.1rem; margin-top:0.9rem; }
+        .smtw-cmt .smtw-cmt-head { font-size:0.9rem; font-weight:600; color:#1f3a5f; margin-bottom:0.4rem; }
+        .smtw-cmt .smtw-cmt-note { font-size:0.78rem; color:#94a3b8; margin-bottom:0.7rem; line-height:1.5; }
+        .smtw-cmt .smtw-cmt-row { margin-bottom:0.55rem; }
+        .smtw-cmt label { display:block; font-size:0.78rem; color:#64748b; margin-bottom:0.2rem; }
+        .smtw-cmt input[type="text"], .smtw-cmt input[type="email"], .smtw-cmt textarea { width:100%; font:inherit; font-size:0.9rem; color:#1a1a1a; padding:0.45rem 0.6rem; border:1px solid #cbd5e1; border-radius:5px; background:#fff; box-sizing:border-box; resize:vertical; }
+        .smtw-cmt input:focus, .smtw-cmt textarea:focus { outline:none; border-color:#1f3a5f; box-shadow:0 0 0 2px rgba(31,58,95,0.12); }
+        .smtw-cmt .smtw-cmt-hp { display:none; }
+        .smtw-cmt button.smtw-cmt-send { display:inline-block; padding:0.5rem 1.2rem; background:#1f3a5f; color:#fff; border:none; border-radius:5px; font:inherit; font-size:0.9rem; font-weight:600; cursor:pointer; transition:background 0.15s; }
+        .smtw-cmt button.smtw-cmt-send:hover { background:#2c5282; }
+        .smtw-cmt button.smtw-cmt-send:disabled { background:#94a3b8; cursor:default; }
+        .smtw-cmt .smtw-cmt-msg { font-size:0.85rem; margin-top:0.5rem; min-height:1em; }
+        .smtw-cmt .smtw-cmt-msg.ok { color:#15803d; font-weight:600; }
+        .smtw-cmt .smtw-cmt-msg.err { color:#b91c1c; }
+        .smtw-cmt .smtw-cmt-log { margin-top:0.8rem; border-top:1px dashed #cbd5e1; padding-top:0.6rem; }
+        .smtw-cmt .smtw-cmt-log-title { font-size:0.78rem; color:#64748b; margin-bottom:0.4rem; }
+        .smtw-cmt .smtw-cmt-log-item { background:#fff; border:1px solid #e2e8f0; border-radius:5px; padding:0.45rem 0.65rem; margin-bottom:0.4rem; font-size:0.85rem; color:#334155; }
+        .smtw-cmt .smtw-cmt-log-item .smtw-cmt-log-date { display:block; font-size:0.72rem; color:#94a3b8; margin-bottom:0.15rem; }
+        .smtw-cmt-main { margin-top:1rem; }
+        .smtw-cmt select.smtw-cmt-target { width:100%; font:inherit; font-size:0.9rem; color:#1a1a1a; padding:0.45rem 0.6rem; border:1px solid #cbd5e1; border-radius:5px; background:#fff; box-sizing:border-box; }
+        .smtw-cmt select.smtw-cmt-target:focus { outline:none; border-color:#1f3a5f; box-shadow:0 0 0 2px rgba(31,58,95,0.12); }
+        .smtw-cmt-jump { text-align:right; margin-top:0.6rem; }
+        .smtw-cmt-jump a { font-size:0.8rem; color:#64748b; text-decoration:none; cursor:pointer; }
+        .smtw-cmt-jump a:hover { color:#1f3a5f; text-decoration:underline; }
+    </style>
+</head>
+<body>
+<a class="lang-toggle" href="Kawaguchi_seminar_riskpremia_en.html">🇬🇧 EN</a>
+<div class="container">
+    <h1>リスクプレミア分析 — 市場リターンの鍵リスクは何か</h1>
+    <p class="subtitle">特別セクション ／ 東証33業種 × マクロファクターAPT（Chen-Roll-Ross型）／ 全期間 1987-01 〜 2026-04（472ヶ月）／ 作成 松前 景一郎</p>
+    <nav class="page-nav">
+        <a href="Kawaguchi_seminar.html">第4回</a>
+        <a href="Kawaguchi_seminar_papers.html">過去資料</a>
+        <a href="Kawaguchi_seminar_melmaga.html">メルマガ</a>
+        <a href="Kawaguchi_seminar_minutes.html">議事メモ</a>
+        <a href="Kawaguchi_seminar_riskpremia.html" class="active">リスクプレミア</a>
+    </nav>
+    <div id="rp-editbar">
+      <strong>✎ 編集モード</strong>
+      <button id="rp-edit-start" type="button">編集開始</button>
+      <button id="rp-edit-save" type="button">保存</button>
+      <button id="rp-edit-cancel" type="button">キャンセル</button>
+      <span id="rp-edit-status"></span>
+    </div>
+    <div style="background:#eef2f7;border:1px solid #cbd5e1;border-radius:8px;padding:0.6rem 1rem;margin:0.4rem 0 0.2rem;font-size:0.92rem;color:#1f3a5f;"><b>データ期間:</b> 1987年1月 〜 2026年4月（月次 <b>472ヶ月</b>）　｜　<b>対象:</b> 東証33業種指数 ＋ 8マクロ系列（IIP・CPI・為替・JGB10・コール・TOPIX・原油 ほか）　｜　一部の図は <span style="color:#c0392b;">赤線=TOPIX</span> を第2軸で重ね描き</div>
+    <div class="tldr">
+      <h2>結論：市場リターン（TOPIX）にとっての鍵リスク</h2>
+      <div data-cmt-key="tldr"></div>
+    </div>
+    <div class="callout">
+      <b>市場リターンと各マクロ変化の同時相関（強い順）</b>
+      <table class="keytbl">
+        <tr><th>順位</th><th>マクロ変数（月次変化）</th><th>市場リターン(TPX)との相関</th><th>解釈</th></tr>
+        <tr class="rank1"><td>1</td><td>為替 USD/JPY</td><td class="num">+0.196</td><td>円安=株高、最大の連動</td></tr>
+        <tr><td>2</td><td>原油 WTI</td><td class="num">+0.099</td><td>リスクオン代理</td></tr>
+        <tr><td>3</td><td>CPI（物価）</td><td class="num">+0.046</td><td>ほぼ無相関</td></tr>
+        <tr><td>4</td><td>IIP（生産）</td><td class="num">+0.037</td><td>ほぼ無相関</td></tr>
+        <tr><td>5</td><td>TERM（長短金利差）</td><td class="num">−0.003</td><td>無相関</td></tr>
+      </table>
+    </div>
+  <div class="sec"><h2>東証33業種 番号⇄定義（凡例）</h2></div>
+  <p id="legend" style="font-size:0.9rem;color:#64748b;margin:0.4rem 0;">P5・P10〜P13 の業種番号はこの順序（<code>TS33_87-1_latest.csv</code> の列順と照合済み）。</p>
+  <table class="legend-tbl">
+      <tr><th class="no">No.</th><th>業種（日本語）</th><th>CSV列名</th><th>レポートでの所見</th></tr>
+      <tr><td class="no">1</td><td>水産・農林業</td><td>Fisheries</td><td>診断用に代表表示（P5）</td></tr>
+      <tr><td class="no">2</td><td>鉱業</td><td>Mining</td><td>CPIβ最大 +2.63／CPIで唯一5%有意（P11,P13）</td></tr>
+      <tr><td class="no">3</td><td>建設業</td><td>Construction</td><td>CPIβ +1.55（インフレ耐性）</td></tr>
+      <tr><td class="no">4</td><td>食料品</td><td>Grocery（Foods）</td><td></td></tr>
+      <tr><td class="no">5</td><td>繊維製品</td><td>Textile</td><td></td></tr>
+      <tr><td class="no">6</td><td>パルプ・紙</td><td>Pulp</td><td></td></tr>
+      <tr><td class="no">7</td><td>化学</td><td>Chemical</td><td></td></tr>
+      <tr><td class="no">8</td><td>医薬品</td><td>Pharmaceutical</td><td>IIPβ負（ディフェンシブ, P10）</td></tr>
+      <tr><td class="no">9</td><td>石油・石炭製品</td><td>Oil</td><td>IIPβ負（コモディティ）</td></tr>
+      <tr><td class="no">10</td><td>ゴム製品</td><td>Rubber</td><td></td></tr>
+      <tr><td class="no">11</td><td>ガラス・土石製品</td><td>Glass</td><td></td></tr>
+      <tr><td class="no">12</td><td>鉄鋼</td><td>Steel</td><td>IIPβ負</td></tr>
+      <tr><td class="no">13</td><td>非鉄金属</td><td>Non-ferrous</td><td></td></tr>
+      <tr><td class="no">14</td><td>金属製品</td><td>Metallurgical（Metal Products）</td><td></td></tr>
+      <tr><td class="no">15</td><td>機械</td><td>Machinery</td><td></td></tr>
+      <tr><td class="no">16</td><td>電気機器</td><td>Electric</td><td></td></tr>
+      <tr><td class="no">17</td><td>輸送用機器</td><td>Transport</td><td></td></tr>
+      <tr><td class="no">18</td><td>精密機器</td><td>Precision</td><td></td></tr>
+      <tr><td class="no">19</td><td>その他製品</td><td>Product（Other Products）</td><td></td></tr>
+      <tr><td class="no">20</td><td>電気・ガス業</td><td>Gas（Electric Power &amp; Gas）</td><td></td></tr>
+      <tr><td class="no">21</td><td>陸運業</td><td>LandTransport</td><td></td></tr>
+      <tr><td class="no">22</td><td>海運業</td><td>Shipping</td><td>CPIβ +1.50</td></tr>
+      <tr><td class="no">23</td><td>空運業</td><td>Aviation</td><td></td></tr>
+      <tr><td class="no">24</td><td>倉庫・運輸関連業</td><td>Warehouse</td><td>CPIβ +1.66</td></tr>
+      <tr><td class="no">25</td><td>情報・通信業</td><td>Telecom（Info &amp; Comm）</td><td></td></tr>
+      <tr><td class="no">26</td><td>卸売業</td><td>Wholesale</td><td></td></tr>
+      <tr><td class="no">27</td><td>小売業</td><td>Retail</td><td>IIPβ正（景気敏感, P10）</td></tr>
+      <tr><td class="no">28</td><td>銀行業</td><td>Banking</td><td></td></tr>
+      <tr><td class="no">29</td><td>証券・商品先物取引業</td><td>Securities</td><td>IIPβ正（景気敏感）</td></tr>
+      <tr><td class="no">30</td><td>保険業</td><td>Insurance</td><td></td></tr>
+      <tr><td class="no">31</td><td>その他金融業</td><td>OtherFinance</td><td>IIPβ最大 +0.42／IIPで唯一5%有意（P10,P12）</td></tr>
+      <tr><td class="no">32</td><td>不動産業</td><td>RealEstate</td><td>IIPβ正（景気敏感）</td></tr>
+      <tr><td class="no">33</td><td>サービス業</td><td>Service</td><td></td></tr>
+  </table>
+  <p class="legend-note">CSV列名（Grocery/Metallurgical/Gas/Telecom 等）は作成者の略称。正式英名は Foods / Metal Products / Electric Power &amp; Gas / Information &amp; Communication。</p>
+  <div class="sec"><h2>A. 生データの水準（P1–P3）</h2></div>
+  <div class="page">
+    <h3><span class="pnum">P1</span>TOPIX（水準）<span class="tag t-diag">前提確認</span></h3>
+    <img src="risk_premia_figs/01.png" alt="P1 TOPIX（水準）">
+    <div class="body" data-cmt-key="p1"></div>
+    <div class="smtw-cmt" data-aid="rp-p1" data-atitle="リスクプレミア P1：TOPIX（水準）"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P2</span>為替 USD/JPY（水準）<span class="tag t-mkt">市場リスク本命</span></h3>
+    <img src="risk_premia_figs/02.png" alt="P2 為替 USD/JPY（水準）">
+    <div class="body" data-cmt-key="p2"></div>
+    <div class="smtw-cmt" data-aid="rp-p2" data-atitle="リスクプレミア P2：為替 USD/JPY（水準）"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P3</span>原油 WTI（水準）<span class="tag t-diag">前提確認</span></h3>
+    <img src="risk_premia_figs/03.png" alt="P3 原油 WTI（水準）">
+    <div class="body" data-cmt-key="p3"></div>
+    <div class="smtw-cmt" data-aid="rp-p3" data-atitle="リスクプレミア P3：原油 WTI（水準）"></div>
+  </div>
+  <div class="sec"><h2>B. 変化率とファクターショックの抽出（P4–P8）</h2></div>
+  <div class="page">
+    <h3><span class="pnum">P4</span>IIP対数変化率（%）<span class="tag t-fac">ファクター素材</span></h3>
+    <img src="risk_premia_figs/04.png" alt="P4 IIP対数変化率（%）">
+    <div class="body" data-cmt-key="p4"></div>
+    <div class="smtw-cmt" data-aid="rp-p4" data-atitle="リスクプレミア P4：IIP対数変化率（%）"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P5</span>業種1（水産・農林）リターン（%）<span class="tag t-diag">診断プロット</span></h3>
+    <img src="risk_premia_figs/05.png" alt="P5 業種1（水産・農林）リターン（%）">
+    <div class="body" data-cmt-key="p5"></div>
+    <div class="smtw-cmt" data-aid="rp-p5" data-atitle="リスクプレミア P5：業種1（水産・農林）リターン（%）"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P6</span>FIP：予期せぬIIPショック<span class="tag t-fac">ファクター①</span></h3>
+    <img src="risk_premia_figs/06.png" alt="P6 FIP：予期せぬIIPショック">
+    <div class="body" data-cmt-key="p6"></div>
+    <div class="smtw-cmt" data-aid="rp-p6" data-atitle="リスクプレミア P6：FIP：予期せぬIIPショック"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P7</span>FCPI：予期せぬCPIショック<span class="tag t-fac">ファクター②</span></h3>
+    <img src="risk_premia_figs/07.png" alt="P7 FCPI：予期せぬCPIショック">
+    <div class="body" data-cmt-key="p7"></div>
+    <div class="smtw-cmt" data-aid="rp-p7" data-atitle="リスクプレミア P7：FCPI：予期せぬCPIショック"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P8</span>TOPIXリターン（%）— 分析対象の市場リターン<span class="tag t-mkt">市場リスク核心</span></h3>
+    <img src="risk_premia_figs/08.png" alt="P8 TOPIXリターン（%）— 分析対象の市場リターン">
+    <div class="body" data-cmt-key="p8"></div>
+    <div class="smtw-cmt" data-aid="rp-p8" data-atitle="リスクプレミア P8：TOPIXリターン（%）— 分析対象の市場リターン"></div>
+  </div>
+  <div class="sec"><h2>C. 市場リターンのボラティリティ（P9）</h2></div>
+  <div class="page">
+    <h3><span class="pnum">P9</span>GARCH(1,1) 条件付き分散（市場リスクの時間変動）<span class="tag t-mkt">鍵リスク②</span></h3>
+    <img src="risk_premia_figs/09.png" alt="P9 GARCH(1,1) 条件付き分散（市場リスクの時間変動）">
+    <div class="body" data-cmt-key="p9"></div>
+    <div class="smtw-cmt" data-aid="rp-p9" data-atitle="リスクプレミア P9：GARCH(1,1) 条件付き分散（市場リスクの時間変動）"></div>
+  </div>
+  <div class="sec"><h2>D. 第一段回帰：業種のファクター感応度ベータ（P10–P13）</h2></div>
+  <div class="page">
+    <h3><span class="pnum">P10</span>IIPベータ（業種別の景気感応度）<span class="tag t-fac">ローディング</span></h3>
+    <img src="risk_premia_figs/10.png" alt="P10 IIPベータ（業種別の景気感応度）">
+    <div class="body" data-cmt-key="p10"></div>
+    <div class="smtw-cmt" data-aid="rp-p10" data-atitle="リスクプレミア P10：IIPベータ（業種別の景気感応度）"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P11</span>CPIベータ（業種別のインフレ感応度）<span class="tag t-fac">ローディング</span></h3>
+    <img src="risk_premia_figs/11.png" alt="P11 CPIベータ（業種別のインフレ感応度）">
+    <div class="body" data-cmt-key="p11"></div>
+    <div class="smtw-cmt" data-aid="rp-p11" data-atitle="リスクプレミア P11：CPIベータ（業種別のインフレ感応度）"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P12</span>IIPベータのp値<span class="tag t-diag">有意性チェック</span></h3>
+    <img src="risk_premia_figs/12.png" alt="P12 IIPベータのp値">
+    <div class="body" data-cmt-key="p12"></div>
+    <div class="smtw-cmt" data-aid="rp-p12" data-atitle="リスクプレミア P12：IIPベータのp値"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P13</span>CPIベータのp値<span class="tag t-diag">有意性チェック</span></h3>
+    <img src="risk_premia_figs/13.png" alt="P13 CPIベータのp値">
+    <div class="body" data-cmt-key="p13"></div>
+    <div class="smtw-cmt" data-aid="rp-p13" data-atitle="リスクプレミア P13：CPIベータのp値"></div>
+  </div>
+  <div class="sec"><h2>E. 第二段：リスクの価格 Fama-MacBeth（P14–P17）</h2></div>
+  <div class="page">
+    <h3><span class="pnum">P14</span>IIPリスクプレミアム（月次λ）<span class="tag t-fac">リスクの価格①</span></h3>
+    <img src="risk_premia_figs/14.png" alt="P14 IIPリスクプレミアム（月次λ）">
+    <div class="body" data-cmt-key="p14"></div>
+    <div class="smtw-cmt" data-aid="rp-p14" data-atitle="リスクプレミア P14：IIPリスクプレミアム（月次λ）"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P15</span>CPIリスクプレミアム（月次λ）<span class="tag t-fac">リスクの価格②</span></h3>
+    <img src="risk_premia_figs/15.png" alt="P15 CPIリスクプレミアム（月次λ）">
+    <div class="body" data-cmt-key="p15"></div>
+    <div class="smtw-cmt" data-aid="rp-p15" data-atitle="リスクプレミア P15：CPIリスクプレミアム（月次λ）"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P16</span>IIP累積リスクプレミアム<span class="tag t-diag">累積</span></h3>
+    <img src="risk_premia_figs/16.png" alt="P16 IIP累積リスクプレミアム">
+    <div class="body" data-cmt-key="p16"></div>
+    <div class="smtw-cmt" data-aid="rp-p16" data-atitle="リスクプレミア P16：IIP累積リスクプレミアム"></div>
+  </div>
+  <div class="page">
+    <h3><span class="pnum">P17</span>CPI累積リスクプレミアム<span class="tag t-diag">累積</span></h3>
+    <img src="risk_premia_figs/17.png" alt="P17 CPI累積リスクプレミアム">
+    <div class="body" data-cmt-key="p17"></div>
+    <div class="smtw-cmt" data-aid="rp-p17" data-atitle="リスクプレミア P17：CPI累積リスクプレミアム"></div>
+  </div>
+    <div class="sec"><h2>まとめ：市場リターンの鍵リスク</h2></div>
+    <div class="tldr concl">
+      <h2>投資判断への含意</h2>
+      <div data-cmt-key="conclusion"></div>
+    </div>
+    <h2 style="color:#2c5282;font-size:1.15rem;margin-top:2.2rem;">コメント・質問フォーム</h2>
+    <p style="color:#64748b;font-size:0.9rem;">各図の「✉️ この図についてコメントする」から対象を選んで送れます。いただいた内容は議論の材料にさせていただきます（送信先：運営）。</p>
+    <div id="smtw-cmt-form" class="smtw-cmt smtw-cmt-main" data-aid="general" data-atitle="リスクプレミア・全体"></div>
+    <footer>
+      データ: <code>Macro8_87-1_latest.csv</code>（無料ソース自動更新）＋ <code>TS33_87-1_latest.csv</code>（Bloomberg 33業種）。
+      分析: <code>Risk premia_latest.R</code>。図は <code>output/Risk_premia_plots_latest.pdf</code> と同一。<br>
+      リスクプレミアムのt値は素の平均/(SD/√n)による概算で、正式推論は要Newey-West。作成: 松前 景一郎 ／ 生成 2026-06-25 ／ 参加者限定・転載禁止。
+    </footer>
+</div>
+<script>
+/* ===== 解説本文 fetch描画 + #edit ブラウザ編集モード ===== */
+(function () {
+    const RP_REPO = "Keiichiro0830/smtw-notes";
+    const RP_PATH = "docs/risk_premia_comments.json";
+    const RP_TOKEN_KEY = "smtw_rp_edit_token";
+    let RP_DATA = {};
+    function utf8ToB64(s) { return btoa(unescape(encodeURIComponent(s))); }
+    function render(data) {
+        RP_DATA = data || {};
+        const nodes = document.querySelectorAll("[data-cmt-key]");
+        for (let i = 0; i < nodes.length; i++) {
+            const k = nodes[i].getAttribute("data-cmt-key");
+            if (RP_DATA[k] != null) { nodes[i].innerHTML = RP_DATA[k]; }
+        }
+    }
+    const bust = (location.hash === "#edit") ? ("?_=" + new Date().getTime()) : "";
+    fetch("risk_premia_comments.json" + bust)
+        .then(function (r) { return r.ok ? r.json() : {}; })
+        .then(render)
+        .catch(function () {});
+
+    function status(el, txt, ok) { el.textContent = txt; el.style.color = ok ? "#15803d" : "#b91c1c"; }
+    function setEditing(on) {
+        const nodes = document.querySelectorAll("[data-cmt-key]");
+        for (let i = 0; i < nodes.length; i++) {
+            nodes[i].contentEditable = on ? "true" : "false";
+            nodes[i].classList.toggle("rp-editing", on);
+        }
+        document.getElementById("rp-edit-start").style.display = on ? "none" : "";
+        document.getElementById("rp-edit-save").style.display = on ? "" : "none";
+        document.getElementById("rp-edit-cancel").style.display = on ? "" : "none";
+    }
+    async function save(statusEl) {
+        let token = localStorage.getItem(RP_TOKEN_KEY);
+        if (!token) { token = prompt("GitHub Personal Access Token（fine-grained / smtw-notes / Contents: Read and write）:"); if (!token) return; localStorage.setItem(RP_TOKEN_KEY, token.trim()); token = token.trim(); }
+        const updated = Object.assign({}, RP_DATA);
+        const nodes = document.querySelectorAll("[data-cmt-key]");
+        for (let i = 0; i < nodes.length; i++) { updated[nodes[i].getAttribute("data-cmt-key")] = nodes[i].innerHTML.trim(); }
+        const body = JSON.stringify(updated, null, 2);
+        const api = "https://api.github.com/repos/" + RP_REPO + "/contents/" + RP_PATH;
+        const headers = { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json" };
+        status(statusEl, "保存中…", true);
+        try {
+            const g = await fetch(api, { headers: headers });
+            const sha = g.ok ? (await g.json()).sha : undefined;
+            const put = await fetch(api, { method: "PUT", headers: headers, body: JSON.stringify({ message: "Update risk premia commentary", content: utf8ToB64(body), sha: sha }) });
+            if (!put.ok) { const t = await put.text(); throw new Error("HTTP " + put.status + " " + t.slice(0, 120)); }
+            RP_DATA = updated;
+            status(statusEl, "✓ 保存しました（GitHub Pages 反映に約1分）", true);
+            setEditing(false);
+        } catch (e) {
+            if (("" + e).indexOf("401") >= 0 || ("" + e).indexOf("403") >= 0) { localStorage.removeItem(RP_TOKEN_KEY); }
+            status(statusEl, "✗ 保存失敗: " + e.message, false);
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const bar = document.getElementById("rp-editbar");
+        if (!bar) return;
+        if (location.hash !== "#edit") { bar.style.display = "none"; return; }
+        bar.style.display = "flex";
+        const statusEl = document.getElementById("rp-edit-status");
+        document.getElementById("rp-edit-start").addEventListener("click", function () { setEditing(true); status(statusEl, "編集中：解説枠を直接クリックして書き換え → 保存", true); });
+        document.getElementById("rp-edit-save").addEventListener("click", function () { save(statusEl); });
+        document.getElementById("rp-edit-cancel").addEventListener("click", function () { render(RP_DATA); setEditing(false); status(statusEl, "取り消しました", true); });
+    });
+})();
+</script>
+<script>
+/* ===== SMTW 統合コメントフォーム（既存ポータルから移植・同一 GAS エンドポイント） ===== */
+const SMTW_CMT_ENDPOINT = "https://script.google.com/macros/s/AKfycbwACdJ6Syy-lT0GpJWJ5InSa2t_QwTaIb7llj6pvh8LoiHtTMIo9FBzr8vqyB02_GMq/exec";
+const SMTW_CMT_TEXT = {
+    target: "対象", generalLabel: "全体・運営について",
+    grpPaper: "図ごと", grpMelmaga: "メルマガ",
+    name: "お名前", namePh: "お名前",
+    email: "メールアドレス", emailPh: "メールアドレス（任意：控えをお送りします）",
+    comment: "コメント", send: "川口先生に送る", sending: "送信中…",
+    okMsg: "✓ 川口先生にお届けしました。ありがとうございます。",
+    errMsg: "送信に失敗しました。時間をおいて再度お試しください。",
+    notReady: "コメント機能は準備中です",
+    jump: "✉️ この図についてコメントする",
+    logTitle: "あなたのコメント（この端末のみに表示）",
+    otherLabel: "その他", otherPh: "対象を自由にご記入ください",
+    otherReq: "対象（その他）をご記入ください。"
+};
+(function () {
+    const LOG_KEY = "smtw_cmt_log_all";
+    function readProfile() { try { return JSON.parse(localStorage.getItem("smtw_cmt_profile")) || {}; } catch (e) { return {}; } }
+    function saveProfile(name, email) { try { localStorage.setItem("smtw_cmt_profile", JSON.stringify({ name: name, email: email })); } catch (e) {} }
+    function readLog() { try { return JSON.parse(localStorage.getItem(LOG_KEY)) || []; } catch (e) { return []; } }
+    function appendLog(entry) { const log = readLog(); log.push(entry); try { localStorage.setItem(LOG_KEY, JSON.stringify(log)); } catch (e) {} return log; }
+    function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+    function renderLog(logWrap) {
+        const log = readLog();
+        if (!log.length) { logWrap.innerHTML = ""; return; }
+        let html = '<div class="smtw-cmt-log-title">' + esc(SMTW_CMT_TEXT.logTitle) + "</div>";
+        for (let i = 0; i < log.length; i++) {
+            html += '<div class="smtw-cmt-log-item"><span class="smtw-cmt-log-date">' +
+                esc(log[i].date) + " ｜ " + esc(log[i].atitle || "") + "</span>" + esc(log[i].comment) + "</div>";
+        }
+        logWrap.innerHTML = html;
+    }
+    function buildTargetOptions() {
+        let html = '<option value="general">' + esc(SMTW_CMT_TEXT.generalLabel) + "</option>";
+        const papers = [], melmagas = [];
+        const nodes = document.querySelectorAll(".smtw-cmt:not(.smtw-cmt-main)");
+        for (let i = 0; i < nodes.length; i++) {
+            const node = nodes[i];
+            const aid = node.getAttribute("data-aid") || "";
+            const atitle = node.getAttribute("data-atitle") || "";
+            if (!aid) continue;
+            const item = { aid: aid, atitle: atitle };
+            if (node.closest(".melmaga")) { melmagas.push(item); } else { papers.push(item); }
+        }
+        function group(label, arr) {
+            if (!arr.length) return "";
+            let g = '<optgroup label="' + esc(label) + '">';
+            for (let j = 0; j < arr.length; j++) { g += '<option value="' + esc(arr[j].aid) + '" data-atitle="' + esc(arr[j].atitle) + '">' + esc(arr[j].atitle) + "</option>"; }
+            return g + "</optgroup>";
+        }
+        html += group(SMTW_CMT_TEXT.grpPaper, papers);
+        html += group(SMTW_CMT_TEXT.grpMelmaga, melmagas);
+        html += '<option value="other">' + esc(SMTW_CMT_TEXT.otherLabel) + "</option>";
+        return { html: html, count: papers.length + melmagas.length + 2 };
+    }
+    function buildMainForm(box) {
+        const prof = readProfile();
+        const opts = buildTargetOptions();
+        box.innerHTML =
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_CMT_TEXT.target) + '</label><select class="smtw-cmt-target">' + opts.html + "</select></div>" +
+            '<div class="smtw-cmt-row smtw-cmt-other-row" style="display:none;"><label>' + esc(SMTW_CMT_TEXT.otherLabel) + '</label><input type="text" class="smtw-cmt-other-input" placeholder="' + esc(SMTW_CMT_TEXT.otherPh) + '"></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_CMT_TEXT.name) + '</label><input type="text" class="smtw-cmt-name" placeholder="' + esc(SMTW_CMT_TEXT.namePh) + '" value="' + esc(prof.name || "") + '" required></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_CMT_TEXT.email) + '</label><input type="email" class="smtw-cmt-email" placeholder="' + esc(SMTW_CMT_TEXT.emailPh) + '" value="' + esc(prof.email || "") + '"></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_CMT_TEXT.comment) + '</label><textarea class="smtw-cmt-comment" rows="4" required></textarea></div>' +
+            '<input type="text" class="smtw-cmt-hp" name="website" tabindex="-1" autocomplete="off">' +
+            '<button type="button" class="smtw-cmt-send">' + esc(SMTW_CMT_TEXT.send) + "</button>" +
+            '<div class="smtw-cmt-msg"></div><div class="smtw-cmt-log"></div>';
+        const targetEl = box.querySelector(".smtw-cmt-target");
+        const nameEl = box.querySelector(".smtw-cmt-name");
+        const emailEl = box.querySelector(".smtw-cmt-email");
+        const commentEl = box.querySelector(".smtw-cmt-comment");
+        const hpEl = box.querySelector(".smtw-cmt-hp");
+        const btn = box.querySelector(".smtw-cmt-send");
+        const msg = box.querySelector(".smtw-cmt-msg");
+        const logWrap = box.querySelector(".smtw-cmt-log");
+        const otherRow = box.querySelector(".smtw-cmt-other-row");
+        const otherInput = box.querySelector(".smtw-cmt-other-input");
+        targetEl.addEventListener("change", function () { otherRow.style.display = (targetEl.value === "other") ? "" : "none"; if (targetEl.value === "other" && otherInput) { otherInput.focus(); } });
+        renderLog(logWrap);
+        function selectedTarget() {
+            const opt = targetEl.options[targetEl.selectedIndex];
+            const aid = targetEl.value;
+            let atitle = opt ? (opt.getAttribute("data-atitle") || "") : "";
+            if (aid === "general") { atitle = box.getAttribute("data-atitle") || "全体・運営"; }
+            if (aid === "other") { atitle = (otherInput && otherInput.value.trim()) || SMTW_CMT_TEXT.otherLabel; }
+            return { aid: aid, atitle: atitle };
+        }
+        btn.addEventListener("click", function () {
+            const tgt = selectedTarget();
+            const name = nameEl.value.trim(), email = emailEl.value.trim(), comment = commentEl.value.trim(), website = hpEl.value;
+            msg.className = "smtw-cmt-msg";
+            if (!name) { msg.className = "smtw-cmt-msg err"; msg.textContent = "お名前を入力してください。"; nameEl.focus(); return; }
+            if (!comment) { msg.className = "smtw-cmt-msg err"; msg.textContent = "コメントを入力してください。"; commentEl.focus(); return; }
+            if (tgt.aid === "other" && (!otherInput || !otherInput.value.trim())) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_CMT_TEXT.otherReq; if (otherInput) { otherInput.focus(); } return; }
+            saveProfile(name, email);
+            if (!SMTW_CMT_ENDPOINT || SMTW_CMT_ENDPOINT === "PASTE_GAS_WEBAPP_URL_HERE") { alert(SMTW_CMT_TEXT.notReady); return; }
+            btn.disabled = true; const original = btn.textContent; btn.textContent = SMTW_CMT_TEXT.sending; msg.textContent = "";
+            fetch(SMTW_CMT_ENDPOINT, { method: "POST", body: JSON.stringify({ aid: tgt.aid, atitle: tgt.atitle, name: name, email: email, comment: comment, page: location.pathname, website: website }) })
+              .then(function (resp) {
+                if (!resp.ok) { throw new Error("HTTP " + resp.status); }
+                msg.className = "smtw-cmt-msg ok"; msg.textContent = SMTW_CMT_TEXT.okMsg;
+                appendLog({ date: new Date().toLocaleString(), atitle: tgt.atitle, comment: comment });
+                renderLog(logWrap); commentEl.value = ""; btn.disabled = false; btn.textContent = original;
+              }).catch(function () { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_CMT_TEXT.errMsg; btn.disabled = false; btn.textContent = original; });
+        });
+        return targetEl;
+    }
+    function buildJumpLink(box, mainForm) {
+        const aid = box.getAttribute("data-aid") || "";
+        box.className = "smtw-cmt-jump"; box.removeAttribute("style");
+        box.innerHTML = '<a>' + esc(SMTW_CMT_TEXT.jump) + "</a>";
+        const link = box.querySelector("a");
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetEl = mainForm.querySelector(".smtw-cmt-target");
+            if (targetEl) { targetEl.value = aid; }
+            const form = document.getElementById("smtw-cmt-form");
+            if (form) { form.scrollIntoView({ behavior: "smooth", block: "start" }); }
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const mainForm = document.querySelector(".smtw-cmt-main");
+        let targetEl = null;
+        if (mainForm) { targetEl = buildMainForm(mainForm); }
+        const others = document.querySelectorAll(".smtw-cmt:not(.smtw-cmt-main)");
+        for (let i = 0; i < others.length; i++) { buildJumpLink(others[i], mainForm); }
+    });
+})();
+</script>
+</body>
+</html>
