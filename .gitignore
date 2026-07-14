@@ -7,3 +7,10 @@ _src/gas_comment_backend.gs
 _src/*.bak
 _src/*.v1bak
 _src/*.premerge
+# member-sensitive plaintext sources: publish encrypted docs/ versions only
+_src/Kawaguchi_seminar_video1.html
+_src/Kawaguchi_seminar_articles.html
+encrypted/Kawaguchi_seminar_video1.html
+encrypted/Kawaguchi_seminar_articles.html
+encrypted/Kawaguchi_seminar_boj.html
+*.stackdump

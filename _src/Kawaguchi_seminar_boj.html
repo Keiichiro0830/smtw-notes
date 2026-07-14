@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>日銀ウォッチャー ｜ AIx知的鍛錬塾</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+            background: #f8fafc;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 2.5rem 1rem;
+        }
+        .container { max-width: 760px; margin: 0 auto; }
+        h1 { font-size: 1.6rem; color: #2c5282; margin-bottom: 0.4rem; }
+        .subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1.6rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 2px solid #2c5282;
+        }
+        h2 {
+            font-size: 1.15rem;
+            color: #2c5282;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            padding-left: 0.6rem;
+            border-left: 4px solid #2c5282;
+            scroll-margin-top: 1rem;
+        }
+        h3.boj-date-group {
+            font-size: 0.9rem;
+            color: #1f3a5f;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+        }
+        a { color: #2c5282; }
+        a:hover { text-decoration: underline; }
+        .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
+        .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
+        .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
+        .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #f59e0b;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0 1.4rem;
+            font-size: 0.9rem;
+            color: #5b4a2f;
+        }
+        .legend { display:flex; flex-wrap:wrap; gap:0.5rem; margin: 0 0 1.2rem; }
+        .month-index { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.4rem; }
+        .month-index a { font-size:0.85rem; color:#2c5282; background:#eef2f7; border:1px solid #e2e8f0; border-radius:5px; padding:0.25rem 0.7rem; text-decoration:none; }
+        .month-index a:hover { background:#dbe4f0; text-decoration:none; }
+        .boj-badge {
+            display:inline-block;
+            font-size:0.72rem;
+            font-weight:600;
+            padding:0.12rem 0.55rem;
+            border-radius:3px;
+            color:#fff;
+            font-family:"Helvetica Neue", Arial, sans-serif;
+            white-space:nowrap;
+        }
+        .cat-mp     { background:#2c5282; }
+        .cat-speech { background:#0f766e; }
+        .cat-stats  { background:#b45309; }
+        .cat-paper  { background:#6d28d9; }
+        .cat-other  { background:#475569; }
+        .boj-item {
+            background:#fff;
+            border:1px solid #e2e8f0;
+            border-radius:8px;
+            padding:1rem 1.2rem;
+            margin-bottom:0.9rem;
+        }
+        .boj-item .boj-meta { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem; }
+        .boj-item .boj-date { color:#64748b; font-size:0.82rem; font-family:"Helvetica Neue", Arial, sans-serif; }
+        .boj-item .boj-title { font-weight:600; color:#1f3a5f; margin-bottom:0.5rem; }
+        .boj-item .boj-summary { font-size:0.92rem; color:#334155; margin-bottom:0.5rem; }
+        .boj-commentary {
+            background:#f0f5fb;
+            border-left:4px solid #2c5282;
+            padding:0.55rem 0.8rem;
+            margin:0.5rem 0;
+            font-size:0.9rem;
+            color:#1f3a5f;
+        }
+        .boj-commentary .lbl { font-weight:600; margin-right:0.4rem; }
+        .boj-links { margin-top:0.5rem; }
+        .boj-links a.boj-official {
+            display:inline-block;
+            padding:0.35rem 0.85rem;
+            background:#2c5282;
+            color:#fff;
+            border-radius:4px;
+            font-size:0.85rem;
+            text-decoration:none;
+        }
+        .boj-links a.boj-official:hover { background:#1f3a5f; text-decoration:none; }
+        .boj-tags { margin-top:0.5rem; }
+        .boj-tags .tag {
+            display:inline-block;
+            font-size:0.75rem;
+            color:#64748b;
+            background:#eef2f7;
+            border:1px solid #e2e8f0;
+            border-radius:3px;
+            padding:0.05rem 0.45rem;
+            margin-right:0.3rem;
+        }
+        footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>日銀ウォッチャー</h1>
+    <p class="subtitle">日本銀行 新着情報のうち注目度の高い更新を、勉強会向けに中立・教育目的で整理 ／ 最終更新: 2026-07-02T13:17:47+09:00 ／ 掲載 35 件</p>
+    <nav class="page-nav">
+        <a href="Kawaguchi_seminar.html">ポータル</a>
+        <a href="Kawaguchi_seminar_papers.html">過去資料</a>
+        <a href="Kawaguchi_seminar_minutes.html">議事メモ</a>
+        <a href="Kawaguchi_seminar_boj.html" class="active">日銀ウォッチャー</a>
+    </nav>
+    <div class="callout">
+      当コーナーは、日本銀行の公式発表（金融政策・講演・統計・調査論文等）のうち注目度の高い更新を、勉強会の読み物として中立・教育目的で整理したものです。<strong>投資助言・推奨ではありません。</strong>本文・資料は再掲せず、要点のみを添えて日銀公式ページへリンクします（一次情報は必ずリンク先の原文をご確認ください）。各項目の「短評」（メンタルモデルで読むための補助線）は順次追加していきます。
+    </div>
+    <div class="legend">
+      <span class="boj-badge cat-mp">金融政策</span>
+      <span class="boj-badge cat-speech">講演・記者会見</span>
+      <span class="boj-badge cat-stats">統計</span>
+      <span class="boj-badge cat-paper">論文・レポート</span>
+      <span class="boj-badge cat-other">その他</span>
+    </div>
+    <div class="month-index">
+      <a href="#m-2026-07">2026年7月</a>
+      <a href="#m-2026-06">2026年6月</a>
+    </div>
+    <h2 id="m-2026-07">2026年7月</h2>
+    <h3 class="boj-date-group">7月2日（木）</h3>
+  <article class="boj-item" data-cat="その他">
+    <div class="boj-meta">
+      <span class="boj-date">2026-07-02</span>
+      <span class="boj-badge cat-other">その他</span>
+    </div>
+    <div class="boj-title">議事要旨（第11回中央銀行デジタル通貨に関する連絡協議会）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/paym/digital/dig260702a.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金融政策</span><span class="tag">金融システム</span></div>
+  </article>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-07-02</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">マネタリーベース（6月）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/boj/other/mb/mb.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">マネー</span></div>
+  </article>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-07-02</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">短観（6月）＜調査全容＞</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/tk/tankan06b.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">日本銀行</span></div>
+  </article>
+    <h3 class="boj-date-group">7月1日（水）</h3>
+  <article class="boj-item" data-cat="講演・記者会見">
+    <div class="boj-meta">
+      <span class="boj-date">2026-07-01</span>
+      <span class="boj-badge cat-speech">講演・記者会見</span>
+    </div>
+    <div class="boj-title">【記者会見】佐藤審議委員（6月30日分）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/about/press/kaiken_2026/kk260701a.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">講演</span></div>
+  </article>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-07-01</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">短観（6月）＜概要、要旨＞</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/tk/tankan06a.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">日本銀行</span></div>
+  </article>
+    <h2 id="m-2026-06">2026年6月</h2>
+    <h3 class="boj-date-group">6月30日（火）</h3>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-30</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">貸出約定平均金利（5月）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/dl/loan/yaku/yaku2605.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金利</span></div>
+  </article>
+    <h3 class="boj-date-group">6月29日（月）</h3>
+  <article class="boj-item" data-cat="その他">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-29</span>
+      <span class="boj-badge cat-other">その他</span>
+    </div>
+    <div class="boj-title">国債市場の流動性指標（5月）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/paym/bond/ryudo.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金利</span></div>
+  </article>
+    <h3 class="boj-date-group">6月26日（金）</h3>
+  <article class="boj-item" data-cat="講演・記者会見">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-26</span>
+      <span class="boj-badge cat-speech">講演・記者会見</span>
+    </div>
+    <div class="boj-title">【記者会見】田村審議委員（兵庫、6月25日分）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/about/press/kaiken_2026/kk260626a.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">講演</span></div>
+  </article>
+    <h3 class="boj-date-group">6月25日（木）</h3>
+  <article class="boj-item" data-cat="講演・記者会見">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-25</span>
+      <span class="boj-badge cat-speech">講演・記者会見</span>
+    </div>
+    <div class="boj-title">【挨拶】田村審議委員「わが国の経済・物価情勢と金融政策」（兵庫）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/about/press/koen_2026/ko260625a.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">物価</span><span class="tag">講演</span></div>
+  </article>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-25</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">資金循環統計（速報）（2026年第1四半期）及び遡及改定について</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/sj/sj.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">マネー</span></div>
+  </article>
+    <h3 class="boj-date-group">6月24日（水）</h3>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-24</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">企業向けサービス価格指数（5月）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/pi/cspi_release/sppi2605.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">物価</span></div>
+  </article>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-24</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">金融政策決定会合における主な意見（6月15、16日開催分）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/mpmsche_minu/opinion_2026/opi260616.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金融政策</span></div>
+  </article>
+    <h3 class="boj-date-group">6月23日（火）</h3>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-23</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">気候変動対応オペにおける貸付対象先公募の結果について</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/measures/select/s_release/srel260623a.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">日本銀行</span></div>
+  </article>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-23</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">消費者物価のコア指標</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/research/research_data/cpi/index.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">物価</span></div>
+  </article>
+    <h3 class="boj-date-group">6月22日（月）</h3>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-22</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">通貨及び金融の調節に関する報告書</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/diet/d_report_2026/semi2606a.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">講演</span></div>
+  </article>
+    <h3 class="boj-date-group">6月19日（金）</h3>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-19</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">金融政策決定会合議事要旨（4月27、28日開催分）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/mpmsche_minu/minu_2026/g260428.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金融政策</span></div>
+  </article>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-19</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">FSBレポ統計の日本分集計結果</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/bis/repo/index.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">債券市場</span></div>
+  </article>
+    <h3 class="boj-date-group">6月18日（木）</h3>
+  <article class="boj-item" data-cat="論文・レポート">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-18</span>
+      <span class="boj-badge cat-paper">論文・レポート</span>
+    </div>
+    <div class="boj-title">（論文）関税率の変動が消費者物価に及ぼす影響について：米国における実証分析</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/research/wps_rev/wps_2026/wp26j08.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">物価</span></div>
+  </article>
+    <h3 class="boj-date-group">6月17日（水）</h3>
+  <article class="boj-item" data-cat="講演・記者会見">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-17</span>
+      <span class="boj-badge cat-speech">講演・記者会見</span>
+    </div>
+    <div class="boj-title">【記者会見】総裁記者会見（内田副総裁代理・6月16日分）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/about/press/kaiken_2026/kk260617a.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">講演</span></div>
+  </article>
+    <h3 class="boj-date-group">6月16日（火）</h3>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-16</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">国債補完供給の要件緩和措置の取り扱いについて</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/mpr260616d.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金利</span></div>
+  </article>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-16</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">当面の長期国債等の買入れの運営について</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/mpr260616b.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金利</span><span class="tag">金融政策</span></div>
+  </article>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-16</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">長期国債買入れ（利回り・価格入札方式）の四半期予定（2026年7～9月）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/mpr260616a.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金利</span><span class="tag">金融政策</span></div>
+  </article>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-16</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">長期国債の買入れ計画について</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/k260616b.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金利</span><span class="tag">金融政策</span></div>
+  </article>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-16</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">「補完当座預金制度基本要領」の一部改正について</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/mpr260616c.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">マネー</span></div>
+  </article>
+    <h3 class="boj-date-group">6月10日（水）</h3>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-10</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">企業物価指数（5月）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/pi/cgpi_release/cgpi2605.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">物価</span></div>
+  </article>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-10</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">貸出約定平均金利（4月）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/dl/loan/yaku/yaku2604.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金利</span></div>
+  </article>
+    <h3 class="boj-date-group">6月9日（火）</h3>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-09</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">マネーストック（5月）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/money/ms/ms2605.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">マネー</span></div>
+  </article>
+    <h3 class="boj-date-group">6月5日（金）</h3>
+  <article class="boj-item" data-cat="統計">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-05</span>
+      <span class="boj-badge cat-stats">統計</span>
+    </div>
+    <div class="boj-title">コール市場残高（5月）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/statistics/market/short/call/call.xlsx" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">債券市場</span></div>
+  </article>
+    <h3 class="boj-date-group">6月4日（木）</h3>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-04</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">被災地金融機関を支援するための資金供給オペレーションの実施スケジュールについて</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/mpr260604a.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">日本銀行</span></div>
+  </article>
+  <article class="boj-item" data-cat="論文・レポート">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-04</span>
+      <span class="boj-badge cat-paper">論文・レポート</span>
+    </div>
+    <div class="boj-title">（論文）2025年度の金融市場調節</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/research/brp/mor/mor260604.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金融政策</span></div>
+  </article>
+    <h3 class="boj-date-group">6月3日（水）</h3>
+  <article class="boj-item" data-cat="論文・レポート">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-03</span>
+      <span class="boj-badge cat-paper">論文・レポート</span>
+    </div>
+    <div class="boj-title">（論文）企業物価指数・2025年基準改定の基本方針</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/research/brp/ron_2026/ron260603a.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">物価</span></div>
+  </article>
+  <article class="boj-item" data-cat="論文・レポート">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-03</span>
+      <span class="boj-badge cat-paper">論文・レポート</span>
+    </div>
+    <div class="boj-title">（日銀レビュー）企業物価指数におけるヘドニック法を用いた品質調整の適用拡大と見直しについて</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/research/wps_rev/rev_2026/rev26j08.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">物価</span></div>
+  </article>
+    <h3 class="boj-date-group">6月2日（火）</h3>
+  <article class="boj-item" data-cat="その他">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-02</span>
+      <span class="boj-badge cat-other">その他</span>
+    </div>
+    <div class="boj-title">金融安定理事会による本会合議事要旨の公表について</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/intl_finance/meeting/group/gro260602a.htm" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金融政策</span></div>
+  </article>
+  <article class="boj-item" data-cat="その他">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-02</span>
+      <span class="boj-badge cat-other">その他</span>
+    </div>
+    <div class="boj-title">「債券市場参加者会合」第24回議事要旨（2026年5月21、22日）</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/paym/bond/mbond_list/mbond260602.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">金融政策</span><span class="tag">債券市場</span></div>
+  </article>
+    <h3 class="boj-date-group">6月1日（月）</h3>
+  <article class="boj-item" data-cat="金融政策">
+    <div class="boj-meta">
+      <span class="boj-date">2026-06-01</span>
+      <span class="boj-badge cat-mp">金融政策</span>
+    </div>
+    <div class="boj-title">「貸出支援基金の運営として行う成長基盤強化を支援するための資金供給における貸付対象先の選定に関する細目」の廃止について</div>
+    <div class="boj-links">
+      <a class="boj-official" href="https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/mpr260601a.pdf" target="_blank" rel="noopener">日銀公式 →</a>
+    </div>
+    <div class="boj-tags"><span class="tag">日本銀行</span></div>
+  </article>
+    <footer>参加者限定 ／ 出典: 日本銀行 (www.boj.or.jp) ／ 要約・短評は当塾による中立的整理（投資助言ではありません）</footer>
+</div>
+</body>
+</html>
