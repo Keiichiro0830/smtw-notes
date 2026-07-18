@@ -9,6 +9,8 @@ for src in ["_src/Kawaguchi_seminar.html", "_src/Kawaguchi_seminar_en.html",
     for href in re.findall(r'href="([^"#]+)"', html):
         if href.startswith(("http", "data:", "mailto:")):
             continue
+        if "'" in href or "+" in href:  # JS-built dynamic href (e.g. 配布BOX list), not a static path
+            continue
         target = os.path.join("docs", href)
         ok = os.path.exists(target)
         if not ok:

@@ -176,6 +176,11 @@
         /* ===== File submission box (smtw-upl) ===== */
         .smtw-upl input[type="file"] { width: 100%; font: inherit; font-size: 0.85rem; color: #334155; padding: 0.35rem 0; box-sizing: border-box; }
         .smtw-upl .smtw-upl-filelist { font-size: 0.8rem; color: #64748b; margin: 0.2rem 0 0; }
+        /* ===== Distribution box (smtw-dist) ===== */
+        .smtw-dist ul { list-style: none; margin: 0 0 0.8rem; padding: 0; }
+        .smtw-dist li { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; font-size: 0.9rem; }
+        .smtw-dist .smtw-dist-meta { color: #94a3b8; font-size: 0.78rem; margin-left: 0.5rem; white-space: nowrap; }
+        .smtw-dist-status { color: #64748b; font-size: 0.9rem; }
     
         .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
         .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
@@ -291,6 +296,10 @@
         </div>
         <div class="smtw-cmt" data-aid="paper-20260718-relink" data-atitle="Reposted: trilogy / Tsai / Plotnick / mental models"></div>
     </div>
+
+<h2 id="sec-dist">Distribution box (files from Prof. Kawaguchi &amp; the secretariat)</h2>
+    <p style="color:#64748b;font-size:0.9rem;">Files placed in the Drive distribution folder by Prof. Kawaguchi or the secretariat are listed here automatically (refreshed every time the page opens). Files open in Google Drive.</p>
+    <div id="smtw-dist" class="smtw-dist"><p class="smtw-dist-status">Loading…</p></div>
 
 <h2 id="sec3">Post-3rd-meeting survey — the spatio-temporal statistics retreat 📈 and more</h2>
     <p style="color:#64748b;font-size:0.9rem;">Results of the survey Kazui Sasaki circulated after the 3rd meeting (8 valid responses, shown anonymously): preferred timing and location for the retreat, plus the questions and ideas received.</p>
@@ -771,6 +780,40 @@ const SMTW_UPL_TEXT = {
                 btn.disabled = false;
                 btn.textContent = original;
             });
+        });
+    });
+})();
+</script>
+
+<script>
+/* ===== SMTW distribution box (lists the Drive distribution folder) ===== */
+(function () {
+    function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const box = document.getElementById("smtw-dist");
+        if (!box) return;
+        fetch(SMTW_CMT_ENDPOINT + "?list=1").then(function (r) {
+            return r.json().catch(function () { throw new Error("not-ready"); });
+        }).then(function (res) {
+            if (!res || !res.ok || !res.dist) { throw new Error("not-ready"); }
+            if (!res.files || !res.files.length) {
+                box.innerHTML = '<p class="smtw-dist-status">No files are currently being distributed.</p>';
+                return;
+            }
+            let html = "<ul>";
+            for (let i = 0; i < res.files.length; i++) {
+                const f = res.files[i];
+                html += '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.name) + '</a>' +
+                    '<span class="smtw-dist-meta">' + esc(f.updated || "") + ' · ' +
+                    Math.max(1, Math.round((f.size || 0) / 1024)) + ' KB</span></li>';
+            }
+            box.innerHTML = html + "</ul>";
+        }).catch(function () {
+            box.innerHTML = '<p class="smtw-dist-status">The distribution box is not ready yet (it activates automatically once the backend is updated).</p>';
         });
     });
 })();
