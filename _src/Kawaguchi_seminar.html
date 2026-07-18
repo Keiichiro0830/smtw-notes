@@ -433,7 +433,21 @@
             color: #1f3a5f;
             text-decoration: underline;
         }
-    
+        /* ===== ファイル提出BOX (smtw-upl) ===== */
+        .smtw-upl input[type="file"] {
+            width: 100%;
+            font: inherit;
+            font-size: 0.85rem;
+            color: #334155;
+            padding: 0.35rem 0;
+            box-sizing: border-box;
+        }
+        .smtw-upl .smtw-upl-filelist {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin: 0.2rem 0 0;
+        }
+
         .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
         .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
         .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
@@ -460,14 +474,24 @@
         <tr><th>日時</th><td><strong>2026年7月18日(土)</strong> 10:30 開始（前回と同じ時間）</td></tr>
         <tr><th>会場</th><td>早稲田大学 26号館 13階 会議室（前回と同会場）</td></tr>
         <tr><th>テーマ</th><td><strong>ループ・エンジニアリング演習</strong>（川口先生より・7/14）— 参加者それぞれの興味とAIスキルのレベルに応じた「自分のループ」を設計してみる演習。背景テーマは「企業におけるAI活用 — DXからAXへ」：LLMは「考える脳」か、「システムを繋ぐ柔軟な接着剤」か。「LLMの仕組みから考えると、不動産業では人間にとって代わるような業務は少ないのでは？」という問いも、不動産業に限定せず扱う。</td></tr>
-        <tr><th>事前読了資料</th><td><strong>公開中</strong> — 下記「<a href="#sec2">第4回（7/18）事前資料</a>」参照。第3回の配布資料は <a href="Kawaguchi_seminar_papers.html#sec3-3">過去資料ページ</a> を参照。</td></tr>
+        <tr><th>事前読了資料</th><td><strong>公開中</strong> — 下記「<a href="#sec2">第4回（7/18）事前資料</a>」参照。<strong>当日プレゼンスライド（先生・Ver2）も掲載しました。</strong>第3回の配布資料は <a href="Kawaguchi_seminar_papers.html#sec3-3">過去資料ページ</a> を参照。</td></tr>
         <tr><th>ランチ</th><td>第3回はランチ会を実施。第4回も終了後に懇親予定（詳細は追ってご連絡）。</td></tr>
         <tr><th>連絡</th><td>FB Messenger グループ「川口先生 AI x 知的鍛錬塾」</td></tr>
         <tr><th>第3回議事メモ</th><td><a href="Kawaguchi_seminar_minutes.html">第3回議事メモ（2026-06-20）</a> を参照</td></tr>
     </table>
 
 <h2 id="sec2">第4回（7/18）事前資料</h2>
-    <p style="color:#64748b;font-size:0.9rem;">当日は「ループ・エンジニアリング演習」を中心に、テーマ「企業におけるAI活用」を議論します。最初の2カード（演習の事前読み物・テーマ資料）が今回の新しい問題提起、続いて日経記事課題、後半は第3回までの議論を受けた「理論×実例」の教材です。各カードから資料ごとのコメントも送れます。</p>
+    <p style="color:#64748b;font-size:0.9rem;">当日は「ループ・エンジニアリング演習」を中心に、テーマ「企業におけるAI活用」を議論します。冒頭のカードは<strong>川口先生の当日プレゼンスライド（7/18朝 Ver2に差し替え）</strong>。続く2カード（演習の事前読み物・テーマ資料）が今回の新しい問題提起、そのあとに日経記事課題、後半は第3回までの議論を受けた「理論×実例」の教材です。各カードから資料ごとのコメントも送れます。</p>
+
+    <div class="paper-card" id="paper-20260718-slides">
+        <div class="meta">当日プレゼン資料 ／ 川口先生 7/17共有 → 7/18朝 Ver2に差し替え</div>
+        <div class="title">川口 有一郎 — <em>LLM・生成AI活用ガイド ― 研究・実務：ループエンジニアリング（Ver2）</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">第4回当日に先生が使用されるスライド（全24枚）。過去4・5・6月の「LLMとは何か？その活用方法は？」の検討を踏まえた「とりあえずの総括」です。前半は Ferrara（ピッツバーグ大）の NBER 論文（WP 35374・経済史研究における LLM・生成AI 活用の実践ガイド）を下敷きに、LLMの限界とリスク、反復的な対話ワークフロー、実例（新聞記事の構造化、絵画63万枚の分類ほか）を整理。中盤がループ・エンジニアリング演習パート（事前読み物 Lynch／Ng の各1枚要約、「自分のループ」の設計手順、当日までに考えておく2つの問い）、終盤に「LLM as system connector」の問題提起と「検証コストの安さ」基準・「硬い骨格、柔らかい末端」の設計原則が続きます。7/18朝の Ver2 では、事前読み物のページが Lynch（p.17）と Ng（p.18）の2枚に拡充されました。</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-07-18/Kawaguchi_20260718_LLM_GenAI_Guide_Loop_Engineering_Ver2.pdf" target="_blank">当日スライド PDF（Ver2・全24枚）</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260718-slides" data-atitle="当日プレゼン資料：LLM・生成AI活用ガイド（Ver2）"></div>
+    </div>
 
     <div class="paper-card" id="paper-20260718-loop">
         <div class="meta">演習の事前読み物 ／ 川口先生 2026-07-14 共有</div>
@@ -640,6 +664,10 @@
 <h2 style="margin-top:2.4rem;">第4回（7/18）事前コメント・質問フォーム</h2>
     <p style="color:#64748b;font-size:0.9rem;">第4回に向けたご質問・ご要望、運営へのご意見をこちらからどうぞ。上の各資料カードからは資料ごとのコメントも送れます。いただいた内容は議論の材料にさせていただきます。</p>
     <div id="smtw-cmt-form" class="smtw-cmt smtw-cmt-main" data-aid="general" data-atitle="全体・運営"></div>
+
+<h2 id="sec-submit" style="margin-top:2.4rem;">ファイル提出BOX</h2>
+    <p style="color:#64748b;font-size:0.9rem;">演習の成果物（「自分のループ」設計メモなど）や、共有したい資料を、川口先生・松前へ直接お送りいただけます（複数可・合計20MBまで）。お送りいただいたファイルはお二人にメールで届き、控えが事務局のドライブに保存されます。</p>
+    <div id="smtw-upl-form" class="smtw-cmt smtw-upl"></div>
 
     <footer>参加者限定 ／ 転載禁止 ／ 著作権は各論文の権利者に帰属</footer>
 </div>
@@ -861,8 +889,164 @@ const SMTW_CMT_TEXT = {
         const mainForm = document.querySelector(".smtw-cmt-main");
         let targetEl = null;
         if (mainForm) { targetEl = buildMainForm(mainForm); }
-        const others = document.querySelectorAll(".smtw-cmt:not(.smtw-cmt-main)");
+        const others = document.querySelectorAll(".smtw-cmt:not(.smtw-cmt-main):not(.smtw-upl)");
         for (let i = 0; i < others.length; i++) { buildJumpLink(others[i], mainForm); }
+    });
+})();
+</script>
+
+<script>
+/* ===== SMTW ファイル提出BOX ===== */
+const SMTW_UPL_TEXT = {
+    name: "お名前",
+    namePh: "お名前",
+    email: "メールアドレス",
+    emailPh: "メールアドレス（任意：控えをお送りします）",
+    msgLabel: "メッセージ",
+    msgPh: "（任意）ファイルの説明・先生へのひとこと等",
+    files: "ファイル",
+    send: "川口先生・松前に送る",
+    sending: "送信中…",
+    okMsg: "✓ 川口先生・松前にお届けしました。ありがとうございます。",
+    errMsg: "送信に失敗しました。時間をおいて再度お試しください。",
+    notReady: "提出機能は現在準備中です。恐れ入りますがメール添付でお送りください。",
+    needName: "お名前を入力してください。",
+    needFile: "ファイルを選択してください。",
+    tooBig: "合計20MBまでにしてください（現在 {mb} MB）。",
+    selected: "選択中: "
+};
+
+(function () {
+    const MAX_TOTAL = 20 * 1024 * 1024;
+    function readProfile() {
+        try { return JSON.parse(localStorage.getItem("smtw_cmt_profile")) || {}; }
+        catch (e) { return {}; }
+    }
+    function saveProfile(name, email) {
+        try { localStorage.setItem("smtw_cmt_profile", JSON.stringify({ name: name, email: email })); }
+        catch (e) {}
+    }
+    function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+    }
+    function fmtMB(bytes) { return (bytes / 1048576).toFixed(1); }
+
+    function readFileB64(file) {
+        return new Promise(function (resolve, reject) {
+            const r = new FileReader();
+            r.onload = function () {
+                resolve({
+                    filename: file.name,
+                    mimeType: file.type || "application/octet-stream",
+                    data: String(r.result).split(",")[1] || ""
+                });
+            };
+            r.onerror = function () { reject(r.error); };
+            r.readAsDataURL(file);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const box = document.getElementById("smtw-upl-form");
+        if (!box) return;
+        const prof = readProfile();
+        box.innerHTML =
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.name) +
+                '</label><input type="text" class="smtw-upl-name" placeholder="' + esc(SMTW_UPL_TEXT.namePh) +
+                '" value="' + esc(prof.name || "") + '" required></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.email) +
+                '</label><input type="email" class="smtw-upl-email" placeholder="' + esc(SMTW_UPL_TEXT.emailPh) +
+                '" value="' + esc(prof.email || "") + '"></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.msgLabel) +
+                '</label><textarea class="smtw-upl-msg-in" rows="3" placeholder="' + esc(SMTW_UPL_TEXT.msgPh) + '"></textarea></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.files) +
+                '</label><input type="file" class="smtw-upl-files" multiple><div class="smtw-upl-filelist"></div></div>' +
+            '<input type="text" class="smtw-cmt-hp" name="website" tabindex="-1" autocomplete="off">' +
+            '<button type="button" class="smtw-cmt-send smtw-upl-send">' + esc(SMTW_UPL_TEXT.send) + '</button>' +
+            '<div class="smtw-cmt-msg"></div>';
+
+        const nameEl = box.querySelector(".smtw-upl-name");
+        const emailEl = box.querySelector(".smtw-upl-email");
+        const msgInEl = box.querySelector(".smtw-upl-msg-in");
+        const filesEl = box.querySelector(".smtw-upl-files");
+        const listEl = box.querySelector(".smtw-upl-filelist");
+        const hpEl = box.querySelector(".smtw-cmt-hp");
+        const btn = box.querySelector(".smtw-upl-send");
+        const msg = box.querySelector(".smtw-cmt-msg");
+
+        filesEl.addEventListener("change", function () {
+            const fs = filesEl.files || [];
+            if (!fs.length) { listEl.textContent = ""; return; }
+            let total = 0;
+            const names = [];
+            for (let i = 0; i < fs.length; i++) { total += fs[i].size; names.push(fs[i].name); }
+            listEl.textContent = SMTW_UPL_TEXT.selected + names.join(", ") + "（" + fmtMB(total) + " MB）";
+        });
+
+        btn.addEventListener("click", function () {
+            const name = nameEl.value.trim();
+            const email = emailEl.value.trim();
+            const message = msgInEl.value.trim();
+            const files = [];
+            for (let i = 0; i < filesEl.files.length; i++) { files.push(filesEl.files[i]); }
+
+            msg.className = "smtw-cmt-msg";
+            if (!name) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_UPL_TEXT.needName; nameEl.focus(); return; }
+            if (!files.length) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_UPL_TEXT.needFile; return; }
+            let total = 0;
+            for (let i = 0; i < files.length; i++) { total += files[i].size; }
+            if (total > MAX_TOTAL) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_UPL_TEXT.tooBig.replace("{mb}", fmtMB(total)); return; }
+            saveProfile(name, email);
+
+            btn.disabled = true;
+            const original = btn.textContent;
+            btn.textContent = SMTW_UPL_TEXT.sending;
+            msg.textContent = "";
+
+            // バックエンドが提出BOX対応版（doGet で upload:true を返す）かを先に確認。
+            // 未対応の旧バージョンにファイルを投げて無言で失われるのを防ぐ。
+            fetch(SMTW_CMT_ENDPOINT + "?ping=1").then(function (r) {
+                return r.json().catch(function () { throw new Error("upload-not-ready"); });
+            }).then(function (cap) {
+                if (!cap || !cap.upload) { throw new Error("upload-not-ready"); }
+                const jobs = [];
+                for (let i = 0; i < files.length; i++) { jobs.push(readFileB64(files[i])); }
+                return Promise.all(jobs);
+            }).then(function (encoded) {
+                // Content-Type を明示せず text/plain の simple request にして CORS preflight を回避
+                return fetch(SMTW_CMT_ENDPOINT, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        kind: "file",
+                        name: name,
+                        email: email,
+                        message: message,
+                        page: location.pathname,
+                        website: hpEl.value,
+                        files: encoded
+                    })
+                });
+            }).then(function (resp) {
+                if (!resp.ok) { throw new Error("HTTP " + resp.status); }
+                return resp.json().catch(function () { throw new Error("upload-not-ready"); });
+            }).then(function (res) {
+                if (!res || !res.ok || !res.upload) { throw new Error("upload-not-ready"); }
+                msg.className = "smtw-cmt-msg ok";
+                msg.textContent = SMTW_UPL_TEXT.okMsg;
+                filesEl.value = "";
+                listEl.textContent = "";
+                msgInEl.value = "";
+                btn.disabled = false;
+                btn.textContent = original;
+            }).catch(function (e) {
+                msg.className = "smtw-cmt-msg err";
+                msg.textContent = (e && e.message === "upload-not-ready") ? SMTW_UPL_TEXT.notReady : SMTW_UPL_TEXT.errMsg;
+                btn.disabled = false;
+                btn.textContent = original;
+            });
+        });
     });
 })();
 </script>

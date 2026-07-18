@@ -173,6 +173,9 @@
         .smtw-cmt-jump { text-align: right; margin-top: 0.6rem; }
         .smtw-cmt-jump a { font-size: 0.8rem; color: #64748b; text-decoration: none; cursor: pointer; }
         .smtw-cmt-jump a:hover { color: #1f3a5f; text-decoration: underline; }
+        /* ===== File submission box (smtw-upl) ===== */
+        .smtw-upl input[type="file"] { width: 100%; font: inherit; font-size: 0.85rem; color: #334155; padding: 0.35rem 0; box-sizing: border-box; }
+        .smtw-upl .smtw-upl-filelist { font-size: 0.8rem; color: #64748b; margin: 0.2rem 0 0; }
     
         .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
         .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
@@ -199,14 +202,24 @@
         <tr><th>Date</th><td><strong>Saturday, July 18, 2026</strong> · 10:30 JST start (same time as before)</td></tr>
         <tr><th>Venue</th><td>Waseda University, Building 26, 13F meeting room (same venue as before)</td></tr>
         <tr><th>Theme</th><td><strong>Loop-engineering exercise</strong> (proposed by Prof. Kawaguchi, July 14) — each participant designs "their own loop," matched to their interests and AI skill level. Backdrop: "AI adoption in the enterprise — from DX to AX." Is an LLM a "thinking brain," or a "flexible glue connecting systems"? And given how LLMs actually work, are there in fact few real-estate jobs an LLM could replace? To be explored beyond real estate as well.</td></tr>
-        <tr><th>Pre-read</th><td><strong>Now available</strong> — see "<a href="#sec2">Pre-reads for the 4th meeting</a>" below. The 3rd-meeting materials are archived on the <a href="Kawaguchi_seminar_papers_en.html#sec3-3">Archive page</a>.</td></tr>
+        <tr><th>Pre-read</th><td><strong>Now available</strong> — see "<a href="#sec2">Pre-reads for the 4th meeting</a>" below. <strong>The professor's session slides (Ver2) are now posted as well.</strong> The 3rd-meeting materials are archived on the <a href="Kawaguchi_seminar_papers_en.html#sec3-3">Archive page</a>.</td></tr>
         <tr><th>Lunch</th><td>The 3rd meeting included a lunch gathering; a get-together is planned after the 4th as well (details to follow).</td></tr>
         <tr><th>Communication</th><td>Facebook Messenger group "Prof. Kawaguchi AI x Intellectual Forging"</td></tr>
         <tr><th>3rd-meeting minutes</th><td>See <a href="Kawaguchi_seminar_minutes_en.html">3rd meeting summary (2026-06-20)</a></td></tr>
     </table>
 
 <h2 id="sec2">Pre-reads for the 4th meeting (July 18)</h2>
-    <p style="color:#64748b;font-size:0.9rem;">The session centers on a <strong>loop-engineering exercise</strong>, against the backdrop of "AI adoption in the enterprise." The first two cards (exercise pre-reads and the theme document) frame the new question; then the Nikkei assignment; the rest pair theory with worked examples from the discussion so far. Each card also accepts per-item comments.</p>
+    <p style="color:#64748b;font-size:0.9rem;">The session centers on a <strong>loop-engineering exercise</strong>, against the backdrop of "AI adoption in the enterprise." The first card is <strong>Prof. Kawaguchi's session slide deck (replaced with Ver2 on the morning of July 18)</strong>. The next two cards (exercise pre-reads and the theme document) frame the new question; then the Nikkei assignment; the rest pair theory with worked examples from the discussion so far. Each card also accepts per-item comments.</p>
+
+    <div class="paper-card" id="paper-20260718-slides">
+        <div class="meta">Session slides · shared by Prof. Kawaguchi July 17 → replaced with Ver2 on the morning of July 18</div>
+        <div class="title">Yuichiro Kawaguchi — <em>A Practitioner's Guide to LLMs &amp; Generative AI — Research &amp; Practice: Loop Engineering (Ver2)</em></div>
+        <p style="font-size:0.9rem;color:#475569;margin:0;">The slide deck the professor will use at the 4th meeting (24 slides) — a "provisional synthesis" of the April–June discussions of what LLMs are and how to use them. The first half draws on Ferrara (U. Pittsburgh), NBER WP 35374 — a practitioner's guide to LLMs and generative AI in economic-history research: limitations and risks, the iterative-dialogue workflow, and worked examples (structuring newspaper archives, classifying 630k paintings, and more). The middle section is the loop-engineering exercise part (one-slide digests of the Lynch and Ng pre-reads, how to design "your own loop," and the two questions to prepare before the session); the closing section presents the "LLM as system connector" framing, the "cheap verification" criterion, and the "rigid skeleton, soft edges" design principle. Ver2 (July 18) expands the pre-reads page into two slides — Lynch (p.17) and Ng (p.18). (Japanese)</p>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-07-18/Kawaguchi_20260718_LLM_GenAI_Guide_Loop_Engineering_Ver2.pdf" target="_blank">Session slides PDF (Ver2 · 24 slides)</a>
+        </div>
+        <div class="smtw-cmt" data-aid="paper-20260718-slides" data-atitle="Session slides: LLM &amp; GenAI guide (Ver2)"></div>
+    </div>
 
     <div class="paper-card" id="paper-20260718-loop">
         <div class="meta">Exercise pre-reads · shared by Prof. Kawaguchi, 2026-07-14</div>
@@ -379,6 +392,10 @@
 <h2 style="margin-top:2.4rem;">Comments &amp; Questions for the 4th Meeting (July 18)</h2>
     <p style="color:#64748b;font-size:0.9rem;">Send questions or requests for the 4th meeting, or any feedback on the running of the seminar. Each material card above also accepts per-item comments. Your input will feed into the discussion.</p>
     <div id="smtw-cmt-form" class="smtw-cmt smtw-cmt-main" data-aid="general-en" data-atitle="General / Operations"></div>
+
+<h2 id="sec-submit" style="margin-top:2.4rem;">File submission box</h2>
+    <p style="color:#64748b;font-size:0.9rem;">Send your exercise outputs (e.g., your "own loop" design memo) or any material you would like to share directly to Prof. Kawaguchi and Matsumae (multiple files, up to 20 MB total). Files are delivered to both by email, with a copy kept in the secretariat's Drive.</p>
+    <div id="smtw-upl-form" class="smtw-cmt smtw-upl"></div>
 
     <footer>Members only · Do not redistribute · Copyright belongs to the respective paper authors</footer>
 </div>
@@ -596,8 +613,164 @@ const SMTW_CMT_TEXT = {
     document.addEventListener("DOMContentLoaded", function () {
         const mainForm = document.querySelector(".smtw-cmt-main");
         if (mainForm) { buildMainForm(mainForm); }
-        const others = document.querySelectorAll(".smtw-cmt:not(.smtw-cmt-main)");
+        const others = document.querySelectorAll(".smtw-cmt:not(.smtw-cmt-main):not(.smtw-upl)");
         for (let i = 0; i < others.length; i++) { buildJumpLink(others[i], mainForm); }
+    });
+})();
+</script>
+
+<script>
+/* ===== SMTW file submission box ===== */
+const SMTW_UPL_TEXT = {
+    name: "Name",
+    namePh: "Name",
+    email: "Email",
+    emailPh: "Email (optional — we'll send you a copy)",
+    msgLabel: "Message",
+    msgPh: "(Optional) a note about the files",
+    files: "Files",
+    send: "Send to Prof. Kawaguchi & Matsumae",
+    sending: "Sending…",
+    okMsg: "✓ Delivered to Prof. Kawaguchi and Matsumae. Thank you.",
+    errMsg: "Sending failed. Please try again in a moment.",
+    notReady: "The submission box is not ready yet — please send by email instead.",
+    needName: "Please enter your name.",
+    needFile: "Please choose at least one file.",
+    tooBig: "Please keep the total under 20 MB (currently {mb} MB).",
+    selected: "Selected: "
+};
+
+(function () {
+    const MAX_TOTAL = 20 * 1024 * 1024;
+    function readProfile() {
+        try { return JSON.parse(localStorage.getItem("smtw_cmt_profile")) || {}; }
+        catch (e) { return {}; }
+    }
+    function saveProfile(name, email) {
+        try { localStorage.setItem("smtw_cmt_profile", JSON.stringify({ name: name, email: email })); }
+        catch (e) {}
+    }
+    function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+    }
+    function fmtMB(bytes) { return (bytes / 1048576).toFixed(1); }
+
+    function readFileB64(file) {
+        return new Promise(function (resolve, reject) {
+            const r = new FileReader();
+            r.onload = function () {
+                resolve({
+                    filename: file.name,
+                    mimeType: file.type || "application/octet-stream",
+                    data: String(r.result).split(",")[1] || ""
+                });
+            };
+            r.onerror = function () { reject(r.error); };
+            r.readAsDataURL(file);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const box = document.getElementById("smtw-upl-form");
+        if (!box) return;
+        const prof = readProfile();
+        box.innerHTML =
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.name) +
+                '</label><input type="text" class="smtw-upl-name" placeholder="' + esc(SMTW_UPL_TEXT.namePh) +
+                '" value="' + esc(prof.name || "") + '" required></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.email) +
+                '</label><input type="email" class="smtw-upl-email" placeholder="' + esc(SMTW_UPL_TEXT.emailPh) +
+                '" value="' + esc(prof.email || "") + '"></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.msgLabel) +
+                '</label><textarea class="smtw-upl-msg-in" rows="3" placeholder="' + esc(SMTW_UPL_TEXT.msgPh) + '"></textarea></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.files) +
+                '</label><input type="file" class="smtw-upl-files" multiple><div class="smtw-upl-filelist"></div></div>' +
+            '<input type="text" class="smtw-cmt-hp" name="website" tabindex="-1" autocomplete="off">' +
+            '<button type="button" class="smtw-cmt-send smtw-upl-send">' + esc(SMTW_UPL_TEXT.send) + '</button>' +
+            '<div class="smtw-cmt-msg"></div>';
+
+        const nameEl = box.querySelector(".smtw-upl-name");
+        const emailEl = box.querySelector(".smtw-upl-email");
+        const msgInEl = box.querySelector(".smtw-upl-msg-in");
+        const filesEl = box.querySelector(".smtw-upl-files");
+        const listEl = box.querySelector(".smtw-upl-filelist");
+        const hpEl = box.querySelector(".smtw-cmt-hp");
+        const btn = box.querySelector(".smtw-upl-send");
+        const msg = box.querySelector(".smtw-cmt-msg");
+
+        filesEl.addEventListener("change", function () {
+            const fs = filesEl.files || [];
+            if (!fs.length) { listEl.textContent = ""; return; }
+            let total = 0;
+            const names = [];
+            for (let i = 0; i < fs.length; i++) { total += fs[i].size; names.push(fs[i].name); }
+            listEl.textContent = SMTW_UPL_TEXT.selected + names.join(", ") + " (" + fmtMB(total) + " MB)";
+        });
+
+        btn.addEventListener("click", function () {
+            const name = nameEl.value.trim();
+            const email = emailEl.value.trim();
+            const message = msgInEl.value.trim();
+            const files = [];
+            for (let i = 0; i < filesEl.files.length; i++) { files.push(filesEl.files[i]); }
+
+            msg.className = "smtw-cmt-msg";
+            if (!name) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_UPL_TEXT.needName; nameEl.focus(); return; }
+            if (!files.length) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_UPL_TEXT.needFile; return; }
+            let total = 0;
+            for (let i = 0; i < files.length; i++) { total += files[i].size; }
+            if (total > MAX_TOTAL) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_UPL_TEXT.tooBig.replace("{mb}", fmtMB(total)); return; }
+            saveProfile(name, email);
+
+            btn.disabled = true;
+            const original = btn.textContent;
+            btn.textContent = SMTW_UPL_TEXT.sending;
+            msg.textContent = "";
+
+            // Check first that the backend supports uploads (doGet returns upload:true),
+            // so files are never posted to (and silently lost by) an older backend.
+            fetch(SMTW_CMT_ENDPOINT + "?ping=1").then(function (r) {
+                return r.json().catch(function () { throw new Error("upload-not-ready"); });
+            }).then(function (cap) {
+                if (!cap || !cap.upload) { throw new Error("upload-not-ready"); }
+                const jobs = [];
+                for (let i = 0; i < files.length; i++) { jobs.push(readFileB64(files[i])); }
+                return Promise.all(jobs);
+            }).then(function (encoded) {
+                // No explicit Content-Type: keep it a text/plain simple request to avoid CORS preflight
+                return fetch(SMTW_CMT_ENDPOINT, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        kind: "file",
+                        name: name,
+                        email: email,
+                        message: message,
+                        page: location.pathname,
+                        website: hpEl.value,
+                        files: encoded
+                    })
+                });
+            }).then(function (resp) {
+                if (!resp.ok) { throw new Error("HTTP " + resp.status); }
+                return resp.json().catch(function () { throw new Error("upload-not-ready"); });
+            }).then(function (res) {
+                if (!res || !res.ok || !res.upload) { throw new Error("upload-not-ready"); }
+                msg.className = "smtw-cmt-msg ok";
+                msg.textContent = SMTW_UPL_TEXT.okMsg;
+                filesEl.value = "";
+                listEl.textContent = "";
+                msgInEl.value = "";
+                btn.disabled = false;
+                btn.textContent = original;
+            }).catch(function (e) {
+                msg.className = "smtw-cmt-msg err";
+                msg.textContent = (e && e.message === "upload-not-ready") ? SMTW_UPL_TEXT.notReady : SMTW_UPL_TEXT.errMsg;
+                btn.disabled = false;
+                btn.textContent = original;
+            });
+        });
     });
 })();
 </script>

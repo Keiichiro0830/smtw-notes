@@ -36,8 +36,8 @@ async function decrypt(file) {
 }
 
 const checks = [
-  ["docs/Kawaguchi_seminar.html", ["第3回後アンケート結果", "時空統計合宿：時期の希望", "9月上旬", "chart-basho", "ループ・エンジニアリング", "第4回（7/18）事前資料", "paper-20260718-loop", "ループ・エンジニアリング演習</strong>（川口先生より・7/14）", "Lynch_202602_Claude_Code_Chief_of_Staff_JP.docx", "paper-20260718-theme", "paper-20260718-nikkei", "paper-20260718-tutorial", "paper-20260718-video", "paper-20260718-relink", "企業におけるAI活用", "事前資料 公開中"]],
-  ["docs/Kawaguchi_seminar_en.html", ["Post-3rd-meeting survey", "Retreat timing", "chart-basho", "loop engineering", "Pre-reads for the 4th meeting", "paper-20260718-loop", "Loop-engineering exercise</strong> (proposed by Prof. Kawaguchi, July 14)", "paper-20260718-theme", "paper-20260718-relink", "AI adoption in the enterprise"]],
+  ["docs/Kawaguchi_seminar.html", ["第3回後アンケート結果", "時空統計合宿：時期の希望", "9月上旬", "chart-basho", "ループ・エンジニアリング", "第4回（7/18）事前資料", "paper-20260718-loop", "ループ・エンジニアリング演習</strong>（川口先生より・7/14）", "Lynch_202602_Claude_Code_Chief_of_Staff_JP.docx", "paper-20260718-theme", "paper-20260718-nikkei", "paper-20260718-tutorial", "paper-20260718-video", "paper-20260718-relink", "企業におけるAI活用", "事前資料 公開中", "paper-20260718-slides", "Kawaguchi_20260718_LLM_GenAI_Guide_Loop_Engineering_Ver2.pdf", "当日プレゼン資料", "ファイル提出BOX", "smtw-upl-form", "SMTW_UPL_TEXT"]],
+  ["docs/Kawaguchi_seminar_en.html", ["Post-3rd-meeting survey", "Retreat timing", "chart-basho", "loop engineering", "Pre-reads for the 4th meeting", "paper-20260718-loop", "Loop-engineering exercise</strong> (proposed by Prof. Kawaguchi, July 14)", "paper-20260718-theme", "paper-20260718-relink", "AI adoption in the enterprise", "paper-20260718-slides", "Kawaguchi_20260718_LLM_GenAI_Guide_Loop_Engineering_Ver2.pdf", "File submission box", "smtw-upl-form", "SMTW_UPL_TEXT"]],
   ["docs/Kawaguchi_seminar_video1.html", ["スライド 34", "講義ログ（自動文字起こし・全文）", "全体サマリー"]],
   ["docs/Kawaguchi_seminar_articles.html", ["バブルマネー争奪", "株式と債券の動きに矛盾", "日本経済新聞社に帰属"]],
   ["docs/Kawaguchi_seminar_boj.html", ["日銀"]],
