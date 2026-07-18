@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI x Intellectual Forging Academy — Portal (EN)</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background: #f8fafc;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 2.5rem 1rem;
+        }
+        .container { max-width: 760px; margin: 0 auto; }
+        h1 { font-size: 1.6rem; color: #2c5282; margin-bottom: 0.4rem; }
+        .subtitle { color: #64748b; font-size: 0.9rem; margin-bottom: 1.6rem; padding-bottom: 0.9rem; border-bottom: 2px solid #2c5282; }
+        h2 { font-size: 1.15rem; color: #2c5282; margin-top: 2rem; margin-bottom: 0.8rem; padding-left: 0.6rem; border-left: 4px solid #2c5282; }
+        h3 { font-size: 1rem; color: #1f3a5f; margin-top: 1.2rem; margin-bottom: 0.4rem; }
+        h4 { font-size: 0.97rem; color: #2c5282; margin-top: 1rem; margin-bottom: 0.4rem; }
+        p { margin-bottom: 0.8rem; }
+        ul { margin-left: 1.4rem; margin-bottom: 0.8rem; }
+        li { margin-bottom: 0.3rem; }
+        a { color: #2c5282; }
+        a:hover { text-decoration: underline; }
+        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 0.8rem; }
+        .info-table th, .info-table td { text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; font-size: 0.95rem; }
+        .info-table th { background: #eef2f7; color: #1f3a5f; font-weight: 600; white-space: nowrap; width: 7rem; }
+        .paper-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 0.9rem; }
+        .paper-card .meta { color: #64748b; font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .paper-card .title { font-weight: 600; color: #1f3a5f; margin-bottom: 0.6rem; }
+        .file-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+        .file-links a { display: inline-block; padding: 0.35rem 0.75rem; background: #eef2f7; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.85rem; text-decoration: none; }
+        .file-links a:hover { background: #dbe4f0; text-decoration: none; }
+        .file-links a.primary { background: #2c5282; color: #fff; border-color: #2c5282; }
+        .file-links a.primary:hover { background: #1f3a5f; }
+        .file-links a.notebook { background: #fef3c7; border-color: #f59e0b; color: #92400e; }
+        .file-links a.notebook:hover { background: #fde68a; }
+        .callout { background: #fff8e1; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.92rem; }
+        .lang-switch { display: inline-block; padding: 0.35rem 0.8rem; background: #2c5282; color: #fff; border-radius: 4px; font-size: 0.85rem; text-decoration: none; margin-bottom: 1rem; }
+        .lang-switch:hover { background: #1f3a5f; text-decoration: none; }
+        .lang-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.9rem;
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            color: #2c5282;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: all 0.15s;
+        }
+        .lang-toggle:hover {
+            background: #2c5282;
+            color: #fff;
+            border-color: #2c5282;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .lang-toggle {
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.4rem 0.7rem;
+                font-size: 0.78rem;
+            }
+        }
+        .melmaga-list { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.4rem; }
+        .melmaga-list li { margin-bottom: 0.6rem; }
+        .melmaga-list .mm-date { display: inline-block; background: #2c5282; color: #fff; font-size: 0.78rem; padding: 0.12rem 0.55rem; border-radius: 3px; margin-right: 0.55rem; font-family: "Helvetica Neue", Arial, sans-serif; }
+        .speaker-block { background: #fff; border-left: 3px solid #2c5282; padding: 0.7rem 1.1rem; margin: 0.6rem 0; border-radius: 0 6px 6px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .speaker-block h4 { margin: 0 0 0.3rem; color: #2c5282; font-size: 0.95rem; }
+        .speaker-block h4.sb-name { border: none; padding: 0; }
+        .speaker-block p, .speaker-block ul { margin-bottom: 0; font-size: 0.92rem; }
+        .speaker-block ul { margin-left: 1.2rem; }
+        .participants-box { background: #ebf4ff; border-radius: 8px; padding: 1rem 1.4rem; margin: 1rem 0; }
+        .participants-box ul { margin-left: 1.2rem; margin-bottom: 0; }
+        .decision-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.4rem; margin: 1.2rem 0; }
+        .action-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 1rem 1.4rem; margin: 1.2rem 0; }
+        .decision-box h3, .action-box h3 { margin-top: 0; color: #1f3a5f; }
+        footer { margin-top: 3rem; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+        /* ===== Per-article comments (smtw-cmt) ===== */
+        .smtw-cmt {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #1f3a5f;
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            margin-top: 0.9rem;
+        }
+        .smtw-cmt .smtw-cmt-head { font-size: 0.9rem; font-weight: 600; color: #1f3a5f; margin-bottom: 0.4rem; }
+        .smtw-cmt .smtw-cmt-note { font-size: 0.78rem; color: #94a3b8; margin-bottom: 0.7rem; line-height: 1.5; }
+        .smtw-cmt .smtw-cmt-row { margin-bottom: 0.55rem; }
+        .smtw-cmt label { display: block; font-size: 0.78rem; color: #64748b; margin-bottom: 0.2rem; }
+        .smtw-cmt input[type="text"],
+        .smtw-cmt input[type="email"],
+        .smtw-cmt textarea {
+            width: 100%;
+            font: inherit;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            padding: 0.45rem 0.6rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            background: #fff;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        .smtw-cmt input:focus,
+        .smtw-cmt textarea:focus {
+            outline: none;
+            border-color: #1f3a5f;
+            box-shadow: 0 0 0 2px rgba(31,58,95,0.12);
+        }
+        .smtw-cmt .smtw-cmt-hp { display: none; }
+        .smtw-cmt button.smtw-cmt-send {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: #1f3a5f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .smtw-cmt button.smtw-cmt-send:hover { background: #2c5282; }
+        .smtw-cmt button.smtw-cmt-send:disabled { background: #94a3b8; cursor: default; }
+        .smtw-cmt .smtw-cmt-msg { font-size: 0.85rem; margin-top: 0.5rem; min-height: 1em; }
+        .smtw-cmt .smtw-cmt-msg.ok { color: #15803d; font-weight: 600; }
+        .smtw-cmt .smtw-cmt-msg.err { color: #b91c1c; }
+        .smtw-cmt .smtw-cmt-log { margin-top: 0.8rem; border-top: 1px dashed #cbd5e1; padding-top: 0.6rem; }
+        .smtw-cmt .smtw-cmt-log-title { font-size: 0.78rem; color: #64748b; margin-bottom: 0.4rem; }
+        .smtw-cmt .smtw-cmt-log-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 0.45rem 0.65rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+            color: #334155;
+        }
+        .smtw-cmt .smtw-cmt-log-item .smtw-cmt-log-date { display: block; font-size: 0.72rem; color: #94a3b8; margin-bottom: 0.15rem; }
+        .smtw-cmt-general { margin-top: 1rem; }
+        .smtw-cmt-main { margin-top: 1rem; }
+        .smtw-cmt select.smtw-cmt-target {
+            width: 100%;
+            font: inherit;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            padding: 0.45rem 0.6rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            background: #fff;
+            box-sizing: border-box;
+        }
+        .smtw-cmt select.smtw-cmt-target:focus {
+            outline: none;
+            border-color: #1f3a5f;
+            box-shadow: 0 0 0 2px rgba(31,58,95,0.12);
+        }
+        .smtw-cmt-jump { text-align: right; margin-top: 0.6rem; }
+        .smtw-cmt-jump a { font-size: 0.8rem; color: #64748b; text-decoration: none; cursor: pointer; }
+        .smtw-cmt-jump a:hover { color: #1f3a5f; text-decoration: underline; }
+    
+        .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
+        .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
+        .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
+        .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+    
+        .meeting-nav { display:flex; flex-wrap:wrap; gap:0.4rem; margin:-0.6rem 0 1.6rem; }
+        .meeting-nav a { flex:1 1 0; text-align:center; padding:0.45rem 0.6rem; background:#eef2f7; border:1px solid #cbd5e1; border-radius:6px; color:#475569; text-decoration:none; font-size:0.82rem; white-space:nowrap; }
+        .meeting-nav a:hover { background:#dbe4f0; text-decoration:none; }
+        .meeting-nav a.active { background:#1f3a5f; color:#fff; border-color:#1f3a5f; font-weight:600; }
+    </style>
+</head>
+<body>
+<a class="lang-toggle" href="Kawaguchi_seminar_minutes3.html">🇯🇵 JP</a>
+<div class="container">
+    <h1>AI x Intellectual Forging Academy — Portal</h1>
+    <p class="subtitle">4th meeting held (2026-07-18) · 1st–4th meeting notes · Newsletter excerpts</p>
+
+<nav class="page-nav">
+        <a href="Kawaguchi_seminar_en.html">4th Mtg</a>
+        <a href="Kawaguchi_seminar_papers_en.html">Archive</a>
+        <a href="Kawaguchi_seminar_melmaga_en.html">Newsletters</a>
+        <a href="Kawaguchi_seminar_minutes_en.html" class="active">Minutes</a>
+        <a href="Kawaguchi_seminar_riskpremia_en.html">Risk Premia</a>
+    </nav>
+    <nav class="meeting-nav">
+        <a href="Kawaguchi_seminar_minutes_en.html">4th · latest (07-18)</a>
+        <a href="Kawaguchi_seminar_minutes3_en.html" class="active">3rd (06-20)</a>
+        <a href="Kawaguchi_seminar_minutes2_en.html">2nd (05-09)</a>
+        <a href="Kawaguchi_seminar_minutes1_en.html">1st (04-11)</a>
+    </nav>
+
+<h2 id="sec8" style="margin-top:2.6rem;">8. 3rd meeting summary (June 20, 2026)</h2>
+    <p style="color:#64748b;font-size:0.9rem;">Saturday, June 20, 2026 · Theme: <strong>LLM study session — mechanism, use, mental models, and finance</strong> · Pre-reads: <a href="Kawaguchi_seminar_papers_en.html#sec3-3">3rd-meeting materials (archive)</a>. The full Japanese minutes live in the <a href="Kawaguchi_seminar_minutes.html#sec8">JP portal</a>; an English condensed version follows.</p>
+
+    <div class="participants-box">
+        <h3 style="margin-top:0;color:#2c5282;">Attendees</h3>
+        <ul>
+            <li><strong>Yuichiro Kawaguchi</strong></li>
+            <li><strong>Iinuma</strong></li>
+            <li><strong>Kota Suzuki</strong></li>
+            <li><strong>Sora Asakawa</strong></li>
+            <li>and several other members</li>
+            <li style="list-style:none;border-top:1px solid #cbd5e1;margin:0.5rem 0 0.3rem;padding:0;height:0;"></li>
+            <li><strong>Keiichiro Matsumae</strong> — admin</li>
+            <li><strong>Kazui Sasaki</strong> — admin</li>
+        </ul>
+    </div>
+    <p style="color:#94a3b8;font-size:0.82rem;">Monthly, 2-hour format. First half: LLM mechanism &amp; mental models; second half: finance / markets. A dinner followed (§8.11–8.13). Some proper nouns vary due to auto-transcription.</p>
+
+    <h3>8.1 Context &amp; recap</h3>
+    <ul>
+        <li>1st session held May 9; a ~40-page "LLM prompt engineering" deck circulated May 12 (the professor described "brain fry" from over-loading knowledge). Cadence: monthly, 2-hour slots.</li>
+        <li>The professor's <strong>LLM trilogy</strong> (interpreting LLMs through the lens of statistical models) is distributed via a ¥500/month newsletter. An "AI practical-use guide" by a member was also shared.</li>
+        <li>Flow of the day: members first shared reactions to the pre-reads (Wolfram / Chollet / the LLM trilogy / mental models); the professor then unpacked "what an LLM is" in order — mechanism, history, finance.</li>
+        <li>Professor: "The Nikkei writes for middle-schoolers; corporate AI use today is middle-school level. What's needed is understanding the <strong>mechanism</strong>." Stanford's ~1000-page NLP text is free online — "now that LLMs translate, 'it's in English' is no excuse."</li>
+    </ul>
+
+    <h3>8.2 Current state of AI &amp; impact on practice</h3>
+    <ul>
+        <li>Given compute / data limits, <strong>controlling the vector space via prompts</strong> is the optimal use today.</li>
+        <li>Bloomberg: an ex-SoftBank AI lead runs AI training for financial firms — ¥1–2M per talk, 3 talks/day, booked out 2 months. The competitive axis has shifted from "understanding" to "usage."</li>
+        <li><strong>Hard-to-verify deliverables</strong> (Sasaki): others' AI output hides their reasoning, making errors hard to catch and adding work. Best used as an <strong>extension of your own ability</strong>, not for things you know nothing about.</li>
+        <li>~80% of LLM output is reliable (Iinuma), but it breaks down on hard problems; copy-paste submission leaves understanding shallow.</li>
+        <li><strong>Sycophancy risk</strong>: RL optimizes for answers users like, so errors get flagged less the more you rely on it — linked to "brain fry." A Harvard study suggests humans stop thinking during AI use.</li>
+        <li><strong>ChatGPT → child-services case</strong>: a domestic consultation was routed straight to "call child services," ending in an outcome no one wanted — raising how the young should engage with LLMs.</li>
+    </ul>
+
+    <h3>8.3 Anthropomorphism &amp; the ELIZA effect</h3>
+    <ul>
+        <li>Hard to escape the <strong>anthropomorphism trap</strong> — nicknaming the model, writing polite-form prompts (Suzuki). The <strong>ELIZA effect</strong> (feeling personhood in your interlocutor) is noted by IBM; experts must handle it structurally.</li>
+        <li>Hypothesis on <strong>binary/machine-language prompting</strong>: clearer instructions but fewer of the emergent good answers natural language yields (a Cornell paper).</li>
+        <li>An LLM is of a kind with a self-estimated regression model — treat it as a tool with known flaws.</li>
+    </ul>
+
+    <h3>8.4 How LLMs work (Prof. Kawaguchi)</h3>
+    <ul>
+        <li>At core an <strong>autoregressive (AR) model</strong> — "a machine that probabilistically predicts the next word," an extension of regression.</li>
+        <li><strong>"You can't use what you can't build"</strong>: tracing the history (Hinton 1986 → Bengio 2003), the professor sets the bar for an expert as "give me funding and engineers and I could build something better than today's AI."</li>
+        <li>The breakthrough is <strong>embedding</strong>: integers alone carry no relatedness, so words become ~768-dim vectors and similarity is read off the <strong>inner product</strong> (sentiment, gender, emotion…).</li>
+        <li>An entry analogy is the <strong>text-mining dictionary</strong> (tagging words by sentiment / gender). But in practice features aren't hand-set — learned by backprop from random init, hence a black box. <strong>Feature extraction (the pre-processing) is the crux of ML</strong>, and it is distinct from the AR computation inside the Transformer (a confusion the professor corrected).</li>
+        <li><strong>Transformer = AR + kernel smoothing</strong>: kernel regression injects context (dependency) into Markov-style independence. The professor reached this from kernel smoothing independently, later finding an equivalent paper (Tsai et al. 2019).</li>
+        <li>Theoretical basis: <strong>universal function approximation</strong> (White's theorem); learning = <strong>information compression</strong> (the human brain does the same). History: Hinton 1986 → AI "died" in the 90s → <strong>Bengio et al. 2003</strong> neural LM was the turning point.</li>
+    </ul>
+
+    <h3>8.5 Mechanistic interpretability &amp; emergence — Wolfram vs. Chollet</h3>
+    <ul>
+        <li><strong>Mechanistic interpretability</strong>: a new field probing parameter-activation patterns to see where things happen inside the net.</li>
+        <li><strong>Emergence</strong>: thought-like phenomena may arise incidentally from vector-space relations — "stochastic parrot or emergence?" is under active empirical research.</li>
+        <li><strong>Wolfram</strong>: prompt engineering is limited because the computation is a black box ("everything is computation"); <strong>Chollet</strong>: controllable via vector-space operations — the key contrast.</li>
+        <li>Intelligence may sit more in <strong>embedding (feature extraction)</strong> than the net itself. <strong>Scaling laws</strong>: pushing neuron counts toward brain scale produced unexpected performance (reason unknown).</li>
+        <li><strong>AI agents</strong> are "just a program with an LLM mixed in"; <strong>physical AI</strong> (robots, self-driving) won't run on a language model alone — reasoning beyond language needs a computer-science foundation (the professor frames himself as "computational science, not computational linguistics").</li>
+    </ul>
+
+    <h3>8.6 Mental models &amp; the scholar-practitioner</h3>
+    <ul>
+        <li><strong>Mental model = "how you interpret the world."</strong> Charlie Munger's <strong>latticework</strong> of multiple models; a 20-year theme for the professor (rooted in translating <em>The Science of Investing</em>).</li>
+        <li><strong>Scholar-practitioner</strong>: able to restate practical knowledge in academic language; business school exists to change students' mental models.</li>
+        <li><strong>AI has no mental model</strong> — grounding the role left to humans.</li>
+        <li><strong>Three learning stages</strong>: memorize → diagram → create (no skipping memorization). LLM pre-training is <strong>information compression</strong> (Wolfram: "learning = compression"). The professor's mentor: "think for yourself before reading the textbook."</li>
+    </ul>
+
+    <h3>8.7 Financial markets &amp; AI use</h3>
+    <ul>
+        <li>What stays human: <strong>①setting direction ②taking responsibility</strong> (Suzuki).</li>
+        <li><strong>Temperature</strong>: low for law/contracts/regulation, high for ideation and uncertain forecasts.</li>
+        <li><strong>LLM stock prediction underperforms a simple AR model</strong> (language vs. financial features differ); useful for DD documents but hard to outperform (a semi-efficient market erases dependencies). Conversely, rebuilding the financial feature extraction (embedding) could yield a predictive model.</li>
+        <li>Edge = not-yet-public primary information (monitoring). Anecdotes: the professor on a Mori Building private-fund investment committee; ex-Goldman CEO Blankfein "just phones friends" post-retirement.</li>
+        <li>On ChatGPT confidence levels: <strong>low-coverage names had the highest Sharpe</strong> — active small-cap strategies favor low coverage.</li>
+    </ul>
+
+    <h3>8.8 Macro &amp; market specifics</h3>
+    <ul>
+        <li><strong>Memory-chip high P/E</strong>: structurally low-P/E names trading at 50–60× on a "earn it all in 2–3 years" bet; managers disagree.</li>
+        <li>Semiconductor capex framed as the <strong>inverse of a real option</strong> (charge in rather than wait — a gold rush).</li>
+        <li><strong>BOJ</strong>: Gov. Ueda's June 3 talk — rate hikes plus tapering/halting JGB purchases to manage supply-demand; US Treasury Sec. Bessent's late-May visit read as nudging hikes.</li>
+        <li><strong>TSMC Kumamoto</strong>: read less as geopolitics than "the fastest place in Japan to build a fab → 2–3-year payback."</li>
+        <li>Big-picture (professor): government / Keidanren / BOJ aligned to <strong>inflate away the relative value of public debt</strong> — a bet that breaks if ~¥1,000T of household assets flee. <strong>J-REITs</strong>: good fundamentals but abandoned on supply-demand.</li>
+    </ul>
+
+    <h3>8.9 Regress-PCA vs. embedding (research idea)</h3>
+    <ul>
+        <li><strong>PCA / regress-PCA compress (reduce dimensions)</strong>; a language model does the <strong>opposite — 768 dimensions per word (expansion)</strong>. Connects to last year's spatio-temporal-statistics regress-PCA.</li>
+        <li>Professor: "'add dimensions, add a neural net, and it works' is interesting as research" — but uninterpretable, so better for small-cap / hedge funds than asset managers. Vectorizing economic variables plus the prevailing narrative could, in principle, beat AR.</li>
+    </ul>
+
+    <h3>8.10 Direction of future sessions</h3>
+    <ul>
+        <li><strong>Spatio-temporal-statistics review session</strong>: 2 hours tends to drift, so a <strong>retreat format</strong> (longer slot, different venue) is envisaged. Material: Murakami's spatial-statistics tutorial (with R source, checked by Matsumae) — run it, read the output, "learn by doing." Venue candidates include Dorado and an Urayasu hotel near Disney.</li>
+        <li><strong>BOJ / BOJ-report reading</strong>: whether to make it a standalone session is undecided; being considered as <strong>ongoing quantitative monitoring</strong> alongside analyst reports (sparked by a "professor's-edition NewsPicks" idea with Suzuki).</li>
+        <li>Collect members' interests via a <strong>survey form</strong> to choose the next theme and plan the retreat (run by Matsumae). A request also surfaced for "assignments from the professor, not just listening."</li>
+    </ul>
+
+    <h3>8.11 Dinner ① — new real-estate assets &amp; investing under inflation</h3>
+    <ul>
+        <li><strong>Student-housing business (Ushare)</strong>: rolled out near Waseda; shared space on the ground floor plus mid-floor commons. The founder, inspired by a Harvard real-estate-investing book, left Kajima and funded a Harvard degree through his own property investments; gathers strong international students salon-style and supports their job hunting.</li>
+        <li><strong>A gap in J-REITs</strong>: no student-housing-focused J-REIT exists. Partnering with top universities could make it an asset class that works even under inflation; domestic core investors (fixed yields) can't beat inflation, leaving room for foreign value-add entry.</li>
+        <li><strong>Fandom economy</strong>: 10,000 high-intensity people beat 1,000,000 low-intensity ones — gather "those who get it" (an idea that also echoes this seminar).</li>
+        <li><strong>Investing under inflation</strong>: property analysts' rent forecasts have badly missed — the cause is <strong>confusing nominal and real values</strong> (a blind spot for generations who never lived through inflation).</li>
+        <li><strong>Cycle view</strong>: the post-COVID recovery (~72 months) may turn over around summer. Some see PE-fund-style asset inflation "about to end," while others see a "Reiwa bubble" as post-war surplus capital flows into property. The next bubble's energy: <strong>AI / compute / data centers</strong> (Amazon's and Google's out-of-core capex are the tell).</li>
+    </ul>
+
+    <h3>8.12 Dinner ② — the BOJ, the newsletter, and AI-assisted article analysis</h3>
+    <ul>
+        <li><strong>BOJ independence</strong>: now effectively the government's "house bank," functioning to <strong>support inflation-as-taxation</strong> — hence the value of a continuous "BOJ watcher."</li>
+        <li><strong>Using AI to find errors in Nikkei articles</strong>: feed an article and ask it to "find the mistakes." But the model can "flatter" the Nikkei and just praise it, so <strong>prompt design</strong> (supply correct facts first, then compare/evaluate) is key.</li>
+        <li><strong>Nominal vs. real error</strong>: an FT column compared equity and bond yields in nominal terms — the claim is right but the method wrong; such analyses make good newsletter material.</li>
+        <li><strong>Newsletter operations</strong>: a broad readership makes calibrating difficulty hard. Content candidates: "BOJ watcher," "errors in Nikkei articles," "real-estate investing under inflation." Also practiced: writing market analysis as replies to industry contacts and watching the reaction.</li>
+    </ul>
+
+    <h3>8.13 Dinner ③ — geopolitics, war, Taiwan, China</h3>
+    <ul>
+        <li><strong>War as "fireworks"</strong>: a way to "burn off" siphoned surplus capital. Short of nuclear use the victory condition is never met, so "firing the missile" becomes the end in itself — part of the same hunt for "exits for money" (green / DX → AI).</li>
+        <li><strong>Taiwan / TSMC</strong>: as long as TSMC is in Taiwan, a Chinese military move is too economically damaging to risk (the leading-edge nodes are concentrated there).</li>
+        <li><strong>China's internal dynamics</strong>: a power structure where the military periodically slips control; the navy is said to still carry a grudge from the First Sino-Japanese War; a Party official reportedly told a Japanese business leader "the military won't listen to us."</li>
+        <li>Japan's SDF accumulates realistic training through hundreds of annual scrambles, while actual shoot-downs are deterred by mutual face. After any war's end, China's surplus capital could flow into property and inflate a bubble.</li>
+        <li><strong>Aside (link to investing)</strong>: from tales of petty fraud and romance scams — "<strong>training to spot market distortions resembles a fraudster's thinking</strong>," and "the deceiver is more serious (they can't eat if they fail), so the contest is already decided." Closing consensus: in the AI era, face-to-face dialogue is precious.</li>
+    </ul>
+
+    <div class="decision-box">
+        <h3>Decisions</h3>
+        <ol>
+            <li>Plan a session to <strong>intensively review the basics</strong> of spatio-temporal statistics / the LLM trilogy. A <strong>retreat format</strong> is envisaged, with a separate survey on the retreat to follow.</li>
+            <li>Reading BOJ / related reports together — whether to make it a standalone session is undecided; being considered as <strong>ongoing quantitative monitoring</strong> (form TBD; share views via the survey).</li>
+            <li>Use the <strong>survey form</strong> to collect members' interests and feed the next-theme selection and retreat planning.</li>
+        </ol>
+    </div>
+
+    <div class="action-box">
+        <h3>Action items</h3>
+        <ul>
+            <li>☐ <strong>Matsumae &amp; Sasaki</strong>: send a survey (next-theme and retreat preferences), collect members' interests, and use it to plan the next session</li>
+        </ul>
+    </div>
+
+    <div class="decision-box" style="background:#f8fafc;border-color:#e2e8f0;">
+        <h3>Next meeting (4th)</h3>
+        <p style="margin-bottom:0;"><strong>Saturday, July 18, 2026, 10:30 start</strong> (same time as before) · Venue: <strong>Waseda University, Building 26, 13F meeting room</strong> (same venue). Theme to be decided by survey; materials to be posted on the <a href="Kawaguchi_seminar_en.html">top page</a> in due course.</p>
+    </div>
+
+    <footer>Members only · Do not redistribute · Copyright belongs to the respective paper authors</footer>
+</div>
+</body>
+</html>
