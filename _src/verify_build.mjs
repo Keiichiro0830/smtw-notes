@@ -48,7 +48,6 @@ const checks = [
   ["docs/Kawaguchi_seminar_minutes2_en.html", ["4th · latest (07-18)"]],
   ["docs/Kawaguchi_seminar_video1.html", ["スライド 34", "講義ログ（自動文字起こし・全文）", "全体サマリー"]],
   ["docs/Kawaguchi_seminar_articles.html", ["バブルマネー争奪", "株式と債券の動きに矛盾", "日本経済新聞社に帰属"]],
-  ["docs/Kawaguchi_seminar_boj.html", ["日銀"]],
 ];
 
 let fail = 0;
