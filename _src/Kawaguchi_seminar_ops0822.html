@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>8/22 研究会（合宿）運営ページ ｜ AIx知的鍛錬塾</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+            background: #f8fafc; color: #1a1a1a; line-height: 1.7; padding: 2.5rem 1rem;
+        }
+        .container { max-width: 860px; margin: 0 auto; }
+        h1 { font-size: 1.55rem; color: #2c5282; margin-bottom: 0.4rem; }
+        .subtitle {
+            color: #64748b; font-size: 0.9rem; margin-bottom: 1.2rem;
+            padding-bottom: 0.9rem; border-bottom: 2px solid #2c5282;
+        }
+        h2 {
+            font-size: 1.15rem; color: #2c5282; margin-top: 2.2rem; margin-bottom: 0.8rem;
+            padding-left: 0.6rem; border-left: 4px solid #2c5282;
+        }
+        h3 { font-size: 1rem; color: #1f3a5f; margin-top: 1.3rem; margin-bottom: 0.4rem; }
+        p { margin-bottom: 0.8rem; }
+        ul, ol { margin-left: 1.4rem; margin-bottom: 0.8rem; }
+        li { margin-bottom: 0.3rem; }
+        a { color: #2c5282; }
+        a:hover { text-decoration: underline; }
+        .ops-badge {
+            display: inline-block; background: #7f1d1d; color: #fff; font-size: 0.78rem;
+            font-weight: 700; padding: 0.2rem 0.65rem; border-radius: 4px; margin-bottom: 0.6rem;
+            letter-spacing: 0.04em;
+        }
+        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 0.9rem; }
+        .info-table th, .info-table td {
+            text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid #e2e8f0;
+            vertical-align: top; font-size: 0.94rem;
+        }
+        .info-table th {
+            background: #eef2f7; color: #1f3a5f; font-weight: 600; white-space: nowrap; width: 9rem;
+        }
+        .grid-table { width: 100%; border-collapse: collapse; margin-bottom: 0.9rem; font-size: 0.92rem; }
+        .grid-table th, .grid-table td {
+            text-align: left; padding: 0.5rem 0.65rem; border: 1px solid #e2e8f0; vertical-align: top;
+        }
+        .grid-table thead th { background: #eef2f7; color: #1f3a5f; font-weight: 600; }
+        .grid-table td.who { white-space: nowrap; color: #475569; }
+        .table-wrap { overflow-x: auto; }
+        .st { font-weight: 700; white-space: nowrap; font-size: 0.88rem; }
+        .st-ok { color: #15803d; }
+        .st-wip { color: #b45309; }
+        .st-open { color: #b91c1c; }
+        .callout {
+            background: #fff8e1; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem;
+            margin: 1rem 0; font-size: 0.92rem;
+        }
+        .callout.alert { background: #fef2f2; border-left-color: #dc2626; }
+        .decision-box {
+            background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px;
+            padding: 1rem 1.4rem; margin: 1.2rem 0;
+        }
+        .action-box {
+            background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
+            padding: 1rem 1.4rem; margin: 1.2rem 0;
+        }
+        .note-box {
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
+            padding: 1rem 1.4rem; margin: 1.2rem 0; font-size: 0.9rem; color: #475569;
+        }
+        .decision-box h3, .action-box h3, .note-box h3 { margin-top: 0; color: #1f3a5f; }
+        .src { color: #94a3b8; font-size: 0.82rem; }
+        .timeline { list-style: none; margin-left: 0; }
+        .timeline li {
+            border-left: 2px solid #cbd5e1; padding: 0 0 0.7rem 1rem; margin: 0; position: relative;
+            font-size: 0.92rem;
+        }
+        .timeline li::before {
+            content: ""; position: absolute; left: -5px; top: 0.55rem; width: 8px; height: 8px;
+            border-radius: 50%; background: #2c5282;
+        }
+        .timeline .tl-date { font-weight: 700; color: #1f3a5f; margin-right: 0.5rem; }
+        .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
+        .page-nav a {
+            flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff;
+            border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none;
+            font-size:0.9rem; font-weight:600; white-space:nowrap;
+        }
+        .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
+        .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+        footer { margin-top: 3rem; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span class="ops-badge">運営（事務局）限定ページ</span>
+    <h1>8/22 研究会（合宿）— 運営ページ</h1>
+    <p class="subtitle">
+        研究会『大規模言語モデルと時空モデリング：依存の統計学アプローチ』／2026年8月22日（土）・早稲田大学26号館11階 1101会議室<br>
+        最終更新: 2026-07-30（作成: 松前）／共有先: 川口先生・諏訪部さん・松前・佐々木さん・鈴木さん
+    </p>
+
+    <nav class="page-nav">
+        <a href="Kawaguchi_seminar_ops0822.html" class="active">8/22 研究会</a>
+        <a href="Kawaguchi_seminar_ops1003.html">10/3 シンポジウム</a>
+        <a href="Kawaguchi_seminar.html">会員ポータル</a>
+    </nav>
+
+    <div class="note-box">
+        <h3>このページについて</h3>
+        <p style="margin-bottom:0.5rem;">7/29に川口先生へお約束した「Logisticsをまとめたペーパー」です。<strong>決まったこと・決まっていないこと・誰が次に動くか</strong>を1枚にまとめ、運営5名（川口先生・諏訪部さん・松前・佐々木さん・鈴木さん）で同じ絵を見られるようにするのが目的です。10/3シンポジウムは<a href="Kawaguchi_seminar_ops1003.html">別ページ</a>にあります。</p>
+        <p style="margin-bottom:0;"><strong>本ページは会員ポータルとは別パスワードです。</strong>登壇の打診前の候補者名や会場費用など、メンバーへ出す前の検討事項を含むため、運営5名限りでお取り扱いください。記載の出所（メール日付・打合せ）は各項目に付しています。</p>
+    </div>
+
+    <h2 id="status">1. 現在地（ステータス・サマリー）</h2>
+    <div class="table-wrap">
+    <table class="grid-table">
+        <thead><tr><th style="width:11rem;">項目</th><th style="width:5.5rem;">状況</th><th>内容 / 次のアクション</th></tr></thead>
+        <tbody>
+        <tr><td>日程</td><td class="st st-ok">確定</td><td>2026年8月22日（土）</td></tr>
+        <tr><td>会場</td><td class="st st-ok">確定</td><td>26号館11階 1101会議室（収容18名）／確保枠 10:00〜18:00</td></tr>
+        <tr><td>会議室予約</td><td class="st st-ok">受付済</td><td>7/28に両日とも予約受付（川口先生よりご報告）</td></tr>
+        <tr><td>専任教員の当日参加</td><td class="st st-ok">目処</td><td>ウィリアム先生がOK（7/23）。蟻川先生は当日不参加のため申請書「連絡先」に連名</td></tr>
+        <tr><td>土曜の入館動線</td><td class="st st-open">未確認</td><td><strong>最優先論点。</strong>26号館1階入口が土曜に開かない期間との情報あり。解錠・入館方法の確定が必要</td></tr>
+        <tr><td>タイムテーブル</td><td class="st st-wip">未定</td><td>参加者アンケート（3択）で決定。アンケート未送付</td></tr>
+        <tr><td>プログラムの深さ</td><td class="st st-wip">要確認</td><td>「GMM程度まで」が現実線か、川口先生に範囲を確認</td></tr>
+        <tr><td>参加案内メール</td><td class="st st-open">未送付</td><td>8月上旬までに送付</td></tr>
+        <tr><td>ランチ・懇親</td><td class="st st-open">未着手</td><td>時間割の決定後に手配</td></tr>
+        <tr><td>日英対応</td><td class="st st-wip">検討中</td><td>ウィリアム先生ご参加のため。先生よりご本人にツール自前準備を依頼済（7/24）</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2 id="fixed">2. 確定事項</h2>
+    <table class="info-table">
+        <tr><th>正式名称</th><td>研究会『大規模言語モデルと時空モデリング：依存の統計学アプローチ』<br><span class="src">※運営内では「合宿」と呼んでいるものと同一。蟻川先生へのご説明のため「研究会」名義としたもの（川口先生 7/22）</span></td></tr>
+        <tr><th>日時</th><td><strong>2026年8月22日（土）</strong>／会議室の確保枠は 10:00〜18:00</td></tr>
+        <tr><th>会場</th><td>早稲田大学 26号館 11階 <strong>1101会議室（収容18名）</strong></td></tr>
+        <tr><th>使用名義</th><td>早稲田大学 国際不動産研究所</td></tr>
+        <tr><th>申請者</th><td>川口先生（会議室の申請は先生が可能）</td></tr>
+        <tr><th>申請書の連絡先</th><td>蟻川 靖浩 先生（26号館14階1402・内線 706-3367）／張 明恩 さん（26号館14階1402・内線 706-3364）</td></tr>
+        <tr><th>予約ステータス</th><td><strong>7/28（火）予約受付済</strong>（川口先生「両日の予約が受け付けられました」）</td></tr>
+        <tr><th>参加対象</th><td>AIx知的鍛錬塾メンバー（現10名）。<strong>鈴木 康太さんは8/22の参加が難しい見込み</strong></td></tr>
+    </table>
+
+    <div class="callout">
+        <strong>施設利用の必須条件：専任教員の当日参加。</strong>会議室を無料で利用する条件として、専任の先生の当日参加が必要です。これは<strong>8月・10月とも同じ</strong>条件です（川口先生 7/23）。8/22はウィリアム先生が参加をご快諾（7/23）。蟻川先生は8/22は参加できないため、申請時の「連絡先」に名を連ねていただいています。
+    </div>
+
+    <h2 id="program">3. プログラム（中身）</h2>
+    <p>川口先生からのご提案（7/18）は、LLM三部作と時空統計学でひと区切りとしたうえで、次の2つをマスターする会という位置づけです。</p>
+    <ul>
+        <li><strong>昨年の時空統計学演習の復習と、そのLLMとの関係</strong></li>
+        <li><strong>エージェンティックAIの基礎的なテクニック</strong></li>
+    </ul>
+    <p>7/22の運営打合せ（松前・佐々木さん・鈴木さん）では、以下が論点として挙がりました。</p>
+    <ul>
+        <li>統計の深さは「<strong>GMM程度まで</strong>」が現実線ではないか。範囲は川口先生に確認する。</li>
+        <li>消化不良になるようであれば、<strong>9月に追加開催</strong>を検討する。</li>
+        <li>修士論文で空間統計を実際に使ったのは鈴木 康太さんのみ（GWRは結果が出なかったとのご経験）。<strong>その鈴木さんが8/22は不参加見込み</strong>のため、実装面の知識共有をどう補うかが課題。</li>
+    </ul>
+
+    <h2 id="timetable">4. 当日の時間割（未定・アンケートで決定）</h2>
+    <p>会場の確保枠は10:00〜18:00です。そのうち実際に何時から何時までを使うかは、参加者アンケートで以下の3択から選んでいただき決定します（松前より川口先生・諏訪部さんへ 7/22 提案済み）。</p>
+    <div class="table-wrap">
+    <table class="grid-table">
+        <thead><tr><th style="width:3rem;">案</th><th>構成</th><th>想定</th></tr></thead>
+        <tbody>
+        <tr><td>a</td><td>午前 ＋ Lunch ＋ 午後1</td><td>半日＋食事。移動負担が軽い</td></tr>
+        <tr><td>b</td><td>午後1 ＋ Break ＋ 午後2</td><td>午後のみ。朝が苦手な方に配慮</td></tr>
+        <tr><td>c</td><td>午前 ＋ Lunch ＋ 午後1 ＋ Break ＋ 午後2</td><td>終日（ハードコース）</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p>素案として共有済みのイメージは次のとおりです（松前 7/18 ／ 7/22 打合せ）。</p>
+    <ul>
+        <li>10:00〜12:00　午前セッション</li>
+        <li>12:00〜14:00　ランチ</li>
+        <li>午後セッション（＋ Break ＋ 第2セッション）</li>
+        <li>16:30〜17:00　終了</li>
+    </ul>
+    <p><span class="src">※過去回の実績としてランチが15時頃まで延びる傾向があり、午後セッションの設計はそれを織り込む必要がある、という指摘が7/22打合せで出ています。</span></p>
+
+    <h2 id="open">5. 未決事項・論点</h2>
+
+    <div class="callout alert">
+        <strong>① 土曜日の入館動線（最優先）。</strong>諏訪部さんより「来週から9月一杯、土曜日は26号館の1階の入り口が開いていない」との情報をいただいています（松前より 7/22 01:15 メールで共有）。会議室の予約自体は7/28に受け付けられましたが、<strong>当日どうやって建物に入るか（解錠・鍵の受け渡し・警備への連絡）は未確認のまま</strong>です。加えて、諏訪部さんは8/22当日、所用で静岡におられ不在です。当初「代替会場でも鍵の代理授受の手配など追加的な手続きが必要」と伺っていた点が、1101会議室でも同様に残っている可能性があります。<br>
+        <span class="src">→ 川口先生・諏訪部さんに、土曜日の入館方法と当日の解錠担当をご確認いただきたい論点です。参加案内メールを出す前に確定させたい。</span>
+    </div>
+
+    <div class="table-wrap">
+    <table class="grid-table">
+        <thead><tr><th style="width:12rem;">論点</th><th style="width:6rem;">担当</th><th>内容</th></tr></thead>
+        <tbody>
+        <tr>
+            <td>② 時間帯アンケート</td><td class="who">松前</td>
+            <td>3択アンケートを参加者へ送付。7/23に川口先生へ「近日中に」とご回答済み。開催まで3週間強のため、送付と回収の締切設定が必要。<br><span class="src">※7/22打合せでは佐々木さんに送付を依頼する案も出ていました。実務の分担は要確認。</span></td>
+        </tr>
+        <tr>
+            <td>③ プログラムの範囲</td><td class="who">川口先生</td>
+            <td>時空統計学の演習をどこまで（GMMまで？）扱うか。参加者の予習範囲・当日の資料に直結します。</td>
+        </tr>
+        <tr>
+            <td>④ 参加案内メール</td><td class="who">松前 / 幹事</td>
+            <td>8月上旬までに送付する想定。②の時間割と①の入館方法が決まっていないと、案内に書けない情報が残ります。</td>
+        </tr>
+        <tr>
+            <td>⑤ ランチ・懇親</td><td class="who">未定</td>
+            <td>時間割（a/b/c）の決定後に手配。土曜の学内・近隣の選択肢を確認。</td>
+        </tr>
+        <tr>
+            <td>⑥ 日英対応</td><td class="who">川口先生 / 松前</td>
+            <td>ウィリアム先生がご参加されるため、日本語→英語の対応が必要。川口先生よりご本人に「ツールを自分で準備して」と依頼いただいています（7/24）。松前側でも実用に耐えるツールを調査中（完璧なものは見当たらず、という現状）。</td>
+        </tr>
+        <tr>
+            <td>⑦ 専任教員の割り付け</td><td class="who">川口先生</td>
+            <td>7/23に蟻川先生から「もう1名の専任参加を」とのご要請があり、黒田先生にお願いして7/24に参加可のご回答をいただいています。<strong>この「もう1名」が8/22にも必要なのか、10/3のみなのかが運営側で確定できていません。</strong>8/22の必要人数をご確認いただきたい点です。</td>
+        </tr>
+        <tr>
+            <td>⑧ 鈴木さん不在の補完</td><td class="who">運営</td>
+            <td>空間統計の実装経験者が当日不在。事前に資料化していただくか、9月の追加開催で補うかの判断。</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2 id="actions">6. アクションアイテム</h2>
+    <div class="action-box">
+    <div class="table-wrap">
+    <table class="grid-table" style="margin-bottom:0;">
+        <thead><tr><th style="width:6rem;">担当</th><th style="width:7rem;">期限</th><th>内容</th></tr></thead>
+        <tbody>
+        <tr><td class="who">松前</td><td>7月中〜8月初</td><td>本ページを運営5名へ展開し、川口先生とのミーティングを設定（先生より「いつでもミーティングできます」7/29）</td></tr>
+        <tr><td class="who">松前 / 諏訪部さん</td><td>参加案内の前</td><td><strong>土曜日の入館方法・当日の解錠担当を確定する</strong></td></tr>
+        <tr><td class="who">松前</td><td>近日中</td><td>時間帯アンケート（3択）を参加者へ送付し、締切を設定する</td></tr>
+        <tr><td class="who">川口先生</td><td>アンケート回収後</td><td>プログラムの範囲（GMMまで？）と当日資料をご確定いただく</td></tr>
+        <tr><td class="who">松前 / 幹事</td><td>8月上旬</td><td>参加案内メールを送付（時間割・入館方法・持ち物を含む）</td></tr>
+        <tr><td class="who">運営</td><td>時間割決定後</td><td>ランチ・懇親の手配</td></tr>
+        <tr><td class="who">川口先生</td><td>—</td><td>8/22に必要な専任教員の人数をご確認いただく（⑦）</td></tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+
+    <h2 id="timeline">7. 経緯（出所つき）</h2>
+    <ul class="timeline">
+        <li><span class="tl-date">7/18</span>川口先生より合宿のご提案。「8月22日（土）かその前後で合宿を企画して参加できる人には参加してもらう」。内容は昨年の時空統計学演習の復習とLLMとの関係／エージェンティックの基礎的なテクニック。<span class="src">（メール「Re: 明日2026年7月17日 今期の一区切り」）</span></li>
+        <li><span class="tl-date">7/18</span>松前より時間割イメージ（AM1セッション、午後2セッション＋ディナー）を返信。</li>
+        <li><span class="tl-date">7/22 01:15</span>松前より、諏訪部さんからの「来週から9月一杯、土曜日は26号館の1階の入り口が開いていない」という情報を共有し、代替会場の調査を依頼。諏訪部さんは8/22当日、静岡で不在の旨も共有。<span class="src">（メール「Re: 秋のシンポジウム会場について」）</span></li>
+        <li><span class="tl-date">7/22 11:33</span>川口先生より、諏訪部さん経由で「8月22日、10月3日は26号館11階の会議室を国際不動産研究所で借りることができるかもしれない。40名の部屋」とのご連絡。</li>
+        <li><span class="tl-date">7/22</span>松前・佐々木さん・鈴木さんで運営打合せ。時間帯3択アンケート案、鈴木さんの不参加、参加対象の確認。<span class="src">（議事メモ「シンポジウム・合宿の企画打ち合わせ」）</span></li>
+        <li><span class="tl-date">7/22 23:51</span>川口先生より予約申請の内容をご共有。<strong>①1101（18名）＝8/22の研究会</strong>、②1102（40名）＝10/3のシンポジウム。名称・連絡先・利用目的を確定。「松前さん、佐々木さん、鈴木さんにご検討いただいた合宿と上記①研究会は同じです」。</li>
+        <li><span class="tl-date">7/23 01:37</span>松前より、ウィリアム先生が8/22にご参加いただけない場合の影響範囲を確認。</li>
+        <li><span class="tl-date">7/23 10:58</span>川口先生より、専任教員の当日参加は施設利用（無料）の必須条件で<strong>8月も10月も同じ</strong>とのご回答。10月はウィリアム先生が不可の場合、黒田先生に国際不動産研究所の研究員になっていただき対応する方針。</li>
+        <li><span class="tl-date">7/23 20:44</span>川口先生より<strong>ウィリアム先生OK</strong>のご報告。あわせて蟻川先生から「もう1名の専任参加を」とのご要請があり、黒田先生に打診中。</li>
+        <li><span class="tl-date">7/24 22:18</span>川口先生より<strong>黒田先生も参加可</strong>のご報告。ウィリアム先生には日本語→英語のツールをご自身で準備いただくよう依頼する旨。</li>
+        <li><span class="tl-date">7/28 22:29</span>川口先生より<strong>「両日の予約が受け付けられました」</strong>。</li>
+        <li><span class="tl-date">7/29</span>松前より「Logisticsをまとめたペーパー（HTMLページ）をご準備して展開します」と返信 → 先生より「いつでもミーティングできます」。<span class="src">（本ページがその成果物）</span></li>
+        <li><span class="tl-date">7/30</span>松前と蟻川先生の面談にて、国際不動産研究所のイベントは8/22・10/3、テーマはLLM関連、会場予約等は松前が責任者として動くことを共有。<span class="src">（議事メモ「蟻川先生との雑談」）</span></li>
+    </ul>
+
+    <footer>運営限定・転載禁止 ／ AIx知的鍛錬塾 事務局</footer>
+</div>
+</body>
+</html>

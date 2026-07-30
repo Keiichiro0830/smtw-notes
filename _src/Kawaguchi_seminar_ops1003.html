@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>10/3 秋のシンポジウム 運営ページ ｜ AIx知的鍛錬塾</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+            background: #f8fafc; color: #1a1a1a; line-height: 1.7; padding: 2.5rem 1rem;
+        }
+        .container { max-width: 860px; margin: 0 auto; }
+        h1 { font-size: 1.55rem; color: #2c5282; margin-bottom: 0.4rem; }
+        .subtitle {
+            color: #64748b; font-size: 0.9rem; margin-bottom: 1.2rem;
+            padding-bottom: 0.9rem; border-bottom: 2px solid #2c5282;
+        }
+        h2 {
+            font-size: 1.15rem; color: #2c5282; margin-top: 2.2rem; margin-bottom: 0.8rem;
+            padding-left: 0.6rem; border-left: 4px solid #2c5282;
+        }
+        h3 { font-size: 1rem; color: #1f3a5f; margin-top: 1.3rem; margin-bottom: 0.4rem; }
+        p { margin-bottom: 0.8rem; }
+        ul, ol { margin-left: 1.4rem; margin-bottom: 0.8rem; }
+        li { margin-bottom: 0.3rem; }
+        a { color: #2c5282; }
+        a:hover { text-decoration: underline; }
+        .ops-badge {
+            display: inline-block; background: #7f1d1d; color: #fff; font-size: 0.78rem;
+            font-weight: 700; padding: 0.2rem 0.65rem; border-radius: 4px; margin-bottom: 0.6rem;
+            letter-spacing: 0.04em;
+        }
+        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 0.9rem; }
+        .info-table th, .info-table td {
+            text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid #e2e8f0;
+            vertical-align: top; font-size: 0.94rem;
+        }
+        .info-table th {
+            background: #eef2f7; color: #1f3a5f; font-weight: 600; white-space: nowrap; width: 9rem;
+        }
+        .grid-table { width: 100%; border-collapse: collapse; margin-bottom: 0.9rem; font-size: 0.92rem; }
+        .grid-table th, .grid-table td {
+            text-align: left; padding: 0.5rem 0.65rem; border: 1px solid #e2e8f0; vertical-align: top;
+        }
+        .grid-table thead th { background: #eef2f7; color: #1f3a5f; font-weight: 600; }
+        .grid-table td.who { white-space: nowrap; color: #475569; }
+        .table-wrap { overflow-x: auto; }
+        .st { font-weight: 700; white-space: nowrap; font-size: 0.88rem; }
+        .st-ok { color: #15803d; }
+        .st-wip { color: #b45309; }
+        .st-open { color: #b91c1c; }
+        .callout {
+            background: #fff8e1; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem;
+            margin: 1rem 0; font-size: 0.92rem;
+        }
+        .callout.alert { background: #fef2f2; border-left-color: #dc2626; }
+        .decision-box {
+            background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px;
+            padding: 1rem 1.4rem; margin: 1.2rem 0;
+        }
+        .action-box {
+            background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
+            padding: 1rem 1.4rem; margin: 1.2rem 0;
+        }
+        .note-box {
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
+            padding: 1rem 1.4rem; margin: 1.2rem 0; font-size: 0.9rem; color: #475569;
+        }
+        .decision-box h3, .action-box h3, .note-box h3 { margin-top: 0; color: #1f3a5f; }
+        .quote-block {
+            background: #fff; border-left: 3px solid #2c5282; padding: 0.8rem 1.1rem;
+            margin: 0.8rem 0; border-radius: 0 6px 6px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            font-size: 0.93rem;
+        }
+        .quote-block h4 { margin: 0 0 0.4rem; color: #2c5282; font-size: 0.97rem; }
+        .quote-block p:last-child { margin-bottom: 0; }
+        .src { color: #94a3b8; font-size: 0.82rem; }
+        .timeline { list-style: none; margin-left: 0; }
+        .timeline li {
+            border-left: 2px solid #cbd5e1; padding: 0 0 0.7rem 1rem; margin: 0; position: relative;
+            font-size: 0.92rem;
+        }
+        .timeline li::before {
+            content: ""; position: absolute; left: -5px; top: 0.55rem; width: 8px; height: 8px;
+            border-radius: 50%; background: #2c5282;
+        }
+        .timeline .tl-date { font-weight: 700; color: #1f3a5f; margin-right: 0.5rem; }
+        .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
+        .page-nav a {
+            flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff;
+            border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none;
+            font-size:0.9rem; font-weight:600; white-space:nowrap;
+        }
+        .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
+        .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+        footer { margin-top: 3rem; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span class="ops-badge">運営（事務局）限定ページ</span>
+    <h1>10/3 秋のシンポジウム — 運営ページ</h1>
+    <p class="subtitle">
+        シンポジウム『今回は違うか？：ITブームとAIブームの違い：多段階意思決定と学習の観点から』／2026年10月3日（土）・早稲田大学26号館11階 1102会議室<br>
+        最終更新: 2026-07-30（作成: 松前）／共有先: 川口先生・諏訪部さん・松前・佐々木さん・鈴木さん
+    </p>
+
+    <nav class="page-nav">
+        <a href="Kawaguchi_seminar_ops0822.html">8/22 研究会</a>
+        <a href="Kawaguchi_seminar_ops1003.html" class="active">10/3 シンポジウム</a>
+        <a href="Kawaguchi_seminar.html">会員ポータル</a>
+    </nav>
+
+    <div class="note-box">
+        <h3>このページについて</h3>
+        <p style="margin-bottom:0.5rem;">7/29に川口先生へお約束した「Logisticsをまとめたペーパー」です。<strong>決まったこと・決まっていないこと・誰が次に動くか</strong>を1枚にまとめ、運営5名（川口先生・諏訪部さん・松前・佐々木さん・鈴木さん）で同じ絵を見られるようにするのが目的です。8/22研究会は<a href="Kawaguchi_seminar_ops0822.html">別ページ</a>にあります。</p>
+        <p style="margin-bottom:0;"><strong>本ページは会員ポータルとは別パスワードです。</strong>登壇の打診前の候補者名や懇親会の費用など、メンバーへ出す前の検討事項を含むため、運営5名限りでお取り扱いください。記載の出所（メール日付・打合せ）は各項目に付しています。</p>
+    </div>
+
+    <h2 id="status">1. 現在地（ステータス・サマリー）</h2>
+    <div class="table-wrap">
+    <table class="grid-table">
+        <thead><tr><th style="width:11rem;">項目</th><th style="width:5.5rem;">状況</th><th>内容 / 次のアクション</th></tr></thead>
+        <tbody>
+        <tr><td>日程</td><td class="st st-ok">確定</td><td>2026年10月3日（土）</td></tr>
+        <tr><td>会場</td><td class="st st-ok">確定</td><td>26号館11階 1102会議室（収容40名）／確保枠 10:00〜18:00</td></tr>
+        <tr><td>会議室予約</td><td class="st st-ok">受付済</td><td>7/28に両日とも予約受付（川口先生よりご報告）</td></tr>
+        <tr><td>専任教員の当日参加</td><td class="st st-ok">目処</td><td>ウィリアム先生OK（7/23）＋ 黒田先生 参加可（7/24・研究員としてご参加いただく形）</td></tr>
+        <tr><td>タイトル</td><td class="st st-wip">仮</td><td>主題は確定。<strong>副題「多段階意思決定と学習の観点から」は仮</strong></td></tr>
+        <tr><td>登壇者</td><td class="st st-open">未確定</td><td>川口先生は確定。飯沼さん・宮島先生・橘田さんは<strong>いずれも未打診</strong></td></tr>
+        <tr><td>キャパシティ</td><td class="st st-open">論点</td><td><strong>40名枠に対し、集客見込みとの整合が未検証</strong>（下記5.）</td></tr>
+        <tr><td>お声がけリスト</td><td class="st st-wip">作成中</td><td>最終講義参加者リスト約300名から25名を選別。属性別集計を鈴木さんが整理</td></tr>
+        <tr><td>第1次お声がけ</td><td class="st st-open">未送付</td><td><strong>目標 8/15まで</strong>（残り約2週間）</td></tr>
+        <tr><td>申込フォーム</td><td class="st st-open">未作成</td><td>Googleフォーム。担当未定</td></tr>
+        <tr><td>ゼミ会（懇親会）</td><td class="st st-wip">検討中</td><td>森の風（8,000円）／リーガロイヤル（10,000円）。先生はリーガ寄りのご意向</td></tr>
+        <tr><td>MC</td><td class="st st-open">未打診</td><td>オヌマさんに依頼する案</td></tr>
+        <tr><td>日英対応</td><td class="st st-wip">検討中</td><td>ウィリアム先生ご参加のため</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2 id="fixed">2. 確定事項</h2>
+    <table class="info-table">
+        <tr><th>正式名称</th><td>シンポジウム『今回は違うか？：ITブームとAIブームの違い：多段階意思決定と学習の観点から』<br><span class="src">※主題は7/22に川口先生が確定。副題（多段階意思決定と学習の観点から）は先生ご自身が「仮」とされています</span></td></tr>
+        <tr><th>日時</th><td><strong>2026年10月3日（土）</strong>／会議室の確保枠は 10:00〜18:00</td></tr>
+        <tr><th>会場</th><td>早稲田大学 26号館 11階 <strong>1102会議室（収容40名）</strong></td></tr>
+        <tr><th>使用名義</th><td>早稲田大学 国際不動産研究所</td></tr>
+        <tr><th>申請者</th><td>川口先生</td></tr>
+        <tr><th>申請書の連絡先</th><td>蟻川 靖浩 先生（26号館14階1402・内線 706-3367）／張 明恩 さん（26号館14階1402・内線 706-3364）</td></tr>
+        <tr><th>予約ステータス</th><td><strong>7/28（火）予約受付済</strong></td></tr>
+        <tr><th>専任教員</th><td>ウィリアム先生（7/23 ご快諾）＋ 黒田先生（7/24 参加可）。黒田先生には国際不動産研究所の研究員になっていただいたうえで当日ご参加いただく形<br><span class="src">※専任教員の当日参加は施設利用（無料）の必須条件。8月・10月とも同じ（川口先生 7/23）</span></td></tr>
+    </table>
+
+    <h2 id="design">3. 参加者構成の設計（40名の内訳）</h2>
+    <p>川口先生より7/22にご提示いただいた設計です。現メンバー10名に30名を加えて40名とする組み立てになっています。</p>
+    <div class="table-wrap">
+    <table class="grid-table">
+        <thead><tr><th style="width:16rem;">区分</th><th style="width:5rem;">人数</th><th>備考</th></tr></thead>
+        <tbody>
+        <tr><td>AIx知的鍛錬塾 現メンバー</td><td>10名</td><td>—</td></tr>
+        <tr><td>国際不動産研究所 招へい研究員</td><td>約5名</td><td><strong>「不動産を絡める」という制約は、この5名を加えることでクリアできる</strong>（川口先生 7/22）</td></tr>
+        <tr><td>お声がけ（外部）</td><td>25名</td><td>こちらからピックアップしてお誘いするイメージ</td></tr>
+        <tr><td><strong>合計</strong></td><td><strong>40名</strong></td><td>1102会議室の収容人数と一致</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2 id="program">4. テーマとプログラム</h2>
+
+    <h3>川口先生の切り口（他の論者との差別化ポイント）</h3>
+    <p>「ITブームとAIブームの違い」はネット上でもアナリスト等が論じていますが、先生の切り口はそれらとは異なります。7/22のご説明を要約すると次の4点です。</p>
+    <div class="quote-block">
+        <h4>① バリュエーション手法の世代交代</h4>
+        <p>ITブーム時には、赤字を垂れ流していたアマゾンのバリュエーションはDCFでは不十分で、リアルオプション（ドリフト項も確率過程としてモデル化）で評価できるという論文が出た。現在のAIブームでは、ハイパースケーラーのバリュエーションはリアルオプションだけでは対応できず、<strong>計画資本（認知経済学）</strong>を持ち出す必要がある。</p>
+    </div>
+    <div class="quote-block">
+        <h4>② 学習のパラダイム転換</h4>
+        <p>回答を得るコストが急激に低下したことで、<strong>「問いのシークエンスを作ること」に価値</strong>が見出されるようになった。</p>
+    </div>
+    <div class="quote-block">
+        <h4>③ プラットフォームの経済学</h4>
+        <p>ITブーム時には、プラットフォームの経済学はまったく見えていなかった。</p>
+    </div>
+    <div class="quote-block">
+        <h4>④ バブルの連鎖という歴史観</h4>
+        <p>ITブームでは多くのベンチャーが死に経済が悪化した。それで米国は住宅バブルを起こして経済を支え、それが行き過ぎて世界経済危機になった。次のバブルはグリーンとITセクターで起こすことにして現在に至っている。</p>
+    </div>
+
+    <h3>先生の発表</h3>
+    <p>8月26日 18:45から青山学院で開催されるリアルオプション学会で、先生は『リアルオプションと計画資本：学習の役割の変化』を軸にご発表予定です。<strong>10月のシンポジウムでは、この学会発表を少し発展させたものを発表される</strong>ご意向です（川口先生 7/22）。</p>
+
+    <h3>テーマ候補（7/22 運営打合せ・松前より提示）</h3>
+    <ul>
+        <li>AI × 不動産</li>
+        <li>LLM 三部作</li>
+        <li>Planning Capital × データセンター投資</li>
+        <li>ITバブルと足元のAI関連株価加熱の類似性と相違点<span class="src">（シンポジウム全体の副題・通奏低音的な広い扱いにする案）</span></li>
+    </ul>
+
+    <h3>当日のタイムテーブル案</h3>
+    <p>会場の確保枠は10:00〜18:00です。現時点の想定は以下（松前 7/22 ／ 7/22打合せ）。</p>
+    <ul>
+        <li>14:00 開始 → 3時間程度（17:00頃 終了）</li>
+        <li>プログラム案：2時間講演 ＋ 1時間 参加者ディスカッション。ただしディスカッション形式は参加ハードルを上げる懸念があるため、ゲスト次第でパネル・Q&amp;A形式も検討</li>
+        <li>17:30〜18:00頃 懇親会（ゼミ会）スタート</li>
+    </ul>
+
+    <h2 id="speakers">5. 登壇候補・ゲスト（いずれも未打診）</h2>
+    <div class="callout">
+        <strong>注意：以下はすべて運営内の検討段階であり、ご本人への打診は行っていません。</strong>打診の順序とタイミングは川口先生とご相談のうえ決めたい論点です。
+    </div>
+    <div class="table-wrap">
+    <table class="grid-table">
+        <thead><tr><th style="width:9rem;">候補</th><th style="width:5rem;">状況</th><th>内容・論点</th></tr></thead>
+        <tbody>
+        <tr>
+            <td>川口先生</td><td class="st st-ok">確定</td>
+            <td>リアルオプション学会（8/26）の発表を発展させたもの</td>
+        </tr>
+        <tr>
+            <td>飯沼さん<br><span class="src">SBI新生銀行</span></td><td class="st st-wip">案</td>
+            <td>川口先生のご提案：「債券投資の専門家として金融界でプレゼンを行っているので<strong>『債券投資からみた今回は違うか？：ITブームとAIブームの違い』</strong>について発表してもらうといい」（7/22）。<strong>飯沼さんは知的鍛錬塾のメンバーでもある</strong>ため、打診のタイミングは別途ご相談したい旨を松前より7/23にお伝えしています。</td>
+        </tr>
+        <tr>
+            <td>宮島先生</td><td class="st st-open">保留</td>
+            <td>基調講演をお願いする案。ただし川口先生より<strong>「40名のシンポジウムでは失礼かな？とも思います」</strong>とのご留保（7/22）。7/30の蟻川先生との会話では、宮島先生は9月まで理事、その後名誉教授、塾的なゼミを再開との噂。</td>
+        </tr>
+        <tr>
+            <td>橘田さん<br><span class="src">Blackstone ジャパン</span></td><td class="st st-open">保留</td>
+            <td>同じく基調講演の案。7/22打合せでは「規模が大きすぎて集客とのバランスに懸念」との指摘もあり。先生は7/3にデータセンターの資料を橘田さんへお送りになる検討をされていた経緯があります。</td>
+        </tr>
+        <tr>
+            <td>MC（オヌマさん）</td><td class="st st-open">案</td>
+            <td>ゲストをお呼びする場合は進行役がいた方がよい、という7/22打合せの整理。</td>
+        </tr>
+        <tr>
+            <td>その他</td><td class="st st-open">案</td>
+            <td>7/18の会食では、シン・テジュンさん（Gojo &amp; Company）、豊川氏の名前も挙がりました。霞ヶ関キャピタルは業界内のレピュテーションへの留意が必要という整理。</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="callout alert">
+        <strong>キャパシティと集客目標の整合（要判断）。</strong>会場は40名（外部お声がけ枠は25名）ですが、7/22打合せでの見立ては「知人ベース＋メール配信で20〜30名、ビッグネームのゲスト次第で70〜100名も視野」でした。<strong>宮島先生や橘田さんに基調講演をお願いする方向に振れると、40名では収まらない可能性があります。</strong>一方、諏訪部さんが7/21に仮押さえしてくださった 10/17 国際会議場第3会議室（84名）・10/24 27号館 小野講堂（200名）は、<strong>「1週間以内に1つを選び申請書を提出」という条件</strong>でしたので、現在は流れている可能性が高いと見ています（要確認）。<br>
+        <span class="src">→「40名で密度の高い会にする」のか「規模を取りに行く」のかを先に決めないと、ゲスト打診と集客リストの粒度が決まりません。川口先生とのミーティングでの最初の論点にしたい点です。</span>
+    </div>
+
+    <h2 id="outreach">6. 集客</h2>
+
+    <h3>母集団とチャネル</h3>
+    <div class="table-wrap">
+    <table class="grid-table">
+        <thead><tr><th style="width:13rem;">チャネル</th><th>内容</th></tr></thead>
+        <tbody>
+        <tr><td>最終講義 参加者リスト</td><td>約300名。うちWBS・日本橋ファイナンス・東海大・明海大・宮水大のビジネス系で約200名弱がターゲット層。<strong>鈴木 康太さんが管理</strong>し、属性別の集計表を川口先生へご送付予定。選別の切り口は「ビジネス関係／明海大学／日本橋ファイナンス／WBS ＋ 先生のご招待」（松前 7/22）。</td></tr>
+        <tr><td>Facebook グループ</td><td>参加者 約80名。過去の投稿では約20名が反応（いいね22）→ 実来場は約10名の見込み。</td></tr>
+        <tr><td>メルマガ グループ</td><td>—</td></tr>
+        <tr><td>ゲスト経由</td><td>ゲストの方によっては、その方からの参加者が見込まれる。</td></tr>
+        <tr><td>追加候補</td><td>諏訪部さんの不動産研究所ネットワーク、ファイナンス稲門会（各世代に代表が1名いるようで、その気になればアクセス可能）、ファイナンス討論会。<span class="src">→ 諏訪部さんに告知の可否をご確認したい項目です。</span></td></tr>
+        <tr><td>早稲田の公式イベント扱い</td><td>手続きがあるなら検討可能（松前 7/22）。ただし<strong>川口先生が学内で目立ちすぎることを警戒されている</strong>点に留意（7/22打合せ）。</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h3>スケジュール（松前案・7/22 先生へ提示済み）</h3>
+    <ul>
+        <li><strong>8/15まで</strong>：第1次お声がけメールの送信を完了</li>
+        <li><strong>8月末まで</strong>：回答を回収</li>
+        <li><strong>9月頭</strong>：人数が少ない場合は第2次募集</li>
+    </ul>
+    <p>申込は<strong>Googleフォーム</strong>で受け、最終講義用のGmailアカウントから一斉送信する想定です（7/22打合せ）。</p>
+
+    <h2 id="party">7. ゼミ会（懇親会）</h2>
+    <p>川口先生のご構想は、シンポジウムを40名程度とし、<strong>その後に「ゼミ会」を開催する</strong>というものです。ゼミ会はFacebookの参加者約80名にFBを通じて声がけをして、リーガロイヤルのバイキング貸し切りのようなイメージ、とのことでした（7/22）。</p>
+    <div class="table-wrap">
+    <table class="grid-table">
+        <thead><tr><th style="width:12rem;">候補</th><th style="width:7rem;">費用</th><th>内容</th></tr></thead>
+        <tbody>
+        <tr><td>森の風<br><span class="src">26号館15階</span></td><td>8,000円</td><td>2時間・食事＋飲み物無制限。<strong>シンポジウム会場と同じ26号館内で移動がスムーズ</strong>。先生も7/23午前に「参加費を抑えることもできる」とご言及。</td></tr>
+        <tr><td>リーガロイヤルホテル</td><td>10,000円</td><td>2時間・食事＋飲み物無制限。先生は7/23夜に<strong>「2000円ならリーガのほうがいいかな？と思いますが…」</strong>とのご意向。</td></tr>
+        <tr><td>グッドモーニングカフェ</td><td>7,000〜8,000円</td><td>7/22打合せ時の候補。立食最大80名・着席60名程度。トントンクラブも候補として挙がっていました。<span class="src">※26号館内の森の風が候補に出る前の検討です。</span></td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p><span class="src">※費用は松前が7/23時点で確認した情報です。日程が近づいた段階で、空き状況と料金を改めて確認してご報告する旨を先生にお伝えしています。</span></p>
+    <p>会費の回収は、当日PayPay または Googleフォームでの事前決済を検討。<strong>キャンセル規定と入金管理が論点</strong>です（過去の卒業パーティーでは振込回収に苦労した経緯あり）。決済用のクレジットカードを準備する必要があります。</p>
+
+    <h2 id="open">8. 未決事項・論点</h2>
+    <div class="table-wrap">
+    <table class="grid-table">
+        <thead><tr><th style="width:13rem;">論点</th><th style="width:7rem;">担当</th><th>内容</th></tr></thead>
+        <tbody>
+        <tr><td>① 規模の方針</td><td class="who">川口先生 / 運営</td><td><strong>最重要。</strong>40名で密度重視か、規模を取りに行くか。ゲスト打診・集客リストの粒度・会場の再検討がすべてここに連動します。</td></tr>
+        <tr><td>② 仮押さえ会場の生死</td><td class="who">松前 / 諏訪部さん</td><td>10/17 国際会議場第3会議室（84名）・10/24 小野講堂（200名）の仮押さえが失効しているかを確認。①の判断材料。</td></tr>
+        <tr><td>③ ゲスト確定と打診順</td><td class="who">川口先生</td><td>飯沼さん・宮島先生・橘田さん。誰に、どの順で、いつ打診するか。</td></tr>
+        <tr><td>④ 飯沼さんへの打診時期</td><td class="who">川口先生 / 松前</td><td>メンバーでもあるため、8/22研究会の前後どちらで切り出すかを含めご相談したい。</td></tr>
+        <tr><td>⑤ 副題の確定</td><td class="who">川口先生</td><td>「多段階意思決定と学習の観点から」は仮。お声がけメールの文面に必要。</td></tr>
+        <tr><td>⑥ プログラム形式</td><td class="who">運営</td><td>2時間講演＋1時間ディスカッション／パネル／Q&amp;A のいずれか。ゲスト確定後に決定。</td></tr>
+        <tr><td>⑦ MCの依頼</td><td class="who">未定</td><td>オヌマさんへの打診。</td></tr>
+        <tr><td>⑧ Googleフォーム</td><td class="who">未定</td><td>申込フォームの作成。第1次お声がけ（8/15目標）に間に合わせる必要あり。</td></tr>
+        <tr><td>⑨ ゼミ会の会場・規模</td><td class="who">松前</td><td>森の風／リーガロイヤルの選択と、対象をシンポジウム参加者40名にするかFB80名に広げるか。日程が近づいてから空き・料金を再確認。</td></tr>
+        <tr><td>⑩ 決済用カード</td><td class="who">未定</td><td>会費の事前決済に必要。</td></tr>
+        <tr><td>⑪ 諏訪部さん経由の告知</td><td class="who">松前</td><td>不動産研究所ネットワーク・ファイナンス討論会での告知可否の確認。</td></tr>
+        <tr><td>⑫ 日英対応</td><td class="who">川口先生 / 松前</td><td>ウィリアム先生ご参加のため。先生よりご本人にツールの自前準備を依頼済（7/24）。松前側でも調査継続中。</td></tr>
+        <tr><td>⑬ 早稲田公式イベント扱い</td><td class="who">未定</td><td>手続きの有無と、先生が学内で目立つことへのご懸念とのバランス。</td></tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h2 id="actions">9. アクションアイテム</h2>
+    <div class="action-box">
+    <div class="table-wrap">
+    <table class="grid-table" style="margin-bottom:0;">
+        <thead><tr><th style="width:7rem;">担当</th><th style="width:7rem;">期限</th><th>内容</th></tr></thead>
+        <tbody>
+        <tr><td class="who">松前</td><td>7月中〜8月初</td><td>本ページを運営5名へ展開し、川口先生とのミーティングを設定（先生より「いつでもミーティングできます」7/29）。<strong>議題の筆頭は①規模の方針</strong></td></tr>
+        <tr><td class="who">松前</td><td>ミーティング前</td><td>10/17・10/24会場の仮押さえが生きているかを諏訪部さんに確認</td></tr>
+        <tr><td class="who">鈴木 康太さん</td><td>8月上旬</td><td>最終講義参加者リストの属性別集計表を川口先生へご送付</td></tr>
+        <tr><td class="who">運営</td><td>8/10目安</td><td>お声がけ25名のたたき台を作成（属性別集計をもとに選別）</td></tr>
+        <tr><td class="who">未定</td><td>8/10目安</td><td>シンポジウム参加申込用のGoogleフォームを作成</td></tr>
+        <tr><td class="who">運営</td><td><strong>8/15</strong></td><td><strong>第1次お声がけメールの送信を完了</strong></td></tr>
+        <tr><td class="who">川口先生</td><td>8月上旬</td><td>ゲスト（飯沼さん・宮島先生・橘田さん）の打診方針と副題をご確定</td></tr>
+        <tr><td class="who">松前</td><td>8月末</td><td>回答の回収状況を集計。少なければ9月頭に第2次募集</td></tr>
+        <tr><td class="who">松前</td><td>9月</td><td>ゼミ会会場（森の風／リーガロイヤル）の空き状況・料金を確認しご報告</td></tr>
+        <tr><td class="who">未定</td><td>9月</td><td>決済用クレジットカードの準備</td></tr>
+        <tr><td class="who">松前</td><td>—</td><td>諏訪部さんに不動産研究所ネットワーク・ファイナンス討論会での告知可否を確認</td></tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+
+    <h2 id="timeline">10. 経緯（出所つき）</h2>
+    <ul class="timeline">
+        <li><span class="tl-date">7/18</span>知的鍛錬塾 第4回のあとの会食で、10月頃のシンポジウム構想を議論。キークエスチョンは「ITバブルとAIブームの類似点・相違点」が有力、ゲスト候補として宮島先生・橘田さん・シン・テジュンさんの名前。規模は30〜60名想定。<span class="src">（議事メモ「AIブームと不動産金融をめぐる勉強会・シンポジウム計画」）</span></li>
+        <li><span class="tl-date">7/21 16:14</span>諏訪部さんより、<strong>10/3・10/10とも国際会議場は満室</strong>とのご連絡。あわせて10/4（96名）・10/11（84名）・10/17（84名）・10/24 小野講堂（200名）を仮押さえ。</li>
+        <li><span class="tl-date">7/21 21:47</span>諏訪部さんより追伸：<strong>「仮押さえに過ぎないため、1週間以内にどれか一つを選び、申請書を作成して提出する必要があります」</strong>。</li>
+        <li><span class="tl-date">7/21 22:20</span>川口先生より10/17 か 10/24 のご打診 → 松前「どちらも大丈夫です」。</li>
+        <li><span class="tl-date">7/22 11:33</span>川口先生より、諏訪部さん経由で<strong>26号館11階の会議室を国際不動産研究所で借りられる可能性</strong>（40名の部屋）。まずこちらを申請する方針。</li>
+        <li><span class="tl-date">7/22 13:51</span>松前より「8/22が合宿、10/3がシンポジウムと理解いたしました」と確認。</li>
+        <li><span class="tl-date">7/22</span>松前・佐々木さん・鈴木さんで運営打合せ。ゲスト候補、お声がけリスト、キャパシティ、日程、テーマ、当日タイムテーブル、懇親会を整理。<span class="src">（議事メモ「シンポジウム・合宿の企画打ち合わせ」）</span></li>
+        <li><span class="tl-date">7/22 22:57</span>松前より主要検討事項を先生・諏訪部さんへメール。8/15までに第1次お声がけ完了、8月末回収、9月頭に第2次というスケジュールを提示。</li>
+        <li><span class="tl-date">7/22 23:51</span>川口先生より予約申請の内容と構想をご共有。<strong>②1102（40名）＝10/3のシンポジウム</strong>。タイトル確定（副題は仮）、40名の内訳（現10名＋招へい研究員5名＋お声がけ25名）、飯沼さんへの発表依頼案、宮島先生・橘田さんの基調講演案とご留保、ゼミ会構想（FB約80名・リーガロイヤルのバイキング貸し切り）、8/26リアルオプション学会でのご発表予定。</li>
+        <li><span class="tl-date">7/23 10:58</span>川口先生より、専任教員の当日参加は<strong>8月も10月も同じ</strong>必須条件。10月はウィリアム先生が不可の場合、黒田先生に研究員になっていただき対応可。ゼミ会の会場は26号館15階「森の風」で参加費を抑えることもできる。</li>
+        <li><span class="tl-date">7/23 15:57</span>松前より会場費用を報告：<strong>森の風 8,000円／リーガロイヤル 10,000円</strong>（いずれも2時間・食事＋飲み物無制限）。</li>
+        <li><span class="tl-date">7/23 20:44</span>川口先生より<strong>ウィリアム先生OK</strong>。蟻川先生から「もう1名の専任参加を」とのご要請 → 黒田先生に打診。会場は<strong>「2000円ならリーガのほうがいいかな？」</strong>。</li>
+        <li><span class="tl-date">7/24 22:18</span>川口先生より<strong>黒田先生も参加可</strong>。ウィリアム先生には日本語→英語のツールをご自身で準備いただくよう依頼する旨。</li>
+        <li><span class="tl-date">7/28 22:29</span>川口先生より<strong>「両日の予約が受け付けられました」</strong>。</li>
+        <li><span class="tl-date">7/29</span>松前より「Logisticsをまとめたペーパー（HTMLページ）をご準備して展開します」と返信 → 先生より「いつでもミーティングできます」。<span class="src">（本ページがその成果物）</span></li>
+        <li><span class="tl-date">7/30</span>松前と蟻川先生の面談にて、国際不動産研究所のイベントは8/22・10/3、テーマはLLM関連、会場予約等は松前が責任者として動くことを共有。<span class="src">（議事メモ「蟻川先生との雑談」）</span></li>
+    </ul>
+
+    <footer>運営限定・転載禁止 ／ AIx知的鍛錬塾 事務局</footer>
+</div>
+</body>
+</html>
