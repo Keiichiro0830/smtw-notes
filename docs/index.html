@@ -27,6 +27,13 @@
             padding-bottom: 1rem;
             border-bottom: 2px solid #2c5282;
         }
+        h2 {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin: 1.6rem 0 0.6rem;
+        }
         .meeting-list { list-style: none; }
         .meeting-list li {
             margin-bottom: 0.8rem;
@@ -44,6 +51,8 @@
         .meeting-list a:hover {
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
+        .meeting-list a.primary { border-left: 5px solid #2c5282; }
+        .meeting-list a.next { border-left: 5px solid #b45309; background: #fffdf7; }
         .date { color: #64748b; font-size: 0.85rem; }
         footer {
             margin-top: 3rem;
@@ -57,23 +66,63 @@
 <div class="container">
     <h1>AIx知的鍛錬塾</h1>
     <p class="subtitle">参加者限定ページ</p>
+
+    <h2>ポータル</h2>
     <ul class="meeting-list">
         <li>
-            <a href="Kawaguchi_seminar.html">
-                <span class="date">ポータル (JP)</span><br>
-                AIx知的鍛錬塾 ポータル（事前資料・議事メモ・メルマガ全文）
-            </a>
-        </li>
-        <li>
-            <a href="Kawaguchi_seminar_minutes.html">
-                <span class="date">2026-07-18・最新</span><br>
-                第4回ミーティング 議事メモ（第1〜4回はページ内タブで切替）
+            <a class="primary" href="Kawaguchi_seminar.html">
+                <span class="date">トップ (JP)</span><br>
+                AIx知的鍛錬塾 ポータル — ここから各ページへ
             </a>
         </li>
         <li>
             <a href="Kawaguchi_seminar_en.html">
-                <span class="date">Portal (EN)</span><br>
-                AI x Intellectual Forging Academy — English portal for William
+                <span class="date">Top (EN)</span><br>
+                AI x Intellectual Forging Academy — English portal
+            </a>
+        </li>
+    </ul>
+
+    <h2>これからの予定</h2>
+    <ul class="meeting-list">
+        <li>
+            <a class="next" href="Kawaguchi_seminar_0822.html">
+                <span class="date">2026-08-22（土）10:00〜16:00・次回</span><br>
+                第5回 研究会 — 会場・時間割・事前準備・事前課題・資料
+            </a>
+        </li>
+        <li>
+            <a href="Kawaguchi_seminar_1003.html">
+                <span class="date">2026-10-03（土）14:00〜17:00頃</span><br>
+                秋のシンポジウム — テーマ・登壇・ゼミ会・8/26 リアルオプション学会
+            </a>
+        </li>
+    </ul>
+
+    <h2>これまで</h2>
+    <ul class="meeting-list">
+        <li>
+            <a href="Kawaguchi_seminar_prev.html">
+                <span class="date">2026-07-18・開催済</span><br>
+                第4回 — 当日スライド・事前資料・第3回後アンケート結果
+            </a>
+        </li>
+        <li>
+            <a href="Kawaguchi_seminar_minutes.html">
+                <span class="date">第1〜4回</span><br>
+                議事メモ（ページ内タブで切替）
+            </a>
+        </li>
+        <li>
+            <a href="Kawaguchi_seminar_papers.html">
+                <span class="date">アーカイブ</span><br>
+                過去資料（第2・第3回の事前読了資料）
+            </a>
+        </li>
+        <li>
+            <a href="Kawaguchi_seminar_melmaga.html">
+                <span class="date">アーカイブ</span><br>
+                関連メルマガ（川口先生）
             </a>
         </li>
         <li>

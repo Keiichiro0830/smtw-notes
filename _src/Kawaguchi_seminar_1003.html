@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AIx知的鍛錬塾 ポータル</title>
+    <title>秋のシンポジウム（2026-10-03）｜AIx知的鍛錬塾</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -433,173 +433,118 @@
             color: #1f3a5f;
             text-decoration: underline;
         }
-    
+        /* ===== ファイル提出BOX (smtw-upl) ===== */
+        .smtw-upl input[type="file"] {
+            width: 100%;
+            font: inherit;
+            font-size: 0.85rem;
+            color: #334155;
+            padding: 0.35rem 0;
+            box-sizing: border-box;
+        }
+        .smtw-upl .smtw-upl-filelist {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin: 0.2rem 0 0;
+        }
+        /* ===== 配布BOX (smtw-dist) ===== */
+        .smtw-dist ul { list-style: none; margin: 0 0 0.8rem; padding: 0; }
+        .smtw-dist li { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; font-size: 0.9rem; }
+        .smtw-dist .smtw-dist-meta { color: #94a3b8; font-size: 0.78rem; margin-left: 0.5rem; white-space: nowrap; }
+        .smtw-dist-status { color: #64748b; font-size: 0.9rem; }
+
         .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
         .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
         .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
         .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+
+        .hub { display:grid; grid-template-columns:1fr; gap:1rem; margin:1.4rem 0 2rem; }
+        @media (min-width:640px) { .hub { grid-template-columns:1fr 1fr; } }
+        .hub-card { display:block; background:#fff; border:1px solid #e2e8f0; border-left:5px solid #2c5282;
+                    border-radius:10px; padding:1.1rem 1.3rem; text-decoration:none; color:inherit;
+                    transition:box-shadow 0.15s; }
+        .hub-card:hover { box-shadow:0 3px 12px rgba(0,0,0,0.09); text-decoration:none; }
+        .hub-card .hc-when { font-size:0.82rem; color:#64748b; font-weight:600; }
+        .hub-card .hc-title { font-size:1.05rem; color:#2c5282; font-weight:700; margin:0.25rem 0 0.55rem; }
+        .hub-card ul { margin:0 0 0 1.1rem; font-size:0.9rem; color:#475569; }
+        .hub-card li { margin-bottom:0.2rem; }
+        .hub-card .hc-go { display:inline-block; margin-top:0.7rem; font-size:0.85rem; font-weight:600; color:#2c5282; }
+        .hub-card.next { border-left-color:#b45309; background:#fffdf7; }
+        .hub-card.next .hc-title { color:#b45309; }
+        .hub-card.past { border-left-color:#94a3b8; }
+        .hub-card.past .hc-title { color:#475569; }
+        .hub-more { display:flex; flex-wrap:wrap; gap:0.5rem; margin:0 0 2rem; }
+        .hub-more a { flex:1 1 30%; text-align:center; padding:0.75rem 0.8rem; background:#f8fafc;
+                      border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none;
+                      font-size:0.9rem; font-weight:600; }
+        .hub-more a:hover { background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.06); text-decoration:none; }
     </style>
 </head>
 <body>
-<a class="lang-toggle" href="Kawaguchi_seminar_papers_en.html">🇬🇧 EN</a>
+<a class="lang-toggle" href="Kawaguchi_seminar_1003_en.html">🇬🇧 EN</a>
 <div class="container">
-    <h1>AIx知的鍛錬塾 ポータル</h1>
-    <p class="subtitle">次回・第5回（研究会）: <strong>2026年8月22日（土）10:00〜16:00</strong>・早稲田26号館11階 <strong>1102</strong>（1101から変更）／<strong>R＋RStudio</strong> のご準備と<strong>事前課題</strong>のお願いあり ／ 秋のシンポジウム: <strong>10月3日（土）14:00〜17:00頃</strong>・同 1102・終了後にゼミ会 ／ 8/26 リアルオプション学会（川口先生ご発表・一般参加可） ／ 第4回 開催済 (2026-07-18・議事メモ公開中) ／ 第1〜4回議事メモ ／ 関連メルマガ</p>
+
+    <h1>秋のシンポジウム — 2026年10月3日（土）</h1>
+    <p class="subtitle">シンポジウム『今回は違うか？：ITブームとAIブームの違い』／ 26号館11階 1102会議室 ／ <strong>14:00 開始 → 17:00頃 終了</strong>／ 終了後にゼミ会（懇親会）<br><span style="font-size:0.85rem;">最終更新: 2026-08-10</span></p>
 
     <nav class="page-nav">
         <a href="Kawaguchi_seminar.html">トップ</a>
         <a href="Kawaguchi_seminar_0822.html">8/22 研究会</a>
-        <a href="Kawaguchi_seminar_1003.html">10/3 シンポジウム</a>
+        <a href="Kawaguchi_seminar_1003.html" class="active">10/3 シンポジウム</a>
         <a href="Kawaguchi_seminar_prev.html">第4回</a>
-        <a href="Kawaguchi_seminar_papers.html" class="active">過去資料</a>
+        <a href="Kawaguchi_seminar_papers.html">過去資料</a>
         <a href="Kawaguchi_seminar_melmaga.html">メルマガ</a>
         <a href="Kawaguchi_seminar_minutes.html">議事メモ</a>
     </nav>
 
-<h2 id="sec3-3">第3回（2026-06-20）向け 事前読了資料（アーカイブ）</h2>
-    <p style="color:#64748b;font-size:0.9rem;">第3回「LLM勉強会」の出発点となった資料群（LLM三部作・Wolfram・Tsai 2019・メンタルモデル）。議論の経過は <a href="Kawaguchi_seminar_minutes.html#sec8">第3回議事メモ</a> を参照。</p>
+<h2 id="sec-sympo">秋のシンポジウム（2026-10-03）</h2>
+<table class="info-table">
+        <tr><th>名称</th><td>シンポジウム『<strong>今回は違うか？：ITブームとAIブームの違い</strong>』<br><span style="color:#64748b;font-size:0.85rem;">※副題「多段階意思決定と学習の観点から」は仮のもので、先生より「変えるかもわからない」とのことです。</span></td></tr>
+        <tr><th>日時</th><td><strong>2026年10月3日（土）14:00 開始 → 17:00頃 終了</strong>（3時間）。その後、移動して<strong>17:30頃からゼミ会（懇親会）</strong>。</td></tr>
+        <tr><th>会場</th><td>早稲田大学 26号館 11階 <strong>1102会議室</strong>（8/22と同じお部屋です）</td></tr>
+        <tr><th>規模</th><td><strong>約20名</strong>。<strong>本塾のメンバーの皆さま（10名）</strong>に、国際不動産研究所の招へい研究員1〜2名と、外部からご招待する6〜8名を加えた形です。<br><span style="color:#64748b;font-size:0.85rem;">※会場の定員は40名ですが、「40名ぴったりだと窮屈で、20名くらいでゆとりがあるほうが快適」という判断で規模を絞りました。今回は公募をせず、バイネームでご招待する形にしています。</span></td></tr>
+        <tr><th>皆さまへ</th><td><strong>メンバーの皆さまは参加前提でご予定に入れておいてください。</strong>あらためてのご案内は追って差し上げます。</td></tr>
+        <tr><th>登壇</th><td><strong>川口先生</strong>（リアルオプション学会でのご発表を発展させたもの）、<strong>黒田先生</strong>（ご発表をお願いしています）。</td></tr>
+        <tr><th>形式</th><td>講演＋参加者ディスカッションを予定しています。約20名の規模になったことで、ディスカッションやQ&amp;Aが成立しやすくなりました。</td></tr>
+</table>
 
-    <p style="color:#64748b;font-size:0.9rem;">2026-05-12 メール配布。先日配布のマニュアル系2本（「ビジネスパーソンのためのAI活用実践ガイド」「データアナリストのためのAI活用実践ガイド」）に続く「専門家らしい情報」。Hinton 1986 → Bengio 2003 → Mikolov 2013 → Sutskever/Cho 2014 → Bahdanau 2015 → Vaswani 2017 → Chollet 2023 の系譜整理から、Chollet "How I think about LLM prompt engineering" 全訳・解説まで。p.4 以降にプロンプトエンジニアリングの「本質」（LLM=巨大なベクトル空間、プロンプト=その空間内の経路指定）。Bengio ら(2003) の統計的言語学／単語=特徴ベクトル表現は、川口先生「空間統計学入門」演習の続編に相当。</p>
+<h3>8月22日との接続 —「学習」がテーマになります</h3>
+<p>8/22の研究会は、このシンポジウムの<strong>基礎</strong>にあたります。先生は8/1のメールで「以上を基礎として、10月には『投資の新しい概念』をシンポジウムで議論することになるでしょう」と書かれ、8/5の打合せではその接続をはっきり言葉にされました。</p>
+<div class="speaker-block">
+    <p>「8月22日にあるモデルを試してみて、これじゃないな、あれじゃないなという試行錯誤の部分と、企業の問題というところが<strong>アナロジー</strong>なわけです。でも両方とも最終ゴールは見えない。だから<strong>新しい投資の概念というのは、これまでのような金融工学とか金融で学んだ話ではなくて、『学習』が入ってくる</strong>わけですよ。8月22日の体験というのは、自分がどういうふうに学習をしながら、見えない構造に近づいていくかということを経験してもらうというのが最大の眼目なんです。」<span style="color:#94a3b8;font-size:0.85rem;">（川口先生・8/5）</span></p>
+</div>
+<p>つまり <strong>8/22＝データの背後にある見えない構造を探す経験</strong>、<strong>10/3＝将来という見えないものに企業がどう近づくかの議論</strong>で、両者は「見えないものへの接近の仕方＝学習」という一点で同じ構造をしている、というのが先生の設計です。<strong>4月からの「ITバブルとAIブームはどこが違うのか、同じなのか」という問いを、この学習の視点でまとめに持っていく</strong>——それが10/3の位置づけになります。</p>
 
-    <div class="paper-card" id="paper-20260512">
-        <div class="meta">川口先生オリジナル ／ 2026-05-12 配布</div>
-        <div class="title">川口 有一郎 — <em>LLMの基礎とプロンプトエンジニアリングの本質</em></div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">川口先生が Google 検索 → 「つるったぐり」で関連論文を収集し、Claude との対話形式で LLM 開発の系譜（Hinton 1986 〜 Chollet 2023）を整理。Chollet "How I think about LLM prompt engineering" の核心パッセージを段落ごとに読み解く構成。「LLMを使うときに自分のPC内で処理しているイメージ」を共有する意図。</p>
-        <div class="file-links">
-            <a class="primary" href="papers/2026-06-20/Kawaguchi_20260512_LLM_Prompt_Engineering.docx" target="_blank">原文 DOCX</a>
-            <a href="papers/2026-06-20/Kawaguchi_20260512_LLM_Research_History.xlsx" target="_blank">研究史一覧 Excel（Hinton 1986〜Chollet 2023）</a>
-            <a class="notebook" href="https://notebooklm.google.com/notebook/c11e54be-5b01-46fb-91ea-210bcede319c" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-20260512" data-atitle="川口先生『LLMの基礎とプロンプトエンジニアリングの本質』"></div>
-    </div>
+<h3>川口先生の切り口</h3>
+<p>「ITブームとAIブームの違い」はネット上でもアナリスト等が論じていますが、先生の切り口はそれらとは異なります。7/22にご説明いただいた内容を4点に要約すると、次のとおりです。</p>
+<div class="speaker-block">
+    <h4 class="sb-name">① バリュエーション手法の世代交代</h4>
+    <p>ITブーム時、赤字を垂れ流していたアマゾンのバリュエーションはDCFでは不十分で、リアルオプション（ドリフト項も確率過程としてモデル化）で評価できるという論文が出ました。現在のAIブームでは、ハイパースケーラーのバリュエーションはリアルオプションだけでは対応できず、<strong>計画資本（認知経済学）</strong>を持ち出す必要がある、という見立てです。</p>
+</div>
+<div class="speaker-block">
+    <h4 class="sb-name">② 学習のパラダイム転換</h4>
+    <p>回答を得るコストが急激に低下したことで、<strong>「問いのシークエンスを作ること」に価値</strong>が見出されるようになりました。</p>
+</div>
+<div class="speaker-block">
+    <h4 class="sb-name">③ プラットフォームの経済学</h4>
+    <p>ITブーム時には、プラットフォームの経済学はまったく見えていませんでした。</p>
+</div>
+<div class="speaker-block">
+    <h4 class="sb-name">④ バブルの連鎖という歴史観</h4>
+    <p>ITブームでは多くのベンチャーが死に、経済が悪化しました。それで米国は住宅バブルを起こして経済を支え、それが行き過ぎて世界経済危機になった。次のバブルはグリーンとITセクターで起こすことにして現在に至っている——という歴史の見方です。</p>
+</div>
 
-    <div class="paper-card" id="paper-20260529">
-        <div class="meta">参考書（川口先生 推薦）／ 2026-05-29 共有</div>
-        <div class="title">Stephen Wolfram — <em>What Is ChatGPT Doing … and Why Does It Work?</em>（邦訳『ChatGPTの頭の中』ハヤカワ新書, 2023）</div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">川口先生が第3回の基礎固めとして推薦。ニューラルネットの仕組みを平易に解説しており、次回議論のベースとしてざっと目を通しておくと良い（自分にとって分かりやすい他の入門書でも可）。<strong>論点</strong>: 本書の後段は Chollet 2023 と重なるが判断が異なり、プロンプトエンジニアリングを間接的に「無効」と位置づける。上の Chollet 系譜（プロンプト＝巨大ベクトル空間内の経路指定）と正面から対立する見立てで、第3回の格好の討論軸になる。</p>
-        <div class="file-links">
-            <a class="primary" href="https://faculty.sites.iastate.edu/tesfatsi/archive/tesfatsi/ChatGPT.WhatIsItWhyDoesItWork.SWolfram.2024.pdf" target="_blank" rel="noopener">英語版 PDF (Wolfram 2024)</a>
-            <a class="notebook" href="https://notebooklm.google.com/notebook/70280aeb-ec87-4047-853d-104168dd981c" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-20260529" data-atitle="Wolfram『ChatGPTの頭の中』(参考書)"></div>
-    </div>
+<h3 id="sec-jaros">8月26日 リアルオプション学会（青山学院・一般参加可）</h3>
+<p>シンポジウムの前段として、<strong>8月26日（火）18:45から青山学院で開催されるリアルオプション学会</strong>で、川口先生が『<strong>リアルオプションと計画資本：学習の役割の変化</strong>』を軸にご発表されます。10月のシンポジウムでは、この学会発表を少し発展させたものをお話しいただく予定です。</p>
+<p><strong>こちらは一般の方もご参加いただけます</strong>（日本リアルオプション学会への登録が必要です）。ご関心のある方はぜひ。<strong>8/22（演習）→ 8/26（学会発表）→ 10/3（シンポジウム）</strong>と三段で積み上がる構成になっています。</p>
 
-    <h3 style="color:#1f3a5f;margin-top:1.6rem;">LLM の仕組み（川口先生メルマガ別冊シリーズ）</h3>
-    <p style="color:#64748b;font-size:0.9rem;">2026-05-30〜06-04 配布。先生が「LLM を自分の PC 内で処理しているイメージ」を共有するために書き下ろした技術解説の連載（別冊）。埋め込み →（自己回帰による）次トークン予測 → アテンション機構へと積み上がり、最後は「アテンション＝カーネル平滑化」という統計学的な見立て（Tsai et al. 2019）に到達する。空間統計学・カーネル法の延長線上に Transformer を位置づける構成で、第3回の理論的な背骨になる。</p>
-
-    <div class="paper-card" id="paper-llm-mechanism">
-        <div class="meta">川口先生オリジナル ／ 2026-05-30〜06-04 配布（全3回・別冊）</div>
-        <div class="title">川口 有一郎 — <em>大規模言語モデル（LLM）の仕組み（1）〜（3）</em></div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">（1）単語のベクトル化（埋め込み）— テキストを数値ベクトルに写す「埋め込み」とは何か。（2）ニューラルネット確率言語モデル — Bengio ら(2003) を軸に、次トークン予測を自己回帰的な条件付き確率の積として定式化。（3）アテンション機構とトランスフォーマー — 固定窓 FFN の限界を、カーネル平滑化（重み付き平均としての条件付き期待値）として再構成し、アテンションへ接続する。</p>
-        <div class="file-links">
-            <a class="primary" href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_1_Embedding.docx" target="_blank">(1) 埋め込み DOCX</a>
-            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_2_NeuralLM.docx" target="_blank">(2) ニューラル確率言語モデル DOCX</a>
-            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_3_Attention.docx" target="_blank">(3) アテンション機構 DOCX</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-llm-mechanism" data-atitle="川口先生『LLMの仕組み (1)〜(3)』"></div>
-    </div>
-
-    <div class="paper-card" id="paper-tsai-2019">
-        <div class="meta">学術原典 ／ EMNLP 2019</div>
-        <div class="title">Tsai, Bai, Yamada, Morency &amp; Salakhutdinov — <em>Transformer Dissection: A Unified Understanding of Transformer's Attention via the Lens of Kernel</em></div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">上記メルマガ（3）の「アテンション＝カーネル平滑化」という見立ての学術的な裏付け。Transformer の自己注意を、カーネル関数による重み付き平均（カーネル平滑化）として統一的に理解できることを示した論文。川口先生のカーネル法・空間統計学の議論と LLM を直接つなぐ原典。</p>
-        <div class="file-links">
-            <a class="primary" href="papers/2026-06-20/Tsai_2019_Transformer_Dissection_Kernel.pdf" target="_blank">英文 原文 PDF</a>
-            <a class="notebook" href="https://notebooklm.google.com/notebook/c0d68d8d-c89b-4189-a35f-ce48c65ed988" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-tsai-2019" data-atitle="Tsai et al. 2019 — Transformer Dissection (attention=kernel)"></div>
-    </div>
-
-    <h3 style="color:#1f3a5f;margin-top:1.6rem;">メンタルモデル（知的鍛錬の土台）</h3>
-    <p style="color:#64748b;font-size:0.9rem;">「経験を積んだ専門家ほど、無意識のメンタルモデル（思考の型）に固着し、それが直観として現れる」——知的鍛錬塾が問い直そうとしている当のものを、教育学の枠組みから扱う資料群。Plotnick ら(2026) の構成主義フレームワーク FRAME を原典に、和訳・解説・学習ルーティンを併載。</p>
-
-    <div class="paper-card" id="paper-mentalmodel">
-        <div class="meta">論文 ／ 2026</div>
-        <div class="title">Plotnick et al. — <em>Between Knowing and Becoming: A Constructivist Framework to Bridge Theory and Practice in Leadership</em></div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">無意識の意思決定プロセス（メンタルモデル）を意識化・言語化し、「再生的思考」から変革的学習へ移行させる教授フレームワーク FRAME を提唱。認知的不均衡を意図的に生み出すことで、固着した思考の型を更新する道筋を示す。</p>
-        <div class="file-links">
-            <a class="primary" href="papers/2026-06-20/Plotnick_2026_Between_Knowing_and_Becoming.pdf" target="_blank">英文 原文 PDF</a>
-            <a href="papers/2026-06-20/Plotnick_2026_Between_Knowing_and_Becoming_JP.docx" target="_blank">和訳 DOCX</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-mentalmodel" data-atitle="Plotnick et al. 2026 — Between Knowing and Becoming (メンタルモデル)"></div>
-    </div>
-
-    <div class="paper-card" id="paper-mentalmodel-notes">
-        <div class="meta">解説・補助資料</div>
-        <div class="title">メンタルモデル — 解説と学習ルーティン</div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">上記論文を土台にした日本語の読み解き。「メンタルモデルとは」は Senge / Piaget / Giddens らを引きながら、形成・固着・直観との関係・共有メンタルモデルを概観。「学習ルーティン」は、ファインマン手法・間隔反復・精緻化・メタ認知など、メンタルモデルを構築し洗練させるための実践的な習慣をまとめたもの。</p>
-        <div class="file-links">
-            <a class="primary" href="papers/2026-06-20/MentalModel_Overview_JP.docx" target="_blank">メンタルモデルとは（解説 DOCX）</a>
-            <a href="papers/2026-06-20/MentalModel_Learning_Routines_JP.docx" target="_blank">学習ルーティン DOCX</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-mentalmodel-notes" data-atitle="メンタルモデル — 解説と学習ルーティン"></div>
-    </div>
-
-    
-<h2 id="sec3">第2回（2026-05-09）向け 事前読了資料（アーカイブ）</h2>
-    <p style="color:#64748b;font-size:0.9rem;">第2回の議論の出発点となった4論文＋補助1本。議論の経過は <a href="Kawaguchi_seminar_minutes2.html#sec7">第2回議事メモ</a> を参照。</p>
-
-    <div class="paper-card" id="paper-20260509-agrawal">
-        <div class="meta">論文 1 ／ NBER Working Paper, 2026</div>
-        <div class="title">Agrawal, McHale &amp; Oettl — <em>AI in Science</em></div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">本日のメインテーマ「科学におけるAI」の中核論文。AI が科学的発見プロセスをどう変えるかを、研究者の役割再定義の観点から論じる。</p>
-        <div class="file-links">
-            <a class="primary" href="papers/2026-05-09/Agrawal_2026_AI_in_Science_NBER.pdf" target="_blank">英文 原文 PDF</a>
-            <a href="papers/2026-05-09/Agrawal_2026_AI_in_Science_JP_summary.pdf" target="_blank">日本語要約 (Gemini &amp; 川口)</a>
-            <a class="notebook" href="https://notebooklm.google.com/notebook/4a1eb261-b6fd-431e-96dd-a8ab8a6a869f" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-20260509-agrawal" data-atitle="Agrawal et al. — AI in Science"></div>
-    </div>
-
-    <div class="paper-card" id="paper-20260509-chen">
-        <div class="meta">論文 2 ／ NBER Working Paper, 2026</div>
-        <div class="title">Chen, Didisheim &amp; Somoza — <em>Out of the Black Box: Quantifying Uncertainty in LLMs via Conditional Probabilities</em></div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">「ブラックボックスから抜け出す」の中核論文。LLM 出力の不確実性を条件付き確率で定量化する手法。</p>
-        <div class="file-links">
-            <a class="primary" href="papers/2026-05-09/Chen_2026_Out_of_the_Black_Box_NBER.pdf" target="_blank">英文 原文 PDF</a>
-            <a href="papers/2026-05-09/Chen_2026_Out_of_the_Black_Box_JP_summary.pdf" target="_blank">日本語要約 (Gemini &amp; 川口)</a>
-            <a class="notebook" href="https://notebooklm.google.com/notebook/5d54222e-ed85-41c9-aca0-5945db973187" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-20260509-chen" data-atitle="Chen et al. — Out of the Black Box"></div>
-    </div>
-
-    <div class="paper-card" id="paper-20260509-vandis">
-        <div class="meta">論文 3 ／ Nature, 2023</div>
-        <div class="title">Van Dis, Bollen, Zuidema, van Rooij &amp; Bockting — <em>ChatGPT: five priorities for research</em></div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">上記2本の元論文に位置づけられる、生成AIと研究倫理／実践に関する5つの提言。</p>
-        <div class="file-links">
-            <a class="primary" href="papers/2026-05-09/VanDis_2023_ChatGPT_Five_Priorities_Nature.pdf" target="_blank">英文 原文 PDF</a>
-            <a href="papers/2026-05-09/VanDis_2023_ChatGPT_JP.docx" target="_blank">和訳 DOCX</a>
-            <a class="notebook" href="https://notebooklm.google.com/notebook/50130414-3c5e-447e-b39c-c364bd6f4140" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-20260509-vandis" data-atitle="Van Dis et al. — ChatGPT: five priorities for research"></div>
-    </div>
-
-    <div class="paper-card" id="paper-20260509-kusumegi">
-        <div class="meta">論文 4 ／ Science, 2025</div>
-        <div class="title">Kusumegi et al. — <em>Scientific production in the era of Large Language Models</em></div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">5/5 川口先生から追加（「英語圏では常識」）。LLM 時代の科学研究生産性に関する実証研究。</p>
-        <div class="file-links">
-            <a class="primary" href="papers/2026-05-09/Kusumegi_2025_Scientific_Production_LLMs.pdf" target="_blank">英文 原文 PDF</a>
-            <a href="papers/2026-05-09/Kusumegi_2025_Scientific_Production_LLMs_JP.docx" target="_blank">和訳 DOCX</a>
-            <a class="notebook" href="https://notebooklm.google.com/notebook/28f90bf5-f000-40ed-b833-ab6ac096d3fe" target="_blank" rel="noopener">📓 NotebookLM (読解ヘルパー)</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-20260509-kusumegi" data-atitle="Kusumegi et al. — Scientific production in the era of LLMs"></div>
-    </div>
-
-    <div class="paper-card" id="paper-20260509-logprobes">
-        <div class="meta">補助資料 ／ NotebookLM</div>
-        <div class="title">ChatGPT's logprobes</div>
-        <p style="font-size:0.9rem;color:#475569;margin:0;">論文2 (Chen et al.) の議論の補助資料。ChatGPT の logprobes（対数確率）から LLM 出力の不確実性を読み取る考え方をまとめた NotebookLM。</p>
-        <div class="file-links">
-            <a class="notebook" href="https://notebooklm.google.com/notebook/c22b3e33-58f1-42e7-8c44-a575de70754a" target="_blank" rel="noopener">📓 NotebookLM (ChatGPT's logprobes)</a>
-        </div>
-        <div class="smtw-cmt" data-aid="paper-20260509-logprobes" data-atitle="ChatGPT's logprobes (補助資料)"></div>
-    </div>
-
-    <h2 style="margin-top:2.4rem;">資料へのコメント・質問フォーム</h2>
-    <p style="color:#64748b;font-size:0.9rem;">事前読了資料・メルマガへのコメントや質問、運営へのご意見をこちらからどうぞ。いただいた内容は今後の議論の材料にさせていただきます。</p>
-    <div id="smtw-cmt-form" class="smtw-cmt smtw-cmt-main" data-aid="general" data-atitle="全体・運営"></div>
+<h3 id="sec-party">ゼミ会（懇親会）— 10月3日 17:30頃〜</h3>
+<p>シンポジウム終了後、<strong>同日の17:30頃からゼミ会（懇親会）</strong>を開きます。年末に別途開催する案もありましたが、勢いが続くうちに、ということで10/3当日に一本化しました。先生からも「3月17日（最終講義）の時にあまりご挨拶できなかったから、懇談会みたいなものをやってもいいかな」とのお言葉をいただいています。</p>
+<p>性格づけはシンポジウムとは別で、<strong>間口を広く取ります</strong>——先生の表現では「Facebookの友の会パーティーみたいなものを1年に1回」。シンポジウムにはお越しになれない方や、最終講義でお会いした方々にも広くお声がけします。</p>
+<div class="callout">
+    <strong>会場・参加費・お申込み方法は、現在調整中です。</strong>詳細が固まり次第、<strong>佐々木さんより正式なご案内</strong>を差し上げます。<br>
+    まずは<strong>10月3日（土）の夕方を空けておいていただけますと幸いです。</strong>
+</div>
 
     <footer>参加者限定 ／ 転載禁止 ／ 著作権は各論文の権利者に帰属</footer>
 </div>
@@ -821,8 +766,198 @@ const SMTW_CMT_TEXT = {
         const mainForm = document.querySelector(".smtw-cmt-main");
         let targetEl = null;
         if (mainForm) { targetEl = buildMainForm(mainForm); }
-        const others = document.querySelectorAll(".smtw-cmt:not(.smtw-cmt-main)");
+        const others = document.querySelectorAll(".smtw-cmt:not(.smtw-cmt-main):not(.smtw-upl)");
         for (let i = 0; i < others.length; i++) { buildJumpLink(others[i], mainForm); }
+    });
+})();
+</script>
+
+<script>
+/* ===== SMTW ファイル提出BOX ===== */
+const SMTW_UPL_TEXT = {
+    name: "お名前",
+    namePh: "お名前",
+    email: "メールアドレス",
+    emailPh: "メールアドレス（任意：控えをお送りします）",
+    msgLabel: "メッセージ",
+    msgPh: "（任意）ファイルの説明・先生へのひとこと等",
+    files: "ファイル",
+    send: "川口先生に送る",
+    sending: "送信中…",
+    okMsg: "✓ 川口先生にお届けしました。ありがとうございます。",
+    errMsg: "送信に失敗しました。時間をおいて再度お試しください。",
+    notReady: "提出機能は現在準備中です。恐れ入りますがメール添付でお送りください。",
+    needName: "お名前を入力してください。",
+    needFile: "ファイルを選択してください。",
+    tooBig: "合計20MBまでにしてください（現在 {mb} MB）。",
+    selected: "選択中: "
+};
+
+(function () {
+    const MAX_TOTAL = 20 * 1024 * 1024;
+    function readProfile() {
+        try { return JSON.parse(localStorage.getItem("smtw_cmt_profile")) || {}; }
+        catch (e) { return {}; }
+    }
+    function saveProfile(name, email) {
+        try { localStorage.setItem("smtw_cmt_profile", JSON.stringify({ name: name, email: email })); }
+        catch (e) {}
+    }
+    function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+    }
+    function fmtMB(bytes) { return (bytes / 1048576).toFixed(1); }
+
+    function readFileB64(file) {
+        return new Promise(function (resolve, reject) {
+            const r = new FileReader();
+            r.onload = function () {
+                resolve({
+                    filename: file.name,
+                    mimeType: file.type || "application/octet-stream",
+                    data: String(r.result).split(",")[1] || ""
+                });
+            };
+            r.onerror = function () { reject(r.error); };
+            r.readAsDataURL(file);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const box = document.getElementById("smtw-upl-form");
+        if (!box) return;
+        const prof = readProfile();
+        box.innerHTML =
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.name) +
+                '</label><input type="text" class="smtw-upl-name" placeholder="' + esc(SMTW_UPL_TEXT.namePh) +
+                '" value="' + esc(prof.name || "") + '" required></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.email) +
+                '</label><input type="email" class="smtw-upl-email" placeholder="' + esc(SMTW_UPL_TEXT.emailPh) +
+                '" value="' + esc(prof.email || "") + '"></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.msgLabel) +
+                '</label><textarea class="smtw-upl-msg-in" rows="3" placeholder="' + esc(SMTW_UPL_TEXT.msgPh) + '"></textarea></div>' +
+            '<div class="smtw-cmt-row"><label>' + esc(SMTW_UPL_TEXT.files) +
+                '</label><input type="file" class="smtw-upl-files" multiple><div class="smtw-upl-filelist"></div></div>' +
+            '<input type="text" class="smtw-cmt-hp" name="website" tabindex="-1" autocomplete="off">' +
+            '<button type="button" class="smtw-cmt-send smtw-upl-send">' + esc(SMTW_UPL_TEXT.send) + '</button>' +
+            '<div class="smtw-cmt-msg"></div>';
+
+        const nameEl = box.querySelector(".smtw-upl-name");
+        const emailEl = box.querySelector(".smtw-upl-email");
+        const msgInEl = box.querySelector(".smtw-upl-msg-in");
+        const filesEl = box.querySelector(".smtw-upl-files");
+        const listEl = box.querySelector(".smtw-upl-filelist");
+        const hpEl = box.querySelector(".smtw-cmt-hp");
+        const btn = box.querySelector(".smtw-upl-send");
+        const msg = box.querySelector(".smtw-cmt-msg");
+
+        filesEl.addEventListener("change", function () {
+            const fs = filesEl.files || [];
+            if (!fs.length) { listEl.textContent = ""; return; }
+            let total = 0;
+            const names = [];
+            for (let i = 0; i < fs.length; i++) { total += fs[i].size; names.push(fs[i].name); }
+            listEl.textContent = SMTW_UPL_TEXT.selected + names.join(", ") + "（" + fmtMB(total) + " MB）";
+        });
+
+        btn.addEventListener("click", function () {
+            const name = nameEl.value.trim();
+            const email = emailEl.value.trim();
+            const message = msgInEl.value.trim();
+            const files = [];
+            for (let i = 0; i < filesEl.files.length; i++) { files.push(filesEl.files[i]); }
+
+            msg.className = "smtw-cmt-msg";
+            if (!name) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_UPL_TEXT.needName; nameEl.focus(); return; }
+            if (!files.length) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_UPL_TEXT.needFile; return; }
+            let total = 0;
+            for (let i = 0; i < files.length; i++) { total += files[i].size; }
+            if (total > MAX_TOTAL) { msg.className = "smtw-cmt-msg err"; msg.textContent = SMTW_UPL_TEXT.tooBig.replace("{mb}", fmtMB(total)); return; }
+            saveProfile(name, email);
+
+            btn.disabled = true;
+            const original = btn.textContent;
+            btn.textContent = SMTW_UPL_TEXT.sending;
+            msg.textContent = "";
+
+            // バックエンドが提出BOX対応版（doGet で upload:true を返す）かを先に確認。
+            // 未対応の旧バージョンにファイルを投げて無言で失われるのを防ぐ。
+            fetch(SMTW_CMT_ENDPOINT + "?ping=1").then(function (r) {
+                return r.json().catch(function () { throw new Error("upload-not-ready"); });
+            }).then(function (cap) {
+                if (!cap || !cap.upload) { throw new Error("upload-not-ready"); }
+                const jobs = [];
+                for (let i = 0; i < files.length; i++) { jobs.push(readFileB64(files[i])); }
+                return Promise.all(jobs);
+            }).then(function (encoded) {
+                // Content-Type を明示せず text/plain の simple request にして CORS preflight を回避
+                return fetch(SMTW_CMT_ENDPOINT, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        kind: "file",
+                        name: name,
+                        email: email,
+                        message: message,
+                        page: location.pathname,
+                        website: hpEl.value,
+                        files: encoded
+                    })
+                });
+            }).then(function (resp) {
+                if (!resp.ok) { throw new Error("HTTP " + resp.status); }
+                return resp.json().catch(function () { throw new Error("upload-not-ready"); });
+            }).then(function (res) {
+                if (!res || !res.ok || !res.upload) { throw new Error("upload-not-ready"); }
+                msg.className = "smtw-cmt-msg ok";
+                msg.textContent = SMTW_UPL_TEXT.okMsg;
+                filesEl.value = "";
+                listEl.textContent = "";
+                msgInEl.value = "";
+                btn.disabled = false;
+                btn.textContent = original;
+            }).catch(function (e) {
+                msg.className = "smtw-cmt-msg err";
+                msg.textContent = (e && e.message === "upload-not-ready") ? SMTW_UPL_TEXT.notReady : SMTW_UPL_TEXT.errMsg;
+                btn.disabled = false;
+                btn.textContent = original;
+            });
+        });
+    });
+})();
+</script>
+
+<script>
+/* ===== SMTW 配布BOX（Drive配布フォルダの一覧表示） ===== */
+(function () {
+    function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const box = document.getElementById("smtw-dist");
+        if (!box) return;
+        fetch(SMTW_CMT_ENDPOINT + "?list=1").then(function (r) {
+            return r.json().catch(function () { throw new Error("not-ready"); });
+        }).then(function (res) {
+            if (!res || !res.ok || !res.dist) { throw new Error("not-ready"); }
+            if (!res.files || !res.files.length) {
+                box.innerHTML = '<p class="smtw-dist-status">現在配布中のファイルはありません。</p>';
+                return;
+            }
+            let html = "<ul>";
+            for (let i = 0; i < res.files.length; i++) {
+                const f = res.files[i];
+                html += '<li><a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(f.name) + '</a>' +
+                    '<span class="smtw-dist-meta">' + esc(f.updated || "") + '・' +
+                    Math.max(1, Math.round((f.size || 0) / 1024)) + ' KB</span></li>';
+            }
+            box.innerHTML = html + "</ul>";
+        }).catch(function () {
+            box.innerHTML = '<p class="smtw-dist-status">配布BOXは準備中です（バックエンド更新後に自動で有効になります）。</p>';
+        });
     });
 })();
 </script>
