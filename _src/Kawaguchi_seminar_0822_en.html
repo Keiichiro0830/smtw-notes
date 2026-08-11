@@ -39,6 +39,11 @@
         .file-links a.notebook { background: #fef3c7; border-color: #f59e0b; color: #92400e; }
         .file-links a.notebook:hover { background: #fde68a; }
         .callout { background: #fff8e1; border-left: 4px solid #f59e0b; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.92rem; }
+        .resource-box { background: #f8fafc; border: 1px solid #cbd5e1; border-left: 5px solid #2c5282; border-radius: 6px; padding: 1.05rem 1.25rem 1.15rem; margin: 0.5rem 0 2rem; }
+        .resource-box .rb-title { font-size: 1.05rem; font-weight: 700; color: #1f3a5f; margin-bottom: 0.25rem; }
+        .resource-box .rb-note { color: #475569; font-size: 0.88rem; margin: 0 0 0.5rem; line-height: 1.65; }
+        .resource-box .rb-group { margin-top: 0.85rem; }
+        .resource-box .rb-label { font-size: 0.8rem; font-weight: 700; color: #64748b; letter-spacing: 0.03em; margin-bottom: 0.3rem; }
         .lang-switch { display: inline-block; padding: 0.35rem 0.8rem; background: #2c5282; color: #fff; border-radius: 4px; font-size: 0.85rem; text-decoration: none; margin-bottom: 1rem; }
         .lang-switch:hover { background: #1f3a5f; text-decoration: none; }
         .lang-toggle {
@@ -233,6 +238,38 @@
         <a href="Kawaguchi_seminar_melmaga_en.html">Newsletters</a>
         <a href="Kawaguchi_seminar_minutes_en.html">Minutes</a>
     </nav>
+
+<div class="resource-box">
+    <div class="rb-title">Materials to look at before the day</div>
+    <p class="rb-note">The advance assignment and the background reading for the 22 August workshop. Each item is explained in full further down this page.</p>
+
+    <div class="rb-group">
+        <div class="rb-label">Handouts from Professor Kawaguchi</div>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-08-22/Kawaguchi_20260804_2025Seminar_Data_List.pdf" target="_blank">Dataset list, PDF (circulated 4 Aug)</a>
+            <a class="primary" href="papers/2026-08-22/Kawaguchi_20260801_Upstream_Experts.pdf" target="_blank">&ldquo;An age that needs upstream, not downstream, experts&rdquo;, PDF (10 pages)</a>
+        </div>
+    </div>
+
+    <div class="rb-group">
+        <div class="rb-label">The LLM trilogy &mdash; the day is framed as &ldquo;the groundwork for understanding the trilogy&rdquo;</div>
+        <div class="file-links">
+            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_1_Embedding.docx" target="_blank">Trilogy (1) Embeddings</a>
+            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_2_NeuralLM.docx" target="_blank">(2) Neural probabilistic language models</a>
+            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_3_Attention.docx" target="_blank">(3) Attention</a>
+            <a href="Kawaguchi_seminar_papers_en.html#sec3-3">Commentary (archive page)</a>
+        </div>
+    </div>
+
+    <div class="rb-group">
+        <div class="rb-label">Textbook and source code &mdash; Daisuke Murakami, <em>An Introduction to Statistical Analysis of Geospatial Data with R</em> (Kodansha)</div>
+        <div class="file-links">
+            <a href="https://www.amazon.co.jp/dp/406527303X" target="_blank" rel="noopener">Textbook (Amazon)</a>
+            <a class="notebook" href="https://github.com/dmuraka/spbook_jp" target="_blank" rel="noopener">Source code (GitHub: dmuraka/spbook_jp)</a>
+        </div>
+        <p class="rb-note" style="margin:0.55rem 0 0;">The <strong>Chapter column of the dataset list refers to the chapters of this textbook</strong>. The repository holds the R code for chapters 4&ndash;22, one folder per chapter, ready to copy and run (chapters 9, 10, 12&ndash;16, 18, 20 and 21 in the list all fall inside that range; only &ldquo;YK5&rdquo; against LMM is not a chapter number of this book). <strong>Whether you need to buy the book is being confirmed with Professor Kawaguchi</strong> &mdash; the code itself is public, as above.</p>
+    </div>
+</div>
 
 <h2 id="sec5">5th meeting (2026-08-22) &mdash; logistics</h2>
 <table class="info-table">

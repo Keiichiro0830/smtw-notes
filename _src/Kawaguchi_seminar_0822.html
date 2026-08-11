@@ -124,6 +124,34 @@
             margin: 1rem 0;
             font-size: 0.92rem;
         }
+        .resource-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-left: 5px solid #2c5282;
+            border-radius: 6px;
+            padding: 1.05rem 1.25rem 1.15rem;
+            margin: 0.5rem 0 2rem;
+        }
+        .resource-box .rb-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1f3a5f;
+            margin-bottom: 0.25rem;
+        }
+        .resource-box .rb-note {
+            color: #475569;
+            font-size: 0.88rem;
+            margin: 0 0 0.5rem;
+            line-height: 1.65;
+        }
+        .resource-box .rb-group { margin-top: 0.85rem; }
+        .resource-box .rb-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #64748b;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.3rem;
+        }
         .nav-link {
             display: inline-block;
             margin-top: 0.4rem;
@@ -504,6 +532,38 @@
         <a href="Kawaguchi_seminar_melmaga.html">メルマガ</a>
         <a href="Kawaguchi_seminar_minutes.html">議事メモ</a>
     </nav>
+
+<div class="resource-box">
+    <div class="rb-title">当日までにご覧いただきたい資料</div>
+    <p class="rb-note">8/22 研究会の事前課題・予備知識にあたる資料をここにまとめました。それぞれの詳しい説明は、このページの下の各節にあります。</p>
+
+    <div class="rb-group">
+        <div class="rb-label">川口先生の配布資料</div>
+        <div class="file-links">
+            <a class="primary" href="papers/2026-08-22/Kawaguchi_20260804_2025Seminar_Data_List.pdf" target="_blank">データ一覧 PDF（川口先生 8/4 配布）</a>
+            <a class="primary" href="papers/2026-08-22/Kawaguchi_20260801_Upstream_Experts.pdf" target="_blank">下流側ではなく上流側の専門家が必要とされる時代 PDF（全10ページ）</a>
+        </div>
+    </div>
+
+    <div class="rb-group">
+        <div class="rb-label">LLM三部作 — 当日の位置づけは「三部作を理解するための基礎」です</div>
+        <div class="file-links">
+            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_1_Embedding.docx" target="_blank">三部作(1) 埋め込み</a>
+            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_2_NeuralLM.docx" target="_blank">(2) ニューラル確率言語モデル</a>
+            <a href="papers/2026-06-20/Kawaguchi_LLM_Mechanism_3_Attention.docx" target="_blank">(3) アテンション機構</a>
+            <a href="Kawaguchi_seminar_papers.html#sec3-3">解説（過去資料ページ）</a>
+        </div>
+    </div>
+
+    <div class="rb-group">
+        <div class="rb-label">教科書とソースコード — 村上大輔『Rではじめる地理空間データの統計解析入門』（講談社・実践Data Scienceシリーズ）</div>
+        <div class="file-links">
+            <a href="https://www.amazon.co.jp/dp/406527303X" target="_blank" rel="noopener">教科書（Amazon）</a>
+            <a class="notebook" href="https://github.com/dmuraka/spbook_jp" target="_blank" rel="noopener">ソースコード（GitHub: dmuraka/spbook_jp）</a>
+        </div>
+        <p class="rb-note" style="margin:0.55rem 0 0;">データ一覧の <strong>Chapter 列は、このテキストの章番号</strong>です。リポジトリには<strong>第4〜22章の R コードが章ごとのフォルダに収められており、コピーしてそのまま実行できます</strong>（一覧の 9・10・12〜16・18・20・21 はいずれもこの範囲に含まれます。LMM の「YK5」のみ本書の章番号ではありません）。<strong>ご購入が必須かどうかは、先生に確認のうえ改めてご案内します</strong>——コードは上記のとおり公開されています。</p>
+    </div>
+</div>
 
 <h2 id="sec5">第5回（2026-08-22）研究会 — 開催情報</h2>
 <table class="info-table">
