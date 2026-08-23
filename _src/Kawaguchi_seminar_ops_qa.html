@@ -51,6 +51,12 @@
         }
         .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
         .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+        .jump-nav { display:flex; flex-wrap:wrap; gap:0.4rem; margin:1.1rem 0 0.2rem; }
+        .jump-nav a {
+            padding:0.32rem 0.7rem; background:#eef2f7; border:1px solid #dbe3ec; border-radius:999px;
+            color:#2c5282; text-decoration:none; font-size:0.83rem; font-weight:600;
+        }
+        .jump-nav a:hover { background:#e2e8f0; text-decoration:none; }
         footer { margin-top: 3rem; font-size: 0.8rem; color: #94a3b8; text-align: center; }
 
         /* ---- QA board ---- */
@@ -141,7 +147,7 @@
     <h1>ニュースQ&amp;A — 質問在庫ボード</h1>
     <p class="subtitle">
         日々の国際・経済ニュースから拾った論点を、川口先生への「問い」の形にして貯めておく場所です。<br>
-        最終更新: 2026-08-24（第2版・メルマガ供給への接続を追記／作成: 松前）／初版 2026-08-06<br>
+        最終更新: 2026-08-24（第3版・質問板を会員ポータルへ移設。本ページは運営検討事項のみ／作成: 松前）／初版 2026-08-06<br>
         共有先: 運営5名（川口先生・諏訪部さん・松前・佐々木さん・鈴木さん）
     </p>
 
@@ -164,11 +170,29 @@
             <strong>いまはフェーズ1（運営限定のプロトタイプ）です。</strong>まず質問の在庫と表示の型を確定させることを優先し、投稿フォームと通知メールは動かしていません。型がよさそうであれば、フェーズ2として会員ポータル側へ展開し、メンバーが質問を投稿でき、先生が回答され、新しい問いと回答が入るたびにメールが飛ぶところまで作ります（<a href="#phase2">下記「フェーズ2の設計」</a>）。
         </p>
         <p style="margin-bottom:0.5rem;">
-            <strong>本ページは会員ポータルとは別パスワードです</strong>（8/22・10/3の運営ページと同じ <code>Kawaguchi-Ops</code>）。先生にまだお出ししていない問いを含みますので、運営5名限りでお取り扱いください。会員ポータルからはリンクしていません。
+            <strong>本ページは会員ポータルとは別パスワードです</strong>（8/22・10/3の運営ページと同じ <code>Kawaguchi-Ops</code>）。<strong>メンバーにはお出ししない検討事項のみ</strong>を残していますので、運営5名限りでお取り扱いください。会員ポータルからはリンクしていません。
         </p>
         <p style="margin-bottom:0;">
-            <strong>ご意見をいただきたいのは次の3点です。</strong>①メルマガをQA由来に切り替えるご提案、とくに<a href="#melmaga-decide">先生に決めていただきたい4点</a>（著作権の線引き・お立場の線引き・頻度・最初の種出し）。②この24問の粒度と方向感（数行でお答えいただける粒度になっているか）、追加したい問い、逆に落としたほうがよい問い。③<a href="#phase2">フェーズ2</a>の3つの決めごと——実名で出すか事務局が束ねるか、先生への通知は都度か週1のダイジェストか、回答をメンバー全員に開くか質問者に返すか。
+            <strong>ご意見をいただきたいのは次の3点です。</strong>①会員ポータルへ移した<a href="https://keiichiro0830.github.io/smtw-notes/Kawaguchi_seminar_qa.html" target="_blank" rel="noopener">質問板</a>の14問について、粒度と方向感（数行でお答えいただける粒度になっているか）、追加したい問い、逆に落としたほうがよい問い。②<a href="#melmaga-decide">メルマガをQA由来に切り替えるご提案</a>、とくに先生に決めていただきたい4点（著作権の線引き・お立場の線引き・頻度・最初の種出し）。③<a href="#phase2">フェーズ2</a>の3つの決めごと——実名で出すか事務局が束ねるか、先生への通知は都度か週1のダイジェストか、回答をメンバー全員に開くか質問者に返すか。
         </p>
+    </div>
+
+    <div class="jump-nav">
+        <a href="#stock">質問板は会員ページへ</a>
+        <a href="#melmaga">メルマガの素材が尽きます</a>
+        <a href="#phase2">フェーズ2の設計</a>
+        <a href="#ops">運用メモ</a>
+    </div>
+
+    <div class="callout new">
+        <strong>使い方（運営向け）。</strong>問いは「出来事 → 先生への問い → なぜ伺いたいか」の3点セットで書いています。出来事は必ず一次に近い報道へのリンクを付け、<strong>問いは先生が数行で答えられる粒度まで絞る</strong>ことを原則にしました。先生からご回答をいただいたら、そのカードの「回答」欄に転記し、ステータスを<strong>回答済</strong>に変えます。お出しした時点で<strong>回答依頼中</strong>にします。
+    </div>
+
+    <h2 id="stock">質問在庫は会員ページへ移しました</h2>
+    <div class="callout new">
+        <strong>2026-08-24 変更。</strong>運営ページと会員ページでパスワードが分かれていて分かりにくいというご指摘を受け、<strong>質問板そのものは会員ポータル（パスワード <code>Kawaguchi</code>）へ移しました。</strong>直近ニュース由来の14問は下記でご覧いただけます。<br>
+        <a href="https://keiichiro0830.github.io/smtw-notes/Kawaguchi_seminar_qa.html" target="_blank" rel="noopener"><strong>川口先生への質問板（会員ポータル）</strong></a><br>
+        本ページには、<strong>メンバーにはお出ししない運営の検討事項</strong>（メルマガの在庫状況、先生に決めていただきたい線引き、成否の判定基準）だけを残しています。
     </div>
 
     <h2 id="melmaga">メルマガの素材が尽きます — この板を供給の源に切り替えるご提案</h2>
@@ -247,426 +271,6 @@
         <li><strong>会員からの質問が9月末までにゼロなら</strong>、集め方（工程(1)）が機能していません。松前の種出しだけではエンゲージメントの効果が出ませんので、その場合は当初の狙いの半分は達成できていないことになります。</li>
     </ul>
 
-    <div class="callout new">
-        <strong>使い方（運営向け）。</strong>問いは「出来事 → 先生への問い → なぜ伺いたいか」の3点セットで書いています。出来事は必ず一次に近い報道へのリンクを付け、<strong>問いは先生が数行で答えられる粒度まで絞る</strong>ことを原則にしました。先生からご回答をいただいたら、そのカードの「回答」欄に転記し、ステータスを<strong>回答済</strong>に変えます。お出しした時点で<strong>回答依頼中</strong>にします。
-    </div>
-
-    <h2 id="stock">質問在庫</h2>
-
-    <div class="qa-stats">
-        <div class="qa-stat"><span class="n" id="stat-total">0</span><span class="l">在庫（合計）</span></div>
-        <div class="qa-stat"><span class="n" id="stat-open">0</span><span class="l">未回答</span></div>
-        <div class="qa-stat"><span class="n" id="stat-sent">0</span><span class="l">回答依頼中</span></div>
-        <div class="qa-stat"><span class="n" id="stat-done">0</span><span class="l">回答済</span></div>
-    </div>
-
-    <div class="qa-filters">
-        <div><span class="fl">分野で絞る:</span>
-            <span class="qa-chip on" data-filter="cat" data-value="*">すべて</span>
-            <span class="qa-chip" data-filter="cat" data-value="不動産・空間">不動産・空間</span>
-            <span class="qa-chip" data-filter="cat" data-value="為替・金融政策">為替・金融政策</span>
-            <span class="qa-chip" data-filter="cat" data-value="金利・財政">金利・財政</span>
-            <span class="qa-chip" data-filter="cat" data-value="AI・半導体・DC">AI・半導体・DC</span>
-            <span class="qa-chip" data-filter="cat" data-value="市場・IPO・企業価値">市場・IPO・企業価値</span>
-            <span class="qa-chip" data-filter="cat" data-value="資源・供給網">資源・供給網</span>
-            <span class="qa-chip" data-filter="cat" data-value="通商・地政学">通商・地政学</span>
-        </div>
-        <div style="margin-top:0.35rem;"><span class="fl">状態で絞る:</span>
-            <span class="qa-chip on" data-filter="status" data-value="*">すべて</span>
-            <span class="qa-chip" data-filter="status" data-value="open">未回答</span>
-            <span class="qa-chip" data-filter="status" data-value="sent">回答依頼中</span>
-            <span class="qa-chip" data-filter="status" data-value="done">回答済</span>
-        </div>
-    </div>
-
-    <div id="qa-list">
-
-    <article class="qa-card" data-cat="不動産・空間" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-01</span><span class="qa-cat">不動産・空間</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-31</span></div>
-        <div class="qa-title">首都圏1,135駅の家賃上昇率に現れた「東高西低」は、空間的従属なのか、駅の属性で説明し尽くせるのか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>ブルームバーグが首都圏1,135駅の家賃データを駅単位で分析し、上昇率の序列が従来の「西高東低」から<strong>「東高西低」へ入れ替わりつつある</strong>と報じました。街の高級化（ジェントリフィケーション）が東側で進んでいる、という整理です。</p>
-            <p class="src">出所: <a href="https://www.bloomberg.com/graphics/2026-tokyo-rent-gentrification/jp/" target="_blank" rel="noopener">首都圏家賃マップ 街の高級化で東西に新序列、1135駅データを個別に大解剖</a>（Bloomberg, 2026-07-25 前後）※配信時の期間限定・無料閲覧リンクは失効済みで、現在は購読が必要です。</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>駅という点データで家賃の上昇率に明瞭な東西の勾配が観測されるとき、これを<strong>近隣どうしの空間的従属</strong>として読むべきか、それとも各駅の属性（再開発・所得構成・路線の輸送力）で説明し尽くせる<strong>見かけの空間相関</strong>と読むべきか。この2つを識別しにいくなら、先生はどのモデルから入られますか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>8/22 の事前課題「データの背後にある構造を探す」に、そのまま使える国内の題材だと思ったためです。当日は公示地価データを使いましたので、<strong>次回以降の演習用データの候補</strong>としてご検討いただけないかと考えています。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="不動産・空間" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-02</span><span class="qa-cat">不動産・空間</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-31</span></div>
-        <div class="qa-title">賃料の「水準」と「変化率」で、空間的自己相関の強さは変わるのか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>同じ首都圏家賃マップの分析は、水準ではなく<strong>上昇率</strong>で地図を描いています。水準の地図なら都心からの距離でほぼ説明がつくところ、上昇率で描くと別の模様が出てきます。</p>
-            <p class="src">出所: <a href="https://www.bloomberg.com/graphics/2026-tokyo-rent-gentrification/jp/" target="_blank" rel="noopener">首都圏家賃マップ 街の高級化で東西に新序列、1135駅データを個別に大解剖</a>（Bloomberg）※Q-01と同じ記事です。</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>不動産の価格・賃料について、<strong>差分（変化率）を取ると空間構造は残るのでしょうか、それとも消えるのでしょうか。</strong>先生のご経験では、水準の空間相関と変化率の空間相関のどちらが強く出ることが多いか、また残る／消えるの分かれ目はどこにあるとお考えかを伺えればと思います。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>Q-01と対にした、より方法論寄りの問いです。ここが分かると、演習で「何を目的変数に置くか」の判断が付きます。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="為替・金融政策" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-03</span><span class="qa-cat">為替・金融政策</span><span class="qa-status open">未回答</span><span class="qa-date">2026-08-04</span></div>
-        <div class="qa-title">15年ぶりの日米協調介入は、日本の不動産に対する海外投資家の期待形成を変えるか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>8月2日、日米が<strong>15年ぶりの協調介入</strong>に踏み切り、円買い・ドル売りを実施しました。ベッセント財務長官の手元の「to doリスト」に50〜100億ドル相当の円買いが写り込んでいたとロイターが報じ、同長官は追加介入の用意とFRBによるバックストップ拡大の必要にも言及しています。報道では1985年のプラザ合意との対比が繰り返し持ち出されています。</p>
-            <p class="src">出所: <a href="https://www.nytimes.com/2026/08/02/business/us-japan-yen.html" target="_blank" rel="noopener">U.S. and Japan Coordinated to Help Stabilize the Yen</a>（NYT）／<a href="https://www.reuters.com/world/asia-pacific/bessent-ready-repeat-joint-yen-intervention-urges-bigger-fed-backstop-2026-08-03/" target="_blank" rel="noopener">Bessent ready to repeat joint yen intervention</a>（Reuters）／<a href="https://edition.cnn.com/2026/08/02/business/us-buys-japan-yen-intl-hnk" target="_blank" rel="noopener">The US has stepped in to buy Japanese yen. Why?</a>（CNN）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>介入はフローの需給に効く一時的な措置で、不動産のような長期資産の価格形成を動かすのは実質金利と期待のほうだ、というのが教科書的な理解かと思います。そのうえで、<strong>今回のように介入がアメリカ側の主導で行われたという事実そのもの</strong>が、日本の不動産に対する海外投資家の期待形成に構造的な変化を与えるとお考えでしょうか。それとも、あくまでノイズとして扱うべき事象でしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>「為替は不動産に効かない」で片付けてよいのか、10/3の「投資の新しい概念」の議論の前に一度整理しておきたいためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="為替・金融政策" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-04</span><span class="qa-cat">為替・金融政策</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-24</span></div>
-        <div class="qa-title">「歴史的円安＝財政懸念」という説明を疑うとしたら、代わりに何を第一の説明変数に置くべきか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>7月21日に円は<strong>40年ぶりの安値となる1ドル＝163円台</strong>を付けました。対ドルだけの現象ではなく、<strong>名目実効為替レートも過去最低を更新</strong>しています。片山財務相は「いつでも適切に断固たる対応」と述べました。一方で、日銀の為替担当経験者による「歴史的円安＝財政懸念という図式を疑う」という趣旨の解説も出ています。</p>
-            <p class="src">出所: <a href="https://www.bloomberg.com/jp/news/articles/2026-07-23/TILPXTKK3NY800" target="_blank" rel="noopener">対ドルだけでない円安鮮明、名目実効為替レートが過去最低を更新</a>／<a href="https://www.bloomberg.com/news/newsletters/2026-07-15/TI74C1N3N09K00" target="_blank" rel="noopener">日銀為替課でたたき込まれた市況分析－「歴史的円安＝財政懸念」を疑う</a>（いずれもBloomberg）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>「円安の原因は財政への懸念だ」という説明を採らない立場に立つとすると、<strong>いま観測されている円安を説明する変数として、先生は何を第一に置かれますか。</strong>実質金利差、経常収支の構造変化、対外直接投資のフロー、あるいは別のものでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>説明変数の選び方そのものが、先生のおっしゃる「データの背後にある構造を探す」作業の実例になると思ったためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="為替・金融政策" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-05</span><span class="qa-cat">為替・金融政策</span><span class="qa-status open">未回答</span><span class="qa-date">2026-06-18</span></div>
-        <div class="qa-title">利上げをしても円安・株高になった「ねじれ」を、どう読むべきか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>6月16日、日銀は利上げに踏み切り、政策金利は<strong>31年ぶりの高さ</strong>となりました。ところが円安傾向は止まらず、株価はむしろ一時<strong>7万円を初めて突破</strong>しました。「利上げは想定内」との見方が株高を後押ししたと報じられています。</p>
-            <p class="src">出所: <a href="https://www.nytimes.com/2026/06/16/business/japan-interest-rates-war.html" target="_blank" rel="noopener">Japan Raises Rates to 31-Year High to Ward Off War Inflation</a>（NYT）／<a href="https://news.web.nhk/newsweb/na/na-k10015150931000" target="_blank" rel="noopener">株価 一時7万円を初めて突破</a>（NHK）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>利上げ → 通貨高 → 株安、という経路が効きませんでした。これは<strong>「金利の水準」ではなく「期待に対してどれだけ織り込み済みだったか」</strong>で説明すべき現象という理解でよろしいでしょうか。そうだとすると、<strong>不動産のキャップレートは、この局面でどちらを見て動くべきなのでしょうか。</strong></p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>金利と不動産の関係を、水準の話と期待の話に分けて理解しておきたいためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="金利・財政" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-06</span><span class="qa-cat">金利・財政</span><span class="qa-status open">未回答</span><span class="qa-date">2026-05-20</span></div>
-        <div class="qa-title">30年金利4%台は、不動産にとって割引率の上昇か、名目成長率の上方修正か</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>5月18日、10年債利回りが<strong>29年ぶりの高値2.8%</strong>、30年債利回りは<strong>過去最高の4.17%</strong>を付け、円・株・債券のトリプル安となりました。補正予算は新規国債で手当てされる見通しと報じられる一方、IMF高官は日本の金利上昇を「健全な証拠」と評しています。</p>
-            <p class="src">出所: <a href="https://www.bloomberg.com/jp/news/articles/2026-05-18/TF7ED4T9NJLW00" target="_blank" rel="noopener">超長期金利最高、世界的債券売り－円・株とのトリプル安</a>（Bloomberg）／<a href="https://www.nippon.com/en/news/yjj2026051800204/10-year-jgb-yield-hits-new-29-year-high-of-2-8-pct.html" target="_blank" rel="noopener">10-Year JGB Yield Hits New 29-Year High</a>（nippon.com）／<a href="https://www.jiji.com/jc/article?k=2026041401243&amp;g=int" target="_blank" rel="noopener">日本の金利上昇は「健全な証拠」ＩＭＦ高官</a>（時事）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>金利上昇は不動産にとって割引率の上昇として一次的にはマイナスですが、その裏で<strong>長期の名目成長率が上方修正されている</strong>のであれば、分子も増えます。<strong>どういう条件が揃ったとき、金利上昇は不動産にプラスに働くとお考えでしょうか。</strong>実務で見るべき観測量があれば、それも伺えれば幸いです。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>「金利が上がると不動産は下がる」という反射的な議論を、条件付きで語れるようにしておきたいためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="金利・財政" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-07</span><span class="qa-cat">金利・財政</span><span class="qa-status open">未回答</span><span class="qa-date">2026-06-23</span></div>
-        <div class="qa-title">「ビハインド・ザ・カーブ」を、事後ではなく事中に判定する方法はあるか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>日銀は6月に利上げして政策金利を31年ぶりの高さにしましたが、円安も物価高も止まっていません。「金利のある世界」を読み解くキーワードとして、<strong>スタグフレーション</strong>と<strong>ビハインド・ザ・カーブ</strong>（中央銀行の対応が物価の動きに遅れている状態）が繰り返し論じられる状況です。一方でIMF高官は、日本の金利上昇はむしろ「健全な証拠」で引き締めは適切だと述べています。</p>
-            <p class="src">出所: <a href="https://www.nytimes.com/2026/06/16/business/japan-interest-rates-war.html" target="_blank" rel="noopener">Japan Raises Rates to 31-Year High to Ward Off War Inflation</a>（NYT）／<a href="https://www.jiji.com/jc/article?k=2026041401243&amp;g=int" target="_blank" rel="noopener">日本の金利上昇は「健全な証拠」　日銀、引き締め適切―ＩＭＦ高官</a>（時事通信）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>ビハインド・ザ・カーブは、たいてい<strong>後から振り返って「あれは遅れていた」と分かる</strong>ものです。これを<strong>事中に判定する統計量</strong>を作るとしたら、何を見るべきでしょうか。そもそも識別可能な問題とお考えでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>「事後にしか分からないものを事中に判定する」という問題設定は、ゼミで扱ってきた予測と構造推定の関係そのものだと思ったためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="AI・半導体・DC" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-08</span><span class="qa-cat">AI・半導体・DC</span><span class="qa-status open">未回答</span><span class="qa-date">2026-06-01</span></div>
-        <div class="qa-title">ソフトバンクGの14兆円データセンター投資は、計画資本という状態変数を入れるとどう記述されるか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>ソフトバンクグループが、フランスに<strong>最大750億ユーロ（約14兆円）</strong>を投じて欧州最大規模のAIデータセンターを構築すると発表しました。</p>
-            <p class="src">出所: <a href="https://www.ft.com/content/1022f9bd-5b6d-44a5-9303-c8b05b8c6463" target="_blank" rel="noopener">SoftBank pledges €75bn to build Europe's biggest AI facility in France</a>（FT）／<a href="https://jp.wsj.com/articles/softbank-to-plow-52-billion-into-french-data-centers-6465eadc" target="_blank" rel="noopener">ソフトバンクG、仏データセンター構築へ 投資額最大750億ユーロ</a>（WSJ）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>先生が7月に整理された「<strong>データセンターをリアルオプション・強化学習で評価することはできない</strong>」というご指摘は、この14兆円のような案件にもそのまま当てはまるでしょうか。<strong>計画資本を状態変数として入れたとき、この投資判断はどのように記述されることになるか</strong>を、差し支えない範囲で伺えれば幸いです。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>先生の「企業を匿名の資本ストックとして扱わない」というご整理を、具体的な案件に当てて理解しておきたいためです。10/3の「投資の新しい概念」の下敷きにもなると思っています。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="AI・半導体・DC" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-09</span><span class="qa-cat">AI・半導体・DC</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-22</span></div>
-        <div class="qa-title">建設投資がAIデータセンターに一極集中すると、他セクターの供給関数はどう変わるか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>米国では<strong>AIデータセンターの建設だけが好調で、それ以外の建設投資はほとんど伸びていない</strong>と報じられています。建設需要の極端な集中が起きている状態です。</p>
-            <p class="src">出所: <a href="https://www.wsj.com/business/ai-data-center-construction-is-boomingbut-not-much-else-is-6ae37b3e" target="_blank" rel="noopener">AI Data-Center Construction Is Booming—but Not Much Else Is</a>（WSJ）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>一極集中は、職人・資材という共通の投入を通じて他セクターの建設コストを押し上げる<strong>外部性</strong>を持つはずです。同じことが日本でも起きるとしたら、<strong>住宅・オフィスの供給関数はどう変わる</strong>とお考えでしょうか。供給の価格弾力性が下がる、という理解でよろしいでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>データセンターの話を「新しいアセットクラスが増えた」ではなく「既存セクターの供給側が変わった」として捉え直せないか、と考えたためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="AI・半導体・DC" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-10</span><span class="qa-cat">AI・半導体・DC</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-17</span></div>
-        <div class="qa-title">「フィジカルAI」が入ると、産業用不動産の価値決定要因は入れ替わるか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>エヌビディアCEOの来日にあわせ、<strong>富士通・ファナックがフィジカルAIで協業</strong>、ソフトバンク連合が国産AI開発のためGPUを大規模導入すると発表されました。一方で「半導体株が背負う16兆ドルの重圧」という懐疑的な見方も出ています。</p>
-            <p class="src">出所: <a href="https://www.bloomberg.com/jp/news/articles/2026-07-15/TI70NPKJH6V500" target="_blank" rel="noopener">エヌビディアの技術活用、富士通・ファナックがフィジカルAIで協業</a>／<a href="https://www.bloomberg.com/jp/news/articles/2026-07-08/THUW6XRKV2UV00" target="_blank" rel="noopener">半導体株が背負う16兆ドルの重圧</a>（いずれもBloomberg）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>フィジカルAIが製造・物流の現場に入ると、立地の決定要因のうち<strong>労働力の調達可能性の重みが下がり、電力と通信の重みが上がる</strong>はずです。この入れ替わりは、<strong>すでに地価や賃料のデータで観測できる段階に来ている</strong>とお考えでしょうか。それとも、まだ観測できないと考えるべきでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>「観測できるか、まだできないか」の見立てが、実証研究のテーマ設定を左右すると思ったためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="不動産・空間" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-11</span><span class="qa-cat">不動産・空間</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-01</span></div>
-        <div class="qa-title">自動運転が普及すると、地代の距離勾配のパラメータはいつ、どれくらいの速さで動くか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>日本の自動運転関連企業が初めて上場します。国連のWP29で<strong>レベル4の国際基準が採択で合意され、2027年1月発効の予定</strong>です。中国のApollo Goが運行台数でWaymoを逆転し、上位5社のうち3社を中国勢が占めるという報告も出ています。</p>
-            <p class="src">出所: <a href="https://www.aba-j.or.jp/info/industry/27469/" target="_blank" rel="noopener">WP29が自動運転「レベル4」の国際基準採択で合意</a>／<a href="https://equalocean.com/news/2026062521966-baidus-apollo-go-overtakes-waymo-as-chinese-robotaxi-operators-claim-three-top" target="_blank" rel="noopener">Baidu's Apollo Go Overtakes Waymo</a></p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>自動運転が普及した都市では、駐車場需要が減り、「駅からの距離」に対する地代の勾配も緩やかになるはずです。つまり<strong>Alonso–Muth–Mills型の距離勾配のパラメータが動く</strong>ということかと思います。<strong>これはいつ頃から、どれくらいの速さで動くとご覧になりますか。</strong>また、その変化を早期に検出するには何を見るのがよいでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>都市構造のパラメータが動く局面に立ち会えるのは稀で、その検出こそ時空統計学の出番だと思ったためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="不動産・空間" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-12</span><span class="qa-cat">不動産・空間</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-20</span></div>
-        <div class="qa-title">100年先の物理的リスクは、どの経路で現在の不動産価格に入ってくるのか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>沿岸水位の上昇が従来の想定より大きく、東南アジアでは想定を90センチ上回るという新研究が報じられました。日本でも<strong>2100年に砂浜の約6割が消失するおそれ</strong>があるとされています。</p>
-            <p class="src">出所: <a href="https://www.cnn.co.jp/fringe/35244709.html" target="_blank" rel="noopener">世界の沿岸水位、従来の想定より高く 東南アジアで90センチ上回る</a>（CNN）／<a href="https://mainichi.jp/articles/20260719/ddm/041/040/111000c" target="_blank" rel="noopener">2100年 日本の砂浜6割消失の恐れ</a>（毎日新聞）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>割引率が2〜3%であれば、100年後のキャッシュフローの現在価値はほぼゼロになり、素直なDCFでは織り込みようがありません。それでも市場が織り込むとすれば、<strong>経路は保険料・融資条件・規制のいずれか</strong>だと思うのですが、実証的にはどれが先に効くとお考えでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>気候リスクの価格への織り込みは、割引の話ではなく制度の話として扱うべきではないか、という仮説を確かめたいためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="通商・地政学" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-13</span><span class="qa-cat">通商・地政学</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-22</span></div>
-        <div class="qa-title">関税率そのものより「関税率の分散」が上がった状況で、設備投資はリアルオプションか計画資本か</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>トランプ関税の日米合意から1年が経ち、新たな関税が動き始めました。カナダには50%の関税が課され、米最高裁の判断で関税の法的な基盤が崩れたため、政権は積み直しを急いでいます。日本の自動車メーカーの負担は280億ドルに達したと報じられています。</p>
-            <p class="src">出所: <a href="https://apnews.com/article/trump-tariffs-supreme-court-trade-deficit-ec2bd8d8d928baafc619a161670d7725" target="_blank" rel="noopener">Trump administration races the clock to rebuild US tariff wall knocked down by Supreme Court</a>（AP）／<a href="https://www.automotivemanufacturingsolutions.com/electrification/us-policy-shifts-cost-japans-carmakers-28bn/2680601" target="_blank" rel="noopener">US policy shifts cost Japan's carmakers $28bn</a></p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>関税が<strong>法的に不安定な政策変数</strong>になると、企業は関税率の水準ではなく<strong>その分散</strong>に反応するはずです。この状況での設備投資の意思決定は、<strong>リアルオプションで書くのが素直でしょうか、それとも計画資本の枠組みのほうが適しているでしょうか。</strong>先生が7月に整理された両者の違いが、まさにここで効いてくるように思われます。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>「待つ価値」を評価するリアルオプションが本来最も強いはずの局面で、それでも計画資本のほうが適切だとすれば、その理由が両者の違いを最もよく説明すると思ったためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="市場・IPO・企業価値" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-14</span><span class="qa-cat">市場・IPO・企業価値</span><span class="qa-status open">未回答</span><span class="qa-date">2026-06-26</span></div>
-        <div class="qa-title">日本株が「割安市場」から「成長市場」へ評価替えされているなら、不動産の要求利回りにも同じ動きは出ているか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>キオクシアがAIブームを背景に<strong>時価総額でトヨタを抜き日本一</strong>となり、米国でのADR上場を来年度初頭に予定していると発表しました。「トヨタの首位陥落が映す日本株新時代、<strong>海外評価は割安から成長市場へ</strong>」と報じられる一方、同じ週に「AIブーム過大評価の懸念」による半導体売りも起きています。</p>
-            <p class="src">出所: <a href="https://www.bloomberg.com/jp/news/articles/2026-06-23/TGKE77KJH6V400" target="_blank" rel="noopener">トヨタの首位陥落が映す日本株新時代、海外評価は割安から成長市場へ</a>／<a href="https://www.bloomberg.com/jp/news/articles/2026-06-12/TGHPLTT9NJLU00" target="_blank" rel="noopener">キオクシアが時価総額トップに、AIブームが日本企業の勢力図塗り替え</a>（いずれもBloomberg）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>株式市場で「割安から成長へ」という評価の切り替えが本当に起きているのであれば、<strong>同じ投資家が見ている日本の不動産の要求利回りにも、対応する動きが出ているはず</strong>だと思います。<strong>それは実際に観測されているとお考えでしょうか。</strong>観測されていないとすれば、それはなぜでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>株式と不動産で評価の切り替えにずれがあるなら、そのずれ自体が投資機会になるのではないかと考えたためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="市場・IPO・企業価値" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-15</span><span class="qa-cat">市場・IPO・企業価値</span><span class="qa-status open">未回答</span><span class="qa-date">2026-06-11</span></div>
-        <div class="qa-title">巨大未上場企業が一斉に上場すると、株式リスクプレミアムの推定は歪むか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>OpenAIが新規株式公開を申請し、評価額は3月末時点で<strong>約136兆円</strong>と報じられました。SpaceXのIPOにも欧州の個人投資家が殺到しています。巨大AI企業のIPOラッシュが起きている状況です。</p>
-            <p class="src">出所: <a href="https://news.web.nhk/newsweb/na/na-k10015144701000" target="_blank" rel="noopener">オープンAI 新規株式公開を申請 評価額は3月末時点で約136兆円</a>（NHK）／<a href="https://jp.reuters.com/markets/japan/V7LDL2SNQNJTNID34KEHTH6DQE-2026-06-08/" target="_blank" rel="noopener">スペースXのIPOに引き寄せられる欧州個人投資家、高評価にリスクも</a>（Reuters）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>未上場のまま巨大化した企業が一斉に上場すると、上場株式市場の構成そのものが変わります。<strong>過去の実現リターンから株式リスクプレミアムを推定する実務は、この局面でどの程度歪むとお考えでしょうか。</strong>不動産の割引率を株式のERPから導く実務にも影響が及ぶでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>ERPは評価の入口の数字で、ここが動くと下流がすべて動きます。as-of の取り方の問題としても伺っておきたいところです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="市場・IPO・企業価値" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-16</span><span class="qa-cat">市場・IPO・企業価値</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-13</span></div>
-        <div class="qa-title">単一セクターが指数のボラティリティを支配する状態は、「依存の統計学」の問題そのものではないか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>韓国のSKハイニックスがナスダックにADR上場し、<strong>メモリー株が世界の株式市場の方向を左右する</strong>状況になっていると報じられています。</p>
-            <p class="src">出所: <a href="https://jp.reuters.com/economy/GHZW6AO6KRIVVLDY3GY5NOAGMI-2026-07-10/" target="_blank" rel="noopener">Reuters（2026-07-10）</a>／<a href="https://www.bloomberg.com/jp/news/articles/2026-07-10/THZ6G0T96OSG00" target="_blank" rel="noopener">Bloomberg（2026-07-10）</a></p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>分散投資は「多数の、ある程度独立な資産がある」という前提の上に立っています。単一セクターが指数の変動を支配する状態は、その前提を壊します。<strong>これを「依存の統計学」の枠組みで扱うとすれば、どこから手を付けるのが筋でしょうか。</strong>相関行列の推定の問題として扱うのか、それとも因子構造そのものを立て直すべきでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>ゼミの中心概念である「依存」を、空間だけでなく資産間の依存としても捉えられるか確かめたいためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="市場・IPO・企業価値" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-17</span><span class="qa-cat">市場・IPO・企業価値</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-30</span></div>
-        <div class="qa-title">レバレッジ型ETFの残高が積み上がる市場を、どのモデルクラスで扱うべきか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>韓国で<strong>レバレッジ型ETFをきっかけに市場が混乱</strong>する事態が起きました。</p>
-            <p class="src">出所: <a href="https://jp.reuters.com/markets/japan/N56YJJOOBBIEPDYW5L3K4A2P5Y-2026-07-28/" target="_blank" rel="noopener">Reuters（2026-07-28）</a>／<a href="https://jp.reuters.com/markets/japan/EREQTFYFMJJJLAX3E3FAPBX3F4-2026-07-29/" target="_blank" rel="noopener">Reuters（2026-07-29）</a></p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>レバレッジ商品は、日々のリバランスを通じて「価格が動く → 建玉を調整する → さらに価格が動く」というフィードバックを生みます。線形の時系列モデルでは書けない構造です。<strong>実務で扱うとしたら、どのモデルクラスが現実的でしょうか。</strong></p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>フィードバックを持つ系を、どこまでモデルに載せ、どこから「載せない」と決めるのか。その線引きの実務感覚を伺いたいためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="資源・供給網" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-18</span><span class="qa-cat">資源・供給網</span><span class="qa-status open">未回答</span><span class="qa-date">2026-05-13</span></div>
-        <div class="qa-title">供給ショックが「価格」ではなく「仕様の劣化」として現れるとき、物価統計はそれを捉えられるか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>イラン情勢による石化製品の不足を受けて、カルビーが一部商品の<strong>パッケージを白黒に切り替え</strong>ました。韓国はナフサの調達先をロシア産・米国産へ振り替えており、アジア全体に「プラスチック・ショック」が及んでいると報じられています。</p>
-            <p class="src">出所: <a href="https://www.ft.com/content/36748028-f0ba-418b-a643-aab88afffa9f" target="_blank" rel="noopener">'Plastic shock' hits Asia as Iran oil crisis strangles supplies</a>（FT）／<a href="https://www.inboundlogistics.com/articles/the-invisible-shortage-how-petrochemical-shortages-could-impact-packaging/" target="_blank" rel="noopener">How Petrochemical Shortages Could Impact Packaging</a></p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>価格を据え置いて仕様を落とす形の調整は、CPIには表れにくいものです。<strong>品質調整（ヘドニック）を実務でどこまでやるべきとお考えでしょうか。</strong>また、これは不動産で築年・設備の差を調整する問題と、同じ枠組みで扱えるものでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>ヘドニックは不動産の分析でも中心的な道具ですので、物価の側から見たときの限界を伺っておきたいためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="資源・供給網" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-19</span><span class="qa-cat">資源・供給網</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-29</span></div>
-        <div class="qa-title">「ネットワーク上のボトルネック」が価格に効く構造を、空間計量経済で書けるか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>ウクライナの黒海側の港が<strong>輸出能力の3分の1を喪失</strong>し、両国が互いの貨物船を攻撃する事態となっています。小麦価格は2年ぶりの高値を付けました。</p>
-            <p class="src">出所: <a href="https://www.reuters.com/world/ukraines-black-sea-ports-lose-third-grain-export-capacity-farmers-union-says-2026-07-15/" target="_blank" rel="noopener">Ukraine's Black Sea ports lose a third of grain export capacity</a>（Reuters）／<a href="https://www.world-grain.com/articles/23027-black-sea-grain-trapped-as-russia-ukraine-attacks-continue" target="_blank" rel="noopener">Black Sea grain trapped as Russia, Ukraine attacks continue</a></p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>ここで効いているのは、産地からの距離ではなく<strong>輸送ネットワーク上の特定の結節点</strong>です。空間計量経済の重み行列を「地理的近接」ではなく「ネットワーク上の接続」で定義するアプローチは、実務的にどこまで使えるものでしょうか。<strong>先生のご経験では、重み行列の設計はどこまで結果を左右するのでしょうか。</strong></p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>重み行列の決め方が結果を決めてしまうのであれば、それは演習でも最初に押さえるべき論点だと思ったためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="市場・IPO・企業価値" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-20</span><span class="qa-cat">市場・IPO・企業価値</span><span class="qa-status open">未回答</span><span class="qa-date">2026-05-08</span></div>
-        <div class="qa-title">業績は好調なのに株価が上がらない状態と、賃料は上がるのに価格が上がらない不動産は、同じ構造か</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>任天堂は、スイッチ2もソフトも販売好調であるにもかかわらず<strong>株価が上昇気流に乗らない</strong>という状態が続いていると報じられました。</p>
-            <p class="src">出所: <a href="https://www.bloomberg.com/jp/news/articles/2026-05-07/TEMB51KK3NYD00" target="_blank" rel="noopener">任天堂、株価を上昇気流に乗せない「スイッチ2」のジレンマ</a>（Bloomberg）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>フローの業績とストックの評価が乖離する典型例だと思います。不動産にも「賃料は上がっているのに価格が上がらない」局面があります。<strong>この2つは同じ構造として説明できるのでしょうか</strong>、それとも別のものとして扱うべきでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>「フローとストックの乖離」を一般的な枠組みで理解できれば、不動産の局面判断にも使えると考えたためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="市場・IPO・企業価値" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-21</span><span class="qa-cat">市場・IPO・企業価値</span><span class="qa-status open">未回答</span><span class="qa-date">2026-06-05</span></div>
-        <div class="qa-title">部門間で100倍に開いた報酬格差は、限界生産性の差なのか、レントの配分なのか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>サムスンが半導体部門に<strong>6,400万円のボーナス</strong>を支給し、部門間で100倍の差が生じたと報じられました。エヌビディアのCEOも社員に「可能な限り高い報酬」を払う方針を示しています。一方、日本の26年春闘の平均賃上げ率は<strong>5.02%</strong>でした。</p>
-            <p class="src">出所: <a href="https://www.bloomberg.com/jp/news/features/2026-06-04/TG3484KGCTGM00" target="_blank" rel="noopener">サムスン6400万円ボーナスが映す新格差社会－半導体偏重、部門間で100倍の差</a>／<a href="https://www.bloomberg.com/jp/news/articles/2026-06-04/TFXDGRKK3NY900" target="_blank" rel="noopener">26年春闘平均賃上げ率は5.02%</a>（いずれもBloomberg）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>同一企業内で100倍の差が開くとき、それは<strong>人的資本の限界生産性の差</strong>なのでしょうか、それとも<strong>超過利潤（レント）の配分</strong>なのでしょうか。<strong>この2つを実証的に区別するとしたら、どういう設計になるでしょうか。</strong></p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>先生が7/18の資料で挙げられた「個人の時間が浮くことと、コストが下がることは別」という論点と、同じ構造の問いだと感じたためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="通商・地政学" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-22</span><span class="qa-cat">通商・地政学</span><span class="qa-status open">未回答</span><span class="qa-date">2026-06-16</span></div>
-        <div class="qa-title">地政学リスクの解消は株価に即座に入るのに、不動産では遅れる。摩擦なのか、情報の到達の遅れなのか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>6月中旬に米イラン間の合意が成立し、原油先物は下落、<strong>日経平均は史上最高値を更新</strong>しました。</p>
-            <p class="src">出所: <a href="https://jp.reuters.com/markets/japan/O3UHKFRAOVNUNJ63DU3EOAI7AU-2026-06-15/" target="_blank" rel="noopener">Reuters（2026-06-15）</a>／<a href="https://www.asahi.com/articles/ASV6H01DKV6HULFA00NM.html" target="_blank" rel="noopener">朝日新聞</a></p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>同じニュースが株価には即日、不動産価格には数四半期かけて入ります。この遅れは<strong>取引コストによる摩擦</strong>なのでしょうか、それとも<strong>情報が意思決定主体に届くまでの遅れ</strong>なのでしょうか。<strong>データからこの2つを分離できるでしょうか。</strong></p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>先生が7/5に「Lagに関心があります」と書かれていた点に、具体的な題材で戻ってみたいと考えたためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="通商・地政学" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-23</span><span class="qa-cat">通商・地政学</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-03</span></div>
-        <div class="qa-title">邦銀の与信がインドへ向かうと、国内の不動産融資の量と条件はどう変わるか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>高市首相がインドを訪問し、経済・エネルギー安全保障での協力を確認しました。あわせて<strong>日本のメガバンクがインドで存在感を増している</strong>と報じられています。</p>
-            <p class="src">出所: <a href="https://www.bloomberg.com/jp/news/features/2026-06-29/THF271KIP3IT00" target="_blank" rel="noopener">インドで存在感増す日本のメガバンク</a>／<a href="https://www.bloomberg.com/jp/news/articles/2026-07-02/THDPWPKJH6V400" target="_blank" rel="noopener">高市首相、経済・エネルギー安保で日印協力を推進</a>（いずれもBloomberg）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>邦銀のバランスシートは無限ではありませんので、海外与信が増えれば国内の配分は変わるはずです。<strong>国内の不動産融資について、量と条件のどちらに先に表れるとお考えでしょうか。</strong></p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>不動産市況を金利だけで見るのではなく、与信の配分から見る視点を持っておきたいためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    <article class="qa-card" data-cat="金利・財政" data-status="open">
-        <div class="qa-head"><span class="qa-id">Q-24</span><span class="qa-cat">金利・財政</span><span class="qa-status open">未回答</span><span class="qa-date">2026-07-23</span></div>
-        <div class="qa-title">エネルギー価格への減税は需要を刺激して価格をさらに押し上げる。それでも選ばれるのはなぜか</div>
-        <div class="qa-block qa-fact"><span class="qa-label">出来事</span>
-            <p>イギリスの新首相バーナム氏が、就任2日目に<strong>電気代への付加価値税をゼロにする</strong>と決断しました。</p>
-            <p class="src">出所: <a href="https://www.nytimes.com/2026/07/21/world/europe/uk-andy-burnham-electricity-tax-vat.html" target="_blank" rel="noopener">Britain's New Leader Starts With Electricity Tax Cut</a>（NYT）／<a href="https://news.web.nhk/newsweb/na/na-k10015179611000" target="_blank" rel="noopener">イギリス 与党 労働党新党首にバーナム氏選出</a>（NHK）</p>
-        </div>
-        <div class="qa-block qa-ask"><span class="qa-label">先生への問い</span>
-            <p>供給制約が原因の価格高騰に対する需要側の減税は、理屈のうえでは価格をさらに押し上げます。それでも政治的には繰り返し選ばれます。これは<strong>政策の時間非整合性</strong>として扱うべき問題でしょうか。同じ構造は日本の住宅政策（住宅ローン減税など）にも当てはまるとお考えでしょうか。</p>
-        </div>
-        <div class="qa-block qa-why"><span class="qa-label">なぜ伺いたいか</span>
-            <p>住宅政策を「善し悪し」ではなく政策の構造の問題として議論する足場がほしいためです。</p>
-        </div>
-        <div class="qa-block qa-ans"><span class="qa-label">川口先生の回答</span><p class="qa-pending">（回答待ち）</p></div>
-    </article>
-
-    </div>
-    <p class="qa-empty" id="qa-empty">条件に合う質問がありません。</p>
 
     <h2 id="phase2">フェーズ2の設計（会員ポータルへの展開）</h2>
     <p>ここでの型がよさそうであれば、次の順で会員ポータル側に載せます。<strong>アクセス制御は現状のまま（会員ポータルのパスワード <code>Kawaguchi</code>）で、新しい権限の仕組みは作りません。</strong>既存のコメント欄・提出BOX・配布BOXと同じ GAS エンドポイントを使い回す前提です。</p>
