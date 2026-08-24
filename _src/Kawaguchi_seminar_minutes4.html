@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AIx知的鍛錬塾 ポータル</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+            background: #f8fafc;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 2.5rem 1rem;
+        }
+        .container { max-width: 760px; margin: 0 auto; }
+        h1 {
+            font-size: 1.6rem;
+            color: #2c5282;
+            margin-bottom: 0.4rem;
+        }
+        .subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1.6rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 2px solid #2c5282;
+        }
+        h2 {
+            font-size: 1.15rem;
+            color: #2c5282;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            padding-left: 0.6rem;
+            border-left: 4px solid #2c5282;
+        }
+        h3 {
+            font-size: 1rem;
+            color: #1f3a5f;
+            margin-top: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        p { margin-bottom: 0.8rem; }
+        ul { margin-left: 1.4rem; margin-bottom: 0.8rem; }
+        li { margin-bottom: 0.3rem; }
+        a { color: #2c5282; }
+        a:hover { text-decoration: underline; }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0.8rem;
+        }
+        .info-table th, .info-table td {
+            text-align: left;
+            padding: 0.55rem 0.7rem;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+            font-size: 0.95rem;
+        }
+        .info-table th {
+            background: #eef2f7;
+            color: #1f3a5f;
+            font-weight: 600;
+            white-space: nowrap;
+            width: 7rem;
+        }
+        .paper-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.9rem;
+        }
+        .paper-card .meta {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        .paper-card .title {
+            font-weight: 600;
+            color: #1f3a5f;
+            margin-bottom: 0.6rem;
+        }
+        .file-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .file-links a {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: #eef2f7;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+        .file-links a:hover {
+            background: #dbe4f0;
+            text-decoration: none;
+        }
+        .file-links a.primary {
+            background: #2c5282;
+            color: #fff;
+            border-color: #2c5282;
+        }
+        .file-links a.primary:hover {
+            background: #1f3a5f;
+        }
+        .file-links a.notebook {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+        .file-links a.notebook:hover {
+            background: #fde68a;
+        }
+        .callout {
+            background: #fff8e1;
+            border-left: 4px solid #f59e0b;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            font-size: 0.92rem;
+        }
+        .nav-link {
+            display: inline-block;
+            margin-top: 0.4rem;
+            padding: 0.7rem 1rem;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #2c5282;
+        }
+        .nav-link:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-decoration: none;
+        }
+        details.melmaga {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 0.7rem;
+            overflow: hidden;
+        }
+        details.melmaga > summary {
+            cursor: pointer;
+            padding: 0.85rem 1.1rem;
+            font-weight: 600;
+            color: #1f3a5f;
+            list-style: none;
+            background: #f1f5f9;
+            border-bottom: 1px solid transparent;
+        }
+        details.melmaga > summary::-webkit-details-marker { display: none; }
+        details.melmaga > summary::before {
+            content: "▶";
+            font-size: 0.7rem;
+            margin-right: 0.6rem;
+            color: #64748b;
+            transition: transform 0.15s;
+            display: inline-block;
+        }
+        details.melmaga[open] > summary::before { transform: rotate(90deg); }
+        details.melmaga[open] > summary { border-bottom-color: #e2e8f0; }
+        details.melmaga .mm-date {
+            display: inline-block;
+            background: #2c5282;
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.12rem 0.55rem;
+            border-radius: 3px;
+            margin-right: 0.55rem;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+        }
+        details.melmaga .mm-body {
+            padding: 1rem 1.4rem 0.4rem;
+            font-size: 0.93rem;
+        }
+        details.melmaga .mm-body p {
+            margin-bottom: 0.7rem;
+        }
+        details.melmaga .mm-body h4 {
+            font-size: 0.97rem;
+            color: #1f3a5f;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #94a3b8;
+        }
+        details.melmaga .mm-body ul {
+            margin-bottom: 0.8rem;
+        }
+        .participants-box {
+            background: #ebf4ff;
+            border-radius: 8px;
+            padding: 1rem 1.4rem;
+            margin: 1rem 0;
+        }
+        .participants-box ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+        .speaker-block {
+            background: #fff;
+            border-left: 3px solid #2c5282;
+            padding: 0.8rem 1.1rem;
+            margin: 0.7rem 0;
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .speaker-block h4.sb-name {
+            margin: 0 0 0.4rem;
+            color: #2c5282;
+            font-size: 0.97rem;
+            border: none;
+            padding: 0;
+        }
+        .speaker-block ul {
+            margin-bottom: 0;
+            margin-left: 1.2rem;
+        }
+        .speaker-block p { margin-bottom: 0; }
+        .decision-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 1rem 1.4rem;
+            margin: 1.2rem 0;
+        }
+        .action-box {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 1rem 1.4rem;
+            margin: 1.2rem 0;
+        }
+        .note-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem 1.4rem;
+            margin: 1.2rem 0;
+            font-size: 0.92rem;
+            color: #64748b;
+        }
+        .decision-box h3, .action-box h3, .note-box h3 {
+            margin-top: 0;
+            color: #1f3a5f;
+        }
+        .lang-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.9rem;
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            color: #2c5282;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: all 0.15s;
+        }
+        .lang-toggle:hover {
+            background: #2c5282;
+            color: #fff;
+            border-color: #2c5282;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .lang-toggle {
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.4rem 0.7rem;
+                font-size: 0.78rem;
+            }
+        }
+        footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+        /* ===== 記事別コメント欄 (smtw-cmt) ===== */
+        .smtw-cmt {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #1f3a5f;
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            margin-top: 0.9rem;
+        }
+        .smtw-cmt .smtw-cmt-head {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1f3a5f;
+            margin-bottom: 0.4rem;
+        }
+        .smtw-cmt .smtw-cmt-note {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-bottom: 0.7rem;
+            line-height: 1.5;
+        }
+        .smtw-cmt .smtw-cmt-row {
+            margin-bottom: 0.55rem;
+        }
+        .smtw-cmt label {
+            display: block;
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-bottom: 0.2rem;
+        }
+        .smtw-cmt input[type="text"],
+        .smtw-cmt input[type="email"],
+        .smtw-cmt textarea {
+            width: 100%;
+            font: inherit;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            padding: 0.45rem 0.6rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            background: #fff;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        .smtw-cmt input:focus,
+        .smtw-cmt textarea:focus {
+            outline: none;
+            border-color: #1f3a5f;
+            box-shadow: 0 0 0 2px rgba(31,58,95,0.12);
+        }
+        .smtw-cmt .smtw-cmt-hp {
+            display: none;
+        }
+        .smtw-cmt button.smtw-cmt-send {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: #1f3a5f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .smtw-cmt button.smtw-cmt-send:hover {
+            background: #2c5282;
+        }
+        .smtw-cmt button.smtw-cmt-send:disabled {
+            background: #94a3b8;
+            cursor: default;
+        }
+        .smtw-cmt .smtw-cmt-msg {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            min-height: 1em;
+        }
+        .smtw-cmt .smtw-cmt-msg.ok { color: #15803d; font-weight: 600; }
+        .smtw-cmt .smtw-cmt-msg.err { color: #b91c1c; }
+        .smtw-cmt .smtw-cmt-log {
+            margin-top: 0.8rem;
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 0.6rem;
+        }
+        .smtw-cmt .smtw-cmt-log-title {
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-bottom: 0.4rem;
+        }
+        .smtw-cmt .smtw-cmt-log-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 0.45rem 0.65rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+            color: #334155;
+        }
+        .smtw-cmt .smtw-cmt-log-item .smtw-cmt-log-date {
+            display: block;
+            font-size: 0.72rem;
+            color: #94a3b8;
+            margin-bottom: 0.15rem;
+        }
+        .smtw-cmt-general {
+            margin-top: 1rem;
+        }
+        .smtw-cmt-main {
+            margin-top: 1rem;
+        }
+        /* select は input と同調 */
+        .smtw-cmt select.smtw-cmt-target {
+            width: 100%;
+            font: inherit;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            padding: 0.45rem 0.6rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            background: #fff;
+            box-sizing: border-box;
+        }
+        .smtw-cmt select.smtw-cmt-target:focus {
+            outline: none;
+            border-color: #1f3a5f;
+            box-shadow: 0 0 0 2px rgba(31,58,95,0.12);
+        }
+        /* 各資料の小さなジャンプリンク */
+        .smtw-cmt-jump {
+            text-align: right;
+            margin-top: 0.6rem;
+        }
+        .smtw-cmt-jump a {
+            font-size: 0.8rem;
+            color: #64748b;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .smtw-cmt-jump a:hover {
+            color: #1f3a5f;
+            text-decoration: underline;
+        }
+    
+        .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
+        .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
+        .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; }
+        .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
+    
+        .meeting-nav { display:flex; flex-wrap:wrap; gap:0.4rem; margin:-0.6rem 0 1.6rem; }
+        .meeting-nav a { flex:1 1 0; text-align:center; padding:0.45rem 0.6rem; background:#eef2f7; border:1px solid #cbd5e1; border-radius:6px; color:#475569; text-decoration:none; font-size:0.82rem; white-space:nowrap; }
+        .meeting-nav a:hover { background:#dbe4f0; text-decoration:none; }
+        .meeting-nav a.active { background:#1f3a5f; color:#fff; border-color:#1f3a5f; font-weight:600; }
+    </style>
+</head>
+<body>
+<a class="lang-toggle" href="Kawaguchi_seminar_minutes_en.html">🇬🇧 EN</a>
+<div class="container">
+    <h1>AIx知的鍛錬塾 ポータル</h1>
+    <p class="subtitle">第5回 開催済 (2026-08-22) ／ 第1〜5回議事メモ ／ 関連メルマガ</p>
+
+    <nav class="page-nav">
+        <a href="Kawaguchi_seminar.html">トップ</a>
+        <a href="Kawaguchi_seminar_0822.html">8/22 研究会</a>
+        
+        <a href="Kawaguchi_seminar_prev.html">第4回</a>
+        <a href="Kawaguchi_seminar_papers.html">過去資料</a>
+        <a href="Kawaguchi_seminar_melmaga.html">メルマガ</a>
+        <a href="Kawaguchi_seminar_minutes.html" class="active">議事メモ</a>
+    </nav>
+    <nav class="meeting-nav">
+        <a href="Kawaguchi_seminar_minutes.html">第5回（最新・08-22）</a>
+        <a href="Kawaguchi_seminar_minutes4.html" class="active">第4回（07-18）</a>
+        <a href="Kawaguchi_seminar_minutes3.html">第3回（06-20）</a>
+        <a href="Kawaguchi_seminar_minutes2.html">第2回（05-09）</a>
+        <a href="Kawaguchi_seminar_minutes1.html">第1回（04-11）</a>
+    </nav>
+
+<h2 id="sec9" style="margin-top:2.6rem;">9. 第4回ミーティング 議事メモ（2026-07-18）</h2>
+    <p style="color:#64748b;font-size:0.9rem;">2026年7月18日（土）10:30〜 ／ 早稲田大学26号館13階 ／ テーマ: <strong>ループ・エンジニアリング演習 ＋ 企業におけるAI活用 — DXからAXへ</strong> ／ 使用資料: <a href="Kawaguchi_seminar.html#sec2">第4回資料（当日スライドVer2ほか）</a></p>
+
+    <div class="participants-box">
+        <h3 style="margin-top:0;color:#2c5282;">参加者</h3>
+        <ul>
+            <li><strong>川口 有一郎</strong> — 講義・司会</li>
+            <li><strong>飯沼</strong></li>
+            <li><strong>鈴木 康太</strong></li>
+            <li><strong>淺川 颯</strong></li>
+            <li><strong>宮武</strong></li>
+            <li><strong>諏訪部</strong> — 本会のみ（昼食懇談は不参加）</li>
+            <li>ほか知的鍛錬塾メンバー</li>
+            <li style="list-style:none;border-top:1px solid #cbd5e1;margin:0.5rem 0 0.3rem;padding:0;height:0;"></li>
+            <li><strong>松前 景一郎</strong> — 運営</li>
+            <li><strong>佐々木 Kazui</strong> — 運営</li>
+        </ul>
+    </div>
+    <p style="color:#94a3b8;font-size:0.82rem;">※ 前半が川口先生の講義「LLM・生成AI活用ガイド」（当日スライドVer2・全24枚）、後半が参加者による「自分のループ」実践共有と討議。終了後に昼食懇談（§9.7）。自動文字起こしのため一部の固有名詞・数値に揺れあり。</p>
+
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">9.1 講義: LLMの本質と4つの活用類型</h3>
+    <ul>
+        <li>当日スライドはピッツバーグ大学 <strong>Ferrara の NBER 論文（WP 35374・経済史研究における LLM・生成AI 活用の実践ガイド）</strong>がベース。専門技能のない研究者でも研究ができるようになったことを実証した論文で、<strong>解析エラーが40%から1%未満に低減</strong>した例などが紹介された。</li>
+        <li>LLMの本質は<strong>「文脈依存の単語予測器」</strong>。統計的言語モデル → ニューラルネットワーク → カーネル平滑化（移動平均で周辺情報を取り込み依存関係を持たせる）という流れがトランスフォーマーの仕組みにあたる、と昨年ゼミの時空統計学に接続して解説。1980年代後半の知識工学（If-then-else型エキスパートシステム）との対比も。</li>
+        <li>誤用の原因は<strong>擬人化</strong>（「知能」「人間」と見なすこと）。「単語予測器に過ぎない」と割り切ることで使い勝手が飛躍的に上がる。</li>
+        <li><strong>4つの活用類型</strong>: ①チャットウィンドウ（最も普及）②IDE統合型アシスタント（RStudio等に組み込み）③エージェンティック（Claude Code のようにファイル読み書き・実行まで自動化、研究助手として使える）④APIモデル（研究者がRなどでループを書き、意味解釈が必要な部分だけLLMに応答させる）。APIは「プログラムをデータのように使える」革命で、70〜80年分のプログラム蓄積を活かせる。</li>
+        <li><strong>得意</strong>: 構造化データ生成・非構造データの意味読み取り・自由記述の分類。1400年以降の絵画<strong>63万点</strong>から感情を抽出する実験では ChatGPT が8枚中7枚正解。GPUで2時間以上かかる処理が8分で完了する例も。ただし<strong>問い・判断・執筆は研究者の手元に残す</strong>。</li>
+        <li><strong>苦手</strong>: ハルシネーション、文献検索、歴史的事実・データ参照、空間推論、因果推論の設計、回帰モデルの変数選択、ノイズの多い代理変数。AIに考えさせすぎると自分の判断力が低下する点も（バークレー校のAI全面禁止の例、AIに論文を書かせる指導への批判とあわせて）。</li>
+    </ul>
+
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">9.2 ループ・エンジニアリング演習 — 参加者の実践</h3>
+    <ul>
+        <li>繰り返し作業をLLMとのループとして設計し、小さく回して検証しながら改良する考え方（Andrew Ng）。事前資料の Lynch／Ng 記事をベースに、各自の「繰り返し直していること・指示していること」を持ち寄って討議。</li>
+        <li><strong>論文処理ループ（鈴木 康太）</strong>: 論文PDFを ①Markdownに変換 → ②フォルダ格納 → ③リネーム → ④日本語要約生成、の一連をワンコマンド化。PDFのままではAIが読み違えるため<strong>テキスト化が肝</strong>で、Vision系ライブラリを併用すると精度が上がる。「新卒1〜3年目に渡していた作業がこのループで回る」との実感。</li>
+        <li><strong>財務モデル（宮武）</strong>: 結論が確定している計算は任せられるが、PLへの組み込みやキャッシュフローへの織り込みなど<strong>クリエイティブな判断を任せると破綻</strong>する。エージェントに作業させたあと別の専門家にレビューさせる「外部フィードバックループ」が有効。</li>
+        <li><strong>修論研究の実践例</strong>: エージェンティックなら理解度5%でもトップジャーナル級のモデルが実装できてしまう。Claude → Codex でクロスチェック → さらにレビュー、と走らせると自分の関与が薄いまま完成し「どこへ向かったのか分からない」状態に陥る、という反省。</li>
+        <li><strong>限界</strong>: 最大公約数的な内容は対応できるが、全く新しい概念を提示する論文にはLLMが追従できない。結局、英語原文は自分で読む必要がある。</li>
+        <li><strong>判断基準は「検証コストの安さ」</strong>: LLMが何を得意とするかではなく、自分の業務で最も安く検証できるものからループ化すると確実に効果が出る。</li>
+    </ul>
+
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">9.3 リアルオプションと「学習」という新しい不確実性</h3>
+    <ul>
+        <li>川口先生は来月のリアルオプション学会での講演を準備中。リアルオプションの3要素は<strong>不可逆性・不確実性・柔軟性</strong>（待つことの価値）。不確実性は ①市場 ②ゲーム的（相手の行動）③技術的（成否）の3種。</li>
+        <li>新しい知見は<strong>技術的不確実性と「学習」の結びつき</strong>。従来の「やってみないと分からない」から、いまは<strong>「やってみても分からない」</strong>——LLMが答えを返すが、それが正しいか検証できない——という新しい不確実性が登場した。</li>
+        <li>学習・問いの作り方・知識への投資が新しい投資概念のキーワードであり、リアルオプション・VC・イノベーションを統合する枠組みになりうる。「問いは作れない（問いを考えることこそ人間の仕事）」という強調も。</li>
+    </ul>
+
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">9.4 AIの経済的影響（宮武さんの論点提起）</h3>
+    <ul>
+        <li>AI活用は ①既存業務の効率化 と ②新しい需要・供給の創出 に分けられるが、現状は効率化中心で<strong>ゼロサムに留まるのではないか</strong>という問題提起（事前にClaudeと論点整理したファイルを共有）。</li>
+        <li>ゼロサムを超える経路: 供給コスト低下による実質所得増、ジェボンズのパラドックス（安くなれば需要増）、専門サービスの民主化（医療・法務）、無料AIによる非市場的な消費者余剰。</li>
+        <li>効率化は株主に有利で被雇用者に不利になりうるという論点。日本ではバックオフィス効率化が中心で、フロント活用は製造業のAX（AIトランスフォーメーション）の一部に限られる。不動産のフロントでAIが効きにくいのはIoT（センサー）の遅れが一因。</li>
+        <li><strong>ITバブルとの違い</strong>: 当時はソフトウェア完結型だったが、今回はデータセンター等の<strong>物理投資</strong>（ハイパースケーラー、民間の規模を超えた投資）が発生。無形資産＝知識への投資という新フロンティアで、投資という概念自体が変わりつつある。</li>
+        <li><strong>ソフトウェアの民主化</strong>: ある不動産会社では文系のバックオフィス担当が自然言語でPCを操作して画期的成果を上げた例も。教育なしでプログラムを扱えるようになった革命こそ本質、という指摘。</li>
+    </ul>
+
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">9.5 セキュリティリスク</h3>
+    <ul>
+        <li>エージェンティックAIはライブラリ等を自動インストールするためリスクが高く、大企業・金融機関の業務端末では特に注意。Claude Code 利用者が顧客データを含む環境を誤ってGitHubに公開してしまった実例も共有された。</li>
+        <li>対策: サンドボックス（仮想環境）にパーミッションを限定、社内データ専用のクローズド環境と外部アクセス環境の分離。金融機関では限定環境のみ利用というケースも。「セキュリティオフィサーの判断が正しいか自分では検証できない」という構造的な悩みも。</li>
+        <li>失敗例: Google Meet の録画が10分で切れる問題は、LLMに聞いても解決せず実は設定1つだった——UIが頻繁に変わる領域ではLLMの知識が古く、「本日時点のドキュメントを読んでから回答」等のプロンプトが有効。</li>
+    </ul>
+
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">9.6 昼食懇談（抜粋）</h3>
+    <ul>
+        <li><strong>ITバブルとAIブームの比較</strong>: インターネットは「距離の消滅」という新しい体験を生んだが、AIで同種の新産業がまだ見えない、という違和感の提起。一方で、鉄道会社モデル（インフラ＋不動産＋オペレーション）とデータセンターの類似性、テナントリスクの大きさの違いも議論。10月シンポジウムのキークエスチョン候補に。</li>
+        <li><strong>AIと社会構造</strong>: 少数への富の集中とベーシックインカム論、AWS・Anthropic等（ひいては米国）への資金集中で日本が果実を受け取れないリスク。楽観論としては、コスト削減が生産量増につながれば全体のウェルフェアは向上しうる、ブルーカラーの賃金上昇も進んでいる、という整理。むしろ新入社員のトレーニング機会の喪失の方が深刻という指摘も。</li>
+        <li><strong>投資概念の拡張</strong>: 川口先生が最近のNBER論文（投資・リアルオプションの拡張に関わるもの）に「30年前にリアルオプションと出会った時と同じインパクト」と注目。来月のリアルオプション学会講演の柱に据える意向で、<strong>詳細は学会後にゼミへ共有予定</strong>。LLM連続講義が一区切りしたあとの、ゼミの次の独自テーマ候補。</li>
+        <li><strong>ガバナンス談義</strong>: 社外取締役は月1回の取締役会資料だけでは内情把握に限界がある、D&amp;O保険の上限と巨額訴訟リスク、循環取引等の組織的不正は外部から発見困難で最終的に内部告発に頼らざるを得ない、といった実務の難しさ。</li>
+        <li><strong>市場環境</strong>: 日銀の利上げトレンド下でも実質金利はなおマイナスという見方、円安の進行と外貨資産課税の話題、「不動産は悪い時に買い、良い時に我慢する」の鉄則と人口減下のリカバリー懸念。</li>
+        <li>ほかに、孫正義氏の半自伝（フィナンシャルインベスターとしての評価）、シリコンバレーのエコシステム、宇宙開発、日本のポップカルチャーの強み、WBS卒業生の起業家など幅広い話題。</li>
+    </ul>
+
+    <div class="decision-box">
+        <h3>決定事項</h3>
+        <ol>
+            <li>次回定例ミーティングは<strong>2026年8月22日（土）</strong>とする（8/8は先生が熊本のため不可、8/15はお盆で回避）。会場（建物の開放可否）は確認中。</li>
+            <li>半年間の成果共有の場として<strong>10月3日（予備日10日）目処にシンポジウムを開催</strong>する方向。20〜60名規模、世界経済フォーラム形式のグループ討議を想定し、キークエスチョン候補は「ITバブルとAIブームの類似点・相違点」。国際不動産研究所名義での申請を検討。</li>
+        </ol>
+    </div>
+
+    <div class="action-box">
+        <h3>アクションアイテム</h3>
+        <ul>
+            <li>☐ <strong>事務局</strong>: 8月22日の会場（建物）の開放可否を確認</li>
+            <li>☐ <strong>事務局</strong>: シンポジウム会場の10月3日・10日の予約可否を確認</li>
+            <li>☐ <strong>各自</strong>: シンポジウムのゲスト候補をメールで共有</li>
+            <li>☐ <strong>事務局</strong>: Facebook・メルマガ登録者・最終講義参加者への告知を準備</li>
+        </ul>
+    </div>
+
+    <div class="note-box">
+        <h3>次回予定（第5回）</h3>
+        <p><strong>2026年8月22日(土)</strong>（時間・会場は確認のうえ追ってご連絡）。10月上旬にはシンポジウムを予定。資料・詳細は <a href="Kawaguchi_seminar.html">トップページ</a> に掲載予定。</p>
+    </div>
+
+    <footer>参加者限定 ／ 転載禁止 ／ 著作権は各論文の権利者に帰属</footer>
+</div>
+</body>
+</html>
