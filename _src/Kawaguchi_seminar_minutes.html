@@ -507,6 +507,10 @@
     </ul>
 
     <h3 style="color:#1f3a5f;margin-top:1.4rem;">10.3 発表①: Boston住宅価格データ × CARモデル（鈴木 康太／松前が代読）</h3>
+    <div class="file-links" style="margin-bottom:0.6rem;">
+        <a class="primary" href="papers/2026-08-22/Suzuki_20260822_Boston_CAR_ClaudeCode.pdf" target="_blank">発表①スライド PDF（全24枚）</a>
+        <a href="papers/2026-08-22/Suzuki_20260822_Boston_CAR_ClaudeCode.pptx" target="_blank">PPTX 原本</a>
+    </div>
     <ul>
         <li>村上大輔氏のテキストとGitHub公開のRコードを利用。<strong>手順</strong>はOLSで重回帰 → 残差がIIDを満たさず空間的依存が確認される（Moran's I 検定）→ CARモデルを採用。</li>
         <li><strong>モデル選択</strong>: 19個の説明変数の総当たり → AICで選定 → 解釈可能性の制約として8つの制約を課し、2¹⁵通りの組み合わせから最終モデルを選定 → CARを指定し、Claude に ICAR / BYM / Leroux の3バージョンを出力させた。分析全体を Claude Code への指示のみで実施し、<strong>RStudio を起動していない</strong>。</li>
@@ -516,6 +520,11 @@
     </ul>
 
     <h3 style="color:#1f3a5f;margin-top:1.4rem;">10.4 発表②: 首都圏公示地価データによる空間モデル総当たり（松前）</h3>
+    <div class="file-links" style="margin-bottom:0.6rem;">
+        <a class="primary" href="papers/2026-08-22/Matsumae_20260822_L01_LandPrice_SpatialModels.pdf" target="_blank">発表②スライド PDF（全127枚・フル報告版）</a>
+        <a href="papers/2026-08-22/Matsumae_20260822_L01_LandPrice_SpatialModels.pptx" target="_blank">PPTX 原本</a>
+    </div>
+    <p style="color:#94a3b8;font-size:0.82rem;margin-bottom:0.6rem;">※ Web掲載版は当日投影版と同内容ですが、著作権に配慮し、村上テキスト第3章の書籍ページ画像（26枚目）を出典カードに差し替えています。</p>
     <ul>
         <li>課題意識は<strong>「どの場合にどのモデルを使えばよいか、というマニュアルを作ること」</strong>。テキスト付属のデータではなく、載っているモデルを一通り全部当てられるだけリッチなデータとして、<strong>東京・埼玉・千葉・神奈川の公示地価データ</strong>を使用（緯度経度・各種距離が揃い、隣接関係も取れる）。</li>
         <li><strong>出発点はOLSヘドニック</strong>。そこから残差診断（QQプロット、VIF、RESET検定、Breusch-Pagan検定、残差のMoran検定、セミバリオグラム）でIID仮定の破綻を確認したうえで、<strong>空間構造をどこで受け止めるかによってA/B/Cの3分岐</strong>するフローチャートを作成した。
@@ -593,7 +602,14 @@
         <li><strong>統計的モデル思考の定義（川口先生の言葉）</strong>: 一つのデータに対して複数の依存構造の書き方があることを知り、それぞれが何を単純化し・何になぞらえ・何を人工的に構築したものかを区別でき、<strong>当てはまりの数字ではなく、対象の性質からモデルを選んだことで何を主張したかを自分の言葉で述べられること</strong>。実装はAIに任せてよいが、<strong>この主張の言語化だけは自分で行う。</strong></li>
     </ul>
 
-    <h3 style="color:#1f3a5f;margin-top:1.4rem;">10.11 NVIDIA の循環取引と J-REIT 外部運用スキームの類似</h3>
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">10.11 著作権と書籍の電子化</h3>
+    <ul>
+        <li>AI に書籍を読ませる際の運用が話題に。川口先生は村上テキストを業者に依頼して OCR スキャンし、PDF を Markdown に変換して AI に読ませている。「直接読ませたほうが回答精度が上がる」一方、<strong>知的生産の結晶を盗んでいる感覚がある</strong>として、1冊は裁断・電子化し、もう1冊を購入するという運用にされている。</li>
+        <li>著作権法の観点では、<strong>再配布せず私的利用にとどめれば問題は生じにくい</strong>、という整理が示された。（この整理に沿って、本ページ掲載の発表②Web版でも書籍ページの画像は差し替えています。）</li>
+        <li>逆方向のリスクの指摘もあった。自分の書いたテキストを AI に評価させると「同じ内容が2回書かれている」「この段落は説明が分かりにくい」といった指摘が返ってくる。第三者がスキャンして AI に評価させ、その誤りをネット上に出す事態もありうるため、事前に自分でプロテクト（潰し込み）をかけている、とのこと。</li>
+    </ul>
+
+    <h3 style="color:#1f3a5f;margin-top:1.4rem;">10.12 NVIDIA の循環取引と J-REIT 外部運用スキームの類似</h3>
     <p style="margin-bottom:0.5rem;">当日の新聞記事を Claude に読ませた例として紹介されました。10月のシンポジウムへの接続点でもあります。</p>
     <ul>
         <li>NVIDIA がやっていること（顧客に資金を出させて GPU を買わせる構造）は J-REIT の外部運用スキームに似ているのではないか、という問いを立てたところ、Claude が比較表まで含めて「よく似ている」と回答した。</li>
@@ -616,16 +632,16 @@
     <div class="action-box">
         <h3>アクションアイテム</h3>
         <ul>
-            <li>☐ <strong>事務局（松前）</strong>: 発表①（Boston × CAR）の資料を参加者全員に送付</li>
-            <li>☐ <strong>事務局（松前）</strong>: 発表②（公示地価分析）のフローチャート／スライド資料を参加者に共有（当日は画面が小さく読めなかったため）</li>
+            <li>☑ <strong>事務局（松前）</strong>: 発表①（Boston × CAR）の資料を参加者全員に共有 — <a href="Kawaguchi_seminar_0822.html">8/22ページの資料ボックス</a>に掲載しました（8/25）</li>
+            <li>☑ <strong>事務局（松前）</strong>: 発表②（公示地価分析）のフローチャート／スライド資料を参加者に共有（当日は画面が小さく読めなかったため） — 同じく<a href="Kawaguchi_seminar_0822.html">資料ボックス</a>に掲載しました（8/25）</li>
             <li>☐ <strong>宮武</strong>: 株価 × サプライチェーン上の距離を空間とみなした空間統計分析を次回までに準備</li>
-            <li>☐ <strong>川口先生</strong>: 参照論文4本を参加者に送付</li>
+            <li>☐ <strong>川口先生</strong>: 参照論文4本（Planning Capital／メタプロンプト／ガバナンス／反面教師事例）を参加者に送付 — うち Planning Capital（Caplin 2026）は<a href="Kawaguchi_seminar_0822.html">8/22ページ</a>に掲載済み</li>
         </ul>
     </div>
 
     <div class="note-box">
         <h3>次回予定</h3>
-        <p><strong>10月3日（土）</strong>に秋のシンポジウムを予定しております（診断的不確実性・Staging Discovery・ハイパースケーラーのバリュエーションがテーマになる見込み）。詳細は <a href="Kawaguchi_seminar_1003.html">10/3 シンポジウムのページ</a>をご覧ください。次回のゼミでは宮武さんによる株価×サプライチェーン空間統計の発表を予定しています。</p>
+        <p>直近では <strong>8月26日</strong> に川口先生がリアルオプション学会でご講演の予定です（演題「リアルオプションの限界と拡張」）。<strong>10月3日（土）</strong>には秋のシンポジウムを予定しております（診断的不確実性・Staging Discovery・ハイパースケーラーのバリュエーションがテーマになる見込み）。詳細は <a href="Kawaguchi_seminar_1003.html">10/3 シンポジウムのページ</a>をご覧ください。次回のゼミでは宮武さんによる株価×サプライチェーン空間統計の発表を予定しています。</p>
     </div>
 
     <footer>参加者限定 ／ 転載禁止 ／ 著作権は各論文の権利者に帰属</footer>
