@@ -26,3 +26,11 @@ _src/Kawaguchi_seminar_en.html
 # 川口先生Tシャツ案ページ（先生の写真入りの平文）。build_tshirt.py で再生成できる
 _src/Kawaguchi_seminar_tshirt.html
 encrypted/Kawaguchi_seminar_tshirt.html
+
+# 10/3 参加者へのお礼ページ: 写真入りの平文・暗号化版・パスワードは公開リポジトリに載せない（承認後に docs/ へ置く）
+_src/Kawaguchi_seminar_1003_thanks.html
+encrypted/Kawaguchi_seminar_1003_thanks.html
+_src/.thanks_password
+# お礼ページの生成スクリプトは承認前の文面（川口先生名義の手紙）を含む。公開リポジトリには載せない
+_src/build_thanks_1003.py
+_src/signature_svg.py
