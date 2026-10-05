@@ -15,6 +15,8 @@ staticrypt で暗号化した docs/ 側だけを公開する（手順は末尾�
 要件: pip install pillow pillow-heif ／ ffmpeg が PATH にあること。
 """
 import base64, glob, hashlib, io, os, subprocess, sys, tempfile
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import portal_shell as S
 from html import escape
 from PIL import Image, ImageOps
 import pillow_heif
@@ -83,14 +85,16 @@ def video_b64():
     return base64.b64encode(v).decode(), base64.b64encode(p).decode(), len(v)
 
 
-def figure(b64, size, alt_ja, alt_en, cap_ja, cap_en, name):
+
+def figure(b64, size, alt_ja, alt_en, cap_ja, cap_en, name, span=None):
     w, h = size
     cap = ""
     if cap_ja:
         cap = (f'<figcaption><span class="ja">{cap_ja}</span><span class="en">{cap_en}</span></figcaption>')
-    return (f'<figure class="ph {"land" if w >= h else "port"}">'
+    style = f' style="grid-column:span {span}"' if span else ""
+    return (f'<figure class="shot {"land" if w >= h else "port"} fg-reveal"{style}>'
             f'<img decoding="async" src="data:image/jpeg;base64,{b64}" width="{w}" height="{h}" '
-            f'alt="{escape(alt_ja)} / {escape(alt_en)}" data-name="{name}">{cap}</figure>')
+            f'alt="{escape(alt_ja)} / {escape(alt_en)}" data-zoom data-name="{name}">{cap}</figure>')
 
 
 def build():
@@ -98,158 +102,97 @@ def build():
     parts = {"group": [], "w": [], "party": [], "session": []}
     total = 0
 
-    def add(bucket, stamp, edge, q, alt_ja, alt_en, cap_ja="", cap_en=""):
+    def add(bucket, stamp, edge, q, alt_ja, alt_en, cap_ja="", cap_en="", span=None):
         nonlocal total
         b64, size, n = jpeg_b64(stamp, edge, q)
         total += n
         sizes[stamp] = n
-        parts[bucket].append(figure(b64, size, alt_ja, alt_en, cap_ja, cap_en, f"20261003_{stamp}.jpg"))
+        parts[bucket].append(figure(b64, size, alt_ja, alt_en, cap_ja, cap_en, f"20261003_{stamp}.jpg", span))
 
-    for s in GROUP:
-        add("group", s, GROUP_EDGE, GROUP_Q, "シンポジウム終了後の集合写真", "Group photo after the symposium")
+    for n, s in enumerate(GROUP):
+        add("group", s, GROUP_EDGE, GROUP_Q, "シンポジウム終了後の集合写真", "Group photo after the symposium", span=6 if n < 2 else 4)
     for s in WPOSE:
-        add("w", s, GROUP_EDGE, GROUP_Q, "早稲田の W を手で組んだ集合写真", "Group photo making the Waseda W sign with our hands")
+        add("w", s, GROUP_EDGE, GROUP_Q, "早稲田の W を手で組んだ集合写真", "Group photo making the Waseda W sign with our hands", span=6)
     for s in PARTY:
-        add("party", s, PARTY_EDGE, PARTY_Q, "ゼミ会（神楽坂）の様子", "Scene from the zemi-kai in Kagurazaka")
+        add("party", s, PARTY_EDGE, PARTY_Q, "ゼミ会（神楽坂）の様子", "Scene from the zemi-kai in Kagurazaka", span=3)
     for i, path in enumerate(session_files(), 1):
         b64, size, n = session_b64(path)
         total += n
         sizes[f"session{i:02d}"] = n
         parts["session"].append(figure(b64, size, "シンポジウム当日の会場の様子", "Scene from the symposium room",
-                                       "", "", f"20261003_symposium_{i:02d}.jpg"))
+                                       "", "", f"20261003_symposium_{i:02d}.jpg", span=4))
     vb, pb, vn = video_b64()
     total += vn
-    video = (f'<figure class="ph port video"><video controls playsinline preload="metadata" '
+    video = (f'<figure class="shot port video fg-reveal" style="grid-column:span 3"><video controls playsinline preload="metadata" '
              f'poster="data:image/jpeg;base64,{pb}" src="data:video/mp4;base64,{vb}"></video>'
              f'<figcaption><span class="ja">動画（6秒）</span><span class="en">Video (6 s)</span></figcaption></figure>')
 
-    html = TEMPLATE
-    html = html.replace("{{GROUP}}", "\n".join(parts["group"]))
-    html = html.replace("{{W}}", "\n".join(parts["w"]))
-    html = html.replace("{{SESSION}}", chr(10).join(parts["session"]))
-    html = html.replace("{{PARTY}}", "\n".join(parts["party"]) + "\n" + video)
+    body = BODY
+    body = body.replace("{{W}}", "\n".join(parts["w"]))
+    body = body.replace("{{GROUP}}", "\n".join(parts["group"]))
+    body = body.replace("{{SESSION}}", "\n".join(parts["session"]))
+    body = body.replace("{{PARTY}}", "\n".join(parts["party"]) + "\n" + video)
+    html = ('<!DOCTYPE html>\n<html lang="ja"><head>'
+            + S.shell_head("10/3 当日の写真｜AIx知的鍛錬塾 / Photos from October 3", "ja", CSS)
+            + '</head>\n<body>\n' + S.header("ja", "photos", inpage_lang=True) + '\n<main id="main">\n' + body
+            + '\n</main>\n' + S.footer("ja", inpage_lang=True) + "\n" + S.body_script() + "\n</body></html>\n")
     with open(OUT, "w", encoding="utf-8", newline="\n") as f:
         f.write(html)
     print(f"images+video raw bytes: {total:,}  ({total/1e6:.2f} MB)")
     print(f"written {OUT}: {os.path.getsize(OUT):,} bytes")
-    for k, v in sizes.items():
-        print(" ", k, f"{v/1000:.0f} KB")
 
 
-TEMPLATE = r"""<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>10/3 当日の写真｜AIx知的鍛錬塾</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Yu Gothic UI", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
-               background: #f8fafc; color: #1a1a1a; line-height: 1.7; padding: 2.5rem 1rem; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        h1 { font-size: 1.6rem; color: #2c5282; margin-bottom: 0.4rem; }
-        .subtitle { color: #64748b; font-size: 0.9rem; margin-bottom: 1.6rem; padding-bottom: 0.9rem; border-bottom: 2px solid #2c5282; }
-        h2 { font-size: 1.15rem; color: #2c5282; margin-top: 2.2rem; margin-bottom: 0.5rem; padding-left: 0.6rem; border-left: 4px solid #2c5282; }
-        p.lead { color: #475569; font-size: 0.92rem; margin-bottom: 0.9rem; }
-        a { color: #2c5282; }
-        .page-nav { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
-        .page-nav a { flex:1 1 0; text-align:center; padding:0.6rem 0.7rem; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#2c5282; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; }
-        .page-nav a:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08); }
-        .page-nav a.active { background:#2c5282; color:#fff; border-color:#2c5282; }
-        .lang-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 100; padding: 0.5rem 0.9rem; background: #fff;
-                       border: 1px solid #cbd5e1; border-radius: 6px; color: #2c5282; font: inherit; font-size: 0.85rem; font-weight: 600;
-                       cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
-        .lang-toggle:hover { background: #2c5282; color: #fff; border-color: #2c5282; }
-        html[lang="ja"] .en, html[lang="en"] .ja { display: none; }
-        .gallery { display: grid; gap: 0.8rem; grid-template-columns: repeat(2, 1fr); align-items: start; }
-        .gallery.cols3 { grid-template-columns: repeat(3, 1fr); }
-        .ph { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.4rem; margin: 0; }
-        .ph img, .ph video { display: block; width: 100%; height: auto; border-radius: 4px; cursor: zoom-in; background: #e2e8f0; }
-        .ph video { cursor: default; }
-        .ph figcaption { font-size: 0.8rem; color: #64748b; padding: 0.3rem 0.2rem 0; }
-        @media (max-width: 720px) { .gallery, .gallery.cols3 { grid-template-columns: 1fr 1fr; gap: 0.5rem; } .gallery.group { grid-template-columns: 1fr; } }
-        @media (max-width: 600px) { .lang-toggle { top: 0.5rem; right: 0.5rem; padding: 0.4rem 0.7rem; font-size: 0.78rem; } }
-        .lb { position: fixed; inset: 0; z-index: 200; display: none; background: rgba(15,23,42,0.92); align-items: center; justify-content: center; flex-direction: column; padding: 1rem; }
-        .lb.open { display: flex; }
-        .lb img { max-width: 100%; max-height: calc(100vh - 4.5rem); object-fit: contain; }
-        .lb .bar { margin-top: 0.7rem; display: flex; gap: 0.6rem; }
-        .lb .bar a, .lb .bar button { padding: 0.4rem 0.9rem; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; color: #2c5282; font: inherit; font-size: 0.85rem; font-weight: 600; text-decoration: none; cursor: pointer; }
-        footer { margin-top: 3rem; font-size: 0.8rem; color: #94a3b8; text-align: center; }
-    </style>
-</head>
-<body>
-<button class="lang-toggle" id="lang-toggle" type="button">🇬🇧 EN</button>
-<div class="container">
-
-    <h1><span class="ja">10月3日 当日の写真</span><span class="en">Photos from October 3</span></h1>
-    <p class="subtitle"><span class="ja">秋のシンポジウムの集合写真・当日の様子と、神楽坂でのゼミ会（懇親会）の写真です。写真をクリックすると拡大・保存できます。</span><span class="en">Group photos and scenes from the autumn symposium, and photos from the zemi-kai (reception) in Kagurazaka. Click a photo to enlarge or save it.</span></p>
-
-    <nav class="page-nav">
-        <a href="Kawaguchi_seminar.html"><span class="ja">トップ</span><span class="en">Top</span></a>
-        <a href="Kawaguchi_seminar_0822.html"><span class="ja">8/22 研究会</span><span class="en">Aug 22</span></a>
-        <a href="Kawaguchi_seminar_1003.html" class="active"><span class="ja">10/3 シンポジウム</span><span class="en">Oct 3</span></a>
-        <a href="Kawaguchi_seminar_minutes.html"><span class="ja">議事メモ</span><span class="en">Minutes</span></a>
-    </nav>
-
-    <h2><span class="ja">集合写真（シンポジウム終了後・26号館 1102）</span><span class="en">Group photos (after the symposium, Room 1102)</span></h2>
-    <p class="lead"><span class="ja">撮影者が途中で交代したため、写っているメンバーが写真ごとに少し異なります。両方の版を載せています。</span><span class="en">The photographer changed partway through, so who appears in the frame differs slightly between shots; both versions are included.</span></p>
-    <div class="gallery group">
-{{GROUP}}
-    </div>
-
-    <h2><span class="ja">早稲田の「W」</span><span class="en">The Waseda “W”</span></h2>
-    <div class="gallery">
-{{W}}
-    </div>
-
-    <h2><span class="ja">シンポジウムの様子（講演・パネル・質疑）</span><span class="en">Scenes from the symposium (talks, panel, Q&amp;A)</span></h2>
-    <p class="lead"><span class="ja">撮影順ではなく、場面ごとにおおまかに並べています。</span><span class="en">Roughly grouped by scene, not in shooting order.</span></p>
-    <div class="gallery">
-{{SESSION}}
-    </div>
-
-    <h2><span class="ja">ゼミ会（懇親会）— 神楽坂・ALEGRIA</span><span class="en">Zemi-kai — ALEGRIA, Kagurazaka</span></h2>
-    <div class="gallery cols3">
-{{PARTY}}
-    </div>
-
-    <footer><span class="ja">参加者限定 ／ 転載禁止</span><span class="en">Participants only / Do not redistribute</span></footer>
-</div>
-
-<div class="lb" id="lb" role="dialog" aria-modal="true">
-    <img id="lb-img" alt="">
-    <div class="bar"><a id="lb-dl" href="#" download><span class="ja">保存</span><span class="en">Save</span></a><button type="button" id="lb-close"><span class="ja">閉じる</span><span class="en">Close</span></button></div>
-</div>
-
-<script>
-(function () {
-    var root = document.documentElement, btn = document.getElementById("lang-toggle");
-    function setLang(l) {
-        root.lang = l;
-        btn.textContent = l === "ja" ? "🇬🇧 EN" : "🇯🇵 日本語";
-        try { localStorage.setItem("smtw_photos_lang", l); } catch (e) {}
-    }
-    var saved = "ja";
-    try { saved = localStorage.getItem("smtw_photos_lang") || ((navigator.language || "").indexOf("ja") === 0 ? "ja" : "en"); } catch (e) {}
-    setLang(saved === "en" ? "en" : "ja");
-    btn.addEventListener("click", function () { setLang(root.lang === "ja" ? "en" : "ja"); });
-
-    var lb = document.getElementById("lb"), lbImg = document.getElementById("lb-img"), lbDl = document.getElementById("lb-dl");
-    function close() { lb.classList.remove("open"); lbImg.removeAttribute("src"); }
-    document.addEventListener("click", function (e) {
-        var t = e.target;
-        if (t.tagName === "IMG" && t.closest(".ph")) {
-            lbImg.src = t.src; lbImg.alt = t.alt; lbDl.href = t.src; lbDl.download = t.getAttribute("data-name") || "photo.jpg";
-            lb.classList.add("open");
-        } else if (t === lb || t.id === "lb-close" || t.closest("#lb-close")) { close(); }
-    });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
-})();
-</script>
-</body>
-</html>
+CSS = """
+.ph-pagehead .fg-wrap{padding-bottom:clamp(110px,14vw,170px)}
+.ph-final{position:relative;z-index:3;margin-top:calc(-1 * clamp(84px,11vw,140px))}
+.ph-t{display:inline-block}
+.ph-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;align-items:start}
+.shot{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.shot img,.shot video{display:block;width:100%;height:auto;background:#d9d4c5;transition:transform .6s var(--ease)}
+.shot:hover img{transform:scale(1.02)}
+.shot figcaption{padding:.55rem .9rem .7rem;font-size:.84rem;color:var(--muted);border-top:1px solid var(--line)}
+.ph-final .ph-grid{gap:16px}
+.ph-final .shot{border-radius:var(--r-lg);box-shadow:0 50px 100px -40px rgba(11,18,36,.7)}
+@media (max-width:860px){.ph-grid{grid-template-columns:1fr 1fr}.ph-grid > *{grid-column:auto!important}.ph-final .ph-grid{grid-template-columns:1fr}}
 """
+
+BODY = """<section class="fg-pagehead ph-pagehead"><div class="fg-wrap">
+ <p class="fg-kicker"><span class="ja">2026.10.03 · 秋のシンポジウムとゼミ会</span><span class="en">2026.10.03 · Autumn symposium and zemi-kai</span></p>
+ <h1><span class="ja"><span class="ph-t">10月3日の</span><span class="ph-t">写真</span></span><span class="en">Photos from <em>October 3</em></span></h1>
+ <p class="fg-lede"><span class="ja">シンポジウム終了後の集合写真、会場の様子、そして神楽坂のゼミ会（懇親会）。写真をクリックすると拡大・保存できます。</span><span class="en">Group photos after the symposium, scenes from the room, and the zemi-kai in Kagurazaka. Click a photo to enlarge or save it.</span></p>
+ <ul class="fg-chips"><li><span class="ja">写真 46枚</span><span class="en">46 photos</span></li><li><span class="ja">動画 1本</span><span class="en">1 video</span></li></ul>
+ <div class="fg-actions"><a class="fg-btn is-solid" href="#group"><span class="ja">集合写真</span><span class="en">Group photos</span> <span aria-hidden="true">↓</span></a><a class="fg-btn" href="#room"><span class="ja">シンポジウムの様子</span><span class="en">The symposium</span></a><a class="fg-btn" href="#party"><span class="ja">ゼミ会</span><span class="en">Zemi-kai</span></a></div>
+</div></section>
+<div class="fg-wrap ph-final"><div class="ph-grid">
+{{W}}
+</div></div>
+
+<section class="fg-section" id="group"><div class="fg-wrap">
+ <div class="fg-reveal"><p class="fg-eyebrow"><span class="ja">集合写真</span><span class="en">Group photos</span></p>
+ <h2 class="fg-h2"><span class="ja">全員で、<em>1102</em>にて。</span><span class="en">All together, in <em>Room 1102</em>.</span></h2>
+ <p class="fg-sub"><span class="ja">撮影者が途中で交代したため、写っているメンバーが写真ごとに少し異なります。両方の版を載せています。上の2枚は、早稲田の「W」を手で組んだ写真です。</span><span class="en">The photographer changed partway through, so who appears in the frame differs slightly between shots; both versions are included. The two photos above show the Waseda “W” made with our hands.</span></p></div>
+ <div class="ph-grid">
+{{GROUP}}
+ </div>
+</div></section>
+
+<section class="fg-section is-alt" id="room"><div class="fg-wrap">
+ <div class="fg-reveal"><p class="fg-eyebrow"><span class="ja">シンポジウムの様子</span><span class="en">The symposium</span></p>
+ <h2 class="fg-h2"><span class="ja">講演、パネル、<em>質疑</em>。</span><span class="en">Talks, panel and <em>Q&amp;A</em>.</span></h2>
+ <p class="fg-sub"><span class="ja">撮影順ではなく、場面ごとにおおまかに並べています。</span><span class="en">Roughly grouped by scene, not in shooting order.</span></p></div>
+ <div class="ph-grid">
+{{SESSION}}
+ </div>
+</div></section>
+
+<section class="fg-section" id="party"><div class="fg-wrap">
+ <div class="fg-reveal"><p class="fg-eyebrow"><span class="ja">ゼミ会（懇親会）</span><span class="en">Zemi-kai</span></p>
+ <h2 class="fg-h2"><span class="ja">神楽坂、<em>ALEGRIA</em>。</span><span class="en">Kagurazaka, <em>ALEGRIA</em>.</span></h2>
+ <p class="fg-sub"><span class="ja">「2026年 川口ゼミ懇親会」のプレートと花火で。最後に動画が1本あります。</span><span class="en">With a plate marked “2026 Kawaguchi Seminar reception” and a sparkler. One short video at the end.</span></p></div>
+ <div class="ph-grid">
+{{PARTY}}
+ </div>
+</div></section>"""
 
 if __name__ == "__main__":
     build()

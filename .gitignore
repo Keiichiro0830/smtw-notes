@@ -18,3 +18,11 @@ encrypted/Kawaguchi_seminar_boj.html
 # 10/3 写真ページ: 顔写真を base64 で埋め込んだ平文は公開リポジトリに載せない（暗号化した docs/ 版のみ公開）
 _src/Kawaguchi_seminar_1003_photos.html
 encrypted/Kawaguchi_seminar_1003_photos.html
+
+# ホーム（日英）は写真を base64 で埋め込んで生成する平文。build_home.py で再生成できるので git には載せない
+_src/Kawaguchi_seminar.html
+_src/Kawaguchi_seminar_en.html
+
+# 川口先生Tシャツ案ページ（先生の写真入りの平文）。build_tshirt.py で再生成できる
+_src/Kawaguchi_seminar_tshirt.html
+encrypted/Kawaguchi_seminar_tshirt.html
