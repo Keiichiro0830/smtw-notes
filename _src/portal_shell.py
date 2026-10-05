@@ -15,10 +15,10 @@ import io, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">')
-FAVICON = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzFmM2E1ZiIvPjxwYXRoIGQ9Ik0yNCAzIEwyNSA1LjUgTDI3LjUgNiBMMjUgNi41IEwyNCA5IEwyMyA2LjUgTDIwLjUgNiBMMjMgNS41IFoiIGZpbGw9IiNmNTllMGIiLz48cGF0aCBkPSJNMyAxNCBMMTAgMTEgTDI2IDExIEwyNiAxNSBMMjIgMTUgTDIwIDE5IEwyNCAxOSBMMjQuNSAyMyBMNy41IDIzIEw4IDE5IEwxMiAxOSBMMTAgMTUgTDMgMTUgWiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==")
-ANVIL = ('<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1f3a5f"/>'
-         '<path d="M24 3 25 5.5 27.5 6 25 6.5 24 9 23 6.5 20.5 6 23 5.5Z" fill="#eba73a"/>'
+         '<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&amp;family=Noto+Sans+JP:wght@300;400;500;700&amp;display=swap" rel="stylesheet">')
+FAVICON = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iMyIgZmlsbD0iIzIyMzA1NSIvPjxwYXRoIGQ9Ik0yNCAzIDI1IDUuNSAyNy41IDYgMjUgNi41IDI0IDkgMjMgNi41IDIwLjUgNiAyMyA1LjVaIiBmaWxsPSIjZmZiN2NhIi8+PHBhdGggZD0iTTMgMTQgMTAgMTEgMjYgMTEgMjYgMTUgMjIgMTUgMjAgMTkgMjQgMTkgMjQuNSAyMyA3LjUgMjMgOCAxOSAxMiAxOSAxMCAxNSAzIDE1WiIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg==")
+ANVIL = ('<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#223055"/>'
+         '<path d="M24 3 25 5.5 27.5 6 25 6.5 24 9 23 6.5 20.5 6 23 5.5Z" fill="#ffb7ca"/>'
          '<path d="M3 14 10 11 26 11 26 15 22 15 20 19 24 19 24.5 23 7.5 23 8 19 12 19 10 15 3 15Z" fill="#fff"/></svg>')
 
 # nav: key, 日本語, English, JA file, EN file

@@ -148,7 +148,7 @@ CSS = """
 .ph-t{display:inline-block}
 .ph-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;align-items:start}
 .shot{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
-.shot img,.shot video{display:block;width:100%;height:auto;background:#d9d4c5;transition:transform .6s var(--ease)}
+.shot img,.shot video{display:block;width:100%;height:auto;background:#dfe3ea;transition:transform .6s var(--ease)}
 .shot:hover img{transform:scale(1.02)}
 .shot figcaption{padding:.55rem .9rem .7rem;font-size:.84rem;color:var(--muted);border-top:1px solid var(--line)}
 .ph-final .ph-grid{gap:16px}
