@@ -182,7 +182,7 @@ def build(lang, md):
                                  f'<div class="mosaic"><img src="{md["m1"]}" alt="" decoding="async"><img src="{md["m2"]}" alt="" decoding="async"><img src="{md["m3"]}" alt="" decoding="async"></div>'))
     shirt_tile = h(tl["shirt"], ("t-b", "Kawaguchi_seminar_tshirt.html", f'<img src="{md["shirt"]}" alt="" decoding="async">'))
     min_tile = h(tl["minutes"], ("t-c", "Kawaguchi_seminar_minutes.html", '<span class="big">10.03</span>'))
-    sld_tile = h(tl["slides"], ("t-d", S.KURODA, '<span class="big">31<small>slides</small></span>'))
+    sld_tile = h(tl["slides"], ("t-d", S.KURODA, '<span class="big">31</span>'))
     qs = "".join(f'<li class="fg-reveal" style="--d:{n * .08:.2f}s"><div class="n">0{n + 1}</div><h3>{q[0] if lang == "ja" else q[1]}</h3><p>{q[1] if lang == "ja" else ""}</p></li>' for n, q in enumerate(QUESTIONS))
     cards = "".join(f'<a class="fg-card fg-reveal" style="--d:{n * .08:.2f}s" href="{k[4]}"><span class="tag">{k[0]}</span><h3>{k[1]}</h3><p>{k[2]}</p><span class="go">{k[3]}</span></a>' for n, k in enumerate(c["cards"]))
     mq = "".join(f"<span>{m}</span>" for m in MARQUEE)

@@ -187,22 +187,22 @@ CSS = """
 .ts-final figcaption b{color:var(--ink)}
 #r1.fg-section{padding-top:clamp(56px,7vw,90px)}
 .ts-types ol{list-style:none;margin:0;padding:0}
-.ts-types li{display:grid;grid-template-columns:2rem 1fr;gap:.2rem .6rem;padding:.65rem 0;border-bottom:1px solid #ebd9b0;color:var(--muted);font-size:.93rem}
+.ts-types li{display:grid;grid-template-columns:2rem 1fr;gap:.2rem .6rem;padding:.65rem 0;border-bottom:1px solid #ffd3df;color:var(--muted);font-size:.93rem}
 .ts-types li:last-child{border-bottom:0}
-.ts-types li b{font-family:var(--f-disp);font-size:1.6rem;line-height:1;color:var(--gold-deep)}
-.ts-types i{font-family:var(--f-disp);font-size:1.12rem;color:var(--ink)}
+.ts-types li b{font-family:var(--f-disp);font-weight:200;font-size:1.7rem;line-height:1;color:var(--ink-2)}
+.ts-types i{font-family:var(--f-disp);font-style:normal;font-weight:600;font-size:1.02rem;color:var(--ink)}
 .ts-back{background:#fbfaf6;border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.4rem,3vw,2.4rem);box-shadow:var(--shadow);align-self:stretch}
 .ts-back-tag{margin:0 0 1rem;font-size:.72rem;font-weight:800;letter-spacing:.2em;color:var(--muted)}
 .ts-back h3{margin:0;font-size:clamp(1.8rem,4.2vw,3rem);line-height:1;font-weight:800;letter-spacing:.01em;color:#111;text-transform:uppercase}
-.ts-back .by{margin:.5rem 0 1rem;font-family:var(--f-disp);font-style:italic;color:#444;font-size:1.05rem;padding-bottom:.9rem;border-bottom:1.5px solid #111}
+.ts-back .by{margin:.5rem 0 1rem;font-family:var(--f-serif);font-style:italic;color:#444;font-size:1.05rem;padding-bottom:.9rem;border-bottom:1.5px solid #111}
 .ts-back ol{list-style:none;margin:0;padding:0}
 .ts-back li{display:grid;grid-template-columns:2.6rem 1fr;gap:0 .6rem;padding:.55rem 0;border-bottom:1px solid var(--line);align-items:baseline}
 .ts-back li b{color:var(--ember);font-size:.95rem;letter-spacing:.06em}
-.ts-back .q{font-family:var(--f-disp);font-size:clamp(1.15rem,2.2vw,1.55rem);color:#111}
+.ts-back .q{font-family:var(--f-serif);font-size:clamp(1.15rem,2.2vw,1.55rem);color:#111}
 .ts-back .jq{grid-column:2;font-size:.82rem;color:var(--muted)}
 .ts-back .ft{margin:1rem 0 0;font-size:.68rem;letter-spacing:.2em;color:var(--muted)}
 .ts-head{display:grid;grid-template-columns:auto 1fr;gap:1.2rem 2.2rem;align-items:start;margin-bottom:2.4rem}
-.ts-no{font-family:var(--f-disp);font-size:clamp(4rem,10vw,7.5rem);line-height:.85;color:var(--gold-deep);letter-spacing:-.04em}
+.ts-no{font-family:var(--f-disp);font-size:clamp(4rem,10vw,7.5rem);line-height:.85;font-weight:200;color:var(--ink-2);letter-spacing:-.04em}
 .is-alt .ts-no{color:var(--gold-deep)}
 .ts-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
 .ts-fig{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
@@ -210,7 +210,7 @@ CSS = """
 .ts-fig:hover img{transform:scale(1.015)}
 .ts-fig figcaption{padding:.9rem 1.2rem 1.1rem;font-size:.9rem;color:var(--muted);border-top:1px solid var(--line);line-height:1.7}
 .ts-fig figcaption b{color:var(--ink)}
-.ts-note{background:var(--gold-wash);border:1px solid #efd9a8;border-radius:var(--r-lg);padding:1.4rem 1.6rem;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.ts-note{background:var(--gold-wash);border:1px solid #ffd3df;border-radius:var(--r-lg);padding:1.4rem 1.6rem;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
 .ts-note h3{margin:0 0 .5rem;font-size:1.05rem;color:var(--ink)}
 .ts-note p{margin:0;color:var(--muted);font-size:.95rem}
 .ts-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:2rem}
