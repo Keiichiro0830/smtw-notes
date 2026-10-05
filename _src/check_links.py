@@ -3,7 +3,8 @@ import re, os, sys
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 fail = 0
 for src in ["_src/Kawaguchi_seminar.html", "_src/Kawaguchi_seminar_en.html",
-            "_src/Kawaguchi_seminar_video1.html", "_src/Kawaguchi_seminar_articles.html"]:
+            "_src/Kawaguchi_seminar_video1.html", "_src/Kawaguchi_seminar_articles.html",
+            "_src/Kawaguchi_seminar_1003.html", "_src/Kawaguchi_seminar_1003_en.html"]:
     with open(src, encoding="utf-8") as f:
         html = f.read()
     for href in re.findall(r'href="([^"#]+)"', html):
