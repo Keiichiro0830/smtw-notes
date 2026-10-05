@@ -14,3 +14,7 @@ encrypted/Kawaguchi_seminar_video1.html
 encrypted/Kawaguchi_seminar_articles.html
 encrypted/Kawaguchi_seminar_boj.html
 *.stackdump
+
+# 10/3 写真ページ: 顔写真を base64 で埋め込んだ平文は公開リポジトリに載せない（暗号化した docs/ 版のみ公開）
+_src/Kawaguchi_seminar_1003_photos.html
+encrypted/Kawaguchi_seminar_1003_photos.html
