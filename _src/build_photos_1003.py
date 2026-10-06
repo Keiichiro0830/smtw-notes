@@ -36,6 +36,10 @@ WPOSE = ["080451277", "080451660"]
 PARTY = ["110820184", "110832545", "110834214", "110834648", "110835186", "110837370", "110838050",
          "110838881", "110839540", "110840165", "110840854", "110842227", "110842834", "110843592", "110844112"]
 VIDEO = "110822000"
+# 10/6 朝に追加したゼミ会の写真（メッセンジャー経由の *_n.jpg）。シンポジウムの様子（SESSION）とは別に数える
+PARTY_JPG = ["833260503_1482904317074908_8168623892762051533_n.jpg",
+             "836117073_1110181688644636_7018495838606804116_n.jpg",
+             "837736196_2631948227247854_6263402492404452656_n.jpg"]
 
 # 当日の様子（講演・パネル・質疑）。メッセンジャー経由の *_n.jpg を、ファイル名順に並べたときの添字で指定。
 # 並びはプログラム順の目安（撮影順ではない）。添字 9 は 8 と同一ファイル（"(1)" 付き）なので使わない。
@@ -59,7 +63,7 @@ def jpeg_b64(stamp, edge, q):
 
 
 def session_files():
-    fs = sorted(glob.glob(os.path.join(SRC, "*_n*.jpg")))
+    fs = sorted(f for f in glob.glob(os.path.join(SRC, "*_n*.jpg")) if os.path.basename(f) not in PARTY_JPG)
     assert len(fs) == 25, len(fs)
     assert hashlib.md5(open(fs[8], "rb").read()).digest() == hashlib.md5(open(fs[9], "rb").read()).digest()
     return [fs[i] for i in SESSION_ORDER]
@@ -115,6 +119,11 @@ def build():
         add("w", s, GROUP_EDGE, GROUP_Q, "早稲田の W を手で組んだ集合写真", "Group photo making the Waseda W sign with our hands", span=6)
     for s in PARTY:
         add("party", s, PARTY_EDGE, PARTY_Q, "ゼミ会（神楽坂）の様子", "Scene from the zemi-kai in Kagurazaka", span=3)
+    for i, name in enumerate(PARTY_JPG, 1):
+        b64, size, n = session_b64(os.path.join(SRC, name))
+        total += n
+        sizes[f"party_jpg{i}"] = n
+        parts["party"].append(figure(b64, size, "ゼミ会（神楽坂）の様子", "Scene from the zemi-kai in Kagurazaka", "", "", f"20261003_zemikai_{i:02d}.jpg", span=3))
     for i, path in enumerate(session_files(), 1):
         b64, size, n = session_b64(path)
         total += n
@@ -160,7 +169,7 @@ BODY = """<section class="fg-pagehead ph-pagehead"><div class="fg-wrap">
  <p class="fg-kicker"><span class="ja">2026.10.03 · 秋のシンポジウムとゼミ会</span><span class="en">2026.10.03 · Autumn symposium and zemi-kai</span></p>
  <h1><span class="ja"><span class="ph-t">10月3日の</span><span class="ph-t">写真</span></span><span class="en">Photos from <em>October 3</em></span></h1>
  <p class="fg-lede"><span class="ja">シンポジウム終了後の集合写真、会場の様子、そして神楽坂のゼミ会（懇親会）。写真をクリックすると拡大・保存できます。</span><span class="en">Group photos after the symposium, scenes from the room, and the zemi-kai in Kagurazaka. Click a photo to enlarge or save it.</span></p>
- <ul class="fg-chips"><li><span class="ja">写真 46枚</span><span class="en">46 photos</span></li><li><span class="ja">動画 1本</span><span class="en">1 video</span></li></ul>
+ <ul class="fg-chips"><li><span class="ja">写真 49枚</span><span class="en">49 photos</span></li><li><span class="ja">動画 1本</span><span class="en">1 video</span></li></ul>
  <div class="fg-actions"><a class="fg-btn is-solid" href="#group"><span class="ja">集合写真</span><span class="en">Group photos</span> <span aria-hidden="true">↓</span></a><a class="fg-btn" href="#room"><span class="ja">シンポジウムの様子</span><span class="en">The symposium</span></a><a class="fg-btn" href="#party"><span class="ja">ゼミ会</span><span class="en">Zemi-kai</span></a></div>
 </div></section>
 <div class="fg-wrap ph-final"><div class="ph-grid">
