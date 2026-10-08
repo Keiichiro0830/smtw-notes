@@ -10,7 +10,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SYMPO = os.path.normpath(os.path.join(HERE, "..", "..", "..", "..", "70 Mtg", "20261003 シンポジウム", "写真"))
 if not os.path.isdir(SYMPO):
     SYMPO = r"C:\Users\keima\OneDrive\Documents\Work\40 Still Modelling The World (SMTW)\70 Mtg\20261003 シンポジウム\写真"
-TSHIRT = r"C:\Users\keima\ObsidianVault\10 work\40 Still Modelling The World(SMTW)\川口先生Tシャツ デザイン案"
+TSHIRT = r"C:\Users\keima\ObsidianVault\10 work\40 Still Modelling The World(SMTW)\川口先生Tシャツ"
+if not os.path.isdir(TSHIRT):  # 2026-10-08 に「川口先生Tシャツ デザイン案」から改名
+    TSHIRT += " デザイン案"
 
 
 def heic(stamp):
