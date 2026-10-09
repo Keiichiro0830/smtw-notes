@@ -31,6 +31,7 @@ NAV = [
 ]
 KURODA = "papers/2026-10-03/Kuroda_20261003_Causal_Inference_AI_Era_Aircon.pdf"
 SUZUKI = "papers/2026-10-03/Suzuki_20261003_Boston_Housing_Statistical_Modeling_ClaudeCode.pdf"
+IINUMA = "papers/2026-10-03/Iinuma_20261003_Market_Risk_Now_Rates_Equity_Credit.pdf"
 MATSUMAE = "papers/2026-10-03/Matsumae_20261003_L01_LandPrice_SpatioTemporal_ErrorTerm.pdf"
 SUBNAV_LIB = [("Kawaguchi_seminar_papers.html", "過去資料", "Kawaguchi_seminar_papers_en.html", "Past materials"),
               ("Kawaguchi_seminar_melmaga.html", "関連メルマガ", "Kawaguchi_seminar_melmaga_en.html", "Newsletters"),
@@ -58,13 +59,13 @@ PAGES = {
         lede="川口先生の基調講演、飯沼先生・黒田先生の講演、パネルディスカッション、全体討論。終了後は神楽坂でゼミ会（懇親会）を開きました。",
         chips=["開催済", "14:00–17:00", "26号館11階 1102", "約30名"],
         actions=[("当日の写真", "Kawaguchi_seminar_1003_photos.html", True), ("議事メモ", "Kawaguchi_seminar_minutes.html", False),
-                 ("黒田先生の資料（PDF）", KURODA, False), ("鈴木さんの資料（PDF）", SUZUKI, False), ("松前の資料（PDF）", MATSUMAE, False)])),
+                 ("飯沼先生の資料（PDF）", IINUMA, False), ("黒田先生の資料（PDF）", KURODA, False), ("鈴木さんの資料（PDF）", SUZUKI, False), ("松前の資料（PDF）", MATSUMAE, False)])),
     "Kawaguchi_seminar_1003_en.html": dict(en="Kawaguchi_seminar_1003.html", nav="home", crumb="Autumn symposium", ja=dict(
         kicker="Autumn symposium · 2026.10.03", title="Is this time different? The IT boom vs. the AI boom",
         lede="Keynote by Prof. Kawaguchi, talks by Prof. Iinuma and Prof. Kuroda, a panel and an open discussion — followed by the zemi-kai reception in Kagurazaka.",
         chips=["Held", "14:00–17:00", "Bldg 26, 11F, Room 1102", "about 30 people"],
         actions=[("Photos", "Kawaguchi_seminar_1003_photos.html", True), ("Minutes", "Kawaguchi_seminar_minutes.html", False),
-                 ("Prof. Kuroda's slides (PDF)", KURODA, False), ("Mr. Suzuki's slides (PDF)", SUZUKI, False), ("Mr. Matsumae's slides (PDF)", MATSUMAE, False)])),
+                 ("Prof. Iinuma's slides (PDF)", IINUMA, False), ("Prof. Kuroda's slides (PDF)", KURODA, False), ("Mr. Suzuki's slides (PDF)", SUZUKI, False), ("Mr. Matsumae's slides (PDF)", MATSUMAE, False)])),
     "Kawaguchi_seminar_prev.html": dict(en="Kawaguchi_seminar_prev_en.html", nav="home", crumb="第4回", ja=dict(
         kicker="第4回 研究会 · 2026.07.18", title='<span class="ph">ループ・</span><span class="ph">エンジニアリング</span><span class="ph">演習</span>',
         lede="企業におけるAI活用 — DXからAXへ。当日スライド、事前資料、第3回後アンケートの結果をまとめています。",
