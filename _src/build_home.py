@@ -18,11 +18,21 @@ T = {"ja": 0, "en": 1}
 
 # 年表。href は (ja, en)。英語版が無いページは日本語ページへ。
 EVENTS = [
-    dict(date="9999-12-31", big="TBD", tag=("次回", "NEXT"), tbd=True,
-         title=("次回の日程は未定です", "The next date is not set yet"),
-         desc=("川口ゼミナールは月1回の勉強会を続けます。ファイナンス研究会の次回は11月第1週が目安です。",
-               "The monthly study group continues. The next finance research meeting is tentatively the first week of November."),
-         label=("次回の日程は未定です", "next date not set"), links=[]),
+    dict(date="2027-01-30", big="01.30", tag=("第8回", "8TH"), upcoming=True,
+         title=("第8回 研究会（2027年1月30日・土）", "8th meeting (Sat 30 Jan 2027)"),
+         desc=("10:30 開始。早稲田大学 26号館（部屋は追ってご案内します）。2月は入試期間のため早稲田の施設が使えません。",
+               "Starts 10:30. Waseda Bldg 26 — room to be announced. Waseda facilities are closed in February for entrance exams."),
+         label=("第8回 研究会", "the 8th meeting"), links=[]),
+    dict(date="2026-12-05", big="12.05", tag=("第7回", "7TH"), upcoming=True,
+         title=("第7回 研究会（12月5日・土）", "7th meeting (Sat 5 Dec)"),
+         desc=("10:30 開始。早稲田大学 26号館（部屋は追ってご案内します）。",
+               "Starts 10:30. Waseda Bldg 26 — room to be announced."),
+         label=("第7回 研究会", "the 7th meeting"), links=[]),
+    dict(date="2026-11-07", big="11.07", tag=("第6回", "6TH"), upcoming=True, room=("早稲田大学 26号館 13階 1308", "Waseda Bldg 26, 13F, Room 1308"),
+         title=("第6回 研究会（11月7日・土）", "6th meeting (Sat 7 Nov)"),
+         desc=("10:30 開始。早稲田大学 26号館 13階 1308 です。11月からは、各自が作った資料を持ち寄って議論する形を川口先生が提案されています。",
+               "Starts 10:30. Waseda Bldg 26, 13F, Room 1308. From November, Prof. Kawaguchi proposes that each member brings material they have written, as the basis for discussion."),
+         label=("第6回 研究会", "the 6th meeting"), links=[]),
     dict(date="2026-10-03", big="10.03", tag=("シンポジウム", "SYMPOSIUM"),
          title=("秋のシンポジウム『今回は違うか？：ITブームとAIブームの違い』", "Autumn symposium: Is this time different? The IT boom vs. the AI boom"),
          desc=("川口先生の基調講演、飯沼先生・黒田先生の講演、パネル、全体討論。終了後は神楽坂でゼミ会。",
@@ -79,11 +89,15 @@ COPY = {
     "ja": dict(
         title="AIx知的鍛錬塾 ポータル｜川口ゼミ",
         h1='知を、<span class="ac">鍛える</span>。<span class="en">Forging intellect, with AI.</span>',
-        lede="川口有一郎先生と、統計モデルと生成AIをじっくり鍛える少人数ゼミ。2026年4月に始まり、月に一度の勉強会と10月3日のシンポジウムまで、6回の集まりを重ねました。",
-        btn1="シンポジウムの記録", btn2="当日の写真",
+        lede="川口有一郎先生と、統計モデルと生成AIをじっくり鍛える少人数ゼミ。2026年4月に始まり、10月3日のシンポジウムまで6回の集まりを重ねました。11月からも月に一度、続けます。",
+        btn1="今後の日程", btn2="シンポジウムの記録",
         photo_cap=("2026.10.03　秋のシンポジウム", "Waseda 26-1102"),
         status_label="最新", status_txt="秋のシンポジウム（10.03）開催済み — 写真・議事メモを公開中",
-        s_log=("開催記録", "月に一度、<em>積み重ねた</em>6回。", "いちばん上が最新です。各回の資料と議事メモへは、ボタンから進めます。"),
+        s_sched=("今後の日程", "次の<em>3回</em>が決まりました。", "いずれも土曜日、早稲田大学 26号館で開きます。手帳に入れておいてください。"),
+        sched_meta=("土", "10:30 開始", "早稲田大学 26号館"),
+        sched_next="次回",
+        sched_note="会場の部屋と当日の進め方は、各回の前にこのページとメッセンジャーでお知らせします。2月は入試期間のため早稲田の施設が使えず、お休みです。",
+        s_log=("開催記録", "月に一度、<em>積み重ねた</em>6回。", "上の3つが今後の予定、その下が開催済みの記録です。各回の資料と議事メモへは、ボタンから進めます。"),
         s_new=("最新の更新", "10月3日の<em>記録</em>が揃いました。", "写真、議事メモ、黒田先生の資料、そして川口先生Tシャツの検討。"),
         tiles=dict(photo=("PHOTOS", "10/3 当日の写真", "集合写真・シンポジウムの様子・ゼミ会。写真49枚と動画1本。", "写真を見る →"),
                    shirt=("T-SHIRT", "川口先生Tシャツ案", "3ラウンドの検討。表は「MODELLING THE WORLD」、裏は「FOUR QUESTIONS」へ。", "検討の経過を見る →"),
@@ -105,11 +119,15 @@ COPY = {
     "en": dict(
         title="AIx Intellectual Forging Academy — Kawaguchi Seminar",
         h1='Forging <span class="ac">intellect</span>,<span class="en">with AI.</span>',
-        lede="A small seminar with Prof. Yuichiro Kawaguchi on statistical modelling and generative AI. Since April 2026 we have met six times — monthly study sessions, and the autumn symposium on October 3.",
-        btn1="Symposium record", btn2="Photos",
+        lede="A small seminar with Prof. Yuichiro Kawaguchi on statistical modelling and generative AI. Since April 2026 we have met six times, up to the autumn symposium on October 3 — and we continue monthly from November.",
+        btn1="Upcoming dates", btn2="Symposium record",
         photo_cap=("2026.10.03  Autumn symposium", "Waseda 26-1102"),
         status_label="Latest", status_txt="Autumn symposium (10.03) held — photos and minutes are up",
-        s_log=("Sessions", "Six meetings, <em>one month</em> at a time.", "Newest first. Each session links to its materials and minutes."),
+        s_sched=("Upcoming", "The next <em>three dates</em> are set.", "All on Saturdays, at Waseda University, Building 26. Please save the dates."),
+        sched_meta=("SAT", "Starts 10:30", "Waseda Bldg 26"),
+        sched_next="NEXT",
+        sched_note="The room and the plan for each day will be posted here and on Messenger before each meeting. There is no meeting in February: Waseda facilities are closed for entrance exams.",
+        s_log=("Sessions", "Six meetings, <em>one month</em> at a time.", "The top three are upcoming; below them, the meetings held so far. Each session links to its materials and minutes."),
         s_new=("What's new", "The <em>record</em> of October 3 is complete.", "Photos, minutes, Prof. Kuroda's slides — and the T-shirt design study."),
         tiles=dict(photo=("PHOTOS", "Oct 3 photos", "Group photos, the symposium itself and the zemi-kai. 49 photos and one video.", "See the photos →"),
                    shirt=("T-SHIRT", "T-shirt design study", "Three rounds. MODELLING THE WORLD on the front, FOUR QUESTIONS on the back.", "See how it evolved →"),
@@ -165,6 +183,31 @@ def ledger(lang):
     return '<ol class="fg-ledger">' + "".join(rows) + "</ol>"
 
 
+def schedule(lang):
+    """ヒーロー直下の「今後の日程」。EVENTS の upcoming 行を日付順に並べる（過ぎた回と次回の印は forge.js が付ける）。"""
+    i = T[lang]
+    c = COPY[lang]
+    wd, tm, venue = c["sched_meta"]
+    cards = []
+    for e in sorted((e for e in EVENTS if e.get("upcoming")), key=lambda e: e["date"]):
+        y = e["date"][:4]
+        cards.append(
+            f'<li data-date="{e["date"]}"><span class="flag">{c["sched_next"]}</span>'
+            f'<div class="d">{e["big"]}<small>{y} · {wd}</small></div>'
+            f'<div class="t">{e["tag"][i]}</div>'
+            f'<div class="m"><span>{tm}</span><span>{e["room"][i] if e.get("room") else venue}</span></div></li>')
+    return '<ol class="fg-sched-list fg-reveal">' + "".join(cards) + "</ol>"
+
+
+def hero_dates(lang):
+    """ヒーロー内の一行版。スマホでは「今後の日程」セクションが折り返しの下になるため、ここでも日付を見せる。"""
+    c = COPY[lang]
+    ds = "".join(f'<li data-date="{e["date"]}"><b>{int(e["big"][:2])}/{int(e["big"][3:])}</b>（{c["sched_meta"][0]}）</li>' if lang == "ja"
+                 else f'<li data-date="{e["date"]}"><b>{e["big"].replace(".", "/")}</b> {c["sched_meta"][0].title()}</li>'
+                 for e in sorted((e for e in EVENTS if e.get("upcoming")), key=lambda e: e["date"]))
+    return f'<a class="fg-dates" href="#schedule"><span>{c["s_sched"][0]}</span><ol>{ds}</ol></a>'
+
+
 def build(lang, md):
     c = COPY[lang]
     i = T[lang]
@@ -195,10 +238,17 @@ def build(lang, md):
     <h1>{c["h1"]}</h1>
     <p class="fg-lede">{c["lede"]}</p>
     <div class="fg-status" id="fg-status" data-latest-ja="{COPY["ja"]["status_txt"]}" data-latest-en="{COPY["en"]["status_txt"]}"><span class="fg-dot" aria-hidden="true"></span><b>{c["status_label"]}</b><span class="st">{c["status_txt"]}</span></div>
-    <div class="fg-actions"><a class="fg-btn is-solid" href="{"Kawaguchi_seminar_1003.html" if lang == "ja" else "Kawaguchi_seminar_1003_en.html"}">{c["btn1"]} <span aria-hidden="true">→</span></a>
-    <a class="fg-btn" href="Kawaguchi_seminar_1003_photos.html">{c["btn2"]} <span aria-hidden="true">→</span></a></div>
+    {hero_dates(lang)}
+    <div class="fg-actions"><a class="fg-btn is-solid" href="#schedule">{c["btn1"]} <span aria-hidden="true">↓</span></a>
+    <a class="fg-btn" href="{"Kawaguchi_seminar_1003.html" if lang == "ja" else "Kawaguchi_seminar_1003_en.html"}">{c["btn2"]} <span aria-hidden="true">→</span></a></div>
   </div>
   <figure class="fg-hero-photo"><img src="{md["hero"]}" alt="{S.esc(c["photo_cap"][0])}" width="1500" decoding="async"><figcaption><span>{c["photo_cap"][0]}</span><b>{c["photo_cap"][1]}</b></figcaption></figure>
+</div></section>
+
+<section class="fg-section fg-sched" id="schedule"><div class="fg-wrap">
+  <div class="fg-reveal">{sec("s_sched")}</div>
+  {schedule(lang)}
+  <p class="fg-note fg-reveal">{c["sched_note"]}</p>
 </div></section>
 <div class="fg-marquee" aria-hidden="true"><div class="fg-marquee-track">{mq}{mq}</div></div>
 
@@ -248,6 +298,27 @@ def build(lang, md):
 HOME_CSS = """
 .fg-note{color:var(--muted);font-size:.92rem;max-width:62ch}
 .fg-ledger li.is-tbd .no{font-size:clamp(2rem,4vw,2.8rem);padding-top:.5rem}
+.fg-sched{padding-bottom:clamp(40px,6vw,72px)}
+.fg-sched-list{list-style:none;margin:1.6rem 0 1.2rem;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line-2)}
+.fg-sched-list li{position:relative;padding:1.8rem 1.4rem 1.6rem;border-left:1px solid var(--line-2)}
+.fg-sched-list li:first-child{border-left:0}
+.fg-sched-list .flag{display:none;position:absolute;left:1.4rem;top:-.72rem;background:var(--ember);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.18em;padding:.2rem .7rem;border-radius:999px}
+.fg-sched-list li.is-next{background:var(--gold-wash)}
+.fg-sched-list li.is-next .flag{display:inline-block}
+.fg-sched-list li.is-past{display:none}
+.fg-sched-list .d{font-family:var(--f-disp);font-size:clamp(3rem,6.4vw,4.6rem);line-height:1;letter-spacing:-.02em;color:var(--ink);font-weight:700}
+.fg-sched-list .d small{display:block;font-family:var(--f-ui);font-size:.8rem;font-weight:800;letter-spacing:.16em;color:var(--muted);margin-top:.6rem}
+.fg-sched-list .t{margin-top:1rem;font-size:1.05rem;font-weight:800;color:var(--ink)}
+.fg-sched-list .m{display:flex;flex-direction:column;margin-top:.3rem;font-size:.92rem;color:var(--muted)}
+.fg-dates{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;margin-top:1rem;max-width:36rem;color:var(--on-ink);text-decoration:none}
+.fg-dates>span{font-size:.78rem;font-weight:800;letter-spacing:.14em;color:var(--gold)}
+.fg-dates ol{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;list-style:none;margin:0;padding:0}
+.fg-dates li{font-size:.95rem;color:var(--on-ink-2)}
+.fg-dates li b{font-family:var(--f-disp);font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+.fg-dates li.is-next b{color:var(--gold)}
+.fg-dates li.is-past{display:none}
+.fg-dates:hover li b{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+@media (max-width:820px){.fg-sched-list{grid-template-columns:1fr}.fg-sched-list li{border-left:0;border-top:1px solid var(--line-2)}.fg-sched-list li:first-child{border-top:0}}
 """
 
 if __name__ == "__main__":
