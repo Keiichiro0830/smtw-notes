@@ -28,10 +28,10 @@ EVENTS = [
          desc=("10:30 開始。早稲田大学 26号館（部屋は追ってご案内します）。",
                "Starts 10:30. Waseda Bldg 26 — room to be announced."),
          label=("第7回 研究会", "the 7th meeting"), links=[]),
-    dict(date="2026-11-07", big="11.07", tag=("第6回", "6TH"), upcoming=True,
+    dict(date="2026-11-07", big="11.07", tag=("第6回", "6TH"), upcoming=True, room=("早稲田大学 26号館 13階 1308", "Waseda Bldg 26, 13F, Room 1308"),
          title=("第6回 研究会（11月7日・土）", "6th meeting (Sat 7 Nov)"),
-         desc=("10:30 開始。早稲田大学 26号館、これまでと同じ部屋の予定です。11月からは、各自が作った資料を持ち寄って議論する形を川口先生が提案されています。",
-               "Starts 10:30. Waseda Bldg 26, in our usual room. From November, Prof. Kawaguchi proposes that each member brings material they have written, as the basis for discussion."),
+         desc=("10:30 開始。早稲田大学 26号館 13階 1308 です。11月からは、各自が作った資料を持ち寄って議論する形を川口先生が提案されています。",
+               "Starts 10:30. Waseda Bldg 26, 13F, Room 1308. From November, Prof. Kawaguchi proposes that each member brings material they have written, as the basis for discussion."),
          label=("第6回 研究会", "the 6th meeting"), links=[]),
     dict(date="2026-10-03", big="10.03", tag=("シンポジウム", "SYMPOSIUM"),
          title=("秋のシンポジウム『今回は違うか？：ITブームとAIブームの違い』", "Autumn symposium: Is this time different? The IT boom vs. the AI boom"),
@@ -195,7 +195,7 @@ def schedule(lang):
             f'<li data-date="{e["date"]}"><span class="flag">{c["sched_next"]}</span>'
             f'<div class="d">{e["big"]}<small>{y} · {wd}</small></div>'
             f'<div class="t">{e["tag"][i]}</div>'
-            f'<div class="m"><span>{tm}</span><span>{venue}</span></div></li>')
+            f'<div class="m"><span>{tm}</span><span>{e["room"][i] if e.get("room") else venue}</span></div></li>')
     return '<ol class="fg-sched-list fg-reveal">' + "".join(cards) + "</ol>"
 
 
