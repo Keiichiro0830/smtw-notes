@@ -122,7 +122,9 @@ STRINGS = {
 
 
 def read(name):
-    return io.open(os.path.join(HERE, "theme", name), encoding="utf-8", newline="").read()
+    # 作業ツリーでは autocrlf で CRLF になる。LF に揃えないと CRLF のページに差し込んで書き戻すとき
+    # CR が二重になり、流すたびに増える
+    return io.open(os.path.join(HERE, "theme", name), encoding="utf-8", newline="").read().replace("\r\n", "\n")
 
 
 def theme_css():
@@ -217,7 +219,8 @@ def body_script():
 
 # ----------------------------------------------------------------------------
 def strip(html, tag):
-    return re.sub(rf"<!--fg:{tag}-->.*?<!--/fg:{tag}-->", "", html, flags=re.S)
+    # 差し込み時にブロックの後ろへ付けた改行ごと外す（残すと流すたびに空行が増える）
+    return re.sub(rf"<!--fg:{tag}-->.*?<!--/fg:{tag}-->\n*", "", html, flags=re.S)
 
 
 def apply_to(path):
@@ -243,7 +246,9 @@ def apply_to(path):
         upd = mu.group(1) if mu else None
     for t in ("header", "pagehead", "subnav", "footer", "js", "head"):
         html = strip(html, t)
-    html = html.replace('<main id="main">', "").replace("</main>" + chr(10), "")
+    # <body> 直後と </main> 直後の改行も差し込み時に足したもの。過去の実行で溜まった空行もここで畳む
+    html = re.sub(r'\n*<main id="main">\n*', "\n", html)
+    html = re.sub(r"\n*</main>\n*", "\n", html)
     html = re.sub(r'<a class="lang-toggle"[^>]*>.*?</a>\s*', "", html, flags=re.S)
     html = re.sub(r'<nav class="page-nav">.*?</nav>\s*', "", html, flags=re.S)
     html = re.sub(r'<p class="subtitle">.*?</p>\s*', "", html, flags=re.S)
