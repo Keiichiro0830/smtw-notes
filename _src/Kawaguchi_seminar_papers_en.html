@@ -679,6 +679,10 @@ html[lang="ja"] .en,html[lang="en"] .ja{display:none!important}
 
 
 
+
+
+
+
 <div class="container">
     <h2 id="sec3-3">Pre-read papers — 3rd meeting (2026-06-20), archive</h2>
     <p style="color:#64748b;font-size:0.9rem;">The materials that anchored the 3rd meeting ("LLM study session"): the LLM trilogy, Wolfram, Tsai 2019, and the mental-model set. The discussion itself is captured in <a href="Kawaguchi_seminar_minutes_en.html#sec8">the 3rd meeting summary</a>.</p>
@@ -1092,6 +1096,8 @@ const SMTW_CMT_TEXT = {
 
 
 
+
+
 </main>
 <!--fg:footer--><footer class="fg-footer"><div class="fg-wrap"><span>Participants only / Do not redistribute / Copyright of each paper remains with its holder</span><span class="fg-fnav"><a href="Kawaguchi_seminar_en.html">Home</a><a href="Kawaguchi_seminar_minutes_en.html">Minutes</a><a href="Kawaguchi_seminar_papers_en.html">Library</a><a href="Kawaguchi_seminar_1003_photos.html">Photos</a><a href="Kawaguchi_seminar_tshirt.html">T-shirt</a></span></div></footer><!--/fg:footer-->
 <!--fg:js--><script id="forge-js">/* FORGE — ヘッダー・リビール・ホームの状態表示（依存なし） */
@@ -1219,6 +1225,19 @@ const SMTW_CMT_TEXT = {
       }
       if (txt) { status.querySelector(".st").textContent = txt; status.querySelector("b").textContent = tag; }
     }
+    /* ホーム: 「今後の日程」も同じ今日の日付で、過ぎた回を隠し、次回に印を付ける */
+    [".fg-sched-list", ".fg-dates"].forEach(function (sel) {
+      var sc = [].slice.call(d.querySelectorAll(sel + " li[data-date]")), marked = false;
+      sc.forEach(function (r) {
+        r.classList.remove("is-past", "is-next");
+        if (dt(r) < today) r.classList.add("is-past");
+        else if (!marked) { r.classList.add("is-next"); marked = true; }
+      });
+      if (sc.length && !marked) {
+        var box = sel === ".fg-dates" ? d.querySelector(".fg-dates") : d.getElementById("schedule");
+        if (box) box.hidden = true;
+      }
+    });
   }
 })();
 </script><!--/fg:js-->
