@@ -929,6 +929,9 @@ html[lang="ja"] .en,html[lang="en"] .ja{display:none!important}
 
 
 
+
+
+
 <div class="container">
     <nav class="meeting-nav">
         <a href="Kawaguchi_seminar_minutes.html">10/3 シンポジウム（最新）</a>
@@ -1146,6 +1149,8 @@ html[lang="ja"] .en,html[lang="en"] .ja{display:none!important}
 
 
 
+
+
 </main>
 <!--fg:footer--><footer class="fg-footer"><div class="fg-wrap"><span>参加者限定 ／ 転載禁止 ／ 著作権は各論文の権利者に帰属</span><span class="fg-fnav"><a href="Kawaguchi_seminar.html">ホーム</a><a href="Kawaguchi_seminar_minutes.html">議事メモ</a><a href="Kawaguchi_seminar_papers.html">資料</a><a href="Kawaguchi_seminar_1003_photos.html">写真</a><a href="Kawaguchi_seminar_tshirt.html">Tシャツ案</a></span></div></footer><!--/fg:footer-->
 <!--fg:js--><script id="forge-js">/* FORGE — ヘッダー・リビール・ホームの状態表示（依存なし） */
@@ -1273,6 +1278,19 @@ html[lang="ja"] .en,html[lang="en"] .ja{display:none!important}
       }
       if (txt) { status.querySelector(".st").textContent = txt; status.querySelector("b").textContent = tag; }
     }
+    /* ホーム: 「今後の日程」も同じ今日の日付で、過ぎた回を隠し、次回に印を付ける */
+    [".fg-sched-list", ".fg-dates"].forEach(function (sel) {
+      var sc = [].slice.call(d.querySelectorAll(sel + " li[data-date]")), marked = false;
+      sc.forEach(function (r) {
+        r.classList.remove("is-past", "is-next");
+        if (dt(r) < today) r.classList.add("is-past");
+        else if (!marked) { r.classList.add("is-next"); marked = true; }
+      });
+      if (sc.length && !marked) {
+        var box = sel === ".fg-dates" ? d.querySelector(".fg-dates") : d.getElementById("schedule");
+        if (box) box.hidden = true;
+      }
+    });
   }
 })();
 </script><!--/fg:js-->
