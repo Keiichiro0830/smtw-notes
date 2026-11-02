@@ -796,7 +796,8 @@ const SMTW_UPL_TEXT = {
     send: "川口先生に送る",
     sending: "送信中…",
     okMsg: "✓ 川口先生にお届けしました。ありがとうございます。",
-    errMsg: "送信に失敗しました。時間をおいて再度お試しください。",
+    errMsg: "送信に失敗しました。時間をおいて再度お試しいただき、それでも届かない場合はメール添付でお送りください。",
+    srvErr: "（サーバーの応答: {e}）",
     notReady: "提出機能は現在準備中です。恐れ入りますがメール添付でお送りください。",
     needName: "お名前を入力してください。",
     needFile: "ファイルを選択してください。",
@@ -920,6 +921,8 @@ const SMTW_UPL_TEXT = {
                 if (!resp.ok) { throw new Error("HTTP " + resp.status); }
                 return resp.json().catch(function () { throw new Error("upload-not-ready"); });
             }).then(function (res) {
+                // サーバーが ok:false とエラー文を返したら、それを画面に出す（準備中扱いで隠さない）
+                if (res && res.ok === false && res.error) { throw new Error("server: " + res.error); }
                 if (!res || !res.ok || !res.upload) { throw new Error("upload-not-ready"); }
                 msg.className = "smtw-cmt-msg ok";
                 msg.textContent = SMTW_UPL_TEXT.okMsg;
@@ -930,7 +933,9 @@ const SMTW_UPL_TEXT = {
                 btn.textContent = original;
             }).catch(function (e) {
                 msg.className = "smtw-cmt-msg err";
-                msg.textContent = (e && e.message === "upload-not-ready") ? SMTW_UPL_TEXT.notReady : SMTW_UPL_TEXT.errMsg;
+                if (window.console) { console.error("[SMTW upload]", e); }
+                const detail = (e && /^server: /.test(e.message)) ? SMTW_UPL_TEXT.srvErr.replace("{e}", e.message.slice(8)) : "";
+                msg.textContent = (e && e.message === "upload-not-ready") ? SMTW_UPL_TEXT.notReady : SMTW_UPL_TEXT.errMsg + detail;
                 btn.disabled = false;
                 btn.textContent = original;
             });
