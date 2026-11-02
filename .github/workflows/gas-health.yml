@@ -1,0 +1,52 @@
+# 提出BOX・コメントのバックエンド（GAS Web アプリ）が生きているかを毎日確かめる。
+# ?ping=1 が {ok:true, upload:true} を返さなければ失敗にし、issue を立てる（既にあればコメントを足す）。
+# 復旧手順: _src/GAS_RUNBOOK.md
+name: GAS health
+
+on:
+  schedule:
+    - cron: "0 22 * * *"   # 毎日 07:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: _src/theme/legacy_home_ja.html
+          sparse-checkout-cone-mode: false
+
+      - name: Ping the GAS endpoint
+        id: ping
+        run: |
+          url=$(grep -oE 'https://script\.google\.com/macros/s/[A-Za-z0-9_-]+/exec' _src/theme/legacy_home_ja.html | head -1)
+          [ -n "$url" ] || { echo "endpoint not found in _src/theme/legacy_home_ja.html"; exit 1; }
+          code=$(curl -sSL -o body.txt -w '%{http_code}' --max-time 60 "$url?ping=1" || true)
+          echo "HTTP $code"
+          head -c 300 body.txt; echo
+          if [ "$code" = "200" ] && jq -e '.ok == true and .upload == true' body.txt > /dev/null 2>&1; then
+            echo "version: $(jq -r '.version // "?"' body.txt)"
+          else
+            echo "status=HTTP $code" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+      - name: Open or update an issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATUS: ${{ steps.ping.outputs.status }}
+        run: |
+          title="提出BOX/コメントのバックエンドが応答しない"
+          body="$(date -u +'%Y-%m-%d %H:%M UTC') の確認で ?ping=1 が {ok:true, upload:true} を返しませんでした（${STATUS:-不明}）。復旧手順は _src/GAS_RUNBOOK.md を参照。実行ログ: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          n=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$title in:title" --json number --jq '.[0].number')
+          if [ -n "$n" ]; then
+            gh issue comment "$n" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+          fi
