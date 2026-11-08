@@ -61,6 +61,10 @@ const checks = [
   ["docs/Kawaguchi_seminar_minutes2_en.html", ["4th · latest (07-18)"]],
   ["docs/Kawaguchi_seminar_video1.html", ["スライド 34", "講義ログ（自動文字起こし・全文）", "全体サマリー"]],
   ["docs/Kawaguchi_seminar_articles.html", ["バブルマネー争奪", "株式と債券の動きに矛盾", "日本経済新聞社に帰属"]],
+  // 一斉配布（2026-11-08）。"!" で始まる項目は「含まないこと」
+  ["docs/Kawaguchi_seminar_send.html", ["資料を<em>一斉配布</em>する", "sd-check", "sd-send", "distSend", "action: action", "script.google.com/macros/s/", "!__ENDPOINT__"]],
+  ["docs/Kawaguchi_seminar.html", ["Kawaguchi_seminar_send.html", "?list=1&t=", "!__DIST_TOKEN__"]],
+  ["docs/Kawaguchi_seminar_en.html", ["Kawaguchi_seminar_send.html", "?list=1&t=", "!__DIST_TOKEN__"]],
 ];
 
 let fail = 0;
@@ -72,9 +76,11 @@ for (const [file, needles] of checks) {
     if (ctrl) fail++;
     console.log(`${ctrl ? "FAIL" : "PASS"}  ${file}  no control characters`);
     for (const n of needles) {
-      const ok = pt.includes(n);
+      const neg = n.startsWith("!");
+      const needle = neg ? n.slice(1) : n;
+      const ok = neg ? !pt.includes(needle) : pt.includes(needle);
       if (!ok) fail++;
-      console.log(`${ok ? "PASS" : "FAIL"}  ${file}  contains "${n}"`);
+      console.log(`${ok ? "PASS" : "FAIL"}  ${file}  ${neg ? "does not contain" : "contains"} "${needle}"`);
     }
     console.log(`INFO  ${file}  decrypted ${pt.length} chars, ${imgs} embedded jpeg(s)`);
   } catch (e) {

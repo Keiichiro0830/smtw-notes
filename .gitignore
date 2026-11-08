@@ -2,6 +2,13 @@
 
 # GAS backend contains the real Spreadsheet ID — keep out of the public repo
 _src/gas_comment_backend.gs
+_src/gas_comment_backend.gs.*
+
+# 配布BOXの閲覧トークン（GAS「配布設定」と同じ値）。build_home.py がホームに差し込む
+_src/.dist_token
+
+# 一斉配布ページ（build_send.py で再生成できる平文。公開は暗号化した docs/ 版）
+_src/Kawaguchi_seminar_send.html
 
 # staticrypt source backups
 _src/*.bak

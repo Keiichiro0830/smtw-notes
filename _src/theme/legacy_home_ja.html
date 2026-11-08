@@ -947,6 +947,8 @@ const SMTW_UPL_TEXT = {
 <script>
 /* ===== SMTW 配布BOX（Drive配布フォルダの一覧表示） ===== */
 (function () {
+    // 閲覧トークン。build_home.py が git 管理外の _src/.dist_token から差し込む（このファイルには値を書かない）
+    const SMTW_DIST_TOKEN = "__DIST_TOKEN__";
     function esc(s) {
         return String(s).replace(/[&<>"']/g, function (c) {
             return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
@@ -955,7 +957,7 @@ const SMTW_UPL_TEXT = {
     document.addEventListener("DOMContentLoaded", function () {
         const box = document.getElementById("smtw-dist");
         if (!box) return;
-        fetch(SMTW_CMT_ENDPOINT + "?list=1").then(function (r) {
+        fetch(SMTW_CMT_ENDPOINT + "?list=1&t=" + encodeURIComponent(SMTW_DIST_TOKEN)).then(function (r) {
             return r.json().catch(function () { throw new Error("not-ready"); });
         }).then(function (res) {
             if (!res || !res.ok || !res.dist) { throw new Error("not-ready"); }
