@@ -26,7 +26,7 @@ THEMED = [
     "Kawaguchi_seminar_minutes1", "Kawaguchi_seminar_minutes2", "Kawaguchi_seminar_minutes3", "Kawaguchi_seminar_minutes4",
     "Kawaguchi_seminar_minutes5", "Kawaguchi_seminar_minutes1_en", "Kawaguchi_seminar_minutes2_en", "Kawaguchi_seminar_minutes3_en",
 ]
-GENERATED = ["Kawaguchi_seminar", "Kawaguchi_seminar_en", "Kawaguchi_seminar_tshirt", "Kawaguchi_seminar_1003_photos"]
+GENERATED = ["Kawaguchi_seminar", "Kawaguchi_seminar_en", "Kawaguchi_seminar_tshirt", "Kawaguchi_seminar_send", "Kawaguchi_seminar_1003_photos"]
 
 
 def run(*cmd, shell=False):
@@ -39,6 +39,7 @@ def main():
     run(PY, "_src/portal_shell.py")
     run(PY, "_src/build_home.py")
     run(PY, "_src/build_tshirt.py")
+    run(PY, "_src/build_send.py")
     if photos:
         run(PY, "_src/build_photos_1003.py")
     names = THEMED + GENERATED

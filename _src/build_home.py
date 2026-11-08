@@ -112,6 +112,7 @@ COPY = {
         s_tools=("共有と提出", "<em>配る</em>、集める。", "先生・事務局からの共有ファイル、コメント、ファイルの提出はここから。"),
         dist_p="川口先生・事務局がドライブの配布フォルダに置いたファイルが、ここに自動で一覧表示されます（ページを開くたびに最新化）。ファイルは Google Drive で開きます。",
         dist_h="配布BOX（先生・事務局からの共有ファイル）", dist_loading="読み込み中…",
+        dist_send=("先生・事務局の方へ：", "資料をメンバー全員に一斉配布する（合言葉が必要です）"),
         cmt_h="コメント・ご質問フォーム",
         cmt_p='ご質問・ご要望、運営へのご意見をこちらからどうぞ。各資料へのコメントは、<a href="Kawaguchi_seminar_prev.html">第4回のページ</a>の資料カードからお送りいただけます。',
         cmt_aid="general", cmt_atitle="全体・運営",
@@ -142,6 +143,7 @@ COPY = {
         s_tools=("Share & submit", "<em>Receive</em> and send.", "Files from Prof. Kawaguchi and the secretariat, comments and file submissions."),
         dist_p="Files placed in the Drive distribution folder by Prof. Kawaguchi or the secretariat are listed here automatically (refreshed every time the page opens). Files open in Google Drive.",
         dist_h="Distribution box (files from Prof. Kawaguchi &amp; the secretariat)", dist_loading="Loading…",
+        dist_send=("For Prof. Kawaguchi and the secretariat: ", "Send materials to all members at once (passphrase required; page in Japanese)"),
         cmt_h="Comments &amp; questions",
         cmt_p='Send questions, requests or feedback on how the seminar is run. Per-material comments can be sent from the material cards on the <a href="Kawaguchi_seminar_prev_en.html">4th-meeting page</a>.',
         cmt_aid="general-en", cmt_atitle="General / Operations",
@@ -155,7 +157,27 @@ def legacy_parts(lang):
     style = re.search(r"<style>(.*?)</style>", s, re.S).group(1)
     h2 = s.find('<h2 id="sec-dist">')
     scripts = s[s.find("<script>", s.find("<footer>", h2)):s.find("</body>")]
+    scripts = scripts.replace('"__DIST_TOKEN__"', '"' + dist_token() + '"')
     return style, scripts
+
+
+def dist_token():
+    """配布BOXの閲覧トークン（GAS「配布設定」と同じ値）。git 管理外の _src/.dist_token から読む。
+    worktree では見つからなければ本体チェックアウトの _src/.dist_token を見る。無ければビルドを止める。"""
+    import subprocess
+    cands = [os.path.join(HERE, ".dist_token")]
+    try:
+        common = subprocess.run(["git", "rev-parse", "--path-format=absolute", "--git-common-dir"], cwd=HERE,
+                                capture_output=True, text=True, check=True).stdout.strip()
+        cands.append(os.path.join(os.path.dirname(common), "_src", ".dist_token"))
+    except Exception:
+        pass
+    for p in cands:
+        if os.path.exists(p):
+            t = io.open(p, encoding="utf-8").read().strip()
+            if re.fullmatch(r"[0-9a-f]{32}", t):
+                return t
+    raise SystemExit("_src/.dist_token（配布BOXの閲覧トークン）が見つからない。GAS の「配布設定」の値を書いた1行のファイルを置く")
 
 
 def media():
@@ -278,6 +300,7 @@ def build(lang, md):
 <h2 id="sec-dist">{c["dist_h"]}</h2>
 <p class="fg-note">{c["dist_p"]}</p>
 <div id="smtw-dist" class="smtw-dist"><p class="smtw-dist-status">{c["dist_loading"]}</p></div>
+<p class="fg-note fg-dist-send">{c["dist_send"][0]}<a href="Kawaguchi_seminar_send.html">{c["dist_send"][1]} →</a></p>
 
 <h2>{c["cmt_h"]}</h2>
 <p class="fg-note">{c["cmt_p"]}</p>
